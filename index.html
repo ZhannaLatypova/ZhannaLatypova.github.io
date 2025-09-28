@@ -1,1 +1,472 @@
-<!doctype html><html><head><title>Zhanna Portfolio</title></head><body><h1>Portfolio Home</h1></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio — Zhanna</title>
+  <meta name="description" content="Data Analyst · Data Scientist · AI/ML Engineer" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;900&family=Oswald:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- HEADER (скрываем как в рефе, но оставлено для структуры) -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#"><span class="logo">it’s me</span></a>
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#experience">Experience</a>
+        <a href="#case">Case Study</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <!-- left -->
+        <div class="hero-copy">
+          <a class="brand-inline" href="#">it’s me</a>
+          <div class="hello-emoji">👋</div>
+
+          <h1 class="hero-title">
+            <span class="hello">Hello!</span>
+            <span class="strong">I’m Zhanna</span>
+          </h1>
+
+          <div class="role-line">
+            <span class="rule"></span>
+            <span class="role">Product Designer</span>
+            <span class="spark">✦</span>
+          </div>
+
+          <!-- Профессиональные бейджи -->
+          <div class="pro-badges" aria-label="Disciplines">
+            <span class="pro-badge" title="Data Scientist">∑ Data Scientist</span>
+            <span class="pro-badge" title="Data Analyst">📊 Data Analyst</span>
+            <span class="pro-badge" title="AI Engineer">🤖 AI Engineer</span>
+          </div>
+
+          <p class="lede">
+            I turn messy data into clean insights and production-ready ML solutions. Focused on practical impact, fast iterations, and measurable value.
+          </p>
+
+          <ul class="hero-list">
+            <li>Make products authentic & user-centered</li>
+            <li>Solve pain points elegantly with data</li>
+            <li>Test → learn → validate with users & metrics</li>
+          </ul>
+
+          <div class="cta-row">
+            <a class="btn primary" href="mailto:hello@yourdomain.tld?subject=Let’s%20Talk%20—%20Zhanna">Let’s Talk</a>
+            <a class="btn outline" href="assets/Zhanna_Latypova_CV.pdf" download>Download CV <span class="arrow">↧</span></a>
+          </div>
+        </div>
+
+        <!-- right -->
+        <div class="hero-visual">
+          <!-- радужное облако -->
+          <div class="color-cloud cloud--focus"></div>
+
+          <!-- три линка сверху -->
+          <div class="mini-cards">
+            <a class="mini-card" href="#case">
+              <div class="mini-title">My Projects <span class="ext">↗</span></div>
+              <div class="mini-text">See all of the projects I’ve done.</div>
+            </a>
+            <a class="mini-card" href="#experience">
+              <div class="mini-title">Experience <span class="ext">↗</span></div>
+              <div class="mini-text">Learn where I’ve worked and what I shipped.</div>
+            </a>
+            <a class="mini-card" href="#contact">
+              <div class="mini-title">Contact me <span class="ext">↗</span></div>
+              <div class="mini-text">zhn.latypova@gmail.com</div>
+            </a>
+          </div>
+
+          <!-- фото + круг -->
+          <div class="portrait-wrap">
+            <img
+              class="portrait cutout"
+              src="https://drive.google.com/thumbnail?id=1rOYFZw2iz6o0nGpKvdm2lPxQtic1m8lD&sz=w1200"
+              alt="Zhanna portrait"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
+            <div class="hello-badge">Bonjour</div>
+          </div>
+
+          <!-- аналитические иконки -->
+          <svg class="icon icon-linechart" viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="3,16 9,10 13,14 21,6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 21h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+
+          <svg class="icon icon-pie" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3a9 9 0 0 1 9 9h-9z" fill="currentColor" opacity=".15"/>
+            <path d="M12 3v9l6.364 6.364A9 9 0 1 1 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- нижняя чёрная лента -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>WEB DESIGN</span><i class="dot">✶</i>
+          <span>APP DESIGN</span><i class="dot">✶</i>
+          <span>DEVELOPMENT</span><i class="dot">✶</i>
+          <span>ML / AI</span><i class="dot">✶</i>
+          <span>BRANDING</span><i class="dot">✶</i>
+          <span>WEB DESIGN</span><i class="dot">✶</i>
+          <span>APP DESIGN</span><i class="dot">✶</i>
+          <span>DEVELOPMENT</span><i class="dot">✶</i>
+          <span>ML / AI</span><i class="dot">✶</i>
+          <span>BRANDING</span><i class="dot">✶</i>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES (редакционная шапка, как в рефе) -->
+    <section class="section services-v2" id="services">
+      <div class="wrap">
+        <div class="svc-head">
+          <div class="svc-left">
+            <span class="pill">MY SERVICES</span>
+            <h3 class="svc-title">WHAT I’M<br>OFFERING</h3>
+          </div>
+          <div class="svc-right">
+            <p class="svc-lede">
+              There are many variations of passages of Lorem Ipsum available, but the
+              majority have suffered alteration in some form.
+            </p>
+            <a class="svc-all" href="#services">ALL SERVICE</a>
+          </div>
+        </div>
+
+        <div class="svc-rail" aria-hidden="true">
+          <span class="rail-text">SCROLL DOWN</span>
+          <span class="rail-line"></span>
+          <span class="rail-dot">↓</span>
+        </div>
+
+        <div class="svc-cards">
+          <article class="svc-card dark">
+            <div class="svc-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 19l7-7-4-4-7 7-2 6z"></path><path d="M18 5l1-1a2.8 2.8 0 114 4l-1 1"></path>
+              </svg>
+            </div>
+            <h4>UI-UX<br>CREATIVE<br>DESIGN</h4>
+            <a href="#" class="svc-read">READ MORE <span>→</span></a>
+          </article>
+
+          <article class="svc-card outline">
+            <div class="svc-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="12" rx="2"></rect><path d="M8 20h8"></path><path d="M12 16v4"></path>
+              </svg>
+            </div>
+            <h4>VISUAL<br>GRAPHIC DESIGN</h4>
+            <a href="#" class="svc-read">READ MORE <span>→</span></a>
+          </article>
+
+          <article class="svc-card outline">
+            <div class="svc-icon">
+              <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V22a2 2 0 11-4 0v-.11a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004 15a1.65 1.65 0 00-1.51-1H2a2 2 0 110-4h.11A1.65 1.65 0 003 8.49a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 007 4.6 1.65 1.65 0 008.49 3H8.6a2 2 0 114 0h.11A1.65 1.65 0 0014 4.6a1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9c.63 0 1.2.25 1.62.66.41.42.66.99.66 1.62s-.25 1.2-.66 1.62A2.28 2.28 0 0019.4 15z"></path>
+              </svg>
+            </div>
+            <h4>STRATEGY &<br>DIGITAL<br>MARKETING</h4>
+            <a href="#" class="svc-read">READ MORE <span>→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="exp-head">
+          <span class="pill">EXPERIENCE</span>
+          <h3>EXPERIENCE</h3>
+        </div>
+
+        <div class="exp-list">
+          <article class="exp-item dark">
+            <div class="exp-main">
+              <div class="exp-top">
+                <span class="exp-title">Micro-interaction Awwwards Team</span>
+                <span class="exp-right">2024—PRESENT</span>
+              </div>
+              <div class="exp-sub">Motion · Remote</div>
+            </div>
+          </article>
+
+          <article class="exp-item">
+            <div class="exp-main">
+              <div class="exp-top">
+                <span class="exp-title">Senior UI Designer</span>
+                <span class="exp-right">2023—2024</span>
+              </div>
+              <div class="exp-sub">Product Design · Remote</div>
+            </div>
+          </article>
+
+          <article class="exp-item">
+            <div class="exp-main">
+              <div class="exp-top">
+                <span class="exp-title">Product Design</span>
+                <span class="exp-right">2022—2023</span>
+              </div>
+              <div class="exp-sub">Design System · Remote</div>
+            </div>
+          </article>
+
+          <article class="exp-item">
+            <div class="exp-main">
+              <div class="exp-top">
+                <span class="exp-title">Workflow Team Manager</span>
+                <span class="exp-right">2019—2022</span>
+              </div>
+              <div class="exp-sub">Motion Team · Remote</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASES -->
+    <section class="section case" id="case">
+      <div class="wrap">
+
+        <div class="case-head">
+          <div class="case-spark" aria-hidden="true"></div>
+          <h3>CASES</h3>
+          <p class="case-lede">
+            There are many variations of passages of Lorem Ipsum available, but the majority
+            have suffered alteration in some form.
+          </p>
+        </div>
+
+        <!-- Row 1: LLM -->
+        <div class="case-row">
+          <div class="case-media">
+            <img 
+              src="https://drive.google.com/thumbnail?id=1qbBK3RWjH6O2PAdw37LvW2sNxg3dRAVi&sz=w1600" 
+              alt="Integration of LLM and Time Series Analysis in Demand Forecasting for E-Commerce" 
+              loading="lazy" 
+              referrerpolicy="no-referrer">
+          </div>
+          <div class="case-copy">
+            <span class="pill dark">WEB DESIGN</span>
+            <h4>Integration of LLM and Time Series Analysis in Demand Forecasting for E-Commerce.</h4>
+
+            <a class="see" href="llm-forecasting.html">
+              <span>See Details</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path d="M7 17L17 7M17 7H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Row 2: Ads -->
+        <div class="case-row invert">
+          <div class="case-copy">
+            <span class="pill dark">WEB DESIGN</span>
+            <h4>Analysis of business metrics of advertising campaigns.</h4>
+
+            <a class="see" href="ads-metrics.html">
+              <span>See Details</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path d="M7 17L17 7M17 7H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+          <div class="case-media">
+            <img 
+              src="https://drive.google.com/thumbnail?id=1u77YjcyH3Z2UrKdiC7abkh6vQ5XroJy6&sz=w1600" 
+              alt="Analysis of business metrics of advertising campaigns" 
+              loading="lazy" 
+              referrerpolicy="no-referrer">
+          </div>
+        </div>
+
+        <!-- Row 3: Assortment -->
+        <div class="case-row">
+          <div class="case-media">
+            <img 
+              src="https://drive.google.com/thumbnail?id=1grUE-Olj6_U6pv21gSiwNQEwBq0Lyiry&sz=w1600" 
+              alt="Analysis of product assortment for optimization" 
+              loading="lazy" 
+              referrerpolicy="no-referrer">
+          </div>
+          <div class="case-copy">
+            <span class="pill dark">WEB DESIGN</span>
+            <h4>Analysis of product assortment for optimization.</h4>
+
+            <a class="see" href="assortment-optimization.html">
+              <span>See Details</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path d="M7 17L17 7M17 7H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Row 4: Volkswagen -->
+        <div class="case-row invert">
+          <div class="case-copy">
+            <span class="pill dark">WEB DESIGN</span>
+            <h4>Volkswagen Group: End-to-End Marketing Audit Platform.</h4>
+
+            <a class="see" href="vw-marketing-audit.html">
+              <span>See Details</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path d="M7 17L17 7M17 7H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+          <div class="case-media">
+            <img 
+              src="https://drive.google.com/thumbnail?id=1Oh2XOyFSqh8Mbu0sD_NOKdilRPl5mUvy&sz=w1600" 
+              alt="Volkswagen Group: End-to-End Marketing Audit Platform" 
+              loading="lazy" 
+              referrerpolicy="no-referrer">
+          </div>
+        </div>
+
+        <!-- Row 7: ERP -->
+        <div class="case-row">
+          <div class="case-media">
+            <img 
+              src="https://drive.google.com/thumbnail?id=1tpS86U-zv_dDd2YIMMFKH1GealpTyG9n&sz=w1600" 
+              alt="Google Sheets ERP for Chemical Manufacturing" 
+              loading="lazy" 
+              referrerpolicy="no-referrer">
+          </div>
+          <div class="case-copy">
+            <span class="pill dark">WEB DESIGN</span>
+            <h4>Google Sheets ERP for Chemical Manufacturing.</h4>
+
+            <a class="see" href="erp-chem-manufacturing.html">
+              <span>See Details</span>
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                <path d="M7 17L17 7M17 7H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="section testimonial">
+      <div class="wrap testimonial-grid">
+        <blockquote>
+          <p>“I just wanted to share a quick note and let you know that you do a really good job.”</p>
+          <footer><strong>Rohan Sing</strong>, Project Manager — Airflow Tech Inc</footer>
+        </blockquote>
+        <div class="flower">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=900&auto=format&fit=crop" alt="Client portrait">
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section stats">
+      <div class="wrap stats-grid">
+        <div class="stat"><div class="stat-num">24+</div><div class="stat-label">Projects Completed</div></div>
+        <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Happy Clients</div></div>
+        <div class="stat"><div class="stat-num">07</div><div class="stat-label">Team Members</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">Countries Reached</div></div>
+      </div>
+
+      <div class="wrap sayhi">
+        <h3><span class="light">Say Hi!</span> and tell me about <em>your idea</em></h3>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <div class="section-head-center small-top">
+          <p>Have a nice works? reach out and let’s chat.</p>
+        </div>
+
+        <form class="contact-form" action="https://formspree.io/f/mrbgjqkv" method="POST">
+          <div class="two-col">
+            <label><span>Name*</span><input name="name" type="text" placeholder="Hello…" required></label>
+            <label><span>Email*</span><input name="email" type="email" placeholder="Where can I reply?" required></label>
+          </div>
+          <label><span>Company</span><input name="company" type="text" placeholder="Your company or website?"></label>
+          <label><span>What’s on your mind?*</span><textarea name="message" rows="5" placeholder="Tell me a bit about the project" required></textarea></label>
+
+          <div class="chips">
+            <input type="hidden" name="tags" id="chipsField">
+            <button type="button" class="chip" data-tag="Mobile App">Mobile App</button>
+            <button type="button" class="chip" data-tag="Website Design">Website Design</button>
+            <button type="button" class="chip" data-tag="Branding">Branding</button>
+            <button type="button" class="chip" data-tag="Webflow development">Webflow development</button>
+            <button type="button" class="chip" data-tag="App design">App design</button>
+            <button type="button" class="chip" data-tag="Graphic design">Graphic design</button>
+            <button type="button" class="chip" data-tag="WordPress">WordPress</button>
+          </div>
+
+          <button class="btn primary" type="submit">Send Me</button>
+          <p class="small muted">I’ll get back to you within 24 hours.</p>
+        </form>
+
+        <div class="socials">
+          <a href="https://dribbble.com/" target="_blank" rel="noreferrer">Dribbble</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.behance.net/" target="_blank" rel="noreferrer">Behance</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span id="year"></span> Zhanna Latypova — Personal portfolio</p>
+      <a href="#main" class="top-link" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // chips -> hidden field
+    const chips=[...document.querySelectorAll('.chip')];
+    const field=document.getElementById('chipsField');
+    chips.forEach(c=>c.addEventListener('click',()=>{
+      c.classList.toggle('active');
+      field.value=[...document.querySelectorAll('.chip.active')].map(x=>x.dataset.tag).join(', ');
+    }));
+
+    // smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{
+        const id=a.getAttribute('href');
+        if(id.length>1){
+          const t=document.querySelector(id);
+          if(t){e.preventDefault(); t.scrollIntoView({behavior:'smooth'})}
+        }
+      })
+    });
+  </script>
+</body>
+</html>
