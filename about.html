@@ -1,1 +1,219 @@
-<!doctype html><html><head><title>About</title></head><body><h1>About Me</h1></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About me — Zhanna</title>
+  <meta name="description" content="A little more about me: data stories, stack, facts & hobbies." />
+
+  <!-- Fonts (как на главной) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
+
+  <!-- Main styles -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+  <a class="skip" href="#main">Перейти к содержимому</a>
+
+  <main id="main">
+
+    <!-- ========== Блок 1. Введение ========== -->
+    <section class="section about-hero">
+      <div class="wrap about-intro">
+        <div class="intro-media">
+          <!-- ваша более «лайтовая» фотография -->
+          <div class="intro-frame">
+            <img class="portrait-alt" src="assets/img/about.png" alt="Zhanna at work">
+            <span class="intro-accent-dot" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <div class="intro-copy">
+          <h1 class="intro-title">Немного больше обо мне</h1>
+          <p class="intro-kicker">Нахожу истории, скрытые в данных, и превращаю их в решения.</p>
+
+          <div class="intro-text">
+            <p>Мой путь начался не просто с цифр, а с любопытства. Я всегда верила, что за каждым массивом данных стоит важная история, ждущая своего часа. Как Data Scientist, моя миссия — быть переводчиком, превращая сложные алгоритмы в понятные бизнес-стратегии.</p>
+            <p>Специализируюсь на NLP и MLOps, с глубоким пониманием того, как вывести модель из лаборатории в прод. Я не просто строю модели; я создаю системы, которые приносят измеримую ценность.</p>
+            <p>Для меня аналитика — это искусство и наука одновременно. Если вы ищете партнёра, который свяжет техническую глубину с бизнес-интуицией — давайте поговорим о вашем следующем проекте.</p>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn primary" href="mailto:zhn.latypova@gmail.com?subject=Let’s%20Talk">Let’s Talk</a>
+            <a class="btn outline" href="assets/Zhanna_Latypova_CV.pdf" download>Download CV <span class="arrow">↧</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Блок 2. My Tech Stack ========== -->
+    <section class="section">
+      <div class="wrap">
+        <h2 class="sect-title center">My Tech Stack</h2>
+
+        <div class="stack-grid">
+          <article class="stack-card">
+            <h3>Programming & ML</h3>
+            <ul>
+              <li>🐍 Python</li>
+              <li>🔥 PyTorch / TensorFlow</li>
+              <li>🧪 Scikit-learn</li>
+              <li>💬 NLP, Hugging Face</li>
+            </ul>
+          </article>
+
+          <article class="stack-card">
+            <h3>Deployment (MLOps)</h3>
+            <ul>
+              <li>🐳 Docker</li>
+              <li>🧩 API (FastAPI, REST)</li>
+              <li>🔁 Git, CI/CD</li>
+              <li>☁️ AWS</li>
+            </ul>
+          </article>
+
+          <article class="stack-card">
+            <h3>Data Analysis & Manipulation</h3>
+            <ul>
+              <li>🧮 SQL (MySQL, PostgreSQL)</li>
+              <li>🐼 Pandas, NumPy</li>
+              <li>📊 Excel</li>
+              <li>📈 Plotly, Seaborn</li>
+            </ul>
+          </article>
+
+          <article class="stack-card">
+            <h3>Data Visualization</h3>
+            <ul>
+              <li>📈 Tableau</li>
+              <li>📊 Apache Superset</li>
+              <li>📉 Looker</li>
+              <li>🗺️ Custom dashboards</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Блок 3. Facts & Stats ========== -->
+    <section class="section">
+      <div class="wrap">
+        <div class="mini-over">Facts & Stats</div>
+
+        <div class="about-stats">
+          <div class="stat"><div class="stat-num">5517</div><div class="stat-label">Дней в браке</div></div>
+          <div class="stat"><div class="stat-num">7</div><div class="stat-label">Дипломов и сертификатов</div></div>
+          <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Посещённых стран</div></div>
+          <div class="stat"><div class="stat-num">3</div><div class="stat-label">Страны, где я жил(а)</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Блок 4. Галерея путешествий ========== -->
+    <section class="section">
+      <div class="wrap">
+        <h2 class="sect-title">Мои приключения за объективом</h2>
+
+        <div class="masonry" id="gallery">
+          <!-- Положите свои фото в assets/img/travel-*.jpg и обновите пути -->
+          <img src="assets/img/Assort.png" alt="Trip 1">
+          <img src="assets/img/VW.png" alt="Trip 2">
+          <img src="assets/img/Chemic.png" alt="Trip 3">
+          <img src="assets/img/LLL+RAG.png" alt="Trip 4">
+          <img src="assets/img/about.png" alt="Trip 5">
+        </div>
+
+        <!-- модалка для полноэкранного просмотра -->
+        <div class="lightbox" id="lightbox" aria-hidden="true">
+          <button class="lightbox-close" aria-label="Close">×</button>
+          <img class="lightbox-img" alt="">
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Блок 5. За пределами данных (хобби) ========== -->
+    <section class="section">
+      <div class="wrap">
+        <div class="mini-over">За пределами данных</div>
+
+        <div class="hobby-grid">
+          <div class="hobby"><div class="ico">🥾</div><div class="txt">Hiking</div></div>
+          <div class="hobby"><div class="ico">🏃‍♀️</div><div class="txt">Бег</div></div>
+          <div class="hobby"><div class="ico">✈️</div><div class="txt">Путешествия</div></div>
+          <div class="hobby"><div class="ico">📈</div><div class="txt">Сток-маркет</div></div>
+          <div class="hobby"><div class="ico">🏋️‍♀️</div><div class="txt">Зал</div></div>
+          <div class="hobby"><div class="ico">🌷</div><div class="txt">Цветы</div></div>
+          <div class="hobby"><div class="ico">🪂</div><div class="txt">Парашютный спорт</div></div>
+          <div class="hobby"><div class="ico">🥊</div><div class="txt">Бокс</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Блок 6. CTA как на главной ========== -->
+    <section class="section stats">
+      <div class="wrap sayhi">
+        <h3><span class="light">Say Hi!</span> and tell me about <em>your idea</em></h3>
+        <p style="text-align:center;color:#6c6c73;margin-top:8px">Давайте обсудим вашу идею.</p>
+        <p style="text-align:center;margin-top:16px">
+          <a class="btn primary" href="#contact" onclick="document.querySelector('#contact')?.scrollIntoView({behavior:'smooth'})">Contact me</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- (опционально) Секция контакта, если хотите якорь #contact на этой странице -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <div class="section-head-center small-top">
+          <p>Have a nice works? reach out and let’s chat.</p>
+        </div>
+        <form class="contact-form" action="https://formspree.io/f/mrbgjqkv" method="POST">
+          <div class="two-col">
+            <label><span>Name*</span><input name="name" type="text" required></label>
+            <label><span>Email*</span><input name="email" type="email" required></label>
+          </div>
+          <label><span>Message*</span><textarea name="message" rows="5" required></textarea></label>
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span id="year"></span> Zhanna Latypova</p>
+      <a href="#main" class="top-link" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // год
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // простая лайтбокс-галерея
+    const box = document.getElementById('lightbox');
+    const boxImg = box.querySelector('.lightbox-img');
+    const closeBtn = box.querySelector('.lightbox-close');
+
+    document.getElementById('gallery')?.addEventListener('click', e=>{
+      if(e.target.tagName === 'IMG'){
+        boxImg.src = e.target.src;
+        box.removeAttribute('aria-hidden');
+        box.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+    function closeBox(){
+      box.setAttribute('aria-hidden','true');
+      box.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    closeBtn.addEventListener('click', closeBox);
+    box.addEventListener('click', e => { if(e.target === box) closeBox(); });
+    document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeBox(); });
+  </script>
+</body>
+</html>
