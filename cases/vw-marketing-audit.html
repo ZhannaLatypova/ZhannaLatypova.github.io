@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Volkswagen Group: End-to-End Marketing Audit Platform. — Business Case  | Zhanna</title>
+  <meta name="description" content="Volkswagen Group: End-to-End Marketing Audit Platform."/>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <!-- путь к CSS ОТ case-страницы на один уровень вверх -->
+  <link rel="stylesheet" href="../assets/css/styles.css?v=1">
+  <!-- (необязательно) соц-превью -->
+  <meta property="og:title" content="Volkswagen Group: End-to-End Marketing Audit Platform. — Business Case"/>
+  <meta property="og:description" content="Business impact, approach, data, models, results."/>
+  <meta property="og:image" content="https://raw.githubusercontent.com/ZhannaLatypova/ZhannaLatypova.github.io/main/assets/img/LLL+RAG.png"/>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Мини-навигация -->
+  <header class="site-header" style="display:block">
+    <div class="wrap" style="padding:14px 0; display:flex; justify-content:space-between; align-items:center;">
+      <a class="brand" href="/"><span class="logo">it’s me</span></a>
+      <nav class="nav">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/#case">Cases</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section">
+      <div class="wrap">
+        <span class="pill dark">CASE STUDY</span>
+        <h1 style="margin:.6rem 0 0">LLM + Time Series Forecasting for E-commerce</h1>
+        <p class="lede" style="margin-top:10px; max-width:68ch">
+          Goal: improve demand forecasting combining classic time-series models with LLM-based enrichment (events, promos, seasonality notes).
+        </p>
+
+        <div class="cards" style="margin-top:22px">
+          <div class="card">
+            <div class="card-media">
+              <img src="../assets/img/LLL+RAG.png" alt="Diagram / mock">
+            </div>
+            <div class="card-body">
+              <span class="badge">Context</span>
+              <h4>Business Problem</h4>
+              <p>
+                Stockouts and overstock increased costs & lost revenue. Needed a more robust weekly forecast at SKU × region.
+              </p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-media">
+              <img src="../assets/img/Assort.png" alt="Data view">
+            </div>
+            <div class="card-body">
+              <span class="badge">Approach</span>
+              <h4>Data & Method</h4>
+              <ul>
+                <li>Historical sales, price, promo flags, holidays</li>
+                <li>LLM to turn unstructured notes → structured regressors</li>
+                <li>Baseline: Prophet / XGBoost; Hybrid: features + LLM</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards" style="margin-top:22px">
+          <div class="card">
+            <div class="card-body">
+              <span class="badge">Results</span>
+              <h4>Impact</h4>
+              <p>
+                MAPE ↓ 12–18% vs baseline; safety stock optimized; stockouts ↓ ~9%, holding costs ↓ ~7% in pilot categories.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <span class="badge">Role</span>
+              <h4>My contribution</h4>
+              <p>Problem framing, data pipeline, modeling, evaluation, dashboards, rollout plan.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-row" style="margin-top:24px">
+          <a class="btn outline" href="/">← Back to Home</a>
+          <a class="btn primary" href="case-2.html">Next case →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span id="year"></span> Zhanna Latypova</p>
+      <a href="#main" class="top-link">↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+
+
