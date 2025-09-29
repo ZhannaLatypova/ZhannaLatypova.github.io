@@ -1615,90 +1615,54 @@ h1, h2.display, .display-title{
 
 
 /* ====== Адаптив ====== */
-/* Небольшой тюнинг на мобильных */
-@media (max-width: 768px){
-  .portrait{ transform: scale(1.06) translateY(24px); }
-  .portrait-wrap{ margin-bottom: -40px; }
-  .cta-row, .hero-buttons{ margin-bottom: 3rem; }
-}
-
-.case-media {
-  position: relative;
-  overflow: hidden;
-}
-
-.case-media img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform .6s ease, opacity .6s ease;
-}
-
-/* вторая картинка через псевдоэлемент */
-.case-media.hover-swap img {
-  position: relative;
-  z-index: 1;
-}
-
-.case-media.hover-swap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transform: translateX(-100%);
-  transition: transform .6s ease;
-  z-index: 2;
-}
-
-/* при наведении перелистываем */
-.case-media.hover-swap:hover::after {
-  transform: translateX(0);
-}
-
-.case-media.hover-swap::after {
-  background: var(--hover-img) center/cover no-repeat;
-}
-/* ========== HERO: фото ниже, кнопки не двигаются ========== */
-
-/* сетка остаётся «высотой по контенту» левой колонки */
+/* ===== HERO: фото закрепляем у низа правой колонки ===== */
 .hero-grid{ align-items:start; min-height:auto; }
 
-/* правая колонка — контейнер для абсолютного позиционирования фото */
-.hero-visual{ position:relative; }
+/* Контейнер для абсолютного позиционирования фото */
+.hero-visual{
+  position: relative;
+  min-height: 560px;           /* ← даёт высоту колонке, чтобы abs-блок не "улетал" */
+}
 
-/* вытаскиваем фото из потока и опускаем поверх полосы */
+/* Фото поверх полосы, прижато к низу правой колонки */
 .portrait-wrap{
-  position:absolute;
-  right:0;                 /* прижать к правому краю */
-  bottom:-28px;            /* НА СКОЛЬКО «залезть» на чёрную полосу */
-  z-index:3;               /* фото над полосой */
-  margin:0; padding:0;
+  position: absolute;
+  right: 0;
+  left: auto;
+  top: auto;
+  bottom: -28px;               /* насколько «заезжать» на чёрную полосу */
+  margin: 0; padding: 0;
+  z-index: 3;
 }
 
+/* Чуть увеличим, БЕЗ translateY */
 .portrait{
-  display:block;
-  transform:scale(1.08);   /* чуть крупнее, как просили */
-  transform-origin:center bottom;
+  display: block;
+  transform: scale(1.08);
+  transform-origin: center bottom;
 }
 
-/* полоса чуть ниже фото, под всеми */
-.ticker{ margin-top:0; position:relative; z-index:1; }
+/* Полоса под фото */
+.ticker{ margin-top: 0; position: relative; z-index: 1; }
 
-/* кнопки фиксируем на комфортной высоте — они не зависят от фото */
-.cta-row,.hero-buttons{ margin-bottom:3.5rem; position:relative; z-index:2; }
+/* Кнопки не двигаем вместе с фото */
+.cta-row,.hero-buttons{ margin-bottom: 3.5rem; position: relative; z-index: 2; }
 
-/* мобильный тюнинг */
-@media (max-width:980px){
-  .portrait-wrap{ position:relative; right:auto; bottom:0; z-index:1; }
-  .portrait{ transform:scale(1.02); }
-  .cta-row,.hero-buttons{ margin-bottom:2.2rem; }
+/* ——— Мобильный тюнинг: отменяем старые смещения ——— */
+@media (max-width: 980px){
+  .hero-visual{ min-height: 420px; } /* пониже на планшете/мобилке */
+  .portrait-wrap{
+    position: relative;       /* возвращаем в поток на мобилке */
+    bottom: 0;
+    right: auto;
+    margin-top: 8px;
+    z-index: 1;
+  }
+  .portrait{
+    transform: none;          /* убираем старый translate/scale из прежних правил */
+  }
+  .cta-row,.hero-buttons{ margin-bottom: 2.2rem; }
 }
 
-/* ========== Значок «графика» правее ========== */
-/* если у тебя круговая диаграмма */
-.icon-pie{
-  right:-12px;      /* было ~28px — двигаем ещё правее */
-  bottom:22%;
-}
-
+/* Значок графика сдвигаем правее (если используешь его) */
+.icon-pie{ right: -12px; bottom: 22%; }
