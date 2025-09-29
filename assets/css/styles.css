@@ -1574,7 +1574,7 @@ h1, h2.display, .display-title{
 /* оставляем стабильный зазор под контентом (чтобы кнопки не липли) */
 .hero-section{               /* если у тебя нет .hero-section — пропусти этот блок */
   margin-bottom: 0;
-  padding-bottom: 3.25rem;   /* ↓ можно менять: 2.5–4rem */
+  padding-bottom: 5rem;   /* ↓ можно менять: 2.5–4rem */
 }
 
 /* КНОПКИ: гарантируем нижний отступ перед тикером */
@@ -1585,20 +1585,20 @@ h1, h2.display, .display-title{
 }
 
 /* Фото — немного крупнее и сдвинуто ВНИЗ, чтобы заходить на чёрную полосу */
-.portrait-wrap{
-  position: relative;
-  text-align: center;
-  z-index: 2;                 /* фото поверх тикера */
-  margin-bottom: -10px;       /* насколько «налезает» на полосу (-30…-70px) */
+/* Обёртка фото */
+.portrait-wrap {
+  margin-bottom: -60px;   /* фото «врезается» в полосу */
   padding-bottom: 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;             /* фото поверх полосы */
 }
 
-.portrait{
+.portrait {
   display: block;
-  transform-origin: center bottom;
-  transform: scale(1.07) translateY(12px);  /* масштаб и лёгкий сдвиг вниз */
+  transform: scale(1.12) translateY(40px); /* фото крупнее и ниже */
   margin-bottom: 0;
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 
 /* Чёрная бегущая полоса — сразу под секцией и ниже фото */
@@ -1608,18 +1608,24 @@ h1, h2.display, .display-title{
   z-index: 1;
 }
 
-/* ====== Адаптив ====== */
-@media (max-width: 980px){
-  .portrait-wrap{ margin-bottom: -28px; }
-  .portrait{ transform: scale(1.04) translateY(6px); }
-  .cta-row{ margin-bottom: 1.75rem; }
+/* Кнопки */
+.hero-buttons {
+  margin-top: 2rem;
+  margin-bottom: 4rem;    /* увеличенный отступ над полосой */
+  position: relative;
+  z-index: 2;             /* кнопки всегда выше полосы */
 }
 
-@media (max-width: 640px){
-  .portrait-wrap{ margin-bottom: -16px; }
-  .portrait{ transform: scale(1.02) translateY(2px); }
-  .cta-row{ margin-bottom: 1.5rem; }
-}
-.portrait-wrap:hover .portrait{
-  transform: scale(1.09) translateY(14px);
+/* ====== Адаптив ====== */
+/* Адаптив: мобильные */
+@media (max-width: 768px) {
+  .portrait {
+    transform: scale(1.05) translateY(20px);
+  }
+  .hero-section {
+    padding-bottom: 3rem;
+  }
+  .hero-buttons {
+    margin-bottom: 3rem;
+  }
 }
