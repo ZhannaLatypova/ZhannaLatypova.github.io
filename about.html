@@ -238,3 +238,18 @@
   </script>
 </body>
 </html>
+
+<script>
+  document.querySelectorAll('.about-photo').forEach(ph=>{
+    ph.addEventListener('click', e=>{
+      if (matchMedia('(hover: none)').matches) {
+        e.preventDefault();
+        const d = ph.querySelector('.photo-default');
+        const h = ph.querySelector('.photo-hover');
+        const showHover = getComputedStyle(h).opacity === '0';
+        d.style.opacity = showHover ? '0' : '1';
+        h.style.opacity = showHover ? '1' : '0';
+      }
+    });
+  });
+</script>
