@@ -1110,3 +1110,48 @@ h1, h2.display, .display-title{
   font-weight: 900;
   letter-spacing: .01em;
 }
+/* ===== Masonry gallery on About ===== */
+.masonry{
+  column-count: 3;
+  column-gap: 18px;              /* расстояние между колонками */
+}
+@media (max-width: 1000px){ .masonry{ column-count: 2; } }
+@media (max-width: 560px) { .masonry{ column-count: 1; } }
+
+.tile{
+  break-inside: avoid;           /* не разрывать плитку между колонками */
+  margin: 0 0 18px;              /* вертикальный зазор между плитками */
+  display: inline-block;
+  width: 100%;
+}
+
+.tile .ph{
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;              /* скругление + обрезка зума */
+  box-shadow: 0 14px 30px rgba(0,0,0,.12);
+  background: #f4f4f6;
+}
+
+/* размеры плиток через aspect-ratio */
+.tile.square .ph{ aspect-ratio: 1 / 1; }        /* 1:1  */
+.tile.wide   .ph{ aspect-ratio: 16 / 10; }      /* широкая */
+.tile.tall   .ph{ aspect-ratio: 3 / 4; }        /* высокая */
+
+.tile img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* без искажений */
+  display: block;
+  transition: transform .35s ease, filter .35s ease;
+}
+
+/* Zoom при наведении/фокусе */
+.tile:hover img,
+.tile:focus-within img{
+  transform: scale(1.06);
+}
+
+/* лёгкий “интерактив” курсором */
+.tile { cursor: zoom-in; }
