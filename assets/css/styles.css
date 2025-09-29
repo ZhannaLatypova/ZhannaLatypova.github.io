@@ -1568,8 +1568,11 @@ h1, h2.display, .display-title{
   margin-bottom: 0;
 }
 
-/* не растягиваем блок на высоту экрана */
-.hero-grid{ min-height: auto; }
+/* 1) Колонки не центрируем по высоте */
+.hero-grid{
+  align-items: start;         /* было: center */
+  min-height: auto;
+}
 
 /* оставляем стабильный зазор под контентом (чтобы кнопки не липли) */
 .hero-section{               /* если у тебя нет .hero-section — пропусти этот блок */
@@ -1577,55 +1580,42 @@ h1, h2.display, .display-title{
   padding-bottom: 5rem;   /* ↓ можно менять: 2.5–4rem */
 }
 
-/* КНОПКИ: гарантируем нижний отступ перед тикером */
-.cta-row{                     /* твой блок с кнопками ("Let’s talk", "Download CV") */
-  margin-bottom: 2.85rem;     /* увеличь, если всё ещё близко к полосе */
+
+/* 2) Фото больше и ниже — не влияет на поток */
+.portrait{
+  transform: scale(1.10) translateY(46px);
+  transition: transform .3s ease;
+}
+
+/* 3) Обёртка фото перекрывает чёрную полосу */
+.portrait-wrap{
+  position: relative;
+  z-index: 2;                 /* поверх полосы */
+  margin-bottom: -70px;       /* фото заходит на полосу */
+  padding-bottom: 0;
+  text-align: center;
+}
+
+/* 4) Кнопки фиксируем повыше от полосы */
+.cta-row,        /* если у тебя класс кнопок другой — подставь его */
+.hero-buttons{
+  margin-bottom: 3.75rem;     /* подними/опусти при необходимости */
   position: relative;
   z-index: 2;
 }
 
-/* Фото — немного крупнее и сдвинуто ВНИЗ, чтобы заходить на чёрную полосу */
-/* Обёртка фото */
-.portrait-wrap {
-  margin-bottom: -60px;   /* фото «врезается» в полосу */
-  padding-bottom: 0;
-  text-align: center;
-  position: relative;
-  z-index: 2;             /* фото поверх полосы */
-}
-
-.portrait {
-  display: block;
-  transform: scale(1.12) translateY(40px); /* фото крупнее и ниже */
-  margin-bottom: 0;
-  transition: transform 0.3s ease;
-}
-
-/* Чёрная бегущая полоса — сразу под секцией и ниже фото */
+/* Полоса сразу под секцией */
 .ticker{
   margin-top: 0;
   position: relative;
   z-index: 1;
 }
 
-/* Кнопки */
-.hero-buttons {
-  margin-top: 2rem;
-  margin-bottom: 4rem;    /* увеличенный отступ над полосой */
-  position: relative;
-  z-index: 2;             /* кнопки всегда выше полосы */
-}
 
 /* ====== Адаптив ====== */
-/* Адаптив: мобильные */
-@media (max-width: 768px) {
-  .portrait {
-    transform: scale(1.12) translateY(40px);
-  }
-  .hero-section {
-    padding-bottom: 3rem;
-  }
-  .hero-buttons {
-    margin-bottom: 3rem;
-  }
+/* Небольшой тюнинг на мобильных */
+@media (max-width: 768px){
+  .portrait{ transform: scale(1.06) translateY(24px); }
+  .portrait-wrap{ margin-bottom: -40px; }
+  .cta-row, .hero-buttons{ margin-bottom: 3rem; }
 }
