@@ -1581,19 +1581,21 @@ h1, h2.display, .display-title{
 }
 
 
-/* 2) Фото больше и ниже — не влияет на поток */
-.portrait{
-  transform: scale(1.10) translateY(46px);
-  transition: transform .3s ease;
-}
 
 /* 3) Обёртка фото перекрывает чёрную полосу */
-.portrait-wrap{
-  position: relative;
-  z-index: 2;                 /* поверх полосы */
-  margin-bottom: -70px;       /* фото заходит на полосу */
-  padding-bottom: 0;
+/* Фото + круг */
+.portrait-wrap {
+  margin-bottom: -60px;   /* опускаем фото вниз, на полосу */
   text-align: center;
+  position: relative;
+  z-index: 0;             /* фото ниже */
+}
+
+.portrait {
+  display: block;
+  transform: scale(1.08); /* чуть увеличено */
+  margin-bottom: 0;
+  transition: transform 0.3s ease;
 }
 
 /* 4) Кнопки фиксируем повыше от полосы */
@@ -1608,7 +1610,7 @@ h1, h2.display, .display-title{
 .ticker{
   margin-top: 0;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 
