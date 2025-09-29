@@ -1508,113 +1508,55 @@ h1, h2.display, .display-title{
 .svc-card:hover{ transform: translateY(-2px); }
 
 /* ---------- SERVICE CARDS HOVER FX (fixed) ---------- */
+/* Карточка */
 .svc-card{
-  position: relative;
-  overflow: hidden;                 /* фон не вылезает */
-  --svc-bg: none;                   /* картинка назначается модификатором */
-  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
-  cursor: pointer;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
 }
 
-/* фон через псевдоэлемент — отдельные свойства (надёжнее) */
-.svc-card::before{
-  content:"";
+/* Слой с картинкой */
+.svc-card .svc-bg{
   position:absolute;
   inset:0;
-  background-image: var(--svc-bg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transform: scale(1);
-  transition: transform .6s ease, opacity .3s ease;
-  pointer-events:none;
-  z-index:0;
-}
-
-.svc-card:hover{
-  border-color:#000;                /* чёрная рамка */
-  box-shadow:0 20px 50px rgba(0,0,0,.18);
-  transform:translateY(-2px);
-}
-.svc-card:hover::before{
-  opacity:.95;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;     /* «cover» решает любые пропорции */
   transform:scale(1.06);
+  opacity:0;
+  transition:opacity .35s ease, transform .6s ease;
+  z-index:0;
+  pointer-events:none;       /* чтобы не блокировать :hover карточки */
+  filter:brightness(.92);    /* немного приглушим для читаемости текста */
 }
-.svc-card.dark:hover::before{ opacity:.65; } /* на тёмной читаемость */
 
-/* контент сверху */
-.svc-card .svc-icon,
-.svc-card h4,
-.svc-card .svc-read{ position:relative; z-index:1; }
+/* Контент поверх фона */
+.svc-card > *:not(.svc-bg){ position:relative; z-index:1; }
 
-/* Градиент-подложка (опционально) */
+/* Лёгкий градиент-подложка (чтоб заголовки не терялись) */
 .svc-card::after{
   content:"";
   position:absolute; inset:0;
-  background:linear-gradient(to bottom, rgba(255,255,255,0) 55%, rgba(0,0,0,.06) 100%);
-  opacity:0; z-index:0; transition:opacity .3s ease;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.12) 100%);
+  opacity:0; transition:opacity .35s ease; z-index:1;
 }
 .svc-card.dark::after{
-  background:linear-gradient(to bottom, rgba(0,0,0,0) 55%, rgba(0,0,0,.18) 100%);
-}
-.svc-card:hover::after{ opacity:.8; }
-
-/* правильные пути */
-.svc-card.is-crm { --svc-bg: url("assets/img/crm.png"); }
-.svc-card.is-ai  { --svc-bg: url("assets/img/ai.png"); }
-.svc-card.is-bi  { --svc-bg: url("assets/img/bi.png"); }
-
-/* Карточка — подготовка для фона */
-.svc-card{
-  position: relative;
-  overflow: hidden;                    /* обрезаем фон по границам */
-  isolation: isolate;                  /* чтобы z-index у псевдоэлементов работал над тенями */
+  background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.22) 100%);
 }
 
-/* Слой с картинкой (по умолчанию скрыт) */
-.svc-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: var(--card-img) center/cover no-repeat; /* cover решает «прямоугольные» картинки */
-  opacity:0;
-  transform: scale(1.08);              /* лёгкий зум наружу */
-  transition: opacity .35s ease, transform .6s ease;
-  z-index:0;                           /* ниже текста карточки */
-  filter: brightness(.9);              /* немного затемним, чтобы текст читался */
-}
-
-/* Лёгкий градиент, чтобы заголовки не терялись */
-.svc-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,.0) 30%, rgba(0,0,0,.16) 100%);
-  opacity:0;
-  transition: opacity .35s ease;
-  z-index:1;
-}
-
-/* Контент карточки поверх фона */
-.svc-card > *{
-  position: relative;
-  z-index:2;
-}
-
-/* Ховер-эффект: показываем картинку, делаем «рамку» чёрной */
-.svc-card:hover::before{ opacity:1; transform: scale(1.01); }
-.svc-card:hover::after{  opacity:1; }
+/* Hover-эффект */
+.svc-card:hover .svc-bg{ opacity:1; transform:scale(1.01); }
+.svc-card:hover::after{ opacity:.9; }
 
 .svc-card:hover{
-  border-color:#000;                           /* для outline-карточек */
-  box-shadow:
-    0 18px 44px rgba(0,0,0,.18),               /* тень как у первой */
-    inset 0 0 0 2px #000;                      /* чёрная «рамка» */
+  border-color:#000;                                   /* чёрная рамка */
+  box-shadow:0 20px 50px rgba(0,0,0,.18), inset 0 0 0 2px #000;
+  transform:translateY(-2px);
 }
 
-/* Чтобы текст был читаем, если нужно — чуть усилить цвет */
-.svc-card:hover h4,
-.svc-card:hover .svc-read{ color:#000; }       /* для светлых карточек */
+/* Контраст текста на ховере (если нужно) */
+.svc-card.outline:hover h4,
+.svc-card.outline:hover .svc-read{color:#000}
 .svc-card.dark:hover h4,
-.svc-card.dark:hover .svc-read{ color:#fff; }  /* для тёмной карточки */
+.svc-card.dark:hover .svc-read{color:#fff}
