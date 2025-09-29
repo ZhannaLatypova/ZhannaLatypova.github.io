@@ -1560,18 +1560,29 @@ h1, h2.display, .display-title{
 }
 
 /* Фото + круг */
-.portrait-wrap {
-  position: relative;
-  z-index: 2;
-  margin-top: 0;       /* убираем лишний отступ сверху */
-  margin-bottom: -40px; /* фото "заезжает" ближе к ticker */
+/* ===== tighten HERO and pull ticker up ===== */
+
+.hero{
+  /* снижаем/убираем нижний отступ секции */
+  padding-bottom: 0;         /* было 60px */
 }
 
-.hero-visual {
-  margin-bottom: 0;
-  padding-bottom: 0;
+.hero-grid{
+  /* перестаём насильно растягивать секцию на всю высоту экрана */
+  min-height: auto;          /* было min-height: 100vh */
 }
 
-.ticker {
-  margin-top: 0;       /* убираем зазор перед чёрной полосой */
+/* фото чуть опускаем на полосу — регулируй число */
+.portrait-wrap{
+  margin-bottom: -40px;      /* попробуй от -20px до -70px под свой взгляд */
+}
+
+/* полоса вплотную к секции */
+.ticker{
+  margin-top: 0;             /* обнуляем зазор */
+}
+
+/* на мобильных без «внахлёста», чтобы не перекрывать кнопки */
+@media (max-width: 768px){
+  .portrait-wrap{ margin-bottom: -20px; }
 }
