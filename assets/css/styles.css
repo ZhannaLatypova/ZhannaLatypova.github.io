@@ -1603,3 +1603,26 @@ h1, h2.display, .display-title{
   .portrait-wrap { margin-bottom: -10px; }
   .hero-section { padding-bottom: 2rem; }
 }
+
+/* Фото + круг — увеличение и сдвиг вниз */
+.portrait {
+  display: block;
+  transform: scale(1.08) translateY(20px);  /* масштаб + сдвиг вниз */
+  margin-bottom: 0;
+  transition: transform 0.3s ease;          /* плавность */
+}
+
+.portrait-wrap {
+  margin-bottom: -40px;   /* фото перекрывает полосу */
+  padding-bottom: 0;
+  text-align: center;     /* чтобы фото центрировалось */
+  position: relative;
+  z-index: 2;             /* фото поверх полосы */
+}
+
+/* ticker остаётся под фото */
+.ticker {
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
+}
