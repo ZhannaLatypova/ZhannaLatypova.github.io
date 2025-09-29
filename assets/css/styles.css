@@ -984,3 +984,64 @@ html, body{ overflow-x: hidden; }
   margin: 0 0 18px;
   text-align: left;            /* под фото, слева */
 }
+
+
+/* === ABOUT: фото на полную ширину блока со стеком === */
+.about-hero{
+  margin: 28px auto 10px;
+}
+
+/* один контейнер со свопом и корректными размерами */
+.about-hero .photo-swap{
+  position: relative;
+  display: block;
+  width: min(980px, 92vw);      /* ≈ ширина зоны контента со стеком */
+  margin-inline: auto;          /* центрируем */
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,.12);
+}
+
+.about-hero .photo-swap img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* hover-замена */
+.about-hero .photo-swap .photo-hover{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.about-hero .photo-swap:hover .photo-hover{ opacity: 1; }
+
+/* карточка с текстом под фото — как сейчас, только воздух */
+.about-card{
+  width: min(980px, 92vw);
+  margin: 16px auto 0;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.10);
+  padding: clamp(18px, 3vw, 28px);
+}
+
+/* === Единый стиль крупных заголовков (как BUSINESS CASES) === */
+.h-xl{
+  font-family: 'Space Grotesk', Inter, system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: .02em;
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.1;
+  text-align: center;
+  margin: 12px 0 8px;
+}
+
+/* подзаголовок-акцент под About — серый и компактнее */
+.about-accent{
+  text-align: center;
+  color: #6c6c73;
+  font-weight: 700;
+  margin: 6px 0 18px;
+}
