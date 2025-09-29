@@ -1571,10 +1571,21 @@ h1, h2.display, .display-title{
   /* перестаём насильно растягивать секцию на всю высоту экрана */
   min-height: auto;          /* было min-height: 100vh */
 }
+.hero-section {
+  margin-bottom: 0;
+  padding-bottom: 2rem; /* можно чуть-чуть оставить для воздуха */
+}
+
+.portrait {
+  display: block;
+  margin-bottom: 0;
+  transform: translateY(-20px); /* поднимет фото вверх */
+}
 
 /* фото чуть опускаем на полосу — регулируй число */
-.portrait-wrap{
-  margin-bottom: -30px;      /* попробуй от -20px до -70px под свой взгляд */
+.portrait-wrap {
+  margin-bottom: 0;   /* убираем отступ снизу */
+  padding-bottom: 0;
 }
 
 /* полоса вплотную к секции */
@@ -1588,3 +1599,8 @@ h1, h2.display, .display-title{
 }
 
 .hero{ padding: 60px 0 0; }  /* верх оставляем, низ = 0 */
+
+.hero-section {
+  margin-bottom: 0;
+  padding-bottom: 4rem; /* оставляем пространство под кнопками */
+}
