@@ -1482,9 +1482,9 @@ h1, h2.display, .display-title{
 .svc-card.dark:hover::before{ opacity: .65; }
 
 /* назначаем картинки через модификаторы */
-.svc-card.is-crm{   --svc-bg: url("assets/services/crm.png"); }
-.svc-card.is-ai{    --svc-bg: url("assets/services/ai.png"); }
-.svc-card.is-bi{    --svc-bg: url("assets/services/bi.png"); }
+.svc-card.is-crm{   --svc-bg: url("assets/img/crm.png"); }
+.svc-card.is-ai{    --svc-bg: url("assets/img/ai.png"); }
+.svc-card.is-bi{    --svc-bg: url("assets/img/bi.png"); }
 
 /* чтобы текст/иконки не терялись на ярком фоне — лёгкий бейкграунд градиентом */
 .svc-card .svc-icon,
