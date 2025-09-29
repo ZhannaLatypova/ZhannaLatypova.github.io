@@ -1155,3 +1155,56 @@ h1, h2.display, .display-title{
 
 /* лёгкий “интерактив” курсором */
 .tile { cursor: zoom-in; }
+
+/* --- Gallery heading --- */
+.gallery-title{
+  text-align: center;
+  margin: 8px 0 18px;
+  position: relative;
+  z-index: 2;            /* чтобы облако не перекрывало заголовок */
+}
+
+/* --- Masonry --- */
+.masonry{
+  column-count: 3;
+  column-gap: 12px;      /* было 18px → меньше */
+  margin-top: 12px;
+}
+@media (max-width: 1000px){ .masonry{ column-count: 2; } }
+@media (max-width: 560px) { .masonry{ column-count: 1; } }
+
+.tile{
+  break-inside: avoid;
+  margin: 0 0 12px;      /* было 18px → меньше */
+  display: inline-block;
+  width: 100%;
+  cursor: zoom-in;       /* визуальная подсказка */
+}
+
+.tile .ph{
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 26px rgba(0,0,0,.10);
+  background: #f6f6f8;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+/* размеры плиток */
+.tile.square .ph{ aspect-ratio: 1 / 1; }
+.tile.wide   .ph{ aspect-ratio: 16 / 10; }
+.tile.tall   .ph{ aspect-ratio: 3 / 4; }
+
+.tile img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  will-change: transform;
+  transition: transform .35s ease;
+}
+
+/* hover: лёгкое приподнятие + zoom */
+.tile:hover .ph{ transform: translateY(-2px); box-shadow: 0 16px 32px rgba(0,0,0,.14); }
+.tile:hover img{ transform: scale(1.05); }
