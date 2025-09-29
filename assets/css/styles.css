@@ -1579,7 +1579,7 @@ h1, h2.display, .display-title{
 
 /* КНОПКИ: гарантируем нижний отступ перед тикером */
 .cta-row{                     /* твой блок с кнопками ("Let’s talk", "Download CV") */
-  margin-bottom: 2.25rem;     /* увеличь, если всё ещё близко к полосе */
+  margin-bottom: 2.85rem;     /* увеличь, если всё ещё близко к полосе */
   position: relative;
   z-index: 2;
 }
@@ -1589,7 +1589,7 @@ h1, h2.display, .display-title{
   position: relative;
   text-align: center;
   z-index: 2;                 /* фото поверх тикера */
-  margin-bottom: -46px;       /* насколько «налезает» на полосу (-30…-70px) */
+  margin-bottom: -26px;       /* насколько «налезает» на полосу (-30…-70px) */
   padding-bottom: 0;
 }
 
@@ -1620,4 +1620,6 @@ h1, h2.display, .display-title{
   .portrait{ transform: scale(1.02) translateY(2px); }
   .cta-row{ margin-bottom: 1.5rem; }
 }
-
+.portrait-wrap:hover .portrait{
+  transform: scale(1.09) translateY(14px);
+}
