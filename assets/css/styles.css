@@ -1659,3 +1659,49 @@ h1, h2.display, .display-title{
 .case-media.hover-swap::after {
   background: var(--hover-img) center/cover no-repeat;
 }
+/* ========== HERO: фото ниже, кнопки не двигаются ========== */
+
+/* сетка остаётся «высотой по контенту» левой колонки */
+.hero-grid{ align-items:start; min-height:auto; }
+
+/* правая колонка — контейнер для абсолютного позиционирования фото */
+.hero-visual{ position:relative; }
+
+/* вытаскиваем фото из потока и опускаем поверх полосы */
+.portrait-wrap{
+  position:absolute;
+  right:0;                 /* прижать к правому краю */
+  bottom:-28px;            /* НА СКОЛЬКО «залезть» на чёрную полосу */
+  z-index:3;               /* фото над полосой */
+  margin:0; padding:0;
+}
+
+.portrait{
+  display:block;
+  transform:scale(1.08);   /* чуть крупнее, как просили */
+  transform-origin:center bottom;
+}
+
+/* полоса чуть ниже фото, под всеми */
+.ticker{ margin-top:0; position:relative; z-index:1; }
+
+/* кнопки фиксируем на комфортной высоте — они не зависят от фото */
+.cta-row,.hero-buttons{ margin-bottom:3.5rem; position:relative; z-index:2; }
+
+/* мобильный тюнинг */
+@media (max-width:980px){
+  .portrait-wrap{ position:relative; right:auto; bottom:0; z-index:1; }
+  .portrait{ transform:scale(1.02); }
+  .cta-row,.hero-buttons{ margin-bottom:2.2rem; }
+}
+
+/* ========== Значок «графика» правее ========== */
+/* если у тебя круговая диаграмма */
+.icon-pie{
+  right:-12px;      /* было ~28px — двигаем ещё правее */
+  bottom:22%;
+}
+/* если используешь линийный график — сдвинем его правее тоже */
+.icon-linechart{
+  left:calc(58% + 40px);   /* было 58% — добавили смещение вправо */
+}
