@@ -1620,7 +1620,7 @@ h1, h2.display, .display-title{
 /* Адаптив: мобильные */
 @media (max-width: 768px) {
   .portrait {
-    transform: scale(1.05) translateY(20px);
+    transform: scale(1.12) translateY(40px);
   }
   .hero-section {
     padding-bottom: 3rem;
