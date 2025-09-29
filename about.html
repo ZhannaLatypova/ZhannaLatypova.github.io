@@ -9,8 +9,7 @@
   <!-- Fonts (как на главной) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet"/>
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <!-- Main styles -->
   <link rel="stylesheet" href="assets/css/styles.css?v=3" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -41,12 +40,13 @@
     <!-- ========== Блок 1. About Section========== -->
 <section class="about-me">
   <div class="about-photo swap-on-hover">
-    <!-- основная (цветная) фотография -->
-    <img class="img-main" src="assets/img/about me.jpg" alt="Zhanna Latypova">
-
-    <!-- альтернативная (при наведении) -->
-    <img class="img-alt"  src="assets/img/about_me_pop_art.png" alt="Zhanna Latypova — anime">
-  </div>
+<!-- вместо двух img -->
+<a class="about-photo" href="#" aria-label="Photo hover swap">
+  <img class="photo-default"
+       src="assets/img/about me.jpg" alt="Zhanna — обычное фото">
+  <img class="photo-hover"
+       src="assets/img/about_me_pop_art.png"  alt="Zhanna — альтернативное фото">
+</a>
   <div class="about-text">
     <h2>A bit more about me ...</h2>
     <h3 class="highlight">I uncover the stories hidden within data and transform them into actionable solutions.</h3>
