@@ -1208,3 +1208,36 @@ h1, h2.display, .display-title{
 /* hover: лёгкое приподнятие + zoom */
 .tile:hover .ph{ transform: translateY(-2px); box-shadow: 0 16px 32px rgba(0,0,0,.14); }
 .tile:hover img{ transform: scale(1.05); }
+/* Masonry сетка */
+.masonry {
+  column-count: 4; /* количество колонок */
+  column-gap: 12px; /* отступ между фото */
+}
+
+.masonry figure {
+  margin: 0 0 12px;
+  display: inline-block;
+  width: 100%;
+  break-inside: avoid;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.masonry img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.4s ease;
+  display: block;
+}
+
+.masonry figure:hover img {
+  transform: scale(1.08); /* эффект зума при наведении */
+}
+
+.masonry figcaption {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 4px;
+  color: #555;
+}
