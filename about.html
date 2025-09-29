@@ -136,18 +136,40 @@
     </section>
 
     <!-- ========== Блок 4. Галерея путешествий ========== -->
-    <section class="section">
-      <div class="wrap">
-        <h2 class="sect-title">Frame by Frame: Stories from My Viewfinder</h2>
+<div class="masonry" id="gallery">
+  <!-- Квадрат -->
+  <figure class="tile square">
+    <div class="ph"><img src="assets/img/Assort.png" alt="Trip 1"></div>
+  </figure>
 
-        <div class="masonry" id="gallery">
-          <!-- Положите свои фото в assets/img/travel-*.jpg и обновите пути -->
-          <img src="assets/img/Assort.png" alt="Trip 1">
-          <img src="assets/img/VW.png" alt="Trip 2">
-          <img src="assets/img/Chemic.png" alt="Trip 3">
-          <img src="assets/img/LLL+RAG.png" alt="Trip 4">
-          <img src="assets/img/about.png" alt="Trip 5">
-        </div>
+  <!-- Широкая -->
+  <figure class="tile wide">
+    <div class="ph"><img src="assets/img/VW.png" alt="Trip 2"></div>
+  </figure>
+
+  <!-- Высокая -->
+  <figure class="tile tall">
+    <div class="ph"><img src="assets/img/Chemic.png" alt="Trip 3"></div>
+  </figure>
+
+  <!-- Высокая -->
+  <figure class="tile tall">
+    <div class="ph"><img src="assets/img/LLL+RAG.png" alt="Trip 4"></div>
+  </figure>
+
+  <!-- Квадрат -->
+  <figure class="tile square">
+    <div class="ph"><img src="assets/img/about.png" alt="Trip 5"></div>
+  </figure>
+
+  <!-- Ещё примеры — можно дублировать/менять классы: square / wide / tall -->
+  <figure class="tile wide">
+    <div class="ph"><img src="assets/img/Assort.png" alt="Trip 6"></div>
+  </figure>
+  <figure class="tile square">
+    <div class="ph"><img src="assets/img/VW.png" alt="Trip 7"></div>
+  </figure>
+</div>
 
         <!-- модалка для полноэкранного просмотра -->
         <div class="lightbox" id="lightbox" aria-hidden="true">
