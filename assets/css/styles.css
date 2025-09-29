@@ -1560,3 +1560,51 @@ h1, h2.display, .display-title{
 .svc-card.outline:hover .svc-read{color:#000}
 .svc-card.dark:hover h4,
 .svc-card.dark:hover .svc-read{color:#fff}
+/* === SERVICE CARDS HOVER (FINAL) === */
+.svc-card{
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+.svc-card .svc-bg{
+  position:absolute;
+  inset:0;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;   /* подгоняет любую картинку в квадрат */
+  opacity:0;
+  transform:scale(1.06);
+  transition:opacity .35s ease, transform .6s ease;
+  pointer-events:none;
+  z-index:0;
+  filter:brightness(.92);
+}
+
+.svc-card > *:not(.svc-bg){ position:relative; z-index:1; }
+
+.svc-card::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.12) 100%);
+  opacity:0; transition:opacity .35s ease;
+  z-index:1;
+}
+.svc-card.dark::after{
+  background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.22) 100%);
+}
+
+.svc-card:hover .svc-bg{ opacity:1; transform:scale(1.01); }
+.svc-card:hover::after{ opacity:.9; }
+
+.svc-card:hover{
+  border-color:#000;
+  box-shadow:0 20px 50px rgba(0,0,0,.18), inset 0 0 0 2px #000;
+  transform:translateY(-2px);
+}
+
+.svc-card.outline:hover h4,
+.svc-card.outline:hover .svc-read{ color:#000; }
+.svc-card.dark:hover h4,
+.svc-card.dark:hover .svc-read{ color:#fff; }
