@@ -771,3 +771,21 @@ html, body{ overflow-x: hidden; }
   .about-hero{ grid-template-columns: 1fr; }
   .photo-swap{ max-height: 58vw; } /* держим разумную высоту */
 }
+/* --- FIX: у контейнера фото теперь есть собственная высота --- */
+.photo-swap{
+  aspect-ratio: 16 / 9;   /* задаёт высоту автоматически */
+  min-height: 360px;      /* страховка на узких экранах/медленной загрузке */
+}
+
+/* Если хочешь без aspect-ratio — альтернативный способ:
+.photo-swap::before{
+  content:"";
+  display:block;
+  padding-top:56.25%;  /* 16:9 */
+}
+*/
+
+/* На очень узких экранах можно смягчить поведение */
+@media (max-width: 620px){
+  .photo-swap{ min-height: 240px; }
+}
