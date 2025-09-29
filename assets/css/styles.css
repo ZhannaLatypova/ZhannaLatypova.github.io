@@ -1561,51 +1561,45 @@ h1, h2.display, .display-title{
 
 /* ================= HERO — финальная раскладка ================= */
 
-/* Секция: оставляем аккуратный низ, чтобы кнопки не налипали на полосу */
-.hero{
-  padding: 64px 0 24px;  /* top | sides | bottom */
+/* ===== HERO FIX ===== */
+.hero {
+  padding: 60px 0 0;       /* сверху воздух, снизу убрали */
+  margin-bottom: 0;
 }
 
-/* Сетка не тянем на всю высоту — тогда полоса подходит плотнее */
-.hero-grid{
-  min-height: auto;
+.hero-grid {
+  min-height: auto;        /* без принудительной высоты */
 }
 
-/* Фото выше */
-.portrait-wrap{
-  position: relative;
-  margin: 0;
-  padding: 0;
-  transform: translateY(-18px);   /* подними/опусти при желании */
+.hero-section {
+  margin-bottom: 0;
+  padding-bottom: 3rem;    /* чуть оставляем, чтобы кнопки не прилипали к полосе */
 }
-.portrait{
+
+.portrait-wrap {
+  margin-bottom: -30px;    /* подтягиваем фото ближе к полосе */
+  padding-bottom: 0;
+}
+
+.portrait {
   display: block;
-  transform: translateY(-6px);    /* лёгкая коррекция самого изображения */
-  margin: 0;
+  transform: translateY(-20px); /* фото чуть выше */
+  margin-bottom: 0;
 }
 
-/* Кнопки: задаём гарантированную «подушку» снизу,
-   чтобы НИКОГДА не заезжали на чёрную полосу */
-.hero .cta-row{
-  margin-top: 18px;
-  margin-bottom: 44px;            /* ← ключевой отступ */
+.ticker {
+  margin-top: 0;           /* полоса сразу под секцией */
 }
 
-/* Чёрная полоса вплотную к секции, но не перекрывает кнопки,
-   потому что отступ выше задан в .hero .cta-row */
-.ticker{
-  margin-top: 0;
+/* кнопки и текст не заходят на полосу */
+.hero-buttons {
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;              /* выше полосы */
 }
 
-/* Немного больше воздуха на широких экранах */
-@media (min-width: 980px){
-  .hero .cta-row{ margin-bottom: 56px; }
-}
-
-/* На мобильных — без «нахлёста» и без смещения фото вверх */
-@media (max-width: 768px){
-  .portrait-wrap{ transform: none; }
-  .portrait{ transform: none; }
-  .hero{ padding-bottom: 32px; }
-  .hero .cta-row{ margin-bottom: 32px; }
+/* на мобильных без внахлёста */
+@media (max-width: 768px) {
+  .portrait-wrap { margin-bottom: -10px; }
+  .hero-section { padding-bottom: 2rem; }
 }
