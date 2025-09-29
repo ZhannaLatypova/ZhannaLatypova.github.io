@@ -1621,3 +1621,41 @@ h1, h2.display, .display-title{
   .portrait-wrap{ margin-bottom: -40px; }
   .cta-row, .hero-buttons{ margin-bottom: 3rem; }
 }
+
+.case-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.case-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform .6s ease, opacity .6s ease;
+}
+
+/* вторая картинка через псевдоэлемент */
+.case-media.hover-swap img {
+  position: relative;
+  z-index: 1;
+}
+
+.case-media.hover-swap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: translateX(-100%);
+  transition: transform .6s ease;
+  z-index: 2;
+}
+
+/* при наведении перелистываем */
+.case-media.hover-swap:hover::after {
+  transform: translateX(0);
+}
+
+.case-media.hover-swap::after {
+  background: var(--hover-img) center/cover no-repeat;
+}
