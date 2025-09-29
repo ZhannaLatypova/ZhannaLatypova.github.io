@@ -1341,3 +1341,47 @@ h1, h2.display, .display-title{
 @media (max-width: 1200px){ .masonry{ column-count: 3; } }
 @media (max-width: 900px) { .masonry{ column-count: 2; } }
 @media (max-width: 520px) { .masonry{ column-count: 1; } }
+
+/* ===== ABOUT: Gallery overrides ===== */
+
+/* компактнее отступы */
+.about-page .masonry{
+  column-gap: 6px !important;     /* меньше расстояние между колонками */
+}
+.about-page .masonry figure{
+  margin: 0 0 6px !important;     /* и вертикальный зазор меньше */
+  display: inline-block;
+  width: 100%;
+  break-inside: avoid;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+
+/* изначально Ч/Б */
+.about-page .masonry figure > img{
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: grayscale(100%) saturate(0) brightness(.98) contrast(1.05) !important;
+  -webkit-filter: grayscale(100%) saturate(0) brightness(.98) contrast(1.05) !important;
+  transition: filter .28s ease, transform .28s ease;
+}
+
+/* при наведении — цвет + лёгкий зум */
+.about-page .masonry figure:hover > img{
+  filter: none !important;
+  -webkit-filter: none !important;
+  transform: scale(1.03);
+}
+
+/* убрать подписи «Trip X» */
+.about-page .masonry figcaption{
+  display: none !important;
+}
+
+/* колонок меньше на узких экранах */
+@media (max-width: 1200px){ .about-page .masonry{ column-count: 3 !important; } }
+@media (max-width: 900px) { .about-page .masonry{ column-count: 2 !important; } }
+@media (max-width: 520px) { .about-page .masonry{ column-count: 1 !important; } }
