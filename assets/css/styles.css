@@ -1621,6 +1621,3 @@ h1, h2.display, .display-title{
   .cta-row{ margin-bottom: 1.5rem; }
 }
 
-.portrait-wrap:hover .portrait{
-  transform: scale(1.09) translateY(14px);
-}
