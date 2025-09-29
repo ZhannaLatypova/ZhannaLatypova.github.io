@@ -1630,7 +1630,7 @@ h1, h2.display, .display-title{
   right: 0;
   left: auto;
   top: auto;
-  bottom: -28px;               /* насколько «заезжать» на чёрную полосу */
+  bottom: -40px;               /* насколько «заезжать» на чёрную полосу */
   margin: 0; padding: 0;
   z-index: 3;
 }
