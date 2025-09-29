@@ -1506,3 +1506,61 @@ h1, h2.display, .display-title{
 /* курсор и лёгкое поднятие */
 .svc-card{ cursor: pointer; }
 .svc-card:hover{ transform: translateY(-2px); }
+
+/* ---------- SERVICE CARDS HOVER FX (fixed) ---------- */
+.svc-card{
+  position: relative;
+  overflow: hidden;                 /* фон не вылезает */
+  --svc-bg: none;                   /* картинка назначается модификатором */
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  cursor: pointer;
+}
+
+/* фон через псевдоэлемент — отдельные свойства (надёжнее) */
+.svc-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: var(--svc-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1);
+  transition: transform .6s ease, opacity .3s ease;
+  pointer-events:none;
+  z-index:0;
+}
+
+.svc-card:hover{
+  border-color:#000;                /* чёрная рамка */
+  box-shadow:0 20px 50px rgba(0,0,0,.18);
+  transform:translateY(-2px);
+}
+.svc-card:hover::before{
+  opacity:.95;
+  transform:scale(1.06);
+}
+.svc-card.dark:hover::before{ opacity:.65; } /* на тёмной читаемость */
+
+/* контент сверху */
+.svc-card .svc-icon,
+.svc-card h4,
+.svc-card .svc-read{ position:relative; z-index:1; }
+
+/* Градиент-подложка (опционально) */
+.svc-card::after{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(255,255,255,0) 55%, rgba(0,0,0,.06) 100%);
+  opacity:0; z-index:0; transition:opacity .3s ease;
+}
+.svc-card.dark::after{
+  background:linear-gradient(to bottom, rgba(0,0,0,0) 55%, rgba(0,0,0,.18) 100%);
+}
+.svc-card:hover::after{ opacity:.8; }
+
+/* правильные пути */
+.svc-card.is-crm { --svc-bg: url("assets/img/crm.png"); }
+.svc-card.is-ai  { --svc-bg: url("assets/img/ai.png"); }
+.svc-card.is-bi  { --svc-bg: url("assets/img/bi.png"); }
