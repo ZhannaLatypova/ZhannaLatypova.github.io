@@ -608,3 +608,30 @@ html, body{ overflow-x: hidden; }
   color: black;
   background: white;
 }
+
+/* === Общий стиль текста для About и My Tech Stack === */
+.about-text h2,
+.about-text .highlight,
+.about-text p {
+  font-family: 'Inter', sans-serif; /* как на главной */
+}
+
+/* Заголовки — те же параметры, что и в Tech Stack */
+.about-text h2 {
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.about-text .highlight {
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 14px;
+}
