@@ -1666,3 +1666,74 @@ h1, h2.display, .display-title{
 
 /* Значок графика сдвигаем правее (если используешь его) */
 .icon-pie{ right: -12px; bottom: 22%; }
+
+/* ===== FIX: фото и круг у низа, поверх полосы ===== */
+
+/* правая колонка — есть высота, чтобы abs-позиционирование имело "опору" */
+.hero .hero-visual{
+  position: relative !important;
+  min-height: 620px !important; /* при необходимости меняй 560–700 */
+}
+
+/* обёртка фото прижата к низу правой колонки, заходит на чёрную полосу */
+.hero .hero-visual > .portrait-wrap{
+  position: absolute !important;
+  right: 0 !important;
+  left: auto !important;
+  top: auto !important;
+  bottom: -42px !important;     /* глубина "заезда" на полосу; + больше, - меньше */
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 3 !important;        /* фото над полосой */
+}
+
+/* само фото — без смещений/масштабов из прошлых правил */
+.hero .hero-visual > .portrait-wrap .portrait{
+  display: block !important;
+  max-width: 560px;             /* если нужно крупнее/мельче */
+  height: auto;
+  transform: none !important;   /* гасим старые translate/scale */
+  transform-origin: center bottom !important;
+}
+
+/* чёрный круг "Bonjour" относительно фото — слева и выше по центру */
+.hero .hero-visual > .portrait-wrap .hello-badge{
+  position: absolute !important;
+  left: -72px !important;       /* подвинуть круг влево/вправо */
+  bottom: 34% !important;       /* поднять/опустить круг относительно фото */
+  z-index: 4 !important;        /* круг поверх фото */
+}
+
+/* полоса — сразу под секцией, ниже фото */
+.ticker{
+  margin-top: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* кнопки — фиксированный отступ сверху от полосы, не зависят от фото */
+.cta-row, .hero-buttons{
+  margin-bottom: 3.5rem !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* значок "графика" — правее */
+.icon-linechart{ right: -10px !important; }
+.icon-pie{ right: -14px !important; bottom: 22% !important; }
+
+/* Мобилка: возвращаем фото в поток и убираем заезд на полосу, чтобы не мешало кнопкам */
+@media (max-width: 980px){
+  .hero .hero-visual{ min-height: 420px !important; }
+  .hero .hero-visual > .portrait-wrap{
+    position: relative !important;
+    bottom: 0 !important;
+    right: auto !important;
+    z-index: 1 !important;
+  }
+  .hero .hero-visual > .portrait-wrap .portrait{ max-width: 100%; }
+  .hero .hero-visual > .portrait-wrap .hello-badge{
+    left: 12px !important;
+    bottom: 18px !important;
+  }
+}
