@@ -1584,5 +1584,7 @@ h1, h2.display, .display-title{
 
 /* на мобильных без «внахлёста», чтобы не перекрывать кнопки */
 @media (max-width: 768px){
-  .portrait-wrap{ margin-bottom: -20px; }
+  .portrait-wrap{ margin-bottom: -56px; }
 }
+
+.hero{ padding: 60px 0 0; }  /* верх оставляем, низ = 0 */
