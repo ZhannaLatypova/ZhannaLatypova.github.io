@@ -331,7 +331,7 @@ html, body{ overflow-x: hidden; }
 <div class="portrait-wrap">
   <img
     class="portrait cutout"
-    src="https://drive.google.com/thumbnail?id=1vboIvJP2byJp8zidwvdh7Qw6OERzHNP9&sz=w1200"
+    src="https://ZhannaLatypova.github.io/assets/img/zhanna.png"
     alt="Zhanna portrait"
     loading="lazy"
     referrerpolicy="no-referrer"
@@ -362,10 +362,9 @@ html, body{ overflow-x: hidden; }
 }
 
 /* 2) Портрет «пришиваем» к низу hero (прямо над чёрной полосой) */
-.hero-visual{
-  position: relative;
-  height: 100%;           /* чтобы абсолютная позиция внутри работала на весь блок */
-  min-height: inherit;    /* страхуемся на случай минимума */
+.hero-visual {
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 /* портрет опускаем чуть ниже мини-меню */
@@ -376,15 +375,15 @@ html, body{ overflow-x: hidden; }
 /* если нужно, можно ещё немного уменьшить фото,
    чтобы оно не конфликтовало с мини-меню */
 /* сам контейнер с фото */
-.portrait-wrap{
-  position: absolute;
-  right: max(6vw, 40px);  /* красивый отступ справа на больших и маленьких экранах */
-  bottom: 16px;           /* ⬅️ портрет стоит ровно над тикером. поменяйте на 0, если нужно «впритык» */
-  z-index: 2;             /* фото над кругом/облаками */
+.portrait-wrap {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;       /* убираем лишний отступ сверху */
+  margin-bottom: -40px; /* фото "заезжает" ближе к ticker */
 }
 
 .ticker {
-  margin-top: 0px;      /* убираем зазор сверху у полосы */
+  margin-top: 0;       /* убираем зазор перед чёрной полосой */
 }
 
 .hello-badge {
