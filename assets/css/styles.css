@@ -635,3 +635,37 @@ html, body{ overflow-x: hidden; }
   color: #555;
   margin-bottom: 14px;
 }
+
+/* Hover-замена фото на About */
+.about-photo{
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 900px;       /* ширина по макету */
+  margin: 0 auto 24px;    /* центрируем */
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,.12);
+}
+
+.about-photo img{
+  position: absolute;
+  inset: 0;               /* top/right/bottom/left: 0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity .35s ease;
+  display: block;
+}
+
+.about-photo .photo-default{ opacity: 1; }
+.about-photo .photo-hover  { opacity: 0; }
+
+.about-photo:hover .photo-default{ opacity: 0; }
+.about-photo:hover .photo-hover  { opacity: 1; }
+
+/* На тач-устройствах hover часто недоступен: оставляем дефолт */
+@media (hover: none){
+  .about-photo .photo-default{ opacity: 1; }
+  .about-photo .photo-hover  { opacity: 0; }
+}
