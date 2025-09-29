@@ -1574,7 +1574,7 @@ h1, h2.display, .display-title{
 
 /* фото чуть опускаем на полосу — регулируй число */
 .portrait-wrap{
-  margin-bottom: -40px;      /* попробуй от -20px до -70px под свой взгляд */
+  margin-bottom: -30px;      /* попробуй от -20px до -70px под свой взгляд */
 }
 
 /* полоса вплотную к секции */
@@ -1584,7 +1584,7 @@ h1, h2.display, .display-title{
 
 /* на мобильных без «внахлёста», чтобы не перекрывать кнопки */
 @media (max-width: 768px){
-  .portrait-wrap{ margin-bottom: -56px; }
+  .portrait-wrap{ margin-bottom: -50px; }
 }
 
 .hero{ padding: 60px 0 0; }  /* верх оставляем, низ = 0 */
