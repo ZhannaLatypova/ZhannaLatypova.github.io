@@ -1564,3 +1564,57 @@ h1, h2.display, .display-title{
 .svc-card.is-crm { --svc-bg: url("assets/img/crm.png"); }
 .svc-card.is-ai  { --svc-bg: url("assets/img/ai.png"); }
 .svc-card.is-bi  { --svc-bg: url("assets/img/bi.png"); }
+
+/* Карточка — подготовка для фона */
+.svc-card{
+  position: relative;
+  overflow: hidden;                    /* обрезаем фон по границам */
+  isolation: isolate;                  /* чтобы z-index у псевдоэлементов работал над тенями */
+}
+
+/* Слой с картинкой (по умолчанию скрыт) */
+.svc-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: var(--card-img) center/cover no-repeat; /* cover решает «прямоугольные» картинки */
+  opacity:0;
+  transform: scale(1.08);              /* лёгкий зум наружу */
+  transition: opacity .35s ease, transform .6s ease;
+  z-index:0;                           /* ниже текста карточки */
+  filter: brightness(.9);              /* немного затемним, чтобы текст читался */
+}
+
+/* Лёгкий градиент, чтобы заголовки не терялись */
+.svc-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.0) 30%, rgba(0,0,0,.16) 100%);
+  opacity:0;
+  transition: opacity .35s ease;
+  z-index:1;
+}
+
+/* Контент карточки поверх фона */
+.svc-card > *{
+  position: relative;
+  z-index:2;
+}
+
+/* Ховер-эффект: показываем картинку, делаем «рамку» чёрной */
+.svc-card:hover::before{ opacity:1; transform: scale(1.01); }
+.svc-card:hover::after{  opacity:1; }
+
+.svc-card:hover{
+  border-color:#000;                           /* для outline-карточек */
+  box-shadow:
+    0 18px 44px rgba(0,0,0,.18),               /* тень как у первой */
+    inset 0 0 0 2px #000;                      /* чёрная «рамка» */
+}
+
+/* Чтобы текст был читаем, если нужно — чуть усилить цвет */
+.svc-card:hover h4,
+.svc-card:hover .svc-read{ color:#000; }       /* для светлых карточек */
+.svc-card.dark:hover h4,
+.svc-card.dark:hover .svc-read{ color:#fff; }  /* для тёмной карточки */
