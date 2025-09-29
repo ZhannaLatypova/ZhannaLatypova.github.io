@@ -1560,69 +1560,67 @@ h1, h2.display, .display-title{
 }
 
 /* ================= HERO — финальная раскладка ================= */
+/* ========== HERO spacing & photo overlap ========== */
 
-/* ===== HERO FIX ===== */
-.hero {
-  padding: 60px 0 0;       /* сверху воздух, снизу убрали */
+/* верх — воздух, снизу зазор убираем (полосу подтягиваем) */
+.hero{
+  padding: 60px 0 0;
   margin-bottom: 0;
 }
 
-.hero-grid {
-  min-height: auto;        /* без принудительной высоты */
-}
+/* не растягиваем блок на высоту экрана */
+.hero-grid{ min-height: auto; }
 
-.hero-section {
+/* оставляем стабильный зазор под контентом (чтобы кнопки не липли) */
+.hero-section{               /* если у тебя нет .hero-section — пропусти этот блок */
   margin-bottom: 0;
-  padding-bottom: 3rem;    /* чуть оставляем, чтобы кнопки не прилипали к полосе */
+  padding-bottom: 3.25rem;   /* ↓ можно менять: 2.5–4rem */
 }
 
-.portrait-wrap {
-  margin-bottom: -30px;    /* подтягиваем фото ближе к полосе */
+/* КНОПКИ: гарантируем нижний отступ перед тикером */
+.cta-row{                     /* твой блок с кнопками ("Let’s talk", "Download CV") */
+  margin-bottom: 2.25rem;     /* увеличь, если всё ещё близко к полосе */
+  position: relative;
+  z-index: 2;
+}
+
+/* Фото — немного крупнее и сдвинуто ВНИЗ, чтобы заходить на чёрную полосу */
+.portrait-wrap{
+  position: relative;
+  text-align: center;
+  z-index: 2;                 /* фото поверх тикера */
+  margin-bottom: -46px;       /* насколько «налезает» на полосу (-30…-70px) */
   padding-bottom: 0;
 }
 
-.portrait {
+.portrait{
   display: block;
-  transform: translateY(-20px); /* фото чуть выше */
+  transform-origin: center bottom;
+  transform: scale(1.07) translateY(12px);  /* масштаб и лёгкий сдвиг вниз */
   margin-bottom: 0;
+  transition: transform .3s ease;
 }
 
-.ticker {
-  margin-top: 0;           /* полоса сразу под секцией */
-}
-
-/* кнопки и текст не заходят на полосу */
-.hero-buttons {
-  margin-bottom: 2rem;
-  position: relative;
-  z-index: 2;              /* выше полосы */
-}
-
-/* на мобильных без внахлёста */
-@media (max-width: 768px) {
-  .portrait-wrap { margin-bottom: -10px; }
-  .hero-section { padding-bottom: 2rem; }
-}
-
-/* Фото + круг — увеличение и сдвиг вниз */
-.portrait {
-  display: block;
-  transform: scale(1.08) translateY(20px);  /* масштаб + сдвиг вниз */
-  margin-bottom: 0;
-  transition: transform 0.3s ease;          /* плавность */
-}
-
-.portrait-wrap {
-  margin-bottom: -40px;   /* фото перекрывает полосу */
-  padding-bottom: 0;
-  text-align: center;     /* чтобы фото центрировалось */
-  position: relative;
-  z-index: 2;             /* фото поверх полосы */
-}
-
-/* ticker остаётся под фото */
-.ticker {
+/* Чёрная бегущая полоса — сразу под секцией и ниже фото */
+.ticker{
   margin-top: 0;
   position: relative;
   z-index: 1;
+}
+
+/* ====== Адаптив ====== */
+@media (max-width: 980px){
+  .portrait-wrap{ margin-bottom: -28px; }
+  .portrait{ transform: scale(1.04) translateY(6px); }
+  .cta-row{ margin-bottom: 1.75rem; }
+}
+
+@media (max-width: 640px){
+  .portrait-wrap{ margin-bottom: -16px; }
+  .portrait{ transform: scale(1.02) translateY(2px); }
+  .cta-row{ margin-bottom: 1.5rem; }
+}
+
+.portrait-wrap:hover .portrait{
+  transform: scale(1.09) translateY(14px);
 }
