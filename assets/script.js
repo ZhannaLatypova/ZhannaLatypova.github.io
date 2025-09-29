@@ -20,11 +20,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     target.scrollIntoView({ behavior: 'smooth' });
   });
 });
-<script>
-  document.querySelectorAll('.swap-card').forEach(card => {
-    const a = card.querySelector('.img-a');
-    const b = card.querySelector('.img-b');
-    const next = card.getAttribute('data-next');
-    b.src = next ? next : a.currentSrc || a.src;
-  });
-</script>
+
