@@ -236,6 +236,70 @@
 
 <!-- CASES -->
 <section class="section case" id="case">
+  <style>
+    /* ====== Minimal layout just for this section ====== */
+    .case { padding-top: 72px; }
+    .case .wrap { width: min(1160px, 92%); margin-inline: auto; }
+
+    .case-head { text-align: center; margin-bottom: 38px; position: relative; }
+    .case-head h3 { font-size: clamp(28px, 3.2vw, 42px); margin: .4rem 0 .2rem; font-weight: 900; letter-spacing: .02em; }
+    .case-lede { color: #7b7b83; max-width: 70ch; margin: .4rem auto 0; }
+
+    .case-row{
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 48px;
+      margin: 64px 0;
+    }
+    .case-row.invert .case-copy { order: 1; }
+    .case-row.invert .case-media { order: 2; }
+
+    .case-media{
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 30px 60px rgba(0,0,0,.12);
+      isolation: isolate; /* so ::after stacks above img but below outside shadows */
+    }
+    .case-media img{
+      display: block;
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ---- Hover slide-swap (for items that have data-hover) ---- */
+    .case-media.hover-swap::after{
+      content: "";
+      position: absolute; inset: 0;
+      background: var(--hover-img) center/cover no-repeat;
+      transform: translateX(-100%);
+      transition: transform .6s ease;
+      z-index: 1;
+    }
+    .case-media.hover-swap:hover::after{
+      transform: translateX(0);
+    }
+
+    .case-copy{ display: flex; flex-direction: column; gap: 18px; }
+    .case-copy h4{ font-size: clamp(26px,3.6vw,44px); line-height:1.15; margin:0; font-weight:900; letter-spacing:-.01em; }
+    .pill.dark{ background:#111; color:#fff; border:0; padding:.45rem .9rem; border-radius:999px; font-weight:900; font-size:.8rem; display:inline-block; width:max-content; }
+
+    .see{ display:inline-flex; align-items:center; gap:10px; font-weight:800; position:relative; padding-bottom:18px; width:max-content; }
+    .see::after{
+      content:""; position:absolute; left:0; right:0; bottom:0; height:2px; background:#111;
+      transform-origin:left; transform:scaleX(.22);
+    }
+
+    @media (max-width: 980px){
+      .case-row, .case-row.invert{ grid-template-columns:1fr; gap:20px; margin:42px 0; }
+      .case-row.invert .case-copy, .case-row.invert .case-media { order: initial; }
+      .see::after{ transform:scaleX(.35); }
+    }
+  </style>
+
   <div class="wrap">
 
     <div class="case-head">
@@ -249,9 +313,10 @@
     <!-- Row 1: LLM -->
     <div class="case-row">
       <div class="case-media">
-        <img src="assets/img/LLM+RAG.png"
-             alt="Integration of LLM and Time Series Analysis in Demand Forecasting for E-Commerce"
-             loading="lazy">
+        <img
+          src="assets/img/LLM+RAG.png"
+          alt="Integration of LLM and Time Series Analysis in Demand Forecasting for E-Commerce"
+          loading="lazy">
       </div>
       <div class="case-copy">
         <span class="pill dark">ML & AI</span>
@@ -259,14 +324,13 @@
         <a class="see" href="/cases/llm-forecasting.html">
           <span>See Details</span>
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-            <path d="M7 17L17 7M17 7H9m8 0v8"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 17L17 7M17 7H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </a>
       </div>
     </div>
 
-    <!-- Row 2: Ads -->
+    <!-- Row 2: Ads (with hover slide to Ads_2) -->
     <div class="case-row invert">
       <div class="case-copy">
         <span class="pill dark">MARKETING & Ads</span>
@@ -274,25 +338,25 @@
         <a class="see" href="/cases/ads-metrics.html">
           <span>See Details</span>
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-            <path d="M7 17L17 7M17 7H9m8 0v8"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 17L17 7M17 7H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </a>
       </div>
-      <div class="case-media hover-swap">
-        <img src="assets/img/Ads.png"
-             data-hover="assets/img/Ads_2.png"
-             alt="Analysis of business metrics of advertising campaigns"
-             loading="lazy">
+      <div class="case-media hover-swap" data-hover="assets/img/Ads_2.png">
+        <img
+          src="assets/img/Ads.png"
+          alt="Analysis of business metrics of advertising campaigns"
+          loading="lazy">
       </div>
     </div>
 
     <!-- Row 3: Assortment -->
     <div class="case-row">
       <div class="case-media">
-        <img src="assets/img/Assort.png"
-             alt="Analysis of product assortment for optimization"
-             loading="lazy">
+        <img
+          src="assets/img/Assort.png"
+          alt="Analysis of product assortment for optimization"
+          loading="lazy">
       </div>
       <div class="case-copy">
         <span class="pill dark">DATA QUALITY -> INSIGHTS</span>
@@ -300,8 +364,7 @@
         <a class="see" href="/cases/assortment-optimization.html">
           <span>See Details</span>
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-            <path d="M7 17L17 7M17 7H9m8 0v8"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 17L17 7M17 7H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </a>
       </div>
@@ -315,25 +378,25 @@
         <a class="see" href="/cases/vw-marketing-audit.html">
           <span>See Details</span>
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-            <path d="M7 17L17 7M17 7H9m8 0v8"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 17L17 7M17 7H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </a>
       </div>
       <div class="case-media">
-        <img src="assets/img/VW.png"
-             alt="Volkswagen Group: End-to-End Marketing Audit Platform"
-             loading="lazy">
+        <img
+          src="assets/img/VW.png"
+          alt="Volkswagen Group: End-to-End Marketing Audit Platform"
+          loading="lazy">
       </div>
     </div>
 
-    <!-- Row 5: ERP Chemic -->
+    <!-- Row 5: ERP Chemic (with hover slide to Chemic_2) -->
     <div class="case-row">
-      <div class="case-media hover-swap">
-        <img src="assets/img/Chemic.png"
-             data-hover="assets/img/Chemic_2.png"
-             alt="Google Sheets ERP for Chemical Manufacturing"
-             loading="lazy">
+      <div class="case-media hover-swap" data-hover="assets/img/Chemic_2.png">
+        <img
+          src="assets/img/Chemic.png"
+          alt="Google Sheets ERP for Chemical Manufacturing"
+          loading="lazy">
       </div>
       <div class="case-copy">
         <span class="pill dark">BI SYSTEMS</span>
@@ -341,14 +404,22 @@
         <a class="see" href="/cases/erp-chem-manufacturing.html">
           <span>See Details</span>
           <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-            <path d="M7 17L17 7M17 7H9m8 0v8"
-                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M7 17L17 7M17 7H9m8 0v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </a>
       </div>
     </div>
 
   </div>
+
+  <script>
+    /* Инициализируем картинку для перелистывания:
+       читаем data-hover и кладём его в CSS-переменную --hover-img */
+    document.querySelectorAll('.case-media.hover-swap').forEach(box => {
+      const h = box.getAttribute('data-hover');
+      if (h) box.style.setProperty('--hover-img', `url("${h}")`);
+    });
+  </script>
 </section>
 
     <!-- TESTIMONIAL -->
