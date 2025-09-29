@@ -1558,3 +1558,20 @@ h1, h2.display, .display-title{
     url("/assets/img/bi_2.png"),
     url("https://ZhannaLatypova.github.io/assets/img/bi_2.png");
 }
+
+/* Фото + круг */
+.portrait-wrap {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;       /* убираем лишний отступ сверху */
+  margin-bottom: -40px; /* фото "заезжает" ближе к ticker */
+}
+
+.hero-visual {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.ticker {
+  margin-top: 0;       /* убираем зазор перед чёрной полосой */
+}
