@@ -1385,3 +1385,64 @@ h1, h2.display, .display-title{
 @media (max-width: 1200px){ .about-page .masonry{ column-count: 3 !important; } }
 @media (max-width: 900px) { .about-page .masonry{ column-count: 2 !important; } }
 @media (max-width: 520px) { .about-page .masonry{ column-count: 1 !important; } }
+
+/* ====== Pop-forward + slide swap on hover ====== */
+.gallery-swap{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;               /* расстояние между карточками */
+}
+
+.swap-card{
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(0,0,0,.10);
+  transform: translateZ(0);
+  transition: transform .28s ease, box-shadow .28s ease;
+  /* соотношение сторон */
+  aspect-ratio: 4 / 3;
+}
+
+.swap-card:hover{
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 18px 48px rgba(0,0,0,.18);
+}
+
+.img-stack{
+  position: relative;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.img-stack .img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease, opacity .6s ease, filter .3s ease;
+  will-change: transform;
+}
+
+/* старт: A видна, B спрятана справа */
+.img-a{ transform: translateX(0); }
+.img-b{ transform: translateX(100%); }
+
+/* лёгкий ч/б по умолчанию — красиво для превью */
+.swap-card .img{ filter: grayscale(100%) saturate(0) contrast(1.05) brightness(.98); }
+
+/* ховер: А уезжает влево, B заезжает справа и становится цветной */
+.swap-card:hover .img-a{ transform: translateX(-100%); }
+.swap-card:hover .img-b{
+  transform: translateX(0);
+  filter: none;
+}
+
+/* Респонсив-мелочь */
+@media (max-width: 520px){
+  .gallery-swap{ gap:10px; }
+  .swap-card{ border-radius:14px; }
+}
