@@ -1513,147 +1513,55 @@ h1, h2.display, .display-title{
   position:relative;
   overflow:hidden;
   cursor:pointer;
-  transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+  transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  min-height:320px;            /* чтобы псевдоэлемент имел высоту */
+  border:2px solid #1f1f23;
 }
 
-/* Слой с картинкой */
-.svc-card .svc-bg{
-  position:absolute;
-  inset:0;
-  background-position:center;
-  background-repeat:no-repeat;
-  background-size:cover;     /* «cover» решает любые пропорции */
-  transform:scale(1.06);
-  opacity:0;
-  transition:opacity .35s ease, transform .6s ease;
-  z-index:0;
-  pointer-events:none;       /* чтобы не блокировать :hover карточки */
-  filter:brightness(.92);    /* немного приглушим для читаемости текста */
-}
-
-/* Контент поверх фона */
-.svc-card > *:not(.svc-bg){ position:relative; z-index:1; }
-
-/* Лёгкий градиент-подложка (чтоб заголовки не терялись) */
-.svc-card::after{
+/* Фон через ::before */
+.svc-card::before{
   content:"";
   position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.12) 100%);
-  opacity:0; transition:opacity .35s ease; z-index:1;
-}
-.svc-card.dark::after{
-  background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.22) 100%);
-}
-
-/* Hover-эффект */
-.svc-card:hover .svc-bg{ opacity:1; transform:scale(1.01); }
-.svc-card:hover::after{ opacity:.9; }
-
-.svc-card:hover{
-  border-color:#000;                                   /* чёрная рамка */
-  box-shadow:0 20px 50px rgba(0,0,0,.18), inset 0 0 0 2px #000;
-  transform:translateY(-2px);
-}
-
-/* Контраст текста на ховере (если нужно) */
-.svc-card.outline:hover h4,
-.svc-card.outline:hover .svc-read{color:#000}
-.svc-card.dark:hover h4,
-.svc-card.dark:hover .svc-read{color:#fff}
-/* === SERVICE CARDS HOVER (FINAL) === */
-.svc-card{
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-  transition:border-color .25s ease, box-shadow .25s ease, transform .25s ease;
-}
-
-.svc-card .svc-bg{
-  position:absolute;
-  inset:0;
+  background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
-  background-size:cover;   /* подгоняет любую картинку в квадрат */
   opacity:0;
-  transform:scale(1.06);
-  transition:opacity .35s ease, transform .6s ease;
-  pointer-events:none;
+  transform:scale(1.1);
+  transition:opacity .35s ease, transform .45s ease;
   z-index:0;
-  filter:brightness(.92);
 }
 
-.svc-card > *:not(.svc-bg){ position:relative; z-index:1; }
+/* Контент над фоном */
+.svc-card > *{ position:relative; z-index:2; }
 
-.svc-card::after{
-  content:"";
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.12) 100%);
-  opacity:0; transition:opacity .35s ease;
-  z-index:1;
-}
-.svc-card.dark::after{
-  background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.22) 100%);
-}
-
-.svc-card:hover .svc-bg{ opacity:1; transform:scale(1.01); }
-.svc-card:hover::after{ opacity:.9; }
-
+/* Ховер: “вытягиваем вперёд”, показываем фон и скрываем текст */
 .svc-card:hover{
-  border-color:#000;
-  box-shadow:0 20px 50px rgba(0,0,0,.18), inset 0 0 0 2px #000;
-  transform:translateY(-2px);
-}
-
-.svc-card.outline:hover h4,
-.svc-card.outline:hover .svc-read{ color:#000; }
-.svc-card.dark:hover h4,
-.svc-card.dark:hover .svc-read{ color:#fff; }
-
-.svc-card {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
-}
-
-.svc-card::before {
-  content:"";
-  position:absolute;
-  inset:0;
-  background-size: cover;
-  background-position: center;
-  opacity:0;
-  transform: scale(1.1);
-  transition: opacity .35s ease, transform .45s ease;
-  z-index:0;
-}
-
-.svc-card:hover {
-  transform: scale(1.05);
+  transform:scale(1.05);
   border-color:#000;
   box-shadow:0 18px 40px rgba(0,0,0,.25);
 }
-
-.svc-card:hover::before {
-  opacity:1;
-  transform: scale(1.0);
-}
-
-/* контент всегда сверху */
-.svc-card > * {
-  position: relative;
-  z-index:2;
-}
-
-/* текст убираем при наведении */
+.svc-card:hover::before{ opacity:1; transform:scale(1.0); }
 .svc-card:hover h4,
 .svc-card:hover .svc-read,
-.svc-card:hover .svc-icon {
-  opacity:0;
-  transition: opacity .25s ease;
-}
+.svc-card:hover .svc-icon{ opacity:0; transition:opacity .25s ease; }
 
-/* фоновые картинки */
-.svc-card.is-crm::before { background-image:url("ZhannaLatypova.github.io/assets/img/crm_2.png"); }
-.svc-card.is-ai::before  { background-image:url("ZhannaLatypova.github.io/assets/img/ai_2.png"); }
-.svc-card.is-bi::before  { background-image:url("ZhannaLatypova.github.io/assets/img/bi_2.png"); }
+/* Для тёмной чуть приглушим фон, чтобы текст не слепил до ховера */
+.svc-card.dark::before{ filter:brightness(.9); }
+
+/* ПУТИ К ИЗОБРАЖЕНИЯМ — ИСПРАВЛЕННЫЕ */
+.svc-card.is-crm::before{
+  /* сначала локальный путь, потом абсолютный — как fallback */
+  background-image:
+    url("/assets/img/crm_2.png"),
+    url("https://ZhannaLatypova.github.io/assets/img/crm_2.png");
+}
+.svc-card.is-ai::before{
+  background-image:
+    url("/assets/img/ai_2.png"),
+    url("https://ZhannaLatypova.github.io/assets/img/ai_2.png");
+}
+.svc-card.is-bi::before{
+  background-image:
+    url("/assets/img/bi_2.png"),
+    url("https://ZhannaLatypova.github.io/assets/img/bi_2.png");
+}
