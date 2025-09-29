@@ -1241,3 +1241,58 @@ h1, h2.display, .display-title{
   margin-top: 4px;
   color: #555;
 }
+
+/* ===== Gallery tuning (About) ===== */
+:root{
+  /* общий зазор для masonry */
+  --m-gap: 6px;           /* было ~12px → в 2 раза меньше */
+  --m-radius: 10px;
+}
+
+.masonry{
+  column-count: 4;
+  column-gap: var(--m-gap);
+}
+
+/* карточка фото */
+.masonry figure{
+  margin: 0 0 var(--m-gap);
+  display: inline-block;
+  width: 100%;
+  break-inside: avoid;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--m-radius);
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(0,0,0,.06);   /* аккуратная тень */
+}
+
+/* изображение: по умолчанию Ч/Б, при ховере — цветное + лёгкий зум */
+.masonry img{
+  display: block;
+  width: 100%;
+  border-radius: var(--m-radius);
+  filter: grayscale(100%) saturate(.4) contrast(1.05);
+  -webkit-filter: grayscale(100%) saturate(.4) contrast(1.05);
+  transition: transform .35s ease, filter .35s ease;
+  will-change: transform, filter;
+}
+.masonry figure:hover img{
+  transform: scale(1.035);
+  filter: none;               /* цвет */
+  -webkit-filter: none;
+}
+
+/* подпись — маленькая, ближе к фото */
+.masonry figcaption{
+  font-size: 11px;
+  line-height: 1.2;
+  color: #666;
+  text-align: left;
+  padding: 6px 2px 2px;
+}
+
+/* Адаптив: аккуратные колонки на разных ширинах */
+@media (max-width: 1200px){ .masonry{ column-count: 3; } }
+@media (max-width: 900px) { .masonry{ column-count: 2; } }
+@media (max-width: 520px) { .masonry{ column-count: 1; } }
