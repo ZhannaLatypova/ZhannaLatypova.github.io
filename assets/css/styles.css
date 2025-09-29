@@ -1296,3 +1296,48 @@ h1, h2.display, .display-title{
 @media (max-width: 1200px){ .masonry{ column-count: 3; } }
 @media (max-width: 900px) { .masonry{ column-count: 2; } }
 @media (max-width: 520px) { .masonry{ column-count: 1; } }
+/* ===== Gallery tuning (About) без текста ===== */
+:root{
+  --m-gap: 6px;        /* уменьшенный отступ */
+  --m-radius: 10px;
+}
+
+.masonry{
+  column-count: 4;
+  column-gap: var(--m-gap);
+}
+
+.masonry figure{
+  margin: 0 0 var(--m-gap);
+  display: inline-block;
+  width: 100%;
+  break-inside: avoid;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--m-radius);
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+
+.masonry img{
+  display: block;
+  width: 100%;
+  border-radius: var(--m-radius);
+  filter: grayscale(100%) saturate(.4) contrast(1.05);
+  -webkit-filter: grayscale(100%) saturate(.4) contrast(1.05);
+  transition: transform .35s ease, filter .35s ease;
+}
+.masonry figure:hover img{
+  transform: scale(1.035);
+  filter: none;
+  -webkit-filter: none;
+}
+
+/* убираем подпись под фото */
+.masonry figcaption{
+  display: none;
+}
+
+@media (max-width: 1200px){ .masonry{ column-count: 3; } }
+@media (max-width: 900px) { .masonry{ column-count: 2; } }
+@media (max-width: 520px) { .masonry{ column-count: 1; } }
