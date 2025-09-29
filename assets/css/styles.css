@@ -1589,7 +1589,7 @@ h1, h2.display, .display-title{
   position: relative;
   text-align: center;
   z-index: 2;                 /* фото поверх тикера */
-  margin-bottom: -26px;       /* насколько «налезает» на полосу (-30…-70px) */
+  margin-bottom: -86px;       /* насколько «налезает» на полосу (-30…-70px) */
   padding-bottom: 0;
 }
 
