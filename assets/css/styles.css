@@ -1681,7 +1681,7 @@ h1, h2.display, .display-title{
   right: 0 !important;
   left: auto !important;
   top: auto !important;
-  bottom: -56px !important;     /* глубина "заезда" на полосу; + больше, - меньше */
+  bottom: -76px !important;     /* глубина "заезда" на полосу; + больше, - меньше */
   margin: 0 !important;
   padding: 0 !important;
   z-index: 3 !important;        /* фото над полосой */
