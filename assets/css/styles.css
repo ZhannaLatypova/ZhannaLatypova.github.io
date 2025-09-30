@@ -1684,10 +1684,7 @@ h1, h2.display, .display-title{
 
 /* ===== Значки ===== */
 
-/* УДАЛЯЕМ линейный график */
-.icon-linechart{
-  display:none !important;
-}
+
 
 /* Круговая — оставляем (можно подвинуть при желании) */
 .icon-pie{
