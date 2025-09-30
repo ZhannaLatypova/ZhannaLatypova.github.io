@@ -96,7 +96,13 @@ img{display:block; max-width:100%}
 
 /* аналитические иконки */
 .icon{position:absolute; color:#111; filter:drop-shadow(0 2px 6px rgba(0,0,0,.06))}
-.icon-linechart{width:46px; height:46px; top:165px; left:58%; transform:translateX(-50%) rotate(-8deg)}
+.icon-linechart {
+  width: 66px;
+  height: 66px;
+  top: 165px;
+  left: 65%; /* ↑ было 58%, увеличь до 60–65% */
+  transform: translateX(-50%) rotate(-8deg);
+}
 .icon-pie{width:42px; height:42px; right:28px; bottom:22%}
 
 /* бегущая строка */
