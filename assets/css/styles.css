@@ -1615,185 +1615,102 @@ h1, h2.display, .display-title{
 
 
 /* ====== Адаптив ====== */
-/* ===== HERO: фото закрепляем у низа правой колонки ===== */
-.hero-grid{ align-items:start; min-height:auto; }
+/* =============== HERO: фото за полосой =============== */
 
-/* Контейнер для абсолютного позиционирования фото */
-.hero-visual{
-  position: relative;
-  min-height: 560px;           /* ← даёт высоту колонке, чтобы abs-блок не "улетал" */
+/* Сетка героя */
+.hero-grid {
+  align-items: start;
+  min-height: auto;
 }
 
-/* Фото поверх полосы, прижато к низу правой колонки */
-.portrait-wrap{
+/* Правая колонка для фото */
+.hero .hero-visual {
+  position: relative;
+  min-height: 620px; /* 560–700 настраивается под высоту фото */
+}
+
+/* Фото уходит за чёрную полосу */
+.hero .hero-visual > .portrait-wrap {
   position: absolute;
   right: 0;
   left: auto;
   top: auto;
-  bottom: -40px;               /* насколько «заезжать» на чёрную полосу */
-  margin: 0; padding: 0;
-  z-index: 3;
+  bottom: -96px;                 /* глубина «заезда» */
+  margin: 0;
+  padding: 0;
+  z-index: 0;                    /* фото под полосой */
+  transition: transform .5s ease, z-index .5s ease;
 }
 
-/* Чуть увеличим, БЕЗ translateY */
-.portrait{
+/* Само фото */
+.hero .hero-visual > .portrait-wrap .portrait {
   display: block;
-  transform: scale(1.08);
-  transform-origin: center bottom;
-}
-
-/* Полоса под фото */
-.ticker{ margin-top: 0; position: relative; z-index: 1; }
-
-/* Кнопки не двигаем вместе с фото */
-.cta-row,.hero-buttons{ margin-bottom: 3.5rem; position: relative; z-index: 2; }
-
-/* ——— Мобильный тюнинг: отменяем старые смещения ——— */
-@media (max-width: 980px){
-  .hero-visual{ min-height: 420px; } /* пониже на планшете/мобилке */
-  .portrait-wrap{
-    position: relative;       /* возвращаем в поток на мобилке */
-    bottom: 0;
-    right: auto;
-    margin-top: 8px;
-    z-index: 1;
-  }
-  .portrait{
-    transform: none;          /* убираем старый translate/scale из прежних правил */
-  }
-  .cta-row,.hero-buttons{ margin-bottom: 2.2rem; }
-}
-
-/* Значок графика сдвигаем правее (если используешь его) */
-.icon-pie{ right: -12px; bottom: 22%; }
-
-/* ===== FIX: фото и круг у низа, поверх полосы ===== */
-
-/* правая колонка — есть высота, чтобы abs-позиционирование имело "опору" */
-.hero .hero-visual{
-  position: relative !important;
-  min-height: 620px !important; /* при необходимости меняй 560–700 */
-}
-
-/* обёртка фото прижата к низу правой колонки, заходит на чёрную полосу */
-.hero .hero-visual > .portrait-wrap{
-  position: absolute !important;
-  right: 0 !important;
-  left: auto !important;
-  top: auto !important;
-  bottom: -96px !important;     /* глубина "заезда" на полосу; + больше, - меньше */
-  margin: 0 !important;
-  padding: 0 !important;
-  z-index: 3 !important;        /* фото над полосой */
-}
-
-/* само фото — без смещений/масштабов из прошлых правил */
-.hero .hero-visual > .portrait-wrap .portrait{
-  display: block !important;
-  max-width: 560px;             /* если нужно крупнее/мельче */
+  max-width: 560px;              /* размер фото */
   height: auto;
-  transform: none !important;   /* гасим старые translate/scale */
-  transform-origin: center bottom !important;
+  transform: none;
+  transform-origin: center bottom;
+  transition: transform .5s ease;
 }
 
-/* чёрный круг "Bonjour" относительно фото — слева и выше по центру */
-.hero .hero-visual > .portrait-wrap .hello-badge{
-  position: absolute !important;
-  left: -72px !important;       /* подвинуть круг влево/вправо */
-  bottom: 34% !important;       /* поднять/опустить круг относительно фото */
-  z-index: 4 !important;        /* круг поверх фото */
+/* Круг Bonjour поверх фото */
+.hero .hero-visual > .portrait-wrap .hello-badge {
+  position: absolute;
+  left: -72px;
+  bottom: 34%;
+  z-index: 4;                    /* круг всегда сверху */
 }
 
-/* полоса — сразу под секцией, ниже фото */
-.ticker{
-  margin-top: 0 !important;
-  position: relative !important;
-  z-index: 1 !important;
+/* Полоса поверх фото (по умолчанию) */
+.ticker {
+  margin-top: 0;
+  position: relative;
+  z-index: 1;
 }
 
-/* кнопки — фиксированный отступ сверху от полосы, не зависят от фото */
-.cta-row, .hero-buttons{
-  margin-bottom: 3.5rem !important;
+/* Кнопки не двигаются вместе с фото */
+.cta-row,
+.hero-buttons {
+  margin-bottom: 3.5rem;
   position: relative;
   z-index: 2;
 }
 
-/* значок "графика" — правее */
-.icon-linechart{ right: -10px !important; }
-.icon-pie{ right: -14px !important; bottom: 22% !important; }
-
-/* Мобилка: возвращаем фото в поток и убираем заезд на полосу, чтобы не мешало кнопкам */
-@media (max-width: 980px){
-  .hero .hero-visual{ min-height: 420px !important; }
-  .hero .hero-visual > .portrait-wrap{
-    position: relative !important;
-    bottom: 0 !important;
-    right: auto !important;
-    z-index: 1 !important;
-  }
-  .hero .hero-visual > .portrait-wrap .portrait{ max-width: 100%; }
-  .hero .hero-visual > .portrait-wrap .hello-badge{
-    left: 12px !important;
-    bottom: 18px !important;
-  }
-}
-/* ===== HERO: фото за полосой + hover эффект ===== */
-
-/* правая колонка — высота для позиции */
-.hero .hero-visual {
-  position: relative !important;
-  min-height: 620px !important;
-}
-
-/* фото опущено и уходит за полосу */
-.hero .hero-visual > .portrait-wrap {
-  position: absolute !important;
-  right: 0 !important;
-  left: auto !important;
-  top: auto !important;
-  bottom: -96px !important;   /* глубина «заезда» */
-  margin: 0 !important;
-  padding: 0 !important;
-  z-index: 0 !important;      /* ниже полосы */
-  transition: transform 0.5s ease, z-index 0.5s ease;
-}
-
-/* само фото */
-.hero .hero-visual > .portrait-wrap .portrait {
-  display: block !important;
-  max-width: 560px;
-  height: auto;
-  transform: none !important;
-  transform-origin: center bottom !important;
-  transition: transform 0.5s ease;
-}
-
-/* при наведении фото "выезжает" вперёд */
+/* ===== Hover: фото выезжает вперёд ===== */
 .hero .hero-visual > .portrait-wrap:hover {
-  z-index: 3 !important;                /* поднимаем над полосой */
+  z-index: 3;                    /* поднять над полосой */
 }
 .hero .hero-visual > .portrait-wrap:hover .portrait {
-  transform: scale(1.08) translateY(-12px); /* чуть крупнее и выше */
+  transform: scale(1.08) translateY(-12px);
 }
 
-/* круг Bonjour остаётся поверх */
-.hero .hero-visual > .portrait-wrap .hello-badge {
-  position: absolute !important;
-  left: -72px !important;
-  bottom: 34% !important;
-  z-index: 4 !important;     /* круг всегда выше фото */
+/* ===== Значки ===== */
+.icon-pie {
+  right: -14px;
+  bottom: 22%;
+}
+.icon-linechart {
+  right: -10px;
 }
 
-/* полоса — над фото в обычном состоянии */
-.ticker {
-  margin-top: 0 !important;
-  position: relative !important;
-  z-index: 1 !important;
-}
+/* =============== Мобилка =============== */
+@media (max-width: 980px) {
+  .hero .hero-visual { min-height: 420px; }
 
-/* кнопки не зависят от фото */
-.cta-row, .hero-buttons {
-  margin-bottom: 3.5rem !important;
-  position: relative;
-  z-index: 2;
+  .hero .hero-visual > .portrait-wrap {
+    position: relative;
+    bottom: 0;
+    right: auto;
+    z-index: 1;                  /* возвращаем в поток */
+  }
+  .hero .hero-visual > .portrait-wrap .portrait {
+    max-width: 100%;
+    transform: none;
+  }
+  .hero .hero-visual > .portrait-wrap .hello-badge {
+    left: 12px;
+    bottom: 18px;
+  }
+
+  .cta-row,
+  .hero-buttons { margin-bottom: 2.2rem; }
 }
