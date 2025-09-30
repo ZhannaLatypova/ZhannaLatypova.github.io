@@ -1737,3 +1737,63 @@ h1, h2.display, .display-title{
     bottom: 18px !important;
   }
 }
+/* ===== HERO: фото за полосой + hover эффект ===== */
+
+/* правая колонка — высота для позиции */
+.hero .hero-visual {
+  position: relative !important;
+  min-height: 620px !important;
+}
+
+/* фото опущено и уходит за полосу */
+.hero .hero-visual > .portrait-wrap {
+  position: absolute !important;
+  right: 0 !important;
+  left: auto !important;
+  top: auto !important;
+  bottom: -96px !important;   /* глубина «заезда» */
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 0 !important;      /* ниже полосы */
+  transition: transform 0.5s ease, z-index 0.5s ease;
+}
+
+/* само фото */
+.hero .hero-visual > .portrait-wrap .portrait {
+  display: block !important;
+  max-width: 560px;
+  height: auto;
+  transform: none !important;
+  transform-origin: center bottom !important;
+  transition: transform 0.5s ease;
+}
+
+/* при наведении фото "выезжает" вперёд */
+.hero .hero-visual > .portrait-wrap:hover {
+  z-index: 3 !important;                /* поднимаем над полосой */
+}
+.hero .hero-visual > .portrait-wrap:hover .portrait {
+  transform: scale(1.08) translateY(-12px); /* чуть крупнее и выше */
+}
+
+/* круг Bonjour остаётся поверх */
+.hero .hero-visual > .portrait-wrap .hello-badge {
+  position: absolute !important;
+  left: -72px !important;
+  bottom: 34% !important;
+  z-index: 4 !important;     /* круг всегда выше фото */
+}
+
+/* полоса — над фото в обычном состоянии */
+.ticker {
+  margin-top: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* кнопки не зависят от фото */
+.cta-row, .hero-buttons {
+  margin-bottom: 3.5rem !important;
+  position: relative;
+  z-index: 2;
+}
