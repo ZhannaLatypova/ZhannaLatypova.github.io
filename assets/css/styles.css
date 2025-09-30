@@ -1652,12 +1652,12 @@ h1, h2.display, .display-title{
   transition: transform .5s ease;
 }
 
-/* Круг Bonjour поверх фото */
+/* Подняли круг Bonjour */
 .hero .hero-visual > .portrait-wrap .hello-badge {
-  position: absolute;
-  left: -72px;
-  bottom: 34%;
-  z-index: 4;                    /* круг всегда сверху */
+  position: absolute !important;
+  left: -72px !important;
+  bottom: 46% !important;   /* ↑ подними круг выше */
+  z-index: 4 !important;
 }
 
 /* Полоса поверх фото (по умолчанию) */
@@ -1689,7 +1689,7 @@ h1, h2.display, .display-title{
   bottom: 22%;
 }
 .icon-linechart {
-  right: -10px;
+  right: -20px;
 }
 
 /* =============== Мобилка =============== */
