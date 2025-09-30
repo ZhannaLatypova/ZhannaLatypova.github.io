@@ -1615,102 +1615,107 @@ h1, h2.display, .display-title{
 
 
 /* ====== Адаптив ====== */
-/* =============== HERO: фото за полосой =============== */
+/* =============== HERO: фото за полосой + hover =============== */
 
-/* Сетка героя */
-.hero-grid {
-  align-items: start;
-  min-height: auto;
+/* Левая/правая колонки героя */
+.hero-grid{
+  align-items:start;
+  min-height:auto;
 }
 
-/* Правая колонка для фото */
-.hero .hero-visual {
-  position: relative;
-  min-height: 620px; /* 560–700 настраивается под высоту фото */
+/* Контейнер правой колонки (для абсолютного позиционирования фото) */
+.hero .hero-visual{
+  position:relative;
+  min-height:620px; /* при необходимости 560–700 */
 }
 
-/* Фото уходит за чёрную полосу */
-.hero .hero-visual > .portrait-wrap {
-  position: absolute;
-  right: 0;
-  left: auto;
-  top: auto;
-  bottom: -96px;                 /* глубина «заезда» */
-  margin: 0;
-  padding: 0;
-  z-index: 0;                    /* фото под полосой */
-  transition: transform .5s ease, z-index .5s ease;
+/* Фото опущено и уходит за чёрную полосу */
+.hero .hero-visual > .portrait-wrap{
+  position:absolute;
+  right:0;
+  left:auto;
+  top:auto;
+  bottom:-96px;                 /* глубина «заезда» на полосу */
+  margin:0; padding:0;
+  z-index:0;                    /* фото под полосой по умолчанию */
+  transition:transform .5s ease, z-index .5s ease;
 }
 
 /* Само фото */
-.hero .hero-visual > .portrait-wrap .portrait {
-  display: block;
-  max-width: 560px;              /* размер фото */
-  height: auto;
-  transform: none;
-  transform-origin: center bottom;
-  transition: transform .5s ease;
+.hero .hero-visual > .portrait-wrap .portrait{
+  display:block;
+  max-width:560px;              /* масштаб фотографии */
+  height:auto;
+  transform:none;
+  transform-origin:center bottom;
+  transition:transform .5s ease;
 }
 
-/* Подняли круг Bonjour */
-.hero .hero-visual > .portrait-wrap .hello-badge {
-  position: absolute !important;
-  left: -72px !important;
-  bottom: 46% !important;   /* ↑ подними круг выше */
-  z-index: 4 !important;
+/* КРУГ Bonjour — поднят выше */
+.hero .hero-visual > .portrait-wrap .hello-badge{
+  position:absolute;
+  left:-72px;
+  bottom:46%;                   /* ↑ при необходимости подстрой: 40–52% */
+  z-index:4;                    /* поверх фото */
 }
 
-/* Полоса поверх фото (по умолчанию) */
-.ticker {
-  margin-top: 0;
-  position: relative;
-  z-index: 1;
+/* Полоса поверх фото (в обычном состоянии) */
+.ticker{
+  margin-top:0;
+  position:relative;
+  z-index:1;
 }
 
-/* Кнопки не двигаются вместе с фото */
+/* Кнопки не зависят от фото */
 .cta-row,
-.hero-buttons {
-  margin-bottom: 3.5rem;
-  position: relative;
-  z-index: 2;
+.hero-buttons{
+  margin-bottom:3.5rem;
+  position:relative;
+  z-index:2;
 }
 
-/* ===== Hover: фото выезжает вперёд ===== */
-.hero .hero-visual > .portrait-wrap:hover {
-  z-index: 3;                    /* поднять над полосой */
+/* Hover: фото «выезжает» над полосой */
+.hero .hero-visual > .portrait-wrap:hover{
+  z-index:3;                    /* поднимаем над полосой */
 }
-.hero .hero-visual > .portrait-wrap:hover .portrait {
-  transform: scale(1.08) translateY(-12px);
+.hero .hero-visual > .portrait-wrap:hover .portrait{
+  transform:scale(1.08) translateY(-12px);
 }
 
 /* ===== Значки ===== */
-.icon-pie {
-  right: -14px;
-  bottom: 22%;
+
+/* УДАЛЯЕМ линейный график */
+.icon-linechart{
+  display:none !important;
 }
-.icon-linechart {
-  right: -20px;
+
+/* Круговая — оставляем (можно подвинуть при желании) */
+.icon-pie{
+  right:-14px;
+  bottom:22%;
 }
 
 /* =============== Мобилка =============== */
-@media (max-width: 980px) {
-  .hero .hero-visual { min-height: 420px; }
+@media (max-width:980px){
+  .hero .hero-visual{ min-height:420px; }
 
-  .hero .hero-visual > .portrait-wrap {
-    position: relative;
-    bottom: 0;
-    right: auto;
-    z-index: 1;                  /* возвращаем в поток */
+  .hero .hero-visual > .portrait-wrap{
+    position:relative;          /* возвращаем в поток */
+    bottom:0;
+    right:auto;
+    z-index:1;
   }
-  .hero .hero-visual > .portrait-wrap .portrait {
-    max-width: 100%;
-    transform: none;
+
+  .hero .hero-visual > .portrait-wrap .portrait{
+    max-width:100%;
+    transform:none;
   }
-  .hero .hero-visual > .portrait-wrap .hello-badge {
-    left: 12px;
-    bottom: 18px;
+
+  .hero .hero-visual > .portrait-wrap .hello-badge{
+    left:12px;
+    bottom:26%;                 /* чуть выше, чтобы не конфликтовало с кнопками */
   }
 
   .cta-row,
-  .hero-buttons { margin-bottom: 2.2rem; }
+  .hero-buttons{ margin-bottom:2.2rem; }
 }
