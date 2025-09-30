@@ -1725,6 +1725,6 @@ h1, h2.display, .display-title{
 .icon-linechart{
   top:165px;
   left:auto;
-  right:-12px;             /* подвинь как нужно: 0, 12, 24… */
+  right:-24px;             /* подвинь как нужно: 0, 12, 24… */
   transform:rotate(-8deg); /* убрали translateX, чтобы не съезжала */
 }
