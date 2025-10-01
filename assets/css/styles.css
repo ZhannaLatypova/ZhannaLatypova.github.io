@@ -2923,3 +2923,133 @@ assets/img/crm_2.png
     font-size: 14px;
   }
 }
+
+/* ===== SERVICES – верстка и размеры ===== */
+
+.services-v2{ position:relative; }
+.services-v2 .wrap{ position:relative; }
+
+.svc-head{ 
+  position:relative;
+  align-items:flex-start;
+}
+.svc-title{ line-height:.95; margin:0; }
+
+.svc-right .svc-lede{
+  max-width: 320px;     /* аккуратная узкая колонка справа */
+  color:#6c6c73;
+  line-height:1.45;
+  margin-top:.4rem;
+}
+
+/* единственный вертикальный SCROLL DOWN — как в референсе */
+.svc-rail{
+  position:absolute;
+  left:-62px;                 /* смещаем влево от wrap (под буквой “O” первой строки) */
+  top: 6px;                   /* ставим сразу под первой строкой заголовка */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  z-index:1;
+}
+.svc-rail .rail-text{
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font-weight:900; 
+  font-size:12px; 
+  letter-spacing:.12em;
+}
+.svc-rail .rail-line{
+  display:block;
+  width:2px;
+  height:180px;               /* длина линии */
+  background:#111;
+}
+.svc-rail .rail-dot{
+  width:60px; height:60px; border-radius:999px;
+  background:#111; color:#fff; display:grid; place-items:center;
+  box-shadow:0 18px 28px rgba(0,0,0,.18);
+  font-size:22px; line-height:1;
+}
+
+/* карточки — сетка и ограничение размеров */
+.svc-cards{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 26px;
+  align-items:stretch;
+}
+
+.svc-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:24px;
+  border:1.5px solid #1f1f23;       /* тоньше контур */
+  min-height: clamp(280px, 34vw, 360px);
+  /* делаем их условно квадратными без чрезмерного роста */
+  aspect-ratio: 1 / 1;
+  padding: 30px;
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.svc-card.dark{ background:#111; color:#fff; border-color:#111; }
+.svc-card.outline{ background:#fff; color:#111; }
+
+.svc-card h4{ 
+  margin: 0;
+  font-size: clamp(20px, 2.1vw, 28px);   /* компактнее, чтобы всегда влезал */
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: .01em;
+}
+.svc-read{ font-weight:800; position:absolute; left:30px; bottom:24px; }
+.svc-read span{ transition:transform .2s ease }
+.svc-read:hover span{ transform:translateX(4px) }
+
+/* ====== ПЕРЕЛИСТЫВАНИЕ: “вторая страница” заезжает справа ====== */
+.svc-card::before{
+  content:"";
+  position:absolute; inset:0;
+  background: var(--svc-img) center/cover no-repeat;
+  transform: translateX(100%);            /* старт: спрятана справа */
+  transition: transform .55s ease;
+  z-index:1;
+}
+.svc-card:hover::before{ transform: translateX(0); } /* заезд поверх */
+
+.svc-card > *{ position:relative; z-index:2; transition: opacity .25s ease; }
+.svc-card:hover h4,
+.svc-card:hover .svc-icon,
+.svc-card:hover .svc-read{ opacity:0; }   /* убираем текст, чтобы не было каши */
+
+.svc-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.18);
+  border-color:#000;
+}
+
+/* картинки для карточек (локальные + запасной абсолютный путь) */
+.svc-card.is-crm{ 
+  --svc-img: url("assets/img/crm_2.png"), url("https://ZhannaLatypova.github.io/assets/img/crm_2.png");
+}
+.svc-card.is-ai{
+  --svc-img: url("assets/img/ai_2.png"), url("https://ZhannaLatypova.github.io/assets/img/ai_2.png");
+}
+.svc-card.is-bi{
+  --svc-img: url("assets/img/bi_2.png"), url("https://ZhannaLatypova.github.io/assets/img/bi_2.png");
+}
+
+/* ====== адаптив ====== */
+@media (max-width: 1100px){
+  .svc-rail{ left:-54px; top: 6px; }
+  .svc-rail .rail-line{ height:160px; }
+  .svc-cards{ grid-template-columns: repeat(2, 1fr); }
+  .svc-card{ min-height: clamp(260px, 44vw, 340px); }
+}
+
+@media (max-width: 740px){
+  .svc-rail{ display:none; }                         /* на мобилке как в рефе — без рейки */
+  .svc-cards{ grid-template-columns: 1fr; gap:18px; }
+  .svc-card{ aspect-ratio:auto; min-height: 260px; }
+  .svc-card h4{ font-size: clamp(18px, 5.6vw, 24px); }
+}
