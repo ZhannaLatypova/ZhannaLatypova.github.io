@@ -2232,3 +2232,33 @@ h1, h2.display, .display-title{
   font-weight: 800;
   text-transform: uppercase;
 }
+.exp-head {
+  text-align: center;
+  margin-bottom: 38px;
+  position: relative;
+}
+
+.exp-head h3 {
+  font-size: clamp(28px,3.2vw,42px);
+  letter-spacing: .02em;
+  margin: .4rem 0 .2rem;
+  font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.exp-spark {
+  position: absolute;
+  left: 50%;
+  top: -14px;
+  width: 28px;
+  height: 28px;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(circle at 50% 50%, #000 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(0,0,0,.65) 1px, transparent 2px);
+  background-size: 28px 28px, 6px 6px;
+  background-position: center, center;
+  mask: radial-gradient(circle, #000 45%, transparent 46%);
+  border-radius: 50%;
+  filter: contrast(140%);
+}
