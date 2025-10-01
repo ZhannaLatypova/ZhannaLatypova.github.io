@@ -3316,3 +3316,79 @@ assets/img/crm_2.png
 #services .svc-card img{ display:none !important; }               /* внутренние <img>, чтобы не было «второй» картинки */
 
 #services .svc-card img.svc-keep{ display:inline-block !important; }
+
+/* ===== SERVICES / #services — финальная фиксация ===== */
+
+/* 0) Убираем любые старые картинки и старый before */
+#services .svc-card img:not(.svc-keep){ display:none !important; } /* оставим только .svc-keep, если она нужна как иконка */
+#services .svc-card::before{ content:none !important; }            /* глушим старую реализацию на ::before */
+
+/* 1) Карточка — квадрат, контент поверх */
+#services .svc-cards{
+  display:grid !important;
+  grid-template-columns: repeat(3, minmax(260px, 1fr)) !important;
+  gap: 26px !important;
+  align-items:stretch !important;
+}
+#services .svc-card{
+  position:relative !important;
+  overflow:hidden !important;
+  aspect-ratio: 1 / 1 !important;           /* ← КВАДРАТ */
+  min-height:320px !important;               /* для старых браузеров */
+  border-radius:22px !important;
+  padding:24px !important;
+}
+
+/* 2) «Вторая страница» (фон) заезжает СПРАВА на hover */
+#services .svc-card::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:0 !important;
+  background: var(--svc-img) center/cover no-repeat !important;
+  transform: translateX(100%) !important;   /* спрятана справа */
+  transition: transform .55s ease !important;
+  z-index: 1 !important;                    /* ниже текста до ховера */
+  pointer-events:none !important;
+}
+#services .svc-card:hover::after{
+  transform: translateX(0) !important;      /* заезд */
+}
+
+/* 3) Текст сверху, но плавно гасим на ховере */
+#services .svc-card > *{
+  position:relative !important;
+  z-index:2 !important;
+  transition: opacity .2s ease !important;
+}
+#services .svc-card:hover > *{ opacity:.0 !important; }  /* если хочешь полупрозрачно: 0.35 */
+
+/* 4) Подключаем «вторые» картинки через CSS-переменные */
+#services .svc-card.is-crm{ --svc-img: url("/assets/img/crm_2.png"), url("https://ZhannaLatypova.github.io/assets/img/crm_2.png") !important; }
+#services .svc-card.is-ai { --svc-img: url("/assets/img/ai_2.png"),  url("https://ZhannaLatypova.github.io/assets/img/ai_2.png")  !important; }
+#services .svc-card.is-bi { --svc-img: url("/assets/img/bi_2.png"),  url("https://ZhannaLatypova.github.io/assets/img/bi_2.png")  !important; }
+
+/* 5) SCROLL DOWN — только «рейка» слева под первой строкой заголовка */
+#services .wrap{ position:relative !important; }
+#services .svc-rail{
+  position:absolute !important;
+  left:-62px !important;        /* окажется под буквой “O” из OFFERING */
+  top: 6px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:14px !important;
+  z-index:3 !important;
+}
+#services .svc-rail .rail-text{ 
+  writing-mode:vertical-rl !important; 
+  transform:rotate(180deg) !important; 
+  font: 900 12px/1 Inter, system-ui, sans-serif !important; 
+  letter-spacing:.22em !important; 
+}
+#services .svc-rail .rail-line{ width:2px !important; height:180px !important; background:#111 !important; display:block !important; }
+#services .svc-rail .rail-dot{ width:60px !important; height:60px !important; border-radius:999px !important; background:#111 !important; color:#fff !important; display:grid !important; place-items:center !important; box-shadow:0 18px 28px rgba(0,0,0,.18) !important; }
+
+/* На планшет/мобайл рейку прячем */
+@media (max-width: 1100px){
+  #services .svc-rail{ display:none !important; }
+}
