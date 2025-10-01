@@ -1779,11 +1779,11 @@ h1, h2.display, .display-title{
   object-fit:cover;                /* вторые картинки заполняют квадрат */
 }
 
-/* ваш фон через ::before тоже впишется */
-.svc-card::before{
-  background-size:cover;
-  background-position:center;
-}
+/* /* ваш фон через ::before тоже впишется */
+/* .svc-card::before{ */
+  /* background-size:cover; */
+  /* background-position:center;
+} */ 
 
 /* адаптив колонок — квадраты остаются */
 @media (max-width:1100px){ .svc-cards{ grid-template-columns:repeat(2,1fr); } }
@@ -1798,16 +1798,16 @@ h1, h2.display, .display-title{
   transform: translateX(-8px); /* чуть за край, по вкусу */
 }
 
-/* Если sticky ведёт себя нестабильно — принудительно фиксируем на мобиле */
-@media (max-width: 980px){
-  .scroll-down{
+/* /* Если sticky ведёт себя нестабильно — принудительно фиксируем на мобиле */
+/* @media (max-width: 980px){ */
+  /* .scroll-down{
     position: fixed;
     top: auto;
     bottom: 18px;       /* внизу слева */
-    left: 14px;
-    transform: none;
+    /* left: 14px;
+    transform: none; */ */
   }
-}
+} */
 
 
 /* Базово — как есть */
@@ -1850,13 +1850,13 @@ h1, h2.display, .display-title{
 }
 
 /* Scroll-down фиксируем, но под карточками */
-.scroll-down {
+/* .scroll-down {
   position: sticky;     /* липнет к экрану внутри своей секции */
-  top: 120px;           /* на какой высоте закрепить */
-  left: 0;
-  z-index: 1;           /* ниже карточек (карточкам дай z-index:2 при hover) */
-  pointer-events: none; /* чтобы не мешал кликам по карточкам */
-}
+  /* top: 120px;           /* на какой высоте закрепить */
+  /* left: 0; */ */
+  /* z-index: 1;           /* ниже карточек (карточкам дай z-index:2 при hover) */
+  /* pointer-events: none; /* чтобы не мешал кликам по карточкам */ */ */
+/* } */ */
 
 /* Карточки всегда выше */
 .svc-card,
@@ -1943,30 +1943,30 @@ h1, h2.display, .display-title{
 /* Контейнер секции с карточками */
 .services-v2{ position: relative; }
 
-/* Сбрасываем ВСЕ старые стили скролл-ленты */
-.scroll-down{
-  all: unset;                      /* убираем наследованные стили/псевдо линии */
-  position: fixed;                 /* фиксируем к вьюпорту */
-  left: clamp(8px, 2vw, 24px);     /* аккуратно у левого поля */
-  top: 36vh;                       /* вертикальная позиция на экране */
-  z-index: 0;                      /* ниже карточек */
-  pointer-events: none;            /* клики проходят сквозь */
-  color: transparent;              /* скрываем исходный текст, рисуем псевдоэлементом */
-}
+/* /* Сбрасываем ВСЕ старые стили скролл-ленты */
+/* .scroll-down{ */
+  /* all: unset;                      /* убираем наследованные стили/псевдо линии */
+  /* position: fixed;                 /* фиксируем к вьюпорту */ */ */
+  /* left: clamp(8px, 2vw, 24px);     /* аккуратно у левого поля */ */
+  /* top: 36vh;                       /* вертикальная позиция на экране */ */
+  /* z-index: 0;                      /* ниже карточек */ */
+  /* pointer-events: none;            /* клики проходят сквозь */ */
+  /* color: transparent;              /* скрываем исходный текст, рисуем псевдоэлементом */ */
+/* } */ 
 
 /* Отрисовываем единственную надпись */
-.scroll-down::before{
+/* .scroll-down::before{
   content: "SCROLL DOWN";
   writing-mode: vertical-rl;       /* вертикальная надпись */
-  transform: rotate(180deg);        /* чтобы читалось сверху вниз */
-  font: 800 12px/1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  letter-spacing: .22em;
-  color: #0b0b0c;
-  opacity: .8;
-}
+  /* transform: rotate(180deg);        /* чтобы читалось сверху вниз */
+  /* font: 800 12px/1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; */ */
+  /* letter-spacing: .22em; */
+  /* color: #0b0b0c; */
+  /* opacity: .8; */
+/* } */
 
 /* Карточки гарантированно поверх надписи */
-.svc-card{ position: relative; z-index: 2; }
+.svc-card{ position: relative; z-index: 2; } */
 
 
 
@@ -1980,16 +1980,16 @@ h1, h2.display, .display-title{
 .services-main{ min-width: 0; } /* на всякий случай против переполнения */
 
 /* Левый столбец "SCROLL DOWN" */
-.scroll-down{
-  position: sticky;
-  top: 140px;
+/* .scroll-down{
+  position: sticky; */
+  /* top: 140px;
   height: calc(100vh - 180px);
-  display:flex;
-  flex-direction:column;
+  display:flex; */
+  /* flex-direction:column;
   align-items:center;
   gap:16px;
-  user-select:none;
-}
+  user-select:none; */
+/* } */
 .sd-label{
   writing-mode: vertical-rl;
   transform: rotate(180deg);
@@ -2051,7 +2051,7 @@ h1, h2.display, .display-title{
 }
 
 /* показываем только вертикальный двухстрочный скролл */
-.scroll-down{
+/* .scroll-down{
   position: absolute;
   left: clamp(12px, 4vw, 56px);
   top: clamp(24px, 8vh, 120px);
@@ -2062,7 +2062,7 @@ h1, h2.display, .display-title{
   transform: rotate(180deg);
   color:#111;
   z-index: 3;
-}
+} */
 
 /* на мобилках чуть ближе к краю */
 @media (max-width: 900px){
@@ -2160,25 +2160,25 @@ h1, h2.display, .display-title{
 }
 
 /* ---- единственный индикатор скролла слева ---- */
-.scroll-down{
+/* .scroll-down{
   position: absolute;
   left: clamp(-52px, -4vw, -36px); /* по левому краю wrap, не заходит на карточки */
-  top: clamp(40px, 9vh, 120px);
+  /* top: clamp(40px, 9vh, 120px);
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   font-weight: 900;
-  letter-spacing: .35em;
-  line-height: 1.15;
+  letter-spacing: .35em; */
+  /* line-height: 1.15;
   color:#111;
   z-index: 3;
-}
-@media (max-width: 1100px){
+} */ 
+/* @media (max-width: 1100px){
   .scroll-down{ left: -28px; top: 24px; }
-}
+} */
 
 
 /* на всякий случай — выключаем любые «точки/кнопки» слева */
-.svc-rail, .rail-dot, .scroll-fab, .scroll-circle, .scroll-btn{ display:none !important; }
+/* .svc-rail, .rail-dot, .scroll-fab, .scroll-circle, .scroll-btn{ display:none !important; } */
 
 /* ---- строка карточек: три квадрата в ряд ---- */
 .svc-cards{
@@ -2228,7 +2228,7 @@ h1, h2.display, .display-title{
 
 
 /* 1) Убрать дубль индикатора, если где-то остался */
-.scroll-down{ display:none !important; }
+/* .scroll-down{ display:none !important; } */
 
 /* 2) Вернуть/оставить штатный rail (ничего не меняем в его стиле) */
 .svc-rail{ display:flex !important; }  /* просто убедиться, что он видим */
@@ -2243,12 +2243,12 @@ h1, h2.display, .display-title{
   align-items: stretch;
 }
 
-.svc-card{
+/* .svc-card{
   position: relative !important;
   width: 100% !important;
   height: auto;
   aspect-ratio: 1 / 1;                  /* строго квадратные */
-}
+} 
 
 /* Фолбэк для старых браузеров без aspect-ratio */
 @supports not (aspect-ratio: 1 / 1){
@@ -2933,14 +2933,14 @@ assets/img/crm_2.png
 .svc-read:hover span{ transform:translateX(4px) }
 
 /* ====== ПЕРЕЛИСТЫВАНИЕ: “вторая страница” заезжает справа ====== */
-.svc-card::before{
+/* .svc-card::before{
   content:"";
   position:absolute; inset:0;
   background: var(--svc-img) center/cover no-repeat;
   transform: translateX(100%);            /* старт: спрятана справа */
-  transition: transform .55s ease;
+  /* transition: transform .55s ease;
   z-index:1;
-}
+/* } */ 
 .svc-card:hover::before{ transform: translateX(0); } /* заезд поверх */
 
 .svc-card > *{ position:relative; z-index:2; transition: opacity .25s ease; }
