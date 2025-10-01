@@ -2118,3 +2118,89 @@ h1, h2.display, .display-title{
   .scroll-down{ display:none; }       /* слева скрываем на мобилке */
   .svc-cards{ grid-template-columns: 1fr; } /* карточки в столбик */
 }
+
+/* показываем только вертикальный двухстрочный скролл */
+.scroll-down{
+  position: absolute;
+  left: clamp(12px, 4vw, 56px);
+  top: clamp(24px, 8vh, 120px);
+  font-weight: 900;
+  letter-spacing: .35em;
+  line-height: 1.15;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color:#111;
+  z-index: 3;
+}
+
+/* на мобилках чуть ближе к краю */
+@media (max-width: 900px){
+  .scroll-down{ left: 12px; top: 48px; }
+}
+
+/* на всякий — гасим «второй» вариант, если он где-то остался */
+.svc-rail{ display:none !important; }
+
+/* секция опыта (используй свой id/класс, если другой) */
+#experience .pill,
+.experience .pill { display:none !important; }
+
+/* крупный заголовок по центру и чуть больше */
+#experience .exp-head h3,
+.experience .exp-head h3 {
+  text-align:center;
+  font-size: clamp(32px, 4.6vw, 54px);
+  letter-spacing: .01em;
+  margin: .6rem 0 1.2rem;
+  font-weight: 900;
+  font-family: 'Space Grotesk', Inter, system-ui, sans-serif;
+}
+
+/* небольшой «воздух» сверху секции опыта */
+#experience,
+.experience { scroll-margin-top: 80px; }
+
+/* текст абзаца — сохраняем как есть, а список увеличиваем */
+.hero-list{
+  margin-top: 18px;             /* отступ от абзаца выше */
+  margin-bottom: 28px;
+  padding-left: 24px;
+  font-size: clamp(18px, 2.2vw, 22px);  /* было меньше — теперь крупнее */
+  line-height: 1.55;
+}
+.hero-list li{ margin: 10px 0; }
+
+/* чуть больше зазора над кнопками */
+.cta-row, .hero-buttons{ margin-top: 18px; }
+
+/* стилизуем ссылку как текст с подчёркиванием-линией */
+.btn-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding: 6px 0;               /* без больших паддингов */
+  border: 0;                    /* без контура */
+  background: transparent;
+  border-radius: 0;
+  font-weight: 600;             /* не жирный 900, а умеренный */
+  color:#111;
+  position: relative;
+}
+
+/* нижняя линия как отдельный штрих */
+.btn-link::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-4px;
+  height:2px;
+  background:#111;
+  transform-origin:left;
+  transform:scaleX(1);
+  transition:transform .25s ease, opacity .25s ease;
+}
+
+/* эффект наведения — лёгкое удлинение/появление */
+.btn-link:hover::after{
+  transform:scaleX(1.05);
+}
+.btn-link .arrow{ transform: translateY(-1px); }
