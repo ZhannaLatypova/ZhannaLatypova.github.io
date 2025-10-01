@@ -1934,3 +1934,56 @@ h1, h2.display, .display-title{
   z-index: 50;          /* будет поверх всего */
   pointer-events: none; /* чтобы не мешала кликам */
 }
+
+.scroll-fixed{
+  position: fixed;
+  top: 40%;
+  left: max(16px, calc((100vw - min(1160px,92vw))/2 - 28px)); /* держим в поле, а не над контентом */
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* Десктоп — без изменений вашего текущего поведения */
+.hero-grid{ grid-template-columns: 1fr 1fr; align-items: start; }
+
+/* Мобилка/планшет: всё в столбик, облако/мини-линки не наслаиваются */
+@media (max-width: 820px){
+  .hero-grid{
+    grid-template-columns: 1fr;
+    gap: 18px;
+    min-height: auto;
+  }
+
+  /* верхние мини-линки и радуга — в поток, над фото */
+  .mini-cards{ position: static; order: 3; gap: 12px; }
+  .color-cloud{ position:absolute; left: 10%; right:auto; top:-32px; width: 280px; height: 140px; z-index:0; }
+
+  /* фото строго под текстом, по центру; без заезда на тикер */
+  .hero .hero-visual{ position: relative; min-height: auto; }
+  .hero .hero-visual .portrait-wrap{
+    position: relative;
+    right: auto; bottom: 0;
+    margin: 6px auto 0;
+    z-index: 1;
+  }
+  .hero .hero-visual .portrait{
+    max-width: min(92vw, 520px);
+    transform: none !important;
+  }
+
+  /* чёрный круг на фото — аккуратнее позиция */
+  .hero .hero-visual .hello-badge{
+    left: 10px !important;
+    bottom: 20px !important;
+    z-index: 2 !important;
+  }
+
+  /* отступы у кнопок — чтобы не «липли» к тикеру */
+  .cta-row, .hero-buttons{ margin-bottom: 28px; }
+
+  /* тикер сразу после секции, без наслоений */
+  .ticker{ margin-top: 0; }
+}
+
+/* На десктопе: если иконка-«зигзаг» мешает — можно скрыть */
+.icon-linechart{ display:none; }   /* ← убрать полностью */
