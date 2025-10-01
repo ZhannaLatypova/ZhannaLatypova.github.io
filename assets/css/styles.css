@@ -301,16 +301,7 @@ input:focus,textarea:focus{outline:3px solid rgba(0,0,0,.08); border-color:#bdbd
   }
 }
 
-/* Если sticky ведёт себя нестабильно — принудительно фиксируем на мобиле */
-@media (max-width: 1600px){
-  .scroll-down{
-    position: fixed;
-    top: auto;
-    bottom: 18px;       /* внизу слева */
-    left: 14px;
-    transform: none;
-  }
-}
+
 
 /* У hero добавим «воздуха», чтобы нижние блоки не наползали */
 .hero{
@@ -1916,4 +1907,30 @@ h1, h2.display, .display-title{
 
   /* полосу (ticker) не подпираем вплотную */
   .ticker{ margin-top: 16px !important; }
+}
+
+/* Scroll-down фиксируем, но под карточками */
+.scroll-down {
+  position: sticky;     /* липнет к экрану внутри своей секции */
+  top: 120px;           /* на какой высоте закрепить */
+  left: 0;
+  z-index: 1;           /* ниже карточек (карточкам дай z-index:2 при hover) */
+  pointer-events: none; /* чтобы не мешал кликам по карточкам */
+}
+
+/* Карточки всегда выше */
+.svc-card,
+.case-card {
+  position: relative;
+  z-index: 2;
+}
+
+/* Если хочешь, чтобы стрелка всегда была видна, но не перекрывала —
+   перемести её в отдельный контейнер сбоку */
+.scroll-container {
+  position: fixed;
+  top: 40%;
+  left: 20px;
+  z-index: 50;          /* будет поверх всего */
+  pointer-events: none; /* чтобы не мешала кликам */
 }
