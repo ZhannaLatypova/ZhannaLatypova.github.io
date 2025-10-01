@@ -3053,3 +3053,112 @@ assets/img/crm_2.png
   .svc-card{ aspect-ratio:auto; min-height: 260px; }
   .svc-card h4{ font-size: clamp(18px, 5.6vw, 24px); }
 }
+/* ==== SERVICES — ФИНАЛЬНЫЙ ОВЕРРАЙД ==== */
+
+/* Рейка SCROLL DOWN под первой строкой WHAT I'M (как в рефе) */
+.section.services-v2 .wrap{ position:relative !important; }
+.section.services-v2 .svc-head{ position:relative !important; }
+.section.services-v2 .svc-rail{
+  position:absolute !important;
+  left:-62px !important;      /* подгон: немного левее обёртки — окажется у буквы “O” */
+  top:6px !important;         /* сразу под первой строкой заголовка */
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:14px !important;
+  z-index:3 !important;
+}
+.section.services-v2 .svc-rail .rail-text{
+  writing-mode:vertical-rl !important;
+  transform:rotate(180deg) !important;
+  font: 900 12px/1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+  letter-spacing:.12em !important;
+}
+.section.services-v2 .svc-rail .rail-line{
+  width:2px !important; height:180px !important; background:#111 !important; display:block !important;
+}
+.section.services-v2 .svc-rail .rail-dot{
+  width:60px !important; height:60px !important; border-radius:999px !important;
+  background:#111 !important; color:#fff !important; display:grid !important; place-items:center !important;
+  box-shadow:0 18px 28px rgba(0,0,0,.18) !important; font-size:22px !important; line-height:1 !important;
+}
+
+@media (max-width:1100px){
+  .section.services-v2 .svc-rail{ left:-54px !important; }
+}
+@media (max-width:740px){
+  .section.services-v2 .svc-rail{ display:none !important; }
+}
+
+/* Карточки: сетка, ограничение размеров, тонкий контур */
+.section.services-v2 .svc-cards{
+  display:grid !important;
+  grid-template-columns: repeat(3, minmax(260px, 1fr)) !important;
+  gap:26px !important;
+  align-items:stretch !important;
+}
+.section.services-v2 .svc-card{
+  position:relative !important;
+  overflow:hidden !important;
+  border-radius:24px !important;
+  border:1.5px solid #1f1f23 !important;   /* тоньше линия */
+  min-height: clamp(280px, 34vw, 360px) !important;
+  aspect-ratio: 1 / 1 !important;
+  padding:30px !important;
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease !important;
+}
+.section.services-v2 .svc-card.dark{ background:#111 !important; color:#fff !important; border-color:#111 !important; }
+.section.services-v2 .svc-card.outline{ background:#fff !important; color:#111 !important; }
+
+.section.services-v2 .svc-card h4{
+  margin:0 !important;
+  font-weight:900 !important;
+  letter-spacing:.01em !important;
+  font-size: clamp(20px, 2.1vw, 28px) !important;  /* текст поменьше, всегда влазит */
+  line-height:1.1 !important;
+}
+.section.services-v2 .svc-read{ position:absolute !important; left:30px !important; bottom:24px !important; font-weight:800 !important; }
+.section.services-v2 .svc-read span{ transition:transform .2s ease !important; }
+.section.services-v2 .svc-read:hover span{ transform:translateX(4px) !important; }
+
+/* ПЕРЕЛИСТЫВАНИЕ: используем ::after с повышенной специфичностью */
+.section.services-v2 .svc-card::after{
+  content:"" !important;
+  position:absolute !important; inset:0 !important;
+  background: var(--svc-img) center/cover no-repeat !important;
+  transform: translateX(100%) !important;      /* спрятана справа */
+  transition: transform .55s ease !important;
+  z-index:2 !important;                        /* поверх контента */
+}
+.section.services-v2 .svc-card:hover::after{ transform: translateX(0) !important; }
+.section.services-v2 .svc-card > *{ position:relative !important; z-index:3 !important; transition:opacity .25s ease !important; }
+.section.services-v2 .svc-card:hover h4,
+.section.services-v2 .svc-card:hover .svc-icon,
+.section.services-v2 .svc-card:hover .svc-read{ opacity:0 !important; }
+.section.services-v2 .svc-card:hover{
+  transform:translateY(-4px) !important;
+  box-shadow:0 20px 50px rgba(0,0,0,.18) !important;
+  border-color:#000 !important;
+}
+
+/* Подключаем картинки через CSS-переменные (локальные + абсолютные как запас) */
+.section.services-v2 .svc-card.is-crm{ 
+  --svc-img: url("assets/img/crm_2.png"), url("https://ZhannaLatypova.github.io/assets/img/crm_2.png") !important;
+}
+.section.services-v2 .svc-card.is-ai{
+  --svc-img: url("assets/img/ai_2.png"), url("https://ZhannaLatypova.github.io/assets/img/ai_2.png") !important;
+}
+.section.services-v2 .svc-card.is-bi{
+  --svc-img: url("assets/img/bi_2.png"), url("https://ZhannaLatypova.github.io/assets/img/bi_2.png") !important;
+}
+
+/* Адаптив: не разрастаются на узких экранах */
+@media (max-width:1100px){
+  .section.services-v2 .svc-cards{ grid-template-columns: repeat(2, 1fr) !important; }
+  .section.services-v2 .svc-card{ min-height: clamp(260px, 44vw, 340px) !important; }
+}
+@media (max-width:740px){
+  .section.services-v2 .svc-cards{ grid-template-columns: 1fr !important; gap:18px !important; }
+  .section.services-v2 .svc-card{ aspect-ratio:auto !important; min-height: 260px !important; }
+  .section.services-v2 .svc-card h4{ font-size: clamp(18px, 5.6vw, 24px) !important; }
+}
