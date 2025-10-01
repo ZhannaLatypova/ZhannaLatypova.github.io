@@ -1941,13 +1941,13 @@ h1, h2.display, .display-title{
    При hover — ::before «перелистывается» (rotateY), открывая ::after.
 */
 #services .svc-card::before,
-#services .svc-card::after{
+/* #services .svc-card::after{
   content:"";
   position:absolute; inset:0;
   background: center / cover no-repeat;
   border-radius: inherit;
   will-change: transform, opacity;
-}
+} */
 
 /* старт: первая картинка поверх, вторая под ней */
 #services .svc-card::before{
@@ -1959,14 +1959,14 @@ h1, h2.display, .display-title{
   /* слегка «белая страница», чтобы контент читался до hover (по желанию) */
   box-shadow: 0 14px 38px rgba(0,0,0,.18);
 }
-#services .svc-card::after{
+/* #services .svc-card::after{
   background-image: var(--svc-img-b);
   z-index: 1;
   filter: none;                   /* можно поставить brightness(.95) для dark */
-  transition: transform .5s ease, opacity .35s ease;
+  /* transition: transform .5s ease, opacity .35s ease;
   transform: translateZ(0);       /* на месте */
-  opacity: 1;
-}
+  /* opacity: 1;
+} */ 
 
 /* эффект листания и лёгкое «оживление» нижней картинки */
 #services .svc-card:hover::before{ transform: rotateY(-110deg); }
@@ -2013,25 +2013,25 @@ h1, h2.display, .display-title{
     display:flex; flex-direction:column; justify-content:space-between; padding:28px;
   }
 }
-/* --- SERVICES: вернуть первую картинку (A) поверх второй (B) --- */
-#services .svc-card::before{
-  content:"" !important;
+/* /* --- SERVICES: вернуть первую картинку (A) поверх второй (B) --- */
+/* #services .svc-card::before{ */
+  /* content:"" !important;
   position:absolute; inset:0;
   background: var(--svc-img-a) center / cover no-repeat !important;
   border-radius: inherit;
   z-index: 2 !important;                 /* страница A сверху */
-  transform-origin: left center;
+  /* transform-origin: left center;
   transform: rotateY(0deg);
-  transition: transform .7s cubic-bezier(.2,.7,.2,1), opacity .3s ease;
-}
+  transition: transform .7s cubic-bezier(.2,.7,.2,1), opacity .3s ease; */ 
+/* }
 #services .svc-card::after{
   content:"" !important;
   position:absolute; inset:0;
   background: var(--svc-img-b) center / cover no-repeat !important;
   border-radius: inherit;
   z-index: 1 !important;                 /* страница B снизу */
-  transition: transform .5s ease, opacity .35s ease;
-}
+  /* transition: transform .5s ease, opacity .35s ease;
+} */ 
 
 /* ховер: «перелистывание» + лёгкий зум нижнего слоя */
 #services .svc-card:hover::before{ transform: rotateY(-110deg); }
