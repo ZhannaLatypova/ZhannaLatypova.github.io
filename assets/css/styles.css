@@ -301,6 +301,17 @@ input:focus,textarea:focus{outline:3px solid rgba(0,0,0,.08); border-color:#bdbd
   }
 }
 
+/* Если sticky ведёт себя нестабильно — принудительно фиксируем на мобиле */
+@media (max-width: 1600px){
+  .scroll-down{
+    position: fixed;
+    top: auto;
+    bottom: 18px;       /* внизу слева */
+    left: 14px;
+    transform: none;
+  }
+}
+
 /* У hero добавим «воздуха», чтобы нижние блоки не наползали */
 .hero{
   padding: 80px 0 120px;   /* сверху/снизу */
