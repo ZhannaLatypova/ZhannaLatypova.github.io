@@ -3309,3 +3309,10 @@ assets/img/crm_2.png
 #services .svc-card.is-bi{
   --svc-img: url("/assets/img/bi_2.png"), url("https://ZhannaLatypova.github.io/assets/img/bi_2.png") !important;
 }
+
+/* SERVICES — убрать любые старые фоны и внутренние <img> в карточках */
+#services .svc-card::before{ content:none !important; }          /* если где-то ещё создаётся фон через ::before */
+#services .svc-card .card-media{ display:none !important; }       /* старый контейнер с картинкой */
+#services .svc-card img{ display:none !important; }               /* внутренние <img>, чтобы не было «второй» картинки */
+
+#services .svc-card img.svc-keep{ display:inline-block !important; }
