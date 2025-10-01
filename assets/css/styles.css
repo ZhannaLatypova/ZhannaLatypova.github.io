@@ -2262,3 +2262,98 @@ h1, h2.display, .display-title{
   border-radius: 50%;
   filter: contrast(140%);
 }
+/* ===== REFERENCES ===== */
+.refs { position: relative; padding: clamp(44px,6vw,84px) 0; }
+.refs .wrap { position: relative; }
+
+.refs-head { text-align:center; margin-bottom: clamp(22px,3.2vw,38px); position:relative; }
+.refs-title{
+  font-family: 'Space Grotesk', Inter, system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: .01em;
+  font-size: clamp(28px, 3.6vw, 44px);
+  margin: .2rem 0 .4rem;
+}
+.refs-lede{ color:#7a7a83; max-width:70ch; margin:.2rem auto 0; }
+
+.refs-spark{
+  position:absolute; left:50%; top:-16px; width:28px; height:28px; transform:translateX(-50%);
+  background:
+    radial-gradient(circle at 50% 50%, #000 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(0,0,0,.65) 1px, transparent 2px);
+  background-size:28px 28px, 6px 6px; background-position:center, center;
+  mask: radial-gradient(circle, #000 45%, transparent 46%);
+  border-radius:50%; filter:contrast(140%);
+}
+
+/* Карточка */
+.ref-card{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items:center;
+  gap: clamp(22px,4vw,52px);
+  padding: clamp(18px,2.4vw,28px);
+  border-radius: 22px;
+  background: #f7f7f8;
+  box-shadow: 0 26px 60px rgba(0,0,0,.10);
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.ref-card:hover{ transform: translateY(-6px); box-shadow: 0 36px 76px rgba(0,0,0,.14); }
+
+/* Левая колонка */
+.ref-kicker{
+  display:inline-block;
+  font-weight: 900;
+  letter-spacing: .14em;
+  font-size: 12px;
+  padding: 6px 10px;
+  border: 2px solid #111;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.ref-quote{
+  margin: .4rem 0 1.1rem;
+  font-weight: 900;
+  line-height: 1.08;
+  font-size: clamp(26px, 4.8vw, 56px);
+  letter-spacing: .005em;
+}
+.ref-author{ color:#6c6c73; margin-top:.6rem; }
+.ref-name{ font-weight:900; color:#111; font-size: clamp(16px,2.1vw,20px); }
+.ref-role{ margin-top:.15rem; }
+.ref-wave{ margin-top:.5rem; color:#111; }
+
+/* Фото «звездой» (burst). Fallback — округлый прямоугольник */
+.ref-photo{ position:relative; justify-self:end; }
+.ref-photo img{
+  width: clamp(280px, 36vw, 460px);
+  height: clamp(280px, 36vw, 460px);
+  object-fit: cover;
+  display:block;
+  border-radius: 18px;
+  transition: transform .35s ease, filter .35s ease;
+  filter: saturate(105%);
+}
+/* «Выпуклость» при ховере всей карточки */
+.ref-card:hover .ref-photo img{ transform: scale(1.04); }
+
+/* Вырезка звездой (если поддерживается clip-path) */
+@supports (clip-path: polygon(0 0)){
+  .ref-photo img{
+    border-radius: 0;
+    /* восьмиконечная звезда/«снежинка» */
+    clip-path: polygon(
+      50% 0%, 60% 28%, 88% 20%, 78% 50%,
+      100% 62%, 72% 68%, 80% 96%, 50% 80%,
+      20% 96%, 28% 68%, 0% 62%, 22% 50%,
+      12% 20%, 40% 28%
+    );
+  }
+}
+
+/* Адаптив: в колонку */
+@media (max-width: 980px){
+  .ref-card{ grid-template-columns: 1fr; text-align:left; }
+  .ref-photo{ justify-self:center; }
+}
