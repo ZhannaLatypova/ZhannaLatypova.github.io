@@ -2407,3 +2407,92 @@ h1, h2.display, .display-title{
   .svc-right{ justify-self: start; max-width: 100%; }
   .svc-lede{ max-width: 100%; }
 }
+
+/* ===== SERVICES layout ===== */
+.services-layout{ position:relative; }
+
+/* rail слева — как в рефе */
+.svc-rail{
+  position:absolute;
+  left:-70px;               /* сдвиг за сетку */
+  top: 260px;               /* вертикально по центру карточек */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  z-index:0;
+}
+.rail-text{
+  writing-mode:vertical-rl;
+  transform: rotate(180deg);
+  font-weight:800;
+  letter-spacing:.22em;
+  font-size:12px;
+}
+.rail-line{ width:2px; height:160px; background:#111; display:block; }
+.rail-dot{
+  width:54px; height:54px; border-radius:999px;
+  background:#111; color:#fff; display:grid; place-items:center;
+  font-weight:900; font-size:22px; box-shadow:0 18px 28px rgba(0,0,0,.18);
+}
+
+/* заголовок + правый столбец */
+.svc-head{
+  display:grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items:start;
+  gap:48px;
+  margin-bottom:16px;
+}
+.svc-left .pill{ margin-bottom:10px; }
+.svc-title{ margin:0; line-height:.96; font-weight:900; font-size:clamp(40px,6.8vw,88px); }
+.svc-right{ display:grid; grid-template-columns:1fr auto; gap:18px; align-items:start; }
+.svc-lede{ color:#6c6c73; margin:0; max-width:32ch; }
+.svc-all{ border:2px solid #111; border-radius:999px; padding:14px 22px; font-weight:900; }
+
+/* карточки — ровные квадраты */
+.svc-cards{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap:28px;
+  align-items:start;
+  margin-top:28px;
+}
+.svc-card{
+  position:relative;
+  border-radius:18px;
+  padding:28px;
+  aspect-ratio: 1 / 1;         /* квадрат */
+  min-height:320px;            /* страховка */
+  display:flex; flex-direction:column; justify-content:space-between;
+  box-shadow:0 30px 60px rgba(0,0,0,.10);
+  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.svc-card h4{ margin:0; font-weight:900; line-height:1.1; letter-spacing:.01em; font-size:clamp(20px,2.2vw,30px); }
+.svc-read{ font-weight:800; display:inline-flex; align-items:center; gap:8px; }
+
+/* темы карточек */
+.svc-card.dark{
+  background:#111; color:#fff; border:0;
+}
+.svc-card.outline{
+  background:#fff;
+  border:1.5px solid #111;     /* тоньше контур */
+}
+
+/* hover */
+.svc-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 22px 56px rgba(0,0,0,.16);
+}
+
+/* адаптив — прячем rail и даём 1 колонку */
+@media (max-width:1100px){
+  .svc-rail{ display:none; }
+  .svc-head{ grid-template-columns:1fr; gap:20px; }
+  .svc-right{ grid-template-columns:1fr; }
+  .svc-cards{ grid-template-columns:1fr; gap:18px; }
+}
+
+/* (если где-то остались стили другого scroll — выключаем) */
+.scroll-down, .sd-label, .sd-line, .sd-dot{ display:none !important; }
