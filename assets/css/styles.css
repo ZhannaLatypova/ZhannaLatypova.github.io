@@ -2352,25 +2352,46 @@ h1, h2.display, .display-title{
   }
 } */ 
 
-/* Вырезка звездой (широкие лучи) */
-@supports (clip-path: polygon(0 0)){
-  .ref-photo img{
-    border-radius: 0;
+/* ===== ЗВЕЗДА (широкие лучи) — только форма через clip-path ===== */
+@supports (clip-path: polygon(0% 0%, 100% 0%, 0% 100%)) {
+  .shape--asterisk img{
+    /* восьмиконечная звезда с широкими лучами */
     clip-path: polygon(
-      50% 0%, 68% 24%, 90% 18%, 80% 50%,
-      100% 68%, 70% 72%, 78% 100%, 50% 82%,
-      22% 100%, 30% 72%, 0% 68%, 20% 50%,
-      10% 18%, 32% 24%
+      50% 0%,
+      70% 22%,  92% 18%,
+      82% 50%,
+      100% 70%, 72% 72%,
+      80% 100%,
+      50% 82%,
+      20% 100%,
+      28% 72%,
+      0% 70%,
+      18% 50%,
+      8% 18%,   30% 22%
     );
-    transition: transform 1s linear;
-    display: block;
-  }
-
-  /* вращение по часовой */
-  .ref-photo:hover img{
-    transform: rotate(360deg);
   }
 }
+
+/* ===== ОДНОКРАТНОЕ ВРАЩЕНИЕ ПРИ НАВЕДЕНИИ ===== */
+/* Вариант 1 (transition): крутится один оборот при наведении, возвращается назад при уходе курсора */
+.ref-photo img{
+  display:block;
+  transition: transform 0.9s linear;
+  transform: rotate(0deg);
+}
+.ref-photo:hover img{
+  transform: rotate(360deg);
+}
+
+/* Если хочешь именно "анимацией на вход" (каждый раз заново), можно так:
+.ref-photo:hover img{
+  animation: spin-once 0.9s linear 1;
+}
+@keyframes spin-once {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+*/
 
 /* ——— Общий контейнер фото в REFERENCES ——— */
 .ref-card { display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center; }
