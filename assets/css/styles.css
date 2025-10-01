@@ -2726,6 +2726,93 @@ h1, h2.display, .display-title{
   .services-v2 .svc-card h4{ font-size: clamp(18px, 4.8vw, 22px) !important; }
 }
 
+/* ====== КОНТРОЛЬ МАКСИМАЛЬНОГО РАЗМЕРА КАРТОЧЕК ====== */
+:root{
+  /* максимум для квадрата на больших экранах */
+  --svc-card-max: 420px;
+}
+
+/* сетка — карточки не перерастают максимум */
+.services-v2 .svc-cards{
+  /* авто-упаковка + минимальный разумный размер */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)) !important;
+  place-items: start !important;
+}
+
+/* сам квадрат — ограничим максимум по ширине/высоте */
+.services-v2 .svc-card{
+  aspect-ratio: 1 / 1 !important;
+  max-width: var(--svc-card-max) !important;   /* <— не раздуваемся */
+  max-height: var(--svc-card-max) !important;
+  width: 100% !important;
+}
+
+/* на очень широких экранах можно чуть крупнее — если нужно, увеличь цифру */
+@media (min-width: 1600px){
+  :root{ --svc-card-max: 460px; }
+}
+
+/* на планшете и мобильном — меньше и более вытянуто */
+@media (max-width: 980px){
+  :root{ --svc-card-max: 440px; }             /* безопасный “ потолок ” */
+  .services-v2 .svc-card{
+    aspect-ratio: 4 / 5 !important;           /* не слишком высокий квадрат */
+    max-width: 520px !important;
+  }
+}
+
+/* ====== ХОВЕР-ПЕРЕЛИСТЫВАНИЕ ФОНОВ ======
+   Делаем вторую картинку фоном через ::before и показываем её на ховере.
+   Для читаемости светлых карточек — лёгкое затухание контента.
+*/
+.services-v2 .svc-card{
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* слой с картинкой-«второй страницей» */
+.services-v2 .svc-card::before{
+  content:"" !important;
+  position:absolute !important; inset:0 !important;
+  background: center / cover no-repeat var(--svc-bg) !important;
+  opacity: 0 !important;
+  transform: translateX(10%) scale(1.04) !important;    /* чуть «съезжает» справа */
+  transition: opacity .45s ease, transform .45s ease !important;
+  z-index: 0 !important;
+}
+
+/* контент поверх */
+.services-v2 .svc-card > *{
+  position: relative !important; z-index: 1 !important;
+  transition: opacity .25s ease !important;
+}
+
+/* ховер — «перелистнули»: фон въехал, текст подсел (но не исчезает резко) */
+.services-v2 .svc-card:hover::before{
+  opacity: 1 !important;
+  transform: translateX(0) scale(1.02) !important;
+}
+.services-v2 .svc-card:hover h4,
+.services-v2 .svc-card:hover .svc-read,
+.services-v2 .svc-card:hover .svc-icon{
+  opacity: .0 !important;    /* если хочешь оставить полупрозрачно — поставь .35 */
+}
+
+/* для тёмной карты фон чуть светлее, чтобы не «провалиться» */
+.services-v2 .svc-card.dark::before{ filter: brightness(.9) !important; }
+
+/* ====== ПРИВЯЗКА К КОНКРЕТНЫМ КАРТОЧКАМ (картинки-«вторые страницы») ====== */
+/* Задаём картинки через CSS-переменную */
+.services-v2 .svc-card.is-crm{ --svc-bg: url("/assets/img/crm_2.png"); }
+.services-v2 .svc-card.is-ai { --svc-bg: url("/assets/img/ai_2.png"); }
+.services-v2 .svc-card.is-bi { --svc-bg: url("/assets/img/bi_2.png"); }
+
+/* если требуется абсолютный фолбэк (CDN/gh-pages), можно добавить второй URL:
+.services-v2 .svc-card.is-crm{ --svc-bg:
+  url("/assets/img/crm_2.png"), url("https://ZhannaLatypova.github.io/assets/img/crm_2.png"); }
+*/
+
+
 /* === SERVICES BLOCK FIX === */
 
 /* Описание справа: аккуратно, как на рефе */
