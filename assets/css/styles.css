@@ -2421,8 +2421,8 @@ h1, h2.display, .display-title{
   .svc-cards{ grid-template-columns:1fr; gap:18px; }
 }
 
-/* (если где-то остались стили другого scroll — выключаем) */
-.scroll-down, .sd-label, .sd-line, .sd-dot{ display:none !important; }
+/* /* (если где-то остались стили другого scroll — выключаем) */
+/* .scroll-down, .sd-label, .sd-line, .sd-dot{ display:none !important; } */ */
 
 /* === SERVICES: контейнер и rail === */
 .services-layout{
@@ -2697,15 +2697,15 @@ h1, h2.display, .display-title{
 }
 
 /* слой с картинкой-«второй страницей» */
-.services-v2 .svc-card::before{
+/* .services-v2 .svc-card::before{
   content:"" !important;
   position:absolute !important; inset:0 !important;
   background: center / cover no-repeat var(--svc-bg) !important;
   opacity: 0 !important;
   transform: translateX(10%) scale(1.04) !important;    /* чуть «съезжает» справа */
-  transition: opacity .45s ease, transform .45s ease !important;
+  /* transition: opacity .45s ease, transform .45s ease !important;
   z-index: 0 !important;
-}
+/* } */ */ */
 
 /* контент поверх */
 .services-v2 .svc-card > *{
@@ -2713,11 +2713,11 @@ h1, h2.display, .display-title{
   transition: opacity .25s ease !important;
 }
 
-/* ховер — «перелистнули»: фон въехал, текст подсел (но не исчезает резко) */
-.services-v2 .svc-card:hover::before{
-  opacity: 1 !important;
-  transform: translateX(0) scale(1.02) !important;
-}
+/* /* ховер — «перелистнули»: фон въехал, текст подсел (но не исчезает резко) */
+/* .services-v2 .svc-card:hover::before{ */
+  /* opacity: 1 !important; */
+  /* transform: translateX(0) scale(1.02) !important; */
+} */
 .services-v2 .svc-card:hover h4,
 .services-v2 .svc-card:hover .svc-read,
 .services-v2 .svc-card:hover .svc-icon{
@@ -2725,7 +2725,7 @@ h1, h2.display, .display-title{
 }
 
 /* для тёмной карты фон чуть светлее, чтобы не «провалиться» */
-.services-v2 .svc-card.dark::before{ filter: brightness(.9) !important; }
+/* .services-v2 .svc-card.dark::before{ filter: brightness(.9) !important; } */
 
 /* ====== ПРИВЯЗКА К КОНКРЕТНЫМ КАРТОЧКАМ (картинки-«вторые страницы») ====== */
 /* Задаём картинки через CSS-переменную */
@@ -3382,6 +3382,7 @@ assets/img/crm_2.png
   transition: transform .55s ease !important;
   z-index: 2 !important;                       /* поверх текста */
   pointer-events:none !important;
+  border-radius: inherit; 
 }
 #services .svc-card:hover::after{ transform: translateX(0) !important; }
 
@@ -3395,3 +3396,81 @@ assets/img/crm_2.png
 #services .svc-card.is-crm{ --svc-img: url("/assets/img/crm_2.png"), url("https://ZhannaLatypova.github.io/assets/img/crm_2.png") !important; }
 #services .svc-card.is-ai { --svc-img: url("/assets/img/ai_2.png"),  url("https://ZhannaLatypova.github.io/assets/img/ai_2.png")  !important; }
 #services .svc-card.is-bi { --svc-img: url("/assets/img/bi_2.png"),  url("https://ZhannaLatypova.github.io/assets/img/bi_2.png")  !important; }
+
+/* карточка даёт контекст слоям */
+#services .svc-card{
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* контент поверх картинки-страницы */
+#services .svc-card > *{
+  position: relative !important;
+  z-index: 3 !important;
+  transition: opacity .25s ease !important;
+}
+
+/* на ховере текст уводим, чтобы не мешал “второй странице” */
+#services .svc-card:hover > *{ opacity: 0 !important; }
+
+/* глушим старые попытки рисовать фон через ::before */
+#services .svc-card::before{ content: none !important; }
+
+#services .svc-card.is-crm{
+  --svc-img: url("/assets/img/crm_2.png"),
+             url("https://ZhannaLatypova.github.io/assets/img/crm_2.png");
+}
+#services .svc-card.is-ai{
+  --svc-img: url("/assets/img/ai_2.png"),
+             url("https://ZhannaLatypova.github.io/assets/img/ai_2.png");
+}
+#services .svc-card.is-bi{
+  --svc-img: url("/assets/img/bi_2.png"),
+             url("https://ZhannaLatypova.github.io/assets/img/bi_2.png");
+}
+
+#services .svc-cards{
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(260px, 1fr)) !important;
+  gap: 26px !important;
+  align-items: stretch !important;
+}
+#services .svc-card{
+  aspect-ratio: 1 / 1 !important;
+  min-height: 280px !important;
+  border-radius: 22px !important;
+  border: 1.25px solid #111 !important;  /* тонкий контур у светлых */
+}
+#services .svc-card.dark{ border: 0 !important; }          /* у тёмной нет контура */
+@media (max-width:1100px){ #services .svc-cards{ grid-template-columns: 1fr !important; } }
+
+/* выключаем любые .scroll-down, чтобы не прыгало наверх */
+.scroll-down{ display:none !important; }
+
+/* Рельс слева под первой строкой WHAT I'M */
+#services .wrap{ position: relative !important; }
+#services .svc-head{ position: relative !important; }
+
+#services .svc-rail{
+  position: absolute !important;
+  left: -62px !important;   /* окажется примерно под буквой “O” */
+  top: 6px !important;      /* сразу под первой строкой заголовка */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 14px !important;
+  z-index: 3 !important;
+}
+#services .svc-rail .rail-text{
+  writing-mode: vertical-rl !important;
+  transform: rotate(180deg) !important;
+  font: 900 12px/1 Inter, system-ui, sans-serif !important;
+  letter-spacing: .12em !important;
+}
+#services .svc-rail .rail-line{ width:2px !important; height:180px !important; background:#111 !important; }
+#services .svc-rail .rail-dot{
+  width:60px !important; height:60px !important; border-radius:999px !important;
+  background:#111 !important; color:#fff !important; display:grid !important; place-items:center !important;
+  box-shadow:0 18px 28px rgba(0,0,0,.18) !important; font-size:22px !important;
+}
+@media (max-width:1100px){ #services .svc-rail{ display:none !important; } }
