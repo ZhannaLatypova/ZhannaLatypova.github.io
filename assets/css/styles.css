@@ -2803,9 +2803,10 @@ h1, h2.display, .display-title{
 
 /* ====== ПРИВЯЗКА К КОНКРЕТНЫМ КАРТОЧКАМ (картинки-«вторые страницы») ====== */
 /* Задаём картинки через CSS-переменную */
-.services-v2 .svc-card.is-crm{ --svc-bg: url("/assets/img/crm_2.png"); }
-.services-v2 .svc-card.is-ai { --svc-bg: url("/assets/img/ai_2.png"); }
-.services-v2 .svc-card.is-bi { --svc-bg: url("/assets/img/bi_2.png"); }
+.services-v2 .svc-card.is-crm{ --svc-bg: url("ZhannaLatypova.github.io/assets/img/crm_2.png"); }
+.services-v2 .svc-card.is-ai { --svc-bg: url("ZhannaLatypova.github.io/assets/img/ai_2.png"); }
+.services-v2 .svc-card.is-bi { --svc-bg: url("ZhannaLatypova.github.io/assets/img/bi_2.png"); }
+assets/img/crm_2.png
 
 /* если требуется абсолютный фолбэк (CDN/gh-pages), можно добавить второй URL:
 .services-v2 .svc-card.is-crm{ --svc-bg:
