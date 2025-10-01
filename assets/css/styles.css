@@ -1769,15 +1769,7 @@ h1, h2.display, .display-title{
   justify-content: space-between;
 }
 
-/* если в карточке есть <img> */
-.svc-card .card-media,
-.svc-card img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;                /* вторые картинки заполняют квадрат */
-}
+/*  */
 
 /* /* ваш фон через ::before тоже впишется */
 /* .svc-card::before{ */
