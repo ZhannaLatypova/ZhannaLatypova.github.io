@@ -2362,10 +2362,11 @@ h1, h2.display, .display-title{
       22% 100%, 30% 72%, 0% 68%, 20% 50%,
       10% 18%, 32% 24%
     );
-    transition: transform 1s linear; /* плавность */
+    transition: transform 1s linear;
+    display: block;
   }
 
-  /* При наведении крутим по часовой */
+  /* вращение по часовой */
   .ref-photo:hover img{
     transform: rotate(360deg);
   }
