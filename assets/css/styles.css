@@ -1997,3 +1997,41 @@ h1, h2.display, .display-title{
 
 /* На десктопе: если иконка-«зигзаг» мешает — можно скрыть */
 .icon-linechart{ display:none; }   /* ← убрать полностью */
+
+/* === SCROLL DOWN — единый вариант, без дублей === */
+
+/* Контейнер секции с карточками */
+.services-v2{ position: relative; }
+
+/* Сбрасываем ВСЕ старые стили скролл-ленты */
+.scroll-down{
+  all: unset;                      /* убираем наследованные стили/псевдо линии */
+  position: fixed;                 /* фиксируем к вьюпорту */
+  left: clamp(8px, 2vw, 24px);     /* аккуратно у левого поля */
+  top: 36vh;                       /* вертикальная позиция на экране */
+  z-index: 0;                      /* ниже карточек */
+  pointer-events: none;            /* клики проходят сквозь */
+  color: transparent;              /* скрываем исходный текст, рисуем псевдоэлементом */
+}
+
+/* Отрисовываем единственную надпись */
+.scroll-down::before{
+  content: "SCROLL DOWN";
+  writing-mode: vertical-rl;       /* вертикальная надпись */
+  transform: rotate(180deg);        /* чтобы читалось сверху вниз */
+  font: 800 12px/1 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: .22em;
+  color: #0b0b0c;
+  opacity: .8;
+}
+
+/* Карточки гарантированно поверх надписи */
+.svc-card{ position: relative; z-index: 2; }
+
+/* Отключаем старую «рейку»/линию (если она была) */
+.svc-rail{ display: none !important; }
+
+/* На мобильных — убираем надпись, чтобы не мешала */
+@media (max-width: 900px){
+  .scroll-down{ display: none !important; }
+}
