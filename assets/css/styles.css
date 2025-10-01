@@ -1712,13 +1712,6 @@ h1, h2.display, .display-title{
   justify-content: space-between;
 }
 
-/*  */
-
-/* /* ваш фон через ::before тоже впишется */
-/* .svc-card::before{ */
-  /* background-size:cover; */
-  /* background-position:center;
-} */ 
 
 /* адаптив колонок — квадраты остаются */
 @media (max-width:1100px){ .svc-cards{ grid-template-columns:repeat(2,1fr); } }
@@ -2019,3 +2012,30 @@ h1, h2.display, .display-title{
     display:flex; flex-direction:column; justify-content:space-between; padding:28px;
   }
 }
+/* --- SERVICES: вернуть первую картинку (A) поверх второй (B) --- */
+#services .svc-card::before{
+  content:"" !important;
+  position:absolute; inset:0;
+  background: var(--svc-img-a) center / cover no-repeat !important;
+  border-radius: inherit;
+  z-index: 2 !important;                 /* страница A сверху */
+  transform-origin: left center;
+  transform: rotateY(0deg);
+  transition: transform .7s cubic-bezier(.2,.7,.2,1), opacity .3s ease;
+}
+#services .svc-card::after{
+  content:"" !important;
+  position:absolute; inset:0;
+  background: var(--svc-img-b) center / cover no-repeat !important;
+  border-radius: inherit;
+  z-index: 1 !important;                 /* страница B снизу */
+  transition: transform .5s ease, opacity .35s ease;
+}
+
+/* ховер: «перелистывание» + лёгкий зум нижнего слоя */
+#services .svc-card:hover::before{ transform: rotateY(-110deg); }
+#services .svc-card:hover::after{ transform: scale(1.02); }
+
+/* контент над фонами, гасим на ховере */
+#services .svc-card > *{ position:relative; z-index:3; transition:opacity .25s ease; }
+#services .svc-card:hover > *{ opacity:0; }
