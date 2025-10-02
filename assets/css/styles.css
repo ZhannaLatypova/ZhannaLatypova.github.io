@@ -2868,31 +2868,30 @@ h1, h2.display, .display-title{
 } */ 
 
 
-/* ДЛИННАЯ ЧЁРНАЯ ЛИНИЯ (выходит за круг) */
+/* Чёрная длинная линия */
 .hello-badge::before {
   content: "";
   position: absolute;
-  width: 2px;                
-  height: 220px;             /* длина линии больше, чем диаметр круга */
-  background: #000;          
+  width: 2px;
+  height: 300px; /* длиннее диагонали, чтобы выходила наружу */
+  background: #000;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
   z-index: 3;
 }
 
-/* БЕЛАЯ ЛИНИЯ ВНУТРИ КРУГА */
+/* Белая линия — точно по диагонали круга */
 .hello-badge::after {
   content: "";
   position: absolute;
-  width: 2px;                
-  height: 160px;             /* примерно равна диаметру круга */
-  background: #fff;          /* белая перекрывающая */
+  width: 2px;
+  height: 282px;  /* √2 × диаметр (например, если круг 200px → 282px) */
+  background: #fff;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
-  z-index: 4;                /* поверх чёрной */
-  pointer-events: none;
+  z-index: 4;
 }
 
 
