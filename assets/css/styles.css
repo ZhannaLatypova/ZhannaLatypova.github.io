@@ -2722,65 +2722,88 @@ h1, h2.display, .display-title{
 }
 
 /* ===== HERO: ленточка под секцией ===== */
-.hero { --ticker-h: 56px; }
-
-.hero .ticker {
+/* ===== HERO ticker: звёздное небо без анимации ===== */
+.hero .ticker{
   position: relative;
-  height: 60px;                 /* выше */
-  background-color: #000;       /* Чистый чёрный */
+  height: 64px;                 /* можно менять 56–72px */
+  background-color: #0b0b0c;
   overflow: hidden;
   display: flex;
   align-items: center;
   z-index: 1;
 
-  /* статичное звёздное небо — только белые точки */
-  background-image:
-    radial-gradient(1px 1px at 20% 30%, #fff, transparent),
-    radial-gradient(1px 1px at 70% 60%, #fff, transparent),
-    radial-gradient(1px 1px at 40% 80%, #fff, transparent),
-    radial-gradient(1px 1px at 90% 20%, #fff, transparent),
-    radial-gradient(1px 1px at 10% 50%, #fff, transparent);
+  /* Плотный «звёздный» фон (tile SVG), БЕЗ анимации и без смены оттенка */
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'>\
+  <rect width='220' height='220' fill='%230b0b0c'/>\
+  <g fill='%23ffffff' opacity='0.95'>\
+    <circle cx='18' cy='22' r='1.1'/> <circle cx='42' cy='86' r='1.4'/> <circle cx='96' cy='18' r='1.2'/>\
+    <circle cx='172' cy='34' r='1.2'/> <circle cx='206' cy='72' r='1.1'/> <circle cx='134' cy='58' r='1.2'/>\
+    <circle cx='68' cy='128' r='1.2'/> <circle cx='24' cy='152' r='1.2'/> <circle cx='192' cy='148' r='1.2'/>\
+    <circle cx='150' cy='190' r='1.1'/> <circle cx='88' cy='196' r='1.1'/> <circle cx='16' cy='200' r='1.1'/>\
+  </g>\
+  <g fill='%23e9e9e9' opacity='0.7'>\
+    <circle cx='10' cy='96' r='0.9'/> <circle cx='60' cy='32' r='0.9'/> <circle cx='120' cy='92' r='0.9'/>\
+    <circle cx='200' cy='110' r='0.9'/> <circle cx='176' cy='92' r='0.9'/> <circle cx='112' cy='150' r='0.9'/>\
+    <circle cx='46' cy='184' r='0.9'/> <circle cx='212' cy='192' r='0.9'/>\
+  </g>\
+  <g fill='%23cfcfcf' opacity='0.5'>\
+    <circle cx='28' cy='42' r='0.8'/> <circle cx='84' cy='62' r='0.8'/> <circle cx='140' cy='22' r='0.8'/>\
+    <circle cx='180' cy='80' r='0.8'/> <circle cx='126' cy='122' r='0.8'/> <circle cx='74' cy='102' r='0.8'/>\
+    <circle cx='30' cy='120' r='0.8'/> <circle cx='156' cy='162' r='0.8'/> <circle cx='98' cy='166' r='0.8'/>\
+  </g>\
+</svg>");
   background-repeat: repeat;
-  background-size: 200px 200px; /* плотность звёзд */
+  background-size: 320px 320px;  /* крупнее/мельче «звёзды» */
 }
 
-
-.hero .ticker-item {
-  font-family: 'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 800;   /* жирнее */
-  font-size: 18px;    /* крупнее */
-  letter-spacing: .05em;
-  color: #ececec;
-  white-space: nowrap;
-  margin: 0 24px;
-  line-height: 1;
+/* Лёгкий диагональный «блик» поверх — как на референсе */
+.hero .ticker::before{
+  content:"";
+  position:absolute;
+  left:-20vw; right:-20vw; top:50%;
+  height:2px;
+  background: linear-gradient(90deg, transparent 0 10%, rgba(255,255,255,.65) 45% 55%, transparent 90% 100%);
+  transform: rotate(-23deg);
+  opacity:.35;
+  pointer-events:none;
 }
 
-/* Текст в ленте */
-.hero .ticker-row {
-  display: flex;
-  width: max-content;
-  animation: hero-ticker 32s linear infinite;
+/* Контент ленты (текст/разделители) */
+.hero .ticker-row{
+  display:flex;
+  width:max-content;
+  animation: hero-ticker 32s linear infinite; /* бесшовная прокрутка */
+}
+.hero .ticker-seq{ display:inline-flex; align-items:center; padding-right:56px; }
+
+.hero .ticker-item{
+  font-family:'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight:600;            /* немного жирнее */
+  font-size:18px;             /* задавай под свою высоту */
+  letter-spacing:.04em;
+  color:#ececec;
+  white-space:nowrap;
+  margin:0 24px;
+  line-height:1;
+}
+.hero .ticker-dot{
+  font-style:normal;
+  color:#d9d9d9;
+  margin:0 16px;
+  transform:translateY(-1px);
 }
 
-.hero .ticker-row:hover{ animation-play-state: paused; }
-
-.hero .ticker-seq {
-  display: flex;
-  align-items: center;
+/* бесшовная прокрутка (вторая половина — клон) */
+@keyframes hero-ticker{
+  from{ transform: translateX(0); }
+  to  { transform: translateX(-50%); }
 }
 
-.hero .ticker-dot {
-  font-style: normal;
-  color: #fff;   /* звёздочка тоже белая */
-  margin: 0 16px;
-  transform: translateY(-1px);
-}
-
-/* бесшовная прокрутка */
-@keyframes hero-ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+/* высота на мобайле — по желанию */
+@media (max-width:980px){
+  .hero .ticker{ height:56px; background-size:280px 280px; }
+  .hero .ticker-item{ font-size:16px; }
 }
 
 /* ===== Bonjour-кружок — зафиксировать «у ленты» ===== */
