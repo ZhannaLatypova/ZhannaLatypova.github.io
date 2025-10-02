@@ -745,3 +745,62 @@ document.querySelectorAll(".case-media.hover-swap img").forEach(img => {
   }
 });
 </script>
+
+<script>
+(() => {
+  const track = document.getElementById('refsTrack');
+  if (!track) return;
+  const slides = [...track.children];
+  const prev = track.parentElement.querySelector('.refs-nav.prev');
+  const next = track.parentElement.querySelector('.refs-nav.next');
+  const dotsWrap = document.getElementById('refsDots');
+
+  // точки
+  const dots = slides.map((_,i) => {
+    const b = document.createElement('button');
+    b.className = 'dot';
+    b.setAttribute('aria-label', `Go to slide ${i+1}`);
+    b.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(b);
+    return b;
+  });
+
+  let index = 0;
+  const cardLeft = i => slides[i].offsetLeft;
+
+  function go(i){
+    index = (i + slides.length) % slides.length;
+    track.scrollTo({ left: cardLeft(index), behavior: 'smooth' });
+    updateDots();
+  }
+  function updateDots(){
+    dots.forEach((d,idx)=>d.classList.toggle('active', idx===index));
+  }
+
+  prev.addEventListener('click', () => go(index-1));
+  next.addEventListener('click', () => go(index+1));
+
+  // при ручном скролле — подсветка активной точки
+  track.addEventListener('scroll', () => {
+    const s = track.scrollLeft;
+    let nearest = 0, best = Infinity;
+    slides.forEach((sl,i) => {
+      const d = Math.abs(sl.offsetLeft - s);
+      if (d < best) { best = d; nearest = i; }
+    });
+    if (nearest !== index){ index = nearest; updateDots(); }
+  }, {passive:true});
+
+  // клавиатура
+  track.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); go(index+1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); go(index-1); }
+  });
+
+  // стартовая активная точка
+  updateDots();
+})();
+let timer = setInterval(() => go(index+1), 6000);
+track.addEventListener('pointerenter', ()=>clearInterval(timer));
+track.addEventListener('pointerleave', ()=>timer = setInterval(()=>go(index+1), 6000));
+</script>
