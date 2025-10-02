@@ -2806,90 +2806,77 @@ h1, h2.display, .display-title{
 }
 
 /* ===== Bonjour badge (фикс за плечом) ===== */
-/* обёртка и фото */
+/* базовая обёртка с фото */
 .hero-visual { position: relative; }
-.portrait-wrap{
-  position: relative;
-  overflow: visible;          /* <<< важно */
-}
+.portrait-wrap{ position: relative; overflow: visible; }
+.portrait{ position: relative; z-index: 2; display:block; width:100%; height:auto; }
 
-.portrait {               /* фото всегда над кругом */
-  position: relative;
-  z-index: 2;
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* круг Bonjour «за плечом» */
-/* Контейнер */
-.hero-visual { position: relative; }
-.portrait-wrap { position: relative; overflow: visible; }
-.portrait { position: relative; z-index: 2; display: block; width: 100%; height: auto; }
-
-/* Якорь: ставим за плечо справа */
-.hello-anchor {
-  --r: 240px;                               /* размер круга */
+/* === ПОЗИЦИЯ КРУГА — СЛЕВА ОТ ФОТО ===
+   --r:   диаметр круга
+   --show: сколько круга видно (0.80 = видно 80%)
+   left:   уводим центр круга влево так, чтобы 20% было под фото */
+.hello-anchor{
+  --r: 240px;
+  --show: 0.80;
   position: absolute;
-  left: calc(100% - var(--r) * 0.80);       /* 80% круга уходит за плечо */
-  top: 18%;                                 /* вертикаль подгони */
-  z-index: 1;                               /* ниже фото */
+  left: calc(var(--r) * (var(--show) - 1));   /* = -0.20 * r (20% спрятано) */
+  top: clamp(10%, 18vh, 26%);
+  z-index: 1;                                 /* ниже фото */
 }
 
-/* Чёрная линия длиннее круга */
-.hello-anchor::before {
-  content: "";
-  position: absolute;
-  left: 50%; top: 50%;
-  width: 2px;
-  height: 800px;                            /* длиннее круга */
-  background: #000;
-  transform: translate(-50%, -50%) rotate(-45deg);
-  z-index: 0;
+/* ДЛИННАЯ ЧЁРНАЯ ЛИНИЯ — под кругом, продолжается снаружи.
+   Нужен «/», поэтому угол 45deg (из верхнего левого в нижний правый) */
+.hello-anchor::before{
+  content:"";
+  position:absolute;
+  left:50%; top:50%;
+  width:2px;
+  height:800px;                               /* длиннее диаметра круга */
+  background:#000;
+  transform: translate(-50%,-50%) rotate(45deg);
+  z-index:0;                                  /* под кругом */
 }
 
 /* Сам круг */
-.hello-badge {
+.hello-badge{
   width: var(--r);
   height: var(--r);
   border-radius: 50%;
-  background: #000;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background:#000;
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
   position: relative;
-  z-index: 1;
-  overflow: hidden;
-  box-shadow: 0 40px 120px rgba(0,0,0,.18);
+  z-index:1;
+  overflow:hidden;                            /* чтобы белая линия обрезалась по кругу */
+  box-shadow:0 40px 120px rgba(0,0,0,.18);
 }
 
-/* Белая линия строго внутри круга */
-.hello-badge::after {
-  content: "";
-  position: absolute;
-  left: 50%; top: 50%;
-  width: 1.5px;
-  height: calc(var(--r) * 1.41421356);      /* диагональ круга */
-  background: #fff;
-  transform: translate(-50%, -50%) rotate(-45deg);
-  z-index: 2;
+/* Белая линия — строго внутри круга (тот же угол, что и у чёрной) */
+.hello-badge::after{
+  content:"";
+  position:absolute;
+  left:50%; top:50%;
+  width:1.5px;
+  height: calc(var(--r) * 1.41421356);        /* диагональ круга: r * √2 */
+  background:#fff;
+  transform: translate(-50%,-50%) rotate(45deg);
+  z-index:2;
 }
 
-/* Текст Bonjour */
-.hello-text {
+/* Текст Bonjour — Allura, изящный */
+.hello-text{
   font-family: "Allura", cursive;
   font-weight: 400;
-  font-size: clamp(36px, 4.2vw, 72px);
+  font-size: clamp(38px, 4.2vw, 72px);
   line-height: 1;
   letter-spacing: .02em;
-  pointer-events: none;
-  z-index: 3;
+  pointer-events:none;
+  z-index:3;
 }
 
-/* Адаптив: круг меньше и ближе к плечу */
-@media (max-width: 980px) {
-  .hello-anchor { --r: 180px; left: calc(100% - var(--r) * 0.75); top: 12%; }
+/* Адаптив: круг чуть меньше и ближе к плечу */
+@media (max-width: 980px){
+  .hello-anchor{ --r: 190px; --show: 0.78; left: calc(var(--r) * (var(--show) - 1)); top: 14%; }
 }
 /* ===== Download CV — подчёркивание аккуратно и ближе к тексту ===== */
 .cta-row {
