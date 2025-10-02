@@ -113,7 +113,13 @@ img{display:block; max-width:100%}
     radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);
   background-size:24px 24px, 18px 18px; background-position:0 0, 6px 10px;
 }
-.ticker-track{display:flex; align-items:center; gap:38px; padding:16px 0; white-space:nowrap; animation:marquee 28s linear infinite}
+/* .ticker-track{display:flex; align-items:center; gap:38px; padding:16px 0; white-space:nowrap; animation:marquee 28s linear infinite} */
+.ticker-track{
+  display:flex;
+  width:max-content;          /* ширина по контенту */
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
 .ticker span{font-weight:900; letter-spacing:.08em}
 .ticker .dot{opacity:.8}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
