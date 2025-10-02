@@ -2885,7 +2885,7 @@ h1, h2.display, .display-title{
   content:"";
   position:absolute;
   left:50%; top:50%;
-  width: 125%;                 /* короче — перекрывает чёрную внутри круга */
+  width: 2px;                 /* короче — перекрывает чёрную внутри круга */
   height: 3px;
   background:#000;             /* белая внутри */
   transform: translate(-50%,-50%) rotate(-45deg);
