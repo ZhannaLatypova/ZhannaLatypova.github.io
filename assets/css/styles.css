@@ -2539,7 +2539,7 @@ h1, h2.display, .display-title{
   border:0 !important;         /* если где-то стояла border-bottom */
 /* }  */
 
-.download-link {
+/* .download-link {
   display: inline-block;
   position: relative;
   font-weight: 600;
@@ -2547,15 +2547,34 @@ h1, h2.display, .display-title{
   margin-left: 16px;
   vertical-align: middle;
   transform: translateY(3px);  /* ← смещает вниз весь текст */
-}
+/* } */
 
-.download-link::after {
+/* .download-link::after {
   content:none !important;
   display: block;
   height: 2px;
   width: 100%;
   background: #111;
   margin-top: 2px;   /* уменьшает расстояние от текста до линии */
+/* } */ 
+
+.download-link {
+  display: inline-block;
+  position: relative;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-left: 16px;
+  vertical-align: middle;
+  top: 3px;            /* ← опустит сам текст */
+}
+
+.download-link::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #111;
+  margin-top: 2px;     /* ← подтянет линию ближе */
 }
 
 /* ====== КЛЮЧЕВОЕ: раскладка на мобильных ====== */
