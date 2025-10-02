@@ -2756,3 +2756,20 @@ h1, h2.display, .display-title{
   transform: translateY(-6px);
   box-shadow: 0 24px 60px rgba(0,0,0,.18);
 }
+
+#references .refs-track .ref-card{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+#references .refs-track .ref-card *{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+#references .refs-track{
+  display: flex !important;
+  overflow: hidden;
+}
+#references .refs-track .ref-card{
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+}
