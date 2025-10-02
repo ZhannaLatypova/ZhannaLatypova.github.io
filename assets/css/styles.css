@@ -169,35 +169,6 @@ img{display:block; max-width:100%}
   align-items:center;        /* выравнивание текста по центру по вертикали 
 /* } */ 
 
-.ticker {
-  background: #111;
-  color: #fff;
-  overflow: hidden;
-  white-space: nowrap;
-  height: 45px;            /* ← фиксируем высоту полосы */
-  display: flex;
-  align-items: center;     /* центрируем текст по вертикали */
-}
-
-.ticker-track {
-  display: inline-block;
-  padding: 0;              /* убираем лишние отступы */
-  animation: ticker 25s linear infinite;
-  font-size: 0.9rem;       /* уменьшаем размер шрифта */
-  font-weight: 400;        /* убираем жирность */
-  line-height: 1;          /* плотнее текст */
-}
-
-.ticker-track span, 
-.ticker-track i {
-  margin: 0 1.5rem;        /* расстояние между элементами */
-}
-
-@keyframes ticker {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
 
 /* Бейджи-профессии */
 .pro-badges{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 14px; font-family:'Space Grotesk', Inter, system-ui, sans-serif}
