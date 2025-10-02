@@ -2725,3 +2725,34 @@ h1, h2.display, .display-title{
 @media (max-width: 980px){
   #references .ref-photo{ justify-self:center; }
 }
+
+/* ——— форма звезды: короткие и широкие лучи ——— */
+#references .shape--asterisk8-fat img{
+  clip-path: url(#clip-asterisk8-fat) !important;
+  -webkit-clip-path: url(#clip-asterisk8-fat) !important;
+  border-radius: 0 !important;
+
+  width: clamp(260px, 34vw, 420px) !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+
+  /* стартовые трансформации */
+  transform: rotate(0) scale(1);
+  /* СМЕЩАЕМ ось вращения — картинка «обкатывает» центр (орбитальный эффект) */
+  transform-origin: 135% 50%;
+  transition: transform .9s linear;
+}
+
+/* при наведении — один оборот по орбите + лёгкий зум */
+#references .shape--asterisk8-fat:hover img{
+  transform: rotate(360deg) scale(1.06);
+}
+
+/* чуть «выдвигаем» всю фотографию целиком вперёд */
+#references .ref-photo{
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+#references .ref-photo:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.18);
+}
