@@ -2724,7 +2724,7 @@ h1, h2.display, .display-title{
 /* ===== HERO ticker (узкая, не жирная, центр по вертикали, бесконечно) ===== */
 .hero .ticker {
   position: relative;
-  height: 35px; /* аккуратная высота */
+  height: 40px; /* аккуратная высота */
   background: #0b0b0c;
   background-image: radial-gradient(#1f1f1f 1px, transparent 1px);
   background-size: 20px 20px;
@@ -2752,7 +2752,7 @@ h1, h2.display, .display-title{
   letter-spacing: .02em;
   color: #ececec;
   margin: 0 18px;
-  line-height: 1;
+  line-height: 40px;
 }
 
 .hero .ticker-dot {
@@ -2761,7 +2761,107 @@ h1, h2.display, .display-title{
   margin: 0 14px;
   transform: translateY(-1px);
 }
+.hero .ticker-row {
+  display: flex;
+  width: max-content;
+  animation: hero-ticker-scroll 40s linear infinite;
+  white-space: nowrap;          /* запрет переноса строк */
+}
 
+.hero .ticker-item {
+  font-size: 14px;
+  font-weight: 400;
+  color: #ececec;
+  margin: 0 18px;
+  line-height: 1;
+  white-space: nowrap;          /* тоже запрет переноса */
+}
+
+.hero .ticker {
+  position: relative;
+  height: 40px;
+  background: #0b0b0c;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+    radial-gradient(2px 2px at 50px 160px, #fff, transparent),
+    radial-gradient(2px 2px at 90px 40px, #fff, transparent),
+    radial-gradient(2px 2px at 130px 80px, #fff, transparent),
+    radial-gradient(2px 2px at 160px 120px, #fff, transparent);
+  background-size: 200px 200px; /* повторение узора */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+.hero .ticker-item {
+  line-height: 40px; /* высота строки равна высоте полосы */
+}
+
+/* ======= HERO: удобные переменные ======= */
+.hero{
+  /* одна высота на всё: тикер и от неё пляшем */
+  --hero-ticker-h: 35px;
+  --hello-badge-gap: 16px;   /* отступ круга над тикером */
+}
+
+/* ======= CTA: Let’s Talk + Download CV ======= */
+.hero .cta-row{
+  display: flex;
+  flex-wrap: wrap;       /* если не влазит — переносится красиво */
+  align-items: center;   /* ровняем по центру вертикально */
+  gap: 18px 24px;        /* по вертикали/горизонтали */
+}
+
+/* сам текст Download CV — опускаем немного вниз */
+.hero .download-link{
+  display:inline-block;
+  font-weight:600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #111;
+  text-underline-offset: 3px;    /* расстояние до линии */
+  transform: translateY(3px);    /* ↓ чуть ниже */
+}
+
+/* на очень узких экранах ставим в колонку и поднимаем текст,
+   чтобы линия не отходила далеко */
+@media (max-width: 560px){
+  .hero .cta-row{ flex-direction: column; align-items: flex-start; gap: 12px; }
+  .hero .download-link{ transform: translateY(1px); }
+}
+
+/* ======= ВИЗУАЛ: фиксируем «Bonjour» у низа, а не у фото ======= */
+.hero .hero-visual{ position: relative; }
+
+/* круг «Bonjour» теперь привязан к низу визуального блока,
+   на расстоянии var(--hello-badge-gap) над тикером */
+.hero .hello-badge{
+  position: absolute;
+  left: clamp(16px, 3vw, 48px);              /* чуть влево от картинки */
+  bottom: calc(var(--hero-ticker-h) + var(--hello-badge-gap));
+  z-index: 2;                                 /* поверх фона, под фото не прячется */
+  pointer-events: none;                       /* не перехватываем клики */
+  transition: transform .25s ease;
+}
+
+/* если хочется лёгкого эффекта при скролле/ховере */
+.hero .hello-badge:hover{ transform: translateY(-2px); }
+
+/* на телефонах: переносим бейдж чуть выше,
+   чтобы он не въезжал в текст и кнопки */
+@media (max-width: 980px){
+  .hero .hello-badge{
+    left: 12px;
+    bottom: calc(var(--hero-ticker-h) + 10px);
+  }
+}
+
+/* ======= Ticker подключён на переменной высоте ======= */
+.hero .ticker{
+  height: var(--hero-ticker-h);              /* ← использует ту же переменную */
+  line-height: var(--hero-ticker-h);         /* центрирование текста по высоте */
+}
 @keyframes hero-ticker-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
