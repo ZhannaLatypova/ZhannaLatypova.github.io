@@ -2901,7 +2901,7 @@ h1, h2.display, .display-title{
   width: 2px;
   height: 420px;                     /* длиннее диаметра круга */
   background: #000;
-  transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
   z-index: 0;                        /* всегда под кругом */
 }
 
@@ -2911,7 +2911,7 @@ h1, h2.display, .display-title{
   --r: 240px;
   width: var(--r);
   height: var(--r);
-  border-radius: 50%;
+  border-radius: 30%;
   background: #000;
   color: #fff;
   display: flex;
@@ -2933,10 +2933,10 @@ h1, h2.display, .display-title{
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 2px;
+  width: 1px;
   height: calc(var(--r) * 1.41421356); /* диагональ круга */
   background: #fff;
-  transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
   z-index: 2;
 }
 /* ===== Ограничение ширины текста под "I’m Zhanna" ===== */
