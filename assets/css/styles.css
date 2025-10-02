@@ -2868,32 +2868,47 @@ h1, h2.display, .display-title{
 } */ 
 
 
-/* Чёрная длинная линия */
+.hello-badge {
+  --circle-size: 240px; /* размер круга */
+  width: var(--circle-size);
+  height: var(--circle-size);
+  border-radius: 50%;
+  background: #000;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  overflow: hidden; /* обрезает всё, что выходит за круг */
+}
+
+/* длинная чёрная линия */
 .hello-badge::before {
   content: "";
   position: absolute;
   width: 2px;
-  height: 300px; /* длиннее диагонали, чтобы выходила наружу */
+  height: calc(var(--circle-size) * 1.6); /* длиннее, чтобы выходила за круг */
   background: #000;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
-  z-index: 3;
+  z-index: 1;
 }
 
-/* Белая линия — точно по диагонали круга */
+/* белая линия — только внутри круга */
 .hello-badge::after {
   content: "";
   position: absolute;
   width: 2px;
-  height: 282px;  /* √2 × диаметр (например, если круг 200px → 282px) */
+  height: calc(var(--circle-size) * 1.414); /* диагональ круга */
   background: #fff;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg);
-  z-index: 4;
+  z-index: 2;
 }
-
 
 /* ===== Ограничение ширины текста под "I’m Zhanna" ===== */
 .hero-copy {
