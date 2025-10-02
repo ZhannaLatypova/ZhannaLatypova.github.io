@@ -2335,8 +2335,6 @@ h1, h2.display, .display-title{
   transition: transform .35s ease, filter .35s ease;
   filter: saturate(105%);
 }
-/* «Выпуклость» при ховере всей карточки */
-.ref-card:hover .ref-photo img{ transform: scale(1.04); }
 
 /* /* Вырезка звездой (если поддерживается clip-path) */
 /* @supports (clip-path: polygon(0 0)){
@@ -2374,14 +2372,14 @@ h1, h2.display, .display-title{
 
 /* ===== ОДНОКРАТНОЕ ВРАЩЕНИЕ ПРИ НАВЕДЕНИИ ===== */
 /* Вариант 1 (transition): крутится один оборот при наведении, возвращается назад при уходе курсора */
-.ref-photo img{
+/* .ref-photo img{
   display:block;
   transition: transform 0.9s linear;
   transform: rotate(0deg);
-}
-.ref-photo:hover img{
+} */
+/* .ref-photo:hover img{
   transform: rotate(360deg);
-}
+} */
 
 /* Если хочешь именно "анимацией на вход" (каждый раз заново), можно так:
 .ref-photo:hover img{
@@ -2403,27 +2401,32 @@ h1, h2.display, .display-title{
   transition: transform .28s ease, box-shadow .28s ease;
   will-change: transform;
 }
-.ref-photo img{
+/* .ref-photo img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   transition: transform .35s ease;
-}
+} */
 
-/* «выдвижение» и лёгкий зум на ховере */
-.ref-photo:hover{ transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,.18); }
-.ref-photo:hover img{ transform: scale(1.06); }
+/* /* «выдвижение» и лёгкий зум на ховере */
+/* .ref-photo:hover{ transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,.18); } */
+/* .ref-photo:hover img{ transform: scale(1.06); } */ 
+
+/* .ref-photo:hover img {
+  transform: rotate(360deg);
+  transition: transform 1s ease;
+} */
 
 /* ——— Подключаем формы ——— */
 .shape--clover img{
   clip-path: url(#clip-clover);
   -webkit-clip-path: url(#clip-clover);
 }
-.shape--asterisk img{
+/* .shape--asterisk img{
   clip-path: url(#clip-asterisk);
   -webkit-clip-path: url(#clip-asterisk);
-}
+} */
 
 /* Фолбэк для очень старых браузеров */
 @supports not (clip-path: url(#clip-clover)){
@@ -2437,4 +2440,26 @@ h1, h2.display, .display-title{
 @media (max-width: 980px){
   .ref-card{ grid-template-columns: 1fr; text-align:left; }
   .ref-photo{ justify-self:center; }
+}
+
+/* Базовые размеры и один transition */
+.ref-photo {
+  position: relative;
+  width: 360px;            /* подгони под макет */
+  aspect-ratio: 1 / 1;
+  overflow: visible;
+}
+.ref-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: rotate(0deg) scale(1);       /* старт */
+  transition: transform .9s linear;       /* один transition на всё */
+}
+
+/* Когда курсор на самой фотографии — крутим + немного увеличиваем.
+   !important перекрывает старое правило .ref-card:hover .ref-photo img { transform: scale(...) } */
+.ref-photo:hover img{
+  transform: rotate(360deg) scale(1.06) !important;  /* один оборот + зум */
 }
