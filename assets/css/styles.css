@@ -2868,9 +2868,9 @@ h1, h2.display, .display-title{
 } */ 
 
 
-/* .hello-badge {
-  --circle-size: 240px; /* размер круга */
-  /* width: var(--circle-size);
+.hello-badge {
+  --circle-size: 150px; /* размер круга */
+  width: var(--circle-size);
   height: var(--circle-size);
   border-radius: 50%;
   background: #000;
@@ -2882,15 +2882,15 @@ h1, h2.display, .display-title{
   font-weight: 700;
   color: #fff;
   overflow: hidden; /* обрезает всё, что выходит за круг */ 
-/* } */ 
+} 
 
 /* Обёртка для круга и ДЛИННОЙ ЧЁРНОЙ линии */
-/* .hello-anchor {
+.hello-anchor {
   position: absolute;
   right: clamp(-24px, -6vw, -12px);   /* регулируешь позицию "за плечом" */
   /* top: clamp(140px, 24vh, 220px);
   z-index: 2; */ 
-/* } */
+/* }
 
 /* ДЛИННАЯ ЧЁРНАЯ ЛИНИЯ — только у обёртки */
 .hello-anchor::before {
