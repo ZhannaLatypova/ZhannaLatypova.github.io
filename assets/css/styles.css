@@ -2884,32 +2884,60 @@ h1, h2.display, .display-title{
   overflow: hidden; /* обрезает всё, что выходит за круг */
 }
 
-/* длинная чёрная линия */
-.hello-badge::before {
-  content: "";
+/* Обёртка для круга и ДЛИННОЙ ЧЁРНОЙ линии */
+.hello-anchor {
   position: absolute;
-  width: 2px;
-  height: calc(var(--circle-size) * 1.6); /* длиннее, чтобы выходила за круг */
-  background: #000;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg);
-  z-index: 1;
-}
-
-/* белая линия — только внутри круга */
-.hello-badge::after {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: calc(var(--circle-size) * 1.414); /* диагональ круга */
-  background: #fff;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg);
+  right: clamp(-24px, -6vw, -12px);   /* регулируешь позицию "за плечом" */
+  top: clamp(140px, 24vh, 220px);
   z-index: 2;
 }
 
+/* Длинная ЧЁРНАЯ линия (всегда выходит за круг) */
+.hello-anchor::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;                                   /* толщина */
+  height: 420px;                                /* длина больше диаметра круга */
+  background: #000;
+  transform: translate(-50%, -50%) rotate(45deg); /* угол линии */
+  z-index: 1;
+}
+
+/* Сам чёрный круг */
+.hello-badge {
+  --r: 240px;                                   /* диаметр */
+  width: var(--r);
+  height: var(--r);
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', Inter, system-ui, sans-serif;
+  font-weight: 900;
+  font-size: 42px;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+  overflow: hidden; /* обрезает белую линию по кругу */
+  box-shadow: 0 40px 120px rgba(0,0,0,.18);
+}
+
+/* БЕЛАЯ линия — только внутри круга */
+.hello-badge::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 2px;
+  height: calc(var(--r) * 1.41421356); /* диагональ круга (r * sqrt(2)) */
+  background: #fff;
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: 3;
+}
 /* ===== Ограничение ширины текста под "I’m Zhanna" ===== */
 .hero-copy {
   max-width: 600px;          /* подгони под длину "I’m Zhanna" */
