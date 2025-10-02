@@ -2751,3 +2751,55 @@ h1, h2.display, .display-title{
   .star-ribbon__chunk{ gap: 2.2rem; }
 }
 
+/* ===== HERO ticker (узкая, не жирная, центр по вертикали, бесконечно) ===== */
+.hero .ticker{
+  position: relative;
+  height: 44px;                                  /* ниже/аккуратнее */
+  background: #0b0b0c;
+  /* звёздный фон как на примере (можно убрать эту строку) */
+  background-image: radial-gradient(#1f1f1f 1px, transparent 1px);
+  background-size: 20px 20px;
+
+  overflow: hidden;
+  display: flex;
+  align-items: center;                            /* центр по вертикали */
+  z-index: 1;
+}
+
+.hero .ticker-row{
+  display: flex;
+  width: max-content;                             /* ширина по содержимому */
+  animation: hero-ticker-scroll 32s linear infinite;
+  will-change: transform;
+}
+.hero .ticker-row:hover{ animation-play-state: paused; }
+
+.hero .ticker-seq{
+  display: inline-flex;
+  align-items: center;
+  padding-right: 48px;                            /* отступ между копиями */
+}
+
+.hero .ticker-item{
+  font-family: 'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;                               /* НЕ жирный */
+  font-size: 15px;                                /* меньше шрифт */
+  letter-spacing: .02em;
+  color: #ececec;
+  white-space: nowrap;
+  margin: 0 18px;                                 /* равные интервалы */
+  line-height: 1;                                 /* плотнее по вертикали */
+}
+
+.hero .ticker-dot{
+  font-style: normal;
+  color: #cfcfcf;
+  margin: 0 14px;
+  transform: translateY(-1px);
+}
+
+/* бесшовная прокрутка — уезжаем ровно на половину (вторая половина — клон) */
+@keyframes hero-ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
