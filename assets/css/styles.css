@@ -2678,23 +2678,23 @@ h1, h2.display, .display-title{
 /* ===== REFERENCES — ===== */
 
 /* 1) Лента видимая, каждый слайд — 100% ширины вьюпорта */
-#references .refs-view{ overflow:hidden; }
+/* #references .refs-view{ overflow:hidden; }
 #references .refs-track{
   display:flex !important;
   will-change:transform;
   transition:transform .5s ease;
 }
-#references .refs-track > *{
-  position:relative !important;           /* если где-то ставили absolute — вернём */
-  flex:0 0 100% !important;
+#references .refs-track > *{ */
+  /* position:relative !important;           /* если где-то ставили absolute — вернём */
+  /* flex:0 0 100% !important;
   max-width:100% !important;
   opacity:1 !important;
   visibility:visible !important;
   filter:none !important;
-}
+} */ 
 
 /* 2) Карточка имеет реальную высоту */
-#references .ref-card{
+/* #references .ref-card{
   display:grid;
   grid-template-columns:1.2fr .8fr;
   align-items:center;
@@ -2704,39 +2704,39 @@ h1, h2.display, .display-title{
   border-radius:22px;
   box-shadow:0 26px 60px rgba(0,0,0,.10);
   min-height:420px;                         /* ← не 0 */
-  transition:transform .25s ease, box-shadow .25s ease;
+  /* transition:transform .25s ease, box-shadow .25s ease;
 }
-#references .ref-card:hover{ transform:translateY(-6px); box-shadow:0 36px 76px rgba(0,0,0,.14); }
+#references .ref-card:hover{ transform:translateY(-6px); box-shadow:0 36px 76px rgba(0,0,0,.14); } */ */
 
 /* 3) Контейнер фото */
-#references .ref-photo{
+/* #references .ref-photo{
   width:clamp(260px,34vw,420px);
   aspect-ratio:1/1;
   position:relative;
   overflow:visible;
   justify-self:end;
   transition:transform .28s ease, box-shadow .28s ease;
-}
-#references .ref-photo:hover{ transform:translateY(-6px); box-shadow:0 24px 60px rgba(0,0,0,.18); }
+} */
+/* #references .ref-photo:hover{ transform:translateY(-6px); box-shadow:0 24px 60px rgba(0,0,0,.18); } */
 
 /* 4) Звезда — толстые короткие лучи + «орбитальное» вращение */
-#references .shape--asterisk8-fat img{
+/* #references .shape--asterisk8-fat img{
   clip-path:url(#clip-asterisk8-fat) !important;
   -webkit-clip-path:url(#clip-asterisk8-fat) !important;
   border-radius:0 !important;
 
-  width:100%; height:100%; object-fit:cover;
+  width:100%; height:100%; object-fit:cover; */
 
-  transform-origin:135% 50%;   /* смещённая ось → крутится «по кругу» */
-  transform:rotate(0) scale(1);
+  /* transform-origin:135% 50%;   /* смещённая ось → крутится «по кругу» */
+  /* transform:rotate(0) scale(1);
   transition:transform .9s linear;
 }
 #references .shape--asterisk8-fat:hover img{
   transform:rotate(360deg) scale(1.06);
-}
+} */ 
 
 /* 5) Текст −30%, серый, без жирного */
-#references .ref-quote{
+/* #references .ref-quote{
   font-size:clamp(18px,3.2vw,39px) !important;
   font-weight:600 !important;
   color:#6b6b73 !important;
@@ -2751,36 +2751,36 @@ h1, h2.display, .display-title{
 }
 #references .ref-author{ color:#7a7a83; }
 #references .ref-name{ color:#444; font-weight:700; }
-#references .ref-role{ color:#7a7a83; font-weight:500; }
+#references .ref-role{ color:#7a7a83; font-weight:500; } */
 
 /* 6) Мобайл — в колонку */
-@media (max-width:980px){
+/* @media (max-width:980px){
   #references .ref-card{ grid-template-columns:1fr; min-height:360px; }
   #references .ref-photo{ justify-self:center; }
-}
+} */
 
 /* ===== REFERENCES — показываем по одному слайду ===== */
-#references .refs-view{
+/* #references .refs-view{
   position: relative;
   width: 100%;
   overflow: hidden;                  /* прячем соседние слайды */
-}
+/* }  */
 
-#references .refs-track{
+/* #references .refs-track{
   display: flex !important;
   gap: 0 !important;                 /* на всякий, если где-то стоял gap */
-  transition: transform .5s ease;    /* анимация сдвига */
-  will-change: transform;
-}
+  /* transition: transform .5s ease;    /* анимация сдвига */
+  /* will-change: transform; */ */
+/* }  */
 
-#references .refs-track > .ref-card{
+/* #references .refs-track > .ref-card{
   flex: 0 0 100% !important;         /* РОВНО один экран на карточку */
-  max-width: 100% !important;
+  /* max-width: 100% !important;
   margin: 0 !important;              /* чтобы ничего не толкало */
-}
+/* } */ */ */
 
 /* ===== REFERENCES: хедер по центру со "spark" ===== */
-#references .refs-head{ text-align:center; margin-bottom: clamp(22px,3vw,32px); position:relative; }
+/* #references .refs-head{ text-align:center; margin-bottom: clamp(22px,3vw,32px); position:relative; }
 #references .refs-title{
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight: 900; letter-spacing:.01em; margin:.2rem 0 .3rem;
@@ -2797,16 +2797,16 @@ h1, h2.display, .display-title{
   -webkit-mask: radial-gradient(circle, #000 45%, transparent 46%);
   mask: radial-gradient(circle, #000 45%, transparent 46%);
   border-radius:50%; filter:contrast(140%);
-}
+} */
 
 /* ===== Карусель: один слайд, без «паровозика» ===== */
-#references .refs-carousel{ position:relative; }
+/* #references .refs-carousel{ position:relative; }
 #references .refs-view{ overflow:hidden; }
 #references .refs-track{ display:flex; transition:transform .5s ease; will-change:transform; }
-#references .ref-card{ flex:0 0 100%; max-width:100%; }
+#references .ref-card{ flex:0 0 100%; max-width:100%; } */
 
 /* ===== Круглые нав-кнопки по бокам ===== */
-#references .refs-nav{
+/* #references .refs-nav{
   position:absolute; top:50%; transform:translateY(-50%);
   width:56px; height:56px; border-radius:999px; border:0;
   background:#0b0b0c; color:#fff; display:grid; place-items:center;
@@ -2816,10 +2816,10 @@ h1, h2.display, .display-title{
 #references .refs-nav.prev{ left:22px; }
 #references .refs-nav.next{ right:22px; }
 #references .refs-nav:hover{ transform:translateY(-50%) scale(1.04); }
-#references .refs-nav:focus-visible{ outline:3px solid #ffb86b; outline-offset:3px; }
+#references .refs-nav:focus-visible{ outline:3px solid #ffb86b; outline-offset:3px; } */
 
 /* ===== Фото-звезда: «толстые короткие лучи» + орбитальный поворот ===== */
-#references .ref-photo{
+/* #references .ref-photo{
   width: clamp(260px, 34vw, 420px); aspect-ratio:1 / 1;
   position:relative; overflow:visible;
   transition: transform .28s ease, box-shadow .28s ease;
@@ -2832,31 +2832,138 @@ h1, h2.display, .display-title{
   clip-path: url(#clip-asterisk8-fat); -webkit-clip-path: url(#clip-asterisk8-fat);
   border-radius:0;
   transform-origin: 135% 50%;
-  transform: rotate(0) scale(1);
-  transition: transform .9s linear;
+  transform: rotate(0) scale(1); */
+  /* transition: transform .9s linear;
 }
-#references .shape--asterisk8-fat:hover img{ transform: rotate(360deg) scale(1.06); }
+#references .shape--asterisk8-fat:hover img{ transform: rotate(360deg) scale(1.06); } */
 
 /* ===== Типографика референса: минус ещё ~10%, не жирно, серый, Inter ===== */
-#references .ref-quote{
+/* #references .ref-quote{
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   /* было ~clamp(18px, 3.2vw, 39px) — делаем ещё на ~10% меньше */
-  font-size: clamp(16px, 2.8vw, 35px);
+  /* font-size: clamp(16px, 2.8vw, 35px);
   font-weight: 500;                 /* без 900 */
+  /* color:#5f6168;
+  line-height:1.2; letter-spacing:.005em;
+  margin:.35rem 0 1rem;
+} */
+/* #references .ref-kicker{
+  color:#666; border:2px solid #666; display:inline-block;
+  font-weight:800; padding:6px 10px; border-radius:999px; margin-bottom:10px; */
+/* }
+#references .ref-author{ color:#7a7a83; }
+#references .ref-name{ color:#444; font-weight:700; }
+#references .ref-role{ color:#7a7a83; font-weight:500; } */ 
+
+/* Мобайл: по центру */
+/* @media (max-width:980px){
+  #references .ref-card{ display:grid; grid-template-columns:1fr; gap:18px; }
+  #references .ref-photo{ justify-self:center; }
+} */ 
+
+/* Заголовок как у BUSINESS CASES (Space Grotesk / var(--display)) */
+#references .refs-head{ text-align:center; margin-bottom: clamp(22px,3vw,32px); position:relative; }
+#references .refs-title{
+  font-family: var(--display, 'Space Grotesk', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif);
+  font-weight: 900;
+  letter-spacing: .02em;
+  line-height: 1;
+  font-size: clamp(28px, 3.6vw, 44px);
+  margin: .2rem 0 .35rem;
+}
+#references .refs-lede{ color:#7a7a83; max-width:70ch; margin:0 auto; }
+#references .refs-spark{
+  position:absolute; left:50%; top:-16px; transform:translateX(-50%);
+  width:26px; height:26px;
+  background:
+    radial-gradient(circle at 50% 50%, #000 0 2px, transparent 3px),
+    radial-gradient(circle, rgba(0,0,0,.65) 1px, transparent 2px);
+  background-size:26px 26px, 6px 6px; background-position:center, center;
+  -webkit-mask: radial-gradient(circle, #000 45%, transparent 46%);
+  mask: radial-gradient(circle, #000 45%, transparent 46%);
+  border-radius:50%; filter:contrast(140%);
+}
+
+/* Безопасные «поля» под стрелки, чтобы не перекрывали текст */
+#references .refs-carousel{ position:relative; padding-inline: clamp(72px, 6vw, 96px); }
+#references .refs-view{ overflow:hidden; }
+
+/* Лента и карточки — один слайд на экран */
+#references .refs-track{ display:flex; gap:0; transition:transform .5s ease; will-change:transform; }
+#references .refs-track > .ref-card{ flex:0 0 100%; max-width:100%; }
+
+/* Стрелки — по бокам, в круге */
+#references .refs-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:56px; height:56px; border-radius:999px; border:0; z-index:5;
+  background:#0b0b0c; color:#fff; display:grid; place-items:center;
+  box-shadow:0 16px 36px rgba(0,0,0,.28); cursor:pointer;
+  transition: transform .15s ease;
+}
+#references .refs-nav.prev{ left:18px; }
+#references .refs-nav.next{ right:18px; }
+#references .refs-nav:hover{ transform:translateY(-50%) scale(1.04); }
+
+/* Карточка */
+#references .ref-card{
+  display:grid; grid-template-columns:1.2fr .8fr;
+  align-items:center; gap:28px;
+  padding: clamp(18px,2.4vw,28px);
+  background:#f7f7f8; border-radius:22px;
+  box-shadow:0 26px 60px rgba(0,0,0,.10);
+  min-height:420px;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+#references .ref-card:hover{ transform:translateY(-4px); box-shadow:0 28px 70px rgba(0,0,0,.12); }
+
+/* Фото-звезда с «орбитальным» вращением */
+#references .ref-photo{
+  width: clamp(260px, 34vw, 420px); aspect-ratio:1/1;
+  position:relative; overflow:visible;
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+#references .ref-photo:hover{ transform: translateY(-6px); box-shadow:0 24px 60px rgba(0,0,0,.18); }
+#references .shape--asterisk8-fat img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  clip-path:url(#clip-asterisk8-fat); -webkit-clip-path:url(#clip-asterisk8-fat);
+  border-radius:0;
+  transform-origin:135% 50%;
+  transform:rotate(0) scale(1);
+  transition:transform .9s linear;
+}
+#references .shape--asterisk8-fat:hover img{ transform:rotate(360deg) scale(1.06); }
+
+/* Типографика отзывов: ещё меньше, без жирного, серый */
+#references .ref-quote{
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(16px, 2.8vw, 35px);
+  font-weight: 500;               /* НЕ жирный */
   color:#5f6168;
   line-height:1.2; letter-spacing:.005em;
   margin:.35rem 0 1rem;
 }
+/* бейдж «CLIENT FEEDBACK» — менее жирный */
 #references .ref-kicker{
-  color:#666; border:2px solid #666; display:inline-block;
-  font-weight:800; padding:6px 10px; border-radius:999px; margin-bottom:10px;
+  color:#666; border:2px solid #666; font-weight:600;
+  display:inline-block; padding:6px 10px; border-radius:999px;
+  letter-spacing:.14em; font-size:12px; margin-bottom:10px;
 }
 #references .ref-author{ color:#7a7a83; }
 #references .ref-name{ color:#444; font-weight:700; }
 #references .ref-role{ color:#7a7a83; font-weight:500; }
 
-/* Мобайл: по центру */
+/* если в цитате есть <em> (часто в скобках) — убираем жирность */
+#references .ref-quote em{ font-style:normal; font-weight:500; }
+
 @media (max-width:980px){
-  #references .ref-card{ display:grid; grid-template-columns:1fr; gap:18px; }
+  #references .refs-carousel{ padding-inline: 56px; }  /* чуть меньше поля под стрелки */
+  #references .ref-card{ grid-template-columns:1fr; min-height:360px; }
   #references .ref-photo{ justify-self:center; }
 }
+
+/* Точки (pager) — как у вас внизу */
+#references .refs-dots{ display:flex; gap:10px; justify-content:center; margin-top:12px; }
+#references .refs-dots button{
+  width:8px; height:8px; border-radius:999px; border:0; background:#cdd0d6; cursor:pointer;
+}
+#references .refs-dots button.is-active{ width:18px; background:#111; }
