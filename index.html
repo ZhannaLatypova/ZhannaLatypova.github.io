@@ -639,17 +639,20 @@
 <!-- REFERENCES (carousel) -->
 <section id="references" class="refs section">
   <div class="wrap">
-    <!-- star shape for all ref photos -->
+<!-- defs: толстая короткая 8-лучевая звезда -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <!-- 8-лучевая «asterisk», толстые лучи -->
-    <clipPath id="clip-asterisk8" clipPathUnits="objectBoundingBox">
-      <!-- вертикаль и горизонталь -->
-      <rect x=".45" y="0"   width=".10" height="1"/>
-      <rect x="0"   y=".45" width="1"   height=".10"/>
-      <!-- диагонали -->
-      <rect x=".45" y="0"   width=".10" height="1" transform="rotate(45 .5 .5)"/>
-      <rect x=".45" y="0"   width=".10" height="1" transform="rotate(135 .5 .5)"/>
+    <!-- короткие/широкие лучи: делаем не на всю высоту/ширину -->
+    <clipPath id="clip-asterisk8-fat" clipPathUnits="objectBoundingBox">
+      <!-- вертикальный луч: короткий и широкий -->
+      <rect x="0.41" y="0.15" width="0.18" height="0.70" />
+
+      <!-- горизонтальный луч -->
+      <rect x="0.15" y="0.41" width="0.70" height="0.18" />
+
+      <!-- диагонали (45° и 135°) — тоже короткие и широкие -->
+      <rect x="0.41" y="0.15" width="0.18" height="0.70" transform="rotate(45 0.5 0.5)" />
+      <rect x="0.41" y="0.15" width="0.18" height="0.70" transform="rotate(135 0.5 0.5)" />
     </clipPath>
   </defs>
 </svg>
@@ -682,7 +685,7 @@
         </div>
 
         <!-- ВАЖНО: класс shape--asterisk8 и onerror-фолбэк -->
-        <figure class="ref-photo shape--asterisk8">
+        <figure class="ref-photo shape--asterisk8-fat">
           <img
             src="assets/img/foto_14.jpg"
             onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/foto_14.jpg';"
@@ -706,7 +709,7 @@
         </div>
       
         <!-- ВАЖНО: класс shape--asterisk8 и onerror-фолбэк -->
-        <figure class="ref-photo shape--asterisk8">
+        <figure class="ref-photo shape--asterisk8-fat">
           <img
             src="assets/img/foto_14.jpg"
             onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/foto_14.jpg';"
@@ -730,7 +733,7 @@
         </div>
       
         <!-- ВАЖНО: класс shape--asterisk8 и onerror-фолбэк -->
-        <figure class="ref-photo shape--asterisk8">
+        <figure class="ref-photo shape--asterisk8-fat">
           <img
             src="assets/img/foto_14.jpg"
             onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/foto_14.jpg';"
@@ -754,7 +757,7 @@
         </div>
       
         <!-- ВАЖНО: класс shape--asterisk8 и onerror-фолбэк -->
-        <figure class="ref-photo shape--asterisk8">
+        <figure class="ref-photo shape--asterisk8-fat">
           <img
             src="assets/img/foto_14.jpg"
             onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/foto_14.jpg';"
@@ -778,7 +781,7 @@
         </div>
       
         <!-- ВАЖНО: класс shape--asterisk8 и onerror-фолбэк -->
-        <figure class="ref-photo shape--asterisk8">
+        <figure class="ref-photo shape--asterisk8-fat">
           <img
             src="assets/img/foto_14.jpg"
             onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/foto_14.jpg';"
