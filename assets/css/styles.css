@@ -2868,15 +2868,16 @@ h1, h2.display, .display-title{
 } */ 
 
 /* ДЛИННАЯ ЧЁРНАЯ ЛИНИЯ (выходит за круг) */
-.hello-badge::before{
-  content:"";
-  position:absolute;
-  left:50%; top:50%;
-  width: 210%;                 /* длиннее диаметра, чтобы торчала наружу */
-  height: 3px;
-  background:#000;             /* чёрная снаружи */
-  transform: translate(-50%,-50%) rotate(-38deg);
-  pointer-events:none;
+.hello-badge::before {
+  content: "";
+  position: absolute;
+  width: 2px;                /* толщина линии — сделай 1px если нужно тоньше */
+  height: 220px;             /* длина линии, больше чем сам круг */
+  background: #fff;          /* цвет линии */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg); /* поворот */
+  z-index: 3;
 }
 
 /* КОРОТКАЯ БЕЛАЯ ЛИНИЯ (поверх внутри круга) */
