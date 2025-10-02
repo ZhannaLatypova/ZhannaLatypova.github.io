@@ -2868,9 +2868,9 @@ h1, h2.display, .display-title{
 } */ 
 
 
-.hello-badge {
+/* .hello-badge {
   --circle-size: 240px; /* размер круга */
-  width: var(--circle-size);
+  /* width: var(--circle-size);
   height: var(--circle-size);
   border-radius: 50%;
   background: #000;
@@ -2881,8 +2881,8 @@ h1, h2.display, .display-title{
   font-size: 28px;
   font-weight: 700;
   color: #fff;
-  overflow: hidden; /* обрезает всё, что выходит за круг */
-}
+  overflow: hidden; /* обрезает всё, что выходит за круг */ 
+/* } */ 
 
 /* Обёртка для круга и ДЛИННОЙ ЧЁРНОЙ линии */
 .hello-anchor {
