@@ -2478,12 +2478,12 @@ h1, h2.display, .display-title{
 }
 
 /* Описание — ограничиваем ширину */
-.hero p.lede {
+/* .hero p.lede {
   font-size: 18px;
   max-width: 42ch;   /* текст не длиннее заголовка */
-  color: #6b6b73;
+  /* color: #6b6b73;
   margin-bottom: 28px;
-}
+} */ 
 
 /* Чек-лист компактный */
 .hero-list {
