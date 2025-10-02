@@ -2436,3 +2436,135 @@ h1, h2.display, .display-title{
   pointer-events: none;
   z-index: 1;
 }
+
+/* ===== HERO SECTION ===== */
+
+/* Контейнер хиро */
+.hero {
+  position: relative;
+  padding: clamp(80px, 12vh, 140px) 0 80px;
+  background: #fff;       /* убрали радужное облако */
+  overflow: hidden;
+}
+
+/* Заголовок */
+.hero h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 900;
+  margin: 0;
+  line-height: 1.1;
+}
+
+/* Подзаголовок с линией и звездой ✦ */
+.hero-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 18px 0 28px;
+}
+.hero-subtitle::before {
+  content: "";
+  flex: 1 1 120px;   /* длина линии */
+  height: 2px;
+  background: #111;
+}
+.hero-subtitle::after {
+  content: "✦";
+  font-size: 22px;
+  margin-left: 6px;
+}
+
+/* Описание — ограничиваем ширину */
+.hero p.lede {
+  font-size: 18px;
+  max-width: 42ch;   /* текст не длиннее заголовка */
+  color: #6b6b73;
+  margin-bottom: 28px;
+}
+
+/* Чек-лист компактный */
+.hero-list {
+  list-style: none;
+  margin: 0 0 36px;
+  padding: 0;
+  font-size: 17px;
+  line-height: 1.4;
+}
+.hero-list li {
+  margin: 8px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.hero-list li::before {
+  content: "✓";
+  color: #111;
+  font-weight: 700;
+}
+
+/* Кнопки */
+.cta-row {
+  display: flex;
+  gap: 28px;
+  justify-content: flex-start;  /* всё уходит влево */
+  align-items: center;
+  margin-top: 12px;
+}
+
+.btn.primary {
+  background: #111;
+  color: #fff;
+  border-radius: 999px;
+  padding: .7rem 1.6rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform .2s ease, background .2s ease;
+}
+.btn.primary:hover {
+  background: #333;
+  transform: scale(1.03);
+}
+
+/* Подчёркнутая ссылка Download CV */
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #111;
+  border-bottom: 2px solid #111;
+  text-decoration: none;
+  padding-bottom: 3px;
+  transition: opacity .2s ease;
+}
+.download-link .arrow {
+  font-size: 18px;
+  transform: translateY(2px);
+}
+.download-link:hover {
+  opacity: 0.8;
+}
+
+/* Теги Data Scientist / Analyst / AI Engineer */
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0 36px;
+}
+.hero-tags .pill {
+  border: 2px solid #999;   /* серый контур */
+  background: #fff;
+  color: #111;
+  border-radius: 999px;
+  padding: .4rem .9rem;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
