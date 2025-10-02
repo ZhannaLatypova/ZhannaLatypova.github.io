@@ -91,7 +91,7 @@ img{display:block; max-width:100%}
 .color-cloud,
 .color-cloud.cloud--focus{ display:none !important; }
 
-.download-link{
+/* .download-link{
   display: inline-block;
   position: relative;
   margin-left: 16px;
@@ -105,11 +105,11 @@ img{display:block; max-width:100%}
   text-underline-offset: 3px;
 
   /* опустить текст на пару пикселей */
-  transform: translateY(4px);           /* ↑ подбери 2–6px по вкусу */
-}
+  /* transform: translateY(4px);           /* ↑ подбери 2–6px по вкусу */
+/* }  */
 
 /* если раньше рисовали линию через ::after — полностью отключаем */
-.download-link::after{ content: none !important; }
+/* .download-link::after{ content: none !important; } */ 
 
 /* Фото и круг */
 
@@ -2647,5 +2647,25 @@ h1, h2.display, .display-title{
   .pro-badge{ font-size: .9rem !important; padding: .4rem .7rem !important; }
 }
 
+/* Download CV — подчёркивание ближе и сдвиг текста вниз */
+.download-link{
+  display: inline-block;
+  position: relative;
+  margin-left: 16px;
 
-.cta-row{ display:flex; align-items:flex-end; gap: 12px; }  /* общий низ */
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111;
+
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+
+  /* опустить текст на пару пикселей */
+  transform: translateY(4px);           /* ↑ подбери 2–6px по вкусу */
+}
+
+/* если раньше рисовали линию через ::after — полностью отключаем */
+.download-link::after{ content: none !important; }
+
+.cta-row{ display:flex; align-items:flex-end; gap: 10px; }  /* общий низ */
