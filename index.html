@@ -894,6 +894,36 @@
   window.addEventListener('resize', ()=>go(index));
 })();
 </script>
+
+<script>
+(() => {
+  const root  = document.querySelector('#references');
+  const track = root.querySelector('#refsTrack');
+  const prev  = root.querySelector('.refs-nav.prev');
+  const next  = root.querySelector('.refs-nav.next');
+  const slides = Array.from(track.children);
+  const dotsWrap = root.querySelector('#refsDots');
+
+  // точки
+  dotsWrap.innerHTML = slides.map((_,i)=>`<button aria-label="Go to slide ${i+1}"></button>`).join('');
+  const dots = Array.from(dotsWrap.children);
+
+  let index = 0;
+  function go(i){
+    index = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((b,k)=>b.classList.toggle('is-active', k===index));
+  }
+
+  prev.addEventListener('click', ()=> go(index-1));
+  next.addEventListener('click', ()=> go(index+1));
+  dotsWrap.addEventListener('click', e=>{
+    if(e.target.tagName==='BUTTON'){ go(dots.indexOf(e.target)); }
+  });
+
+  go(0);
+})();
+</script>  
 </body>
 
 </html>
