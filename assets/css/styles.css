@@ -2678,98 +2678,75 @@ h1, h2.display, .display-title{
 .cta-row{ display:flex; align-items:flex-end; gap: 10px; }  /* общий низ */
 
 
-/* ===== Star Ribbon ===== */
+/* ===== STAR RIBBON ===== */
 .star-ribbon{
-  --height: 86px;              /* высота ленты */
-  --speed: 38s;                /* скорость прокрутки (меньше = быстрее) */
-  --bg: #0b0b0c;               /* фон */
-  --text: #fff;                /* цвет текста */
-  --stars: rgba(255,255,255,.22); /* «звёзды» */
+  --h: 86px;           /* высота ленты */
+  --speed: 38s;        /* скорость (меньше = быстрее) */
+
   position: relative;
-  height: var(--height);
+  height: var(--h);
   overflow: hidden;
-  background: var(--bg);
-  /* лёгкая тень, чтобы отделить от секций */
-  box-shadow: 0 -1px 0 rgba(255,255,255,.03) inset, 0 1px 0 rgba(255,255,255,.03) inset;
+  background: #0b0b0c;
+  color: #fff;
 }
 
-/* Мелкие «звёздочки» фоном */
+/* «звёздная пыль» фоном */
 .star-ribbon::before{
   content:"";
   position:absolute; inset:0;
   background:
-    radial-gradient(var(--stars) 1px, transparent 1.2px) 0 0/24px 24px,
-    radial-gradient(var(--stars) 1px, transparent 1.2px) 12px 12px/24px 24px;
-  pointer-events:none;
-  opacity:.45;
+    radial-gradient(rgba(255,255,255,.22) 1px, transparent 1.2px) 0 0/24px 24px,
+    radial-gradient(rgba(255,255,255,.22) 1px, transparent 1.2px) 12px 12px/24px 24px;
+  pointer-events:none; opacity:.45;
 }
 
-/* Диагональная линия поверх */
+/* диагональная линия */
 .star-ribbon::after{
   content:"";
-  position:absolute;
-  left:-10%; right:-10%;
-  top:50%;
-  height:2px;
-  background: linear-gradient(90deg, transparent, #bfbfbf 35%, #bfbfbf 65%, transparent);
-  transform: rotate(-24deg);
-  opacity:.6;
-  pointer-events:none;
+  position:absolute; left:-12%; right:-12%; top:50%;
+  height:2px; background: linear-gradient(90deg, transparent, #cfcfcf 35%, #cfcfcf 65%, transparent);
+  transform: rotate(-24deg); opacity:.6; pointer-events:none;
 }
 
-/* Маска и два трека для бесшовности */
-.star-ribbon__mask{
-  position: relative;
-  display:flex;
-  width:max-content;
-  height:100%;
-}
-
-/* Общие стили трека */
+/* ЕДИНСТВЕННЫЙ трек (внутри — два одинаковых блока) */
 .star-ribbon__track{
-  display: inline-flex;
-  align-items:center;
-  gap: 3.2rem;
-  padding-inline: 3.2rem;
+  position:absolute; left:0; top:0; height:100%;
+  display:flex; align-items:center;
+  gap: 3.2rem; padding-left: 3.2rem;
   white-space: nowrap;
-  color: var(--text);
+  will-change: transform;
+  animation: starRibbonMove var(--speed) linear infinite;
+}
+
+/* кусок текста (повторяется дважды) */
+.star-ribbon__chunk{
+  display:flex; align-items:center;
+  gap: 3.2rem; margin:0;
   font-family: 'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 800;                     /* как в примере — массивный текст */
+  font-weight: 800;           /* массивно, как в референсе */
   text-transform: uppercase;
   letter-spacing: .04em;
-  font-size: clamp(20px, 3.6vw, 34px);  /* адаптивный размер */
-  line-height: var(--height);
-  will-change: transform;
-  animation: ribbon-scroll var(--speed) linear infinite;
+  font-size: clamp(20px, 3.6vw, 34px);
+  line-height: var(--h);
 }
 
-/* Клон запускаем со смещением — так цикл бесшовный */
-.star-ribbon__track--clone{
-  animation-delay: calc(var(--speed) / -2);
-}
+/* разделители-«звёзды» */
+.star-ribbon__chunk i{ font-style:normal; opacity:.9; transform:translateY(-.03em); }
 
-/* Звёздочки между словами */
-.star-ribbon .spark{
-  display:inline-block;
-  transform: translateY(-.04em);
-  opacity:.9;
-  font-weight: 700;
-}
-
-/* Анимация прокрутки (двигаем на половину общей длины двух треков) */
-@keyframes ribbon-scroll{
+/* бесконечное движение (на полширины) */
+@keyframes starRibbonMove{
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 
-/* Пропаганда доступности: если анимация отключена — показываем статично */
+/* если пользователь отключил анимации */
 @media (prefers-reduced-motion: reduce){
-  .star-ribbon__track,
-  .star-ribbon__track--clone{ animation: none; }
+  .star-ribbon__track{ animation:none; }
 }
 
-/* Узкие экраны — чуть ниже высота и кегль */
-@media (max-width: 640px){
-  .star-ribbon{ --height: 72px; }
-  .star-ribbon__track{ gap: 2.2rem; padding-inline: 2.2rem; }
+/* немного компактнее на узких */
+@media (max-width:640px){
+  .star-ribbon{ --h: 72px; }
+  .star-ribbon__track{ gap: 2.2rem; padding-left: 2.2rem; }
+  .star-ribbon__chunk{ gap: 2.2rem; }
 }
