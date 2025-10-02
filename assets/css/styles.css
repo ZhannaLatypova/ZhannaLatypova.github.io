@@ -2829,3 +2829,35 @@ h1, h2.display, .display-title{
     padding: 16px 20px;
   }
 }
+/* ===== HERO: лента со звёздным небом ===== */
+section.hero .ticker{
+  position: relative;
+  height: 60px;
+  background-color:#0b0b0c;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  z-index:1;
+
+  /* многослойные «звёзды» — принудительно перекрываем старые фоны */
+  background-image:
+    radial-gradient(circle at 12% 28%, rgba(255,255,255,.95) 1.2px, transparent 1.3px),
+    radial-gradient(circle at 72% 62%, rgba(230,230,230,.9) 1px,   transparent 1.1px),
+    radial-gradient(circle at 38% 84%, rgba(210,210,210,.8) 0.9px, transparent 1px),
+    radial-gradient(circle at 90% 22%, rgba(255,255,255,.95) 1.3px, transparent 1.4px),
+    radial-gradient(circle at 8%  54%, rgba(240,240,240,.9) 1px,   transparent 1.1px) !important;
+
+  /* плотность «неба» */
+  background-size: 140px 140px;
+  background-repeat: repeat;
+
+  /* мерцание */
+  animation: starsBlink 10s ease-in-out infinite alternate;
+}
+
+/* мягкое мерцание + небольшой «дрейф» звёзд */
+@keyframes starsBlink {
+  0%   { opacity:.8; background-position:   0px   0px,  40px  40px,  80px  80px, 120px 120px, 160px 160px; }
+  50%  { opacity:1;  background-position:  10px   6px,  56px  44px,  96px  72px, 132px 128px, 170px 152px; }
+  100% { opacity:.7; background-position:  20px  12px,  72px  48px, 112px  64px, 144px 136px, 188px 144px; }
+}
