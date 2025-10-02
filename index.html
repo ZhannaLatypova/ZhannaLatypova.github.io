@@ -639,11 +639,30 @@
 <!-- REFERENCES (carousel) -->
 <section id="references" class="refs section">
   <div class="wrap">
+
+<header class="refs-head">
+  <span class="refs-spark" aria-hidden="true"></span>
+  <h3 class="refs-title">REFERENCES</h3>
+  <p class="refs-lede">A few nice words from people I’ve worked with.</p>
+</header>
+
+<div class="refs-carousel">
+  <button class="refs-nav prev" aria-label="Previous">‹</button>
+
+  <div class="refs-view" role="region" aria-roledescription="carousel">
+    <div class="refs-track" id="refsTrack">
+      <!-- ваши <article class="ref-card"> ... -->
+    </div>
+  </div>
+
+  <button class="refs-nav next" aria-label="Next">›</button>
+</div>
+
+<div class="refs-dots" id="refsDots" aria-label="slides navigation"></div>
 <!-- defs: толстая короткая 8-лучевая звезда -->
 <!-- put this immediately after <div class="wrap"> -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <!-- толстая/короткая 8-лучевая звезда -->
     <clipPath id="clip-asterisk8-fat" clipPathUnits="objectBoundingBox">
       <rect x="0.41" y="0.15" width="0.18" height="0.70" />
       <rect x="0.15" y="0.41" width="0.70" height="0.18" />
