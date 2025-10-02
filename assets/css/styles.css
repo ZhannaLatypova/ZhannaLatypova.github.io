@@ -2822,7 +2822,7 @@ h1, h2.display, .display-title{
 }
 
 /* круг Bonjour «за плечом» */
-/* .hello-badge{
+.hello-badge{
   position: absolute;
   width: clamp(180px, 22vw, 360px);
   aspect-ratio: 1 / 1;
@@ -2832,13 +2832,13 @@ h1, h2.display, .display-title{
   display: grid;
   place-items: center;
   overflow: visible;          /* <<< чтобы линии выходили наружу */
-  /* box-shadow: 0 50px 120px rgba(0,0,0,.25); */
+  box-shadow: 0 50px 120px rgba(0,0,0,.25); */
   /* положение за плечом — подгони, если нужно */
-  /* right: clamp(-40px, -6vw, -80px);
+ right: clamp(-40px, -6vw, -80px);
   top: clamp(120px, 18vh, 220px);
   z-index: 2;
   transform: translateZ(0);
-} */ 
+} 
 
 .hello-badge {
   position: absolute;
@@ -2860,12 +2860,12 @@ h1, h2.display, .display-title{
 }
 
 /* Текст внутри круга (увеличение шрифта) */
-/* .hello-badge{ 
+.hello-badge{ 
   font-family: 'Space Grotesk', Inter, system-ui, sans-serif;
   font-weight: 800;
   font-size: clamp(28px, 3.2vw, 52px);  /* <<< размер Bonjour */
   /* line-height: 1;
-} */ 
+} 
 
 
 .hello-badge {
