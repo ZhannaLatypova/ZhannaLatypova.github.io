@@ -2991,6 +2991,7 @@ h1, h2.display, .display-title{
   position:relative;
 }
 #references .refs-title{
+  /* тот же «display» шрифт, что и в BUSINESS CASES */
   font-family: 'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-weight:900;
   letter-spacing:.02em;
@@ -3003,6 +3004,7 @@ h1, h2.display, .display-title{
   max-width:70ch;
   margin:.4rem auto 0;
 }
+/* та же «искрa» над заголовком */
 #references .refs-spark{
   position:absolute; left:50%; top:-14px; transform:translateX(-50%);
   width:28px; height:28px;
