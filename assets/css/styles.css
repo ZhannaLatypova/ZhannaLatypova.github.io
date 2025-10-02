@@ -2822,122 +2822,71 @@ h1, h2.display, .display-title{
 }
 
 /* круг Bonjour «за плечом» */
+/* фото лежит СВЕРХУ круга, поэтому круг «за плечом» */
+.portrait-wrap { position: relative; }
+.portrait      { position: relative; z-index: 2; display:block; width:100%; height:auto; }
+
+/* общий угол для обеих линий */
+:root { --hello-angle: -45deg; }
+
+/* Обёртка круга + ДЛИННАЯ ЧЁРНАЯ линия, которая уходит за пределы круга */
+.hello-anchor{
+  position: absolute;
+  /* Положение за плечом:
+     двигаешь ПРАВО и ВЕРХ — подгони под своё фото */
+  right: -22%;           /* чем больше отрицательное значение, тем больше круг прячется под плечо */
+  top:   14%;
+  z-index: 1;            /* ниже, чем .portrait → круг под фото */
+}
+
+/* чёрная линия СНИЗУ ( вне круга ) */
+.hello-anchor::before{
+  content:"";
+  position:absolute;
+  left:50%; top:50%;
+  width:2px;
+  height: 800px;         /* длина «наружной» линии (можно больше/меньше) */
+  background:#000;
+  transform: translate(-50%,-50%) rotate(var(--hello-angle));
+  z-index:0;             /* линия под кругом */
+}
+
+/* сам круг */
 .hello-badge{
-  position: absolute;
-  width: clamp(180px, 22vw, 360px);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background: #000;
-  color: #fff;
-  display: grid;
-  place-items: center;
-  overflow: visible;          /* <<< чтобы линии выходили наружу */
-  box-shadow: 0 50px 120px rgba(0,0,0,.25); */
-  /* положение за плечом — подгони, если нужно */
- right: clamp(-40px, -6vw, -80px);
-  top: clamp(120px, 18vh, 220px);
-  z-index: 2;
-  transform: translateZ(0);
-} 
-
-.hello-badge {
-  position: absolute;
-  right: -40px;       
-  top: 120px;         
-  width: 180px;
-  height: 180px;
-  background: #000;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;      /* только увеличиваем размер */
-  font-weight: 700;     /* делаем жирным */
-  text-align: center;
-  z-index: 2;
-  box-shadow: 0 26px 80px rgba(0,0,0,.25);
-}
-
-/* Текст внутри круга (увеличение шрифта) */
-.hello-badge{ 
-  font-family: 'Space Grotesk', Inter, system-ui, sans-serif;
-  font-weight: 800;
-  font-size: clamp(28px, 3.2vw, 52px);  /* <<< размер Bonjour */
-  line-height: 1;
-} 
-
-
-.hello-badge {
-  --circle-size: 150px; /* размер круга */
-  width: var(--circle-size);
-  height: var(--circle-size);
-  border-radius: 50%;
-  background: #000;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 28px;
-  font-weight: 700;
-  color: #fff;
-  overflow: hidden; /* обрезает всё, что выходит за круг */ 
-} 
-
-/* Обёртка для круга и ДЛИННОЙ ЧЁРНОЙ линии */
-.hello-anchor {
-  position: absolute;
-  right: clamp(-24px, -6vw, -12px);   /* регулируешь позицию "за плечом" */
-  top: clamp(140px, 24vh, 220px);
-  z-index: 2; 
-/
-
-/* ДЛИННАЯ ЧЁРНАЯ ЛИНИЯ — только у обёртки */
-.hello-anchor::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 2px;
-  height: 420px;                     /* длиннее диаметра круга */
-  background: #000;
-  transform: translate(-50%, -50%) rotate(-45deg);
-  z-index: 0;                        /* всегда под кругом */
-}
-
-
-/* Сам круг */
-.hello-badge {
-  --r: 240px;
+  --r: 260px;           /* РАЗМЕР круга — меняй под макет */
   width: var(--r);
   height: var(--r);
-  border-radius: 30%;
-  background: #000;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Allura', cursive;
-  font-weight: 400;
-  font-size: 50px;
-  line-height: 1;
+  border-radius: 50%;
+  background:#000;
+  color:#fff;
   position: relative;
-  z-index: 1;
-  overflow: hidden;
+  display: grid;
+  place-items: center;
+  overflow: hidden;      /* белая линия обрежется по кругу */
   box-shadow: 0 40px 120px rgba(0,0,0,.18);
+  z-index: 1;            /* над чёрной линией, но под фото */
 }
 
-/* ТОЛЬКО белая линия внутри */
-.hello-badge::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 1px;
-  height: calc(var(--r) * 1.41421356); /* диагональ круга */
-  background: #fff;
-  transform: translate(-50%, -50%) rotate(-45deg);
+/* белая линия ВНУТРИ круга (точно по диагонали круга) */
+.hello-badge::after{
+  content:"";
+  position:absolute;
+  left:50%; top:50%;
+  width: 2px;
+  height: calc(var(--r) * 1.41421356);   /* диагональ окружности */
+  background:#fff;
+  transform: translate(-50%,-50%) rotate(var(--hello-angle));
   z-index: 2;
+}
+
+/* надпись Bonjour — изящный рукописный шрифт */
+.hello-text{
+  font-family: "Allura", cursive;
+  font-weight: 400;
+  font-size: clamp(36px, 4.2vw, 78px);  /* можно увеличить/уменьшить */
+  line-height: 1;
+  letter-spacing: .02em;
+  pointer-events:none;
 }
 /* ===== Ограничение ширины текста под "I’m Zhanna" ===== */
 .hero-copy {
