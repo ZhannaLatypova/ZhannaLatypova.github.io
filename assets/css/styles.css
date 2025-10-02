@@ -2437,4 +2437,52 @@ h1, h2.display, .display-title{
   z-index: 1;
 }
 
-/* 
+/* ============ HERO × TICKER — RESET / FIX ============ */
+/* 1) Герой в обычном потоке, поверх следующей секции */
+.hero{
+  position: relative !important;
+  z-index: 2 !important;
+  padding-top: 64px !important;
+  padding-bottom: 48px !important; /* небольшой воздух над полосой */
+}
+
+/* 2) Сетка героя без центрирования по высоте */
+.hero-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start !important;
+  min-height: auto !important;
+}
+
+/* 3) Фото — никаких «заездов» вниз и абсолютов */
+.hero-visual{ position: relative !important; min-height: auto !important; }
+.portrait-wrap{
+  position: relative !important;
+  inset: auto !important;
+  margin: 0 !important;           /* убираем отрицательные отступы */
+  transform: none !important;     /* если оставались */
+  z-index: 1 !important;
+}
+.portrait{
+  max-width: 560px;               /* можешь поменять при желании */
+  height: auto;
+  transform: none !important;
+}
+
+/* 4) «Bonjour»-кружок остаётся поверх фото */
+.hello-badge{ z-index: 3 !important; }
+
+/* 5) Бегущая полоса — строго под hero */
+.ticker{
+  position: relative !important;
+  z-index: 1 !important;          /* ниже героя */
+  margin-top: 0 !important;       /* без лишних зазоров */
+  clear: both !important;
+}
+
+/* 6) На мобильных — безопасные значения */
+@media (max-width: 980px){
+  .hero-grid{ grid-template-columns: 1fr; gap: 18px; }
+  .portrait-wrap{ margin-top: 6px !important; }
+  .hello-badge{ left: 10px !important; bottom: 20px !important; }
+}
