@@ -640,7 +640,14 @@
 <section id="references" class="refs section">
   <div class="wrap">
 
-    <!-- один раз: маска «толстая 8-лучевая звезда» -->
+    <!-- заголовок как в BUSINESS CASES -->
+    <header class="refs-head">
+      <span class="refs-spark" aria-hidden="true"></span>
+      <h3 class="refs-title">REFERENCES</h3>
+      <p class="refs-lede">A few nice words from people I’ve worked with.</p>
+    </header>
+
+    <!-- defs: толстая короткая 8-лучевая звезда (один раз на страницу) -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true">
       <defs>
         <clipPath id="clip-asterisk8-fat" clipPathUnits="objectBoundingBox">
@@ -652,18 +659,12 @@
       </defs>
     </svg>
 
-    <header class="refs-head">
-      <span class="refs-spark" aria-hidden="true"></span>
-      <h3 class="refs-title">REFERENCES</h3>
-      <p class="refs-lede">A few nice words from people I’ve worked with.</p>
-    </header>
-
-    <!-- ЕДИНСТВЕННАЯ карусель -->
     <div class="refs-carousel">
       <button class="refs-nav prev" aria-label="Previous">‹</button>
 
       <div class="refs-view" role="region" aria-roledescription="carousel" aria-label="References">
         <div class="refs-track" id="refsTrack">
+
           <!-- Slide 1 -->
           <article class="ref-card">
             <div class="ref-copy">
@@ -748,6 +749,7 @@
                    alt="Client portrait 5">
             </figure>
           </article>
+
         </div>
       </div>
 
