@@ -139,15 +139,15 @@ img{display:block; max-width:100%}
 }
 
 /* аналитические иконки */
-.icon{position:absolute; color:#111; filter:drop-shadow(0 2px 6px rgba(0,0,0,.06))}
+/* .icon{position:absolute; color:#111; filter:drop-shadow(0 2px 6px rgba(0,0,0,.06))}
 .icon-linechart {
   width: 66px;
   height: 66px;
   top: 165px;
   left: 65%; /* ↑ было 58%, увеличь до 60–65% */
-  transform: translateX(-50%) rotate(-8deg);
-}
-.icon-pie{width:42px; height:42px; right:28px; bottom:22%}
+  /* transform: translateX(-50%) rotate(-8deg);
+} */
+/* .icon-pie{width:42px; height:42px; right:28px; bottom:22%}  */
 
 /* бегущая строка */
 /* .ticker{
@@ -2892,22 +2892,23 @@ h1, h2.display, .display-title{
   z-index: 2;
 }
 
-/* Длинная ЧЁРНАЯ линия (всегда выходит за круг) */
+/* ДЛИННАЯ ЧЁРНАЯ ЛИНИЯ — только у обёртки */
 .hello-anchor::before {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 2px;                                   /* толщина */
-  height: 420px;                                /* длина больше диаметра круга */
+  width: 2px;
+  height: 420px;                     /* длиннее диаметра круга */
   background: #000;
-  transform: translate(-50%, -50%) rotate(45deg); /* угол линии */
-  z-index: 1;
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: 0;                        /* всегда под кругом */
 }
 
-/* Сам чёрный круг */
+
+/* Сам круг */
 .hello-badge {
-  --r: 240px;                                   /* диаметр */
+  --r: 240px;
   width: var(--r);
   height: var(--r);
   border-radius: 50%;
@@ -2916,27 +2917,27 @@ h1, h2.display, .display-title{
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Space Grotesk', Inter, system-ui, sans-serif;
+  font-family: 'Space Grotesk', Inter, sans-serif;
   font-weight: 900;
   font-size: 42px;
   line-height: 1;
   position: relative;
-  z-index: 2;
-  overflow: hidden; /* обрезает белую линию по кругу */
+  z-index: 1;
+  overflow: hidden;
   box-shadow: 0 40px 120px rgba(0,0,0,.18);
 }
 
-/* БЕЛАЯ линия — только внутри круга */
+/* ТОЛЬКО белая линия внутри */
 .hello-badge::after {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
   width: 2px;
-  height: calc(var(--r) * 1.41421356); /* диагональ круга (r * sqrt(2)) */
+  height: calc(var(--r) * 1.41421356); /* диагональ круга */
   background: #fff;
   transform: translate(-50%, -50%) rotate(45deg);
-  z-index: 3;
+  z-index: 2;
 }
 /* ===== Ограничение ширины текста под "I’m Zhanna" ===== */
 .hero-copy {
