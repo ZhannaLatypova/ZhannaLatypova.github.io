@@ -117,12 +117,24 @@ img{display:block; max-width:100%}
 .ticker-track{
   display:flex;
   width:max-content;          /* ширина по контенту */
-  animation: marquee 28s linear infinite;
+  animation: marquee 30s linear infinite;
   will-change: transform;
 }
+
+.ticker-line {
+  display:flex;
+  gap:40px;
+  padding:16px 0;
+  flex:0 0 auto; /* не сжимать */
+  white-space:nowrap;
+}
+
 .ticker span{font-weight:900; letter-spacing:.08em}
 .ticker .dot{opacity:.8}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
 
 /* Бейджи-профессии */
 .pro-badges{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 14px; font-family:'Space Grotesk', Inter, system-ui, sans-serif}
