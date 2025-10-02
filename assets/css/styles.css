@@ -2721,154 +2721,95 @@ h1, h2.display, .display-title{
   .star-ribbon__chunk{ gap: 2.2rem; }
 }
 
-/* ===== HERO ticker (узкая, не жирная, центр по вертикали, бесконечно) ===== */
-.hero .ticker {
+/* ===== HERO: ленточка под секцией ===== */
+.hero { --ticker-h: 56px; }
+
+.hero .ticker{
   position: relative;
-  height: 40px; /* аккуратная высота */
+  height: var(--ticker-h);
   background: #0b0b0c;
-  background-image: radial-gradient(#1f1f1f 1px, transparent 1px);
-  background-size: 20px 20px;
+  /* «звёздное небо» (мелкие точки) */
+  background-image:
+    radial-gradient(#1f1f1f 1px, transparent 1px);
+  background-size: 18px 18px;
+
   overflow: hidden;
   display: flex;
   align-items: center;
   z-index: 1;
 }
 
-.hero .ticker-row {
+.hero .ticker-row{
   display: flex;
-  width: max-content;
-  animation: hero-ticker-scroll 32s linear infinite;
+  width: max-content;                 /* ширина по контенту */
+  animation: hero-ticker 32s linear infinite;
+  will-change: transform;
 }
+.hero .ticker-row:hover{ animation-play-state: paused; }
 
-.hero .ticker-seq {
-  display: flex;
+.hero .ticker-seq{
+  display: inline-flex;
   align-items: center;
+  padding-right: 56px;                /* расстояние между повторами */
 }
 
-.hero .ticker-item {
+.hero .ticker-item{
   font-family: 'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 500; /* НЕ жирный */
-  font-size: 16px; /* меньше шрифт */
+  font-weight: 700;                   /* чуть жирнее */
+  font-size: 22px;                    /* покрупнее; можно 20px */
   letter-spacing: .02em;
   color: #ececec;
-  margin: 0 18px;
-  line-height: 40px;
+  white-space: nowrap;                /* в одну строку */
+  margin: 0 28px;
+  line-height: 1;
 }
 
-.hero .ticker-dot {
+.hero .ticker-dot{
   font-style: normal;
-  color: #cfcfcf;
-  margin: 0 14px;
+  color: #d9d9d9;
+  margin: 0 16px;
   transform: translateY(-1px);
 }
-.hero .ticker-row {
-  display: flex;
-  width: max-content;
-  animation: hero-ticker-scroll 40s linear infinite;
-  white-space: nowrap;          /* запрет переноса строк */
+
+/* бесшовная прокрутка — уезжаем на 50% (вторая половина — клон) */
+@keyframes hero-ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-.hero .ticker-item {
-  font-size: 14px;
-  font-weight: 400;
-  color: #ececec;
-  margin: 0 18px;
-  line-height: 1;
-  white-space: nowrap;          /* тоже запрет переноса */
+/* ===== Bonjour-кружок — зафиксировать «у ленты» ===== */
+.portrait-wrap{ position: relative; }
+.hello-badge{
+  position: absolute;
+  left: clamp(-10px, -4vw, -22px);           /* чуть вынос влево от фото — подгони по вкусу */
+  bottom: calc((var(--ticker-h) / 2) - 24px); /* «держится» у ленты */
+  transform: translateY(100%);               /* ниже низа фото */
+  background: #000;
+  color: #fff;
+  border-radius: 999px;
+  padding: 22px 28px;
+  font-weight: 700;
+  box-shadow: 0 26px 80px rgba(0,0,0,.25);
 }
 
-.hero .ticker {
-  position: relative;
-  height: 45px;
-  background: #0b0b0c;
-
-  /* многослойный фон "звёздное небо" */
-  background-image:
-    radial-gradient(1px 1px at 10% 20%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 30% 80%, #fff, transparent),
-    radial-gradient(1px 1px at 50% 50%, #fff, transparent),
-    radial-gradient(2px 2px at 70% 30%, #fff, transparent),
-    radial-gradient(1px 1px at 90% 60%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 80% 90%, #fff, transparent),
-    radial-gradient(1px 1px at 20% 70%, #fff, transparent),
-    radial-gradient(2px 2px at 40% 40%, #fff, transparent);
-
-  background-repeat: repeat;
-  background-size: 200px 200px;  /* размер блока "узора" */
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  z-index: 1;
-}
-.hero .ticker-item {
-  line-height: 40px; /* высота строки равна высоте полосы */
-}
-
-/* ======= HERO: удобные переменные ======= */
-.hero{
-  /* одна высота на всё: тикер и от неё пляшем */
-  --hero-ticker-h: 35px;
-  --hello-badge-gap: 16px;   /* отступ круга над тикером */
-}
-
-/* ======= CTA: Let’s Talk + Download CV ======= */
-.hero .cta-row{
-  display: flex;
-  flex-wrap: wrap;       /* если не влазит — переносится красиво */
-  align-items: center;   /* ровняем по центру вертикально */
-  gap: 18px 24px;        /* по вертикали/горизонтали */
-}
-
-/* сам текст Download CV — опускаем немного вниз */
-.hero .download-link{
+/* ===== Download CV — подчёркивание аккуратно и ближе к тексту ===== */
+.download-link{
   display:inline-block;
   font-weight:600;
+  font-size: 1rem;
+  margin-left: 16px;
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  text-decoration-color: #111;
-  text-underline-offset: 3px;    /* расстояние до линии */
-  transform: translateY(3px);    /* ↓ чуть ниже */
+  text-underline-offset: 3px;  /* ближе к тексту */
+  color:#111;
 }
 
-/* на очень узких экранах ставим в колонку и поднимаем текст,
-   чтобы линия не отходила далеко */
-@media (max-width: 560px){
-  .hero .cta-row{ flex-direction: column; align-items: flex-start; gap: 12px; }
-  .hero .download-link{ transform: translateY(1px); }
-}
-
-/* ======= ВИЗУАЛ: фиксируем «Bonjour» у низа, а не у фото ======= */
-.hero .hero-visual{ position: relative; }
-
-/* круг «Bonjour» теперь привязан к низу визуального блока,
-   на расстоянии var(--hello-badge-gap) над тикером */
-.hero .hello-badge{
-  position: absolute;
-  left: clamp(16px, 3vw, 48px);              /* чуть влево от картинки */
-  bottom: calc(var(--hero-ticker-h) + var(--hello-badge-gap));
-  z-index: 2;                                 /* поверх фона, под фото не прячется */
-  pointer-events: none;                       /* не перехватываем клики */
-  transition: transform .25s ease;
-}
-
-/* если хочется лёгкого эффекта при скролле/ховере */
-.hero .hello-badge:hover{ transform: translateY(-2px); }
-
-/* на телефонах: переносим бейдж чуть выше,
-   чтобы он не въезжал в текст и кнопки */
 @media (max-width: 980px){
-  .hero .hello-badge{
-    left: 12px;
-    bottom: calc(var(--hero-ticker-h) + 10px);
+  .hero { --ticker-h: 48px; }                /* поуже лента на мобилке */
+  .hero .ticker-item{ font-size: 18px; }     /* поменьше шрифт на мобилке */
+  .hello-badge{
+    left: -8px;
+    bottom: calc((var(--ticker-h) / 2) - 18px);
+    padding: 16px 20px;
   }
-}
-
-/* ======= Ticker подключён на переменной высоте ======= */
-.hero .ticker{
-  height: var(--hero-ticker-h);              /* ← использует ту же переменную */
-  line-height: var(--hero-ticker-h);         /* центрирование текста по высоте */
-}
-@keyframes hero-ticker-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
 }
