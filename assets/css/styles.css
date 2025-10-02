@@ -2773,3 +2773,69 @@ h1, h2.display, .display-title{
   flex: 0 0 100% !important;
   max-width: 100% !important;
 }
+
+/* ——— 1) Снимаем любые скрытия неактивных слайдов ——— */
+#references .refs-track{
+  display: flex !important;
+  overflow: hidden !important;
+}
+#references .refs-track .ref-card{
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+}
+#references .refs-track .ref-card *{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* На всякий случай, если библиотека прячет aria-hidden */
+#references .refs-track .ref-card[aria-hidden="true"]{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ——— 2) Размеры фото, чтобы маска не давала «ноль» ——— */
+#references .ref-card{ display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center; }
+#references .ref-photo{
+  width: clamp(260px, 34vw, 420px) !important;
+  aspect-ratio: 1 / 1 !important;
+  position: relative;
+  overflow: visible;
+}
+
+/* наша «коротко-широкая» звезда + орбитальное вращение */
+#references .shape--asterisk8-fat img{
+  clip-path: url(#clip-asterisk8-fat) !important;
+  -webkit-clip-path: url(#clip-asterisk8-fat) !important;
+  border-radius: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+
+  transform-origin: 135% 50%;
+  transform: rotate(0) scale(1);
+  transition: transform .9s linear;
+}
+#references .shape--asterisk8-fat:hover img{
+  transform: rotate(360deg) scale(1.06);
+}
+
+/* Выдвижение карточки фото при ховере */
+#references .ref-photo{ transition: transform .28s ease, box-shadow .28s ease; }
+#references .ref-photo:hover{ transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,.18); }
+
+/* ——— 3) Текст референсов — на 30% меньше, серый, без жирного ——— */
+#references .ref-quote{
+  font-size: clamp(18px, 3.2vw, 39px) !important; /* было ~56 → −30% */
+  font-weight: 600 !important;                    /* вместо 900 */
+  color: #6b6b73 !important;                      /* серый */
+  line-height: 1.18 !important;
+  letter-spacing: .005em;
+}
+#references .ref-name{ font-weight: 700 !important; color:#111; }
+#references .ref-role{ color:#7a7a83; }
+
+
