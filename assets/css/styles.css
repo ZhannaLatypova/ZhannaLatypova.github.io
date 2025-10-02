@@ -2486,3 +2486,64 @@ h1, h2.display, .display-title{
   .portrait-wrap{ margin-top: 6px !important; }
   .hello-badge{ left: 10px !important; bottom: 20px !important; }
 }
+/* ===== HERO × TICKER — финальные оверрайды ===== */
+
+/* Герой в потоке, лента всегда ниже */
+.hero{
+  position: relative !important;
+  z-index: 2 !important;
+  padding-top: 64px !important;
+  padding-bottom: 48px !important; /* воздух над лентой */
+  margin-bottom: 0 !important;
+}
+
+/* Сетка героя без центрирования по высоте */
+.hero-grid{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  align-items: start !important;
+  min-height: auto !important;
+}
+
+/* Сброс ВСЕХ «заездов» фото */
+.hero .hero-visual{ position: relative !important; min-height: auto !important; }
+.hero .hero-visual > .portrait-wrap,
+.hero .portrait-wrap{
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  inset: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  z-index: 1 !important;
+}
+.hero .portrait{
+  max-width: 560px !important;
+  height: auto !important;
+  transform: none !important;
+}
+
+/* «Bonjour»-кружок поверх фото, но не влияет на ленту */
+.hello-badge{ z-index: 3 !important; }
+
+/* Лента: строго под героем и ниже по z-index */
+.ticker{
+  position: relative !important;
+  z-index: 1 !important;     /* ниже героя */
+  margin-top: 0 !important;
+  clear: both !important;
+  display: block !important;
+}
+
+/* На мобилке — без сюрпризов */
+@media (max-width: 980px){
+  .hero-grid{ grid-template-columns: 1fr !important; gap: 18px !important; }
+  .hero .portrait-wrap{ margin-top: 6px !important; }
+  .hello-badge{ left: 10px !important; bottom: 20px !important; }
+}
+
+/* (если радугу нужно убрать окончательно) */
+.color-cloud{ display: none !important; }
