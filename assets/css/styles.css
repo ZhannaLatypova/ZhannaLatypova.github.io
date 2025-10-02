@@ -2873,7 +2873,7 @@ h1, h2.display, .display-title{
   position: absolute;
   width: 2px;                /* толщина линии — сделай 1px если нужно тоньше */
   height: 220px;             /* длина линии, больше чем сам круг */
-  background: #fff;          /* цвет линии */
+  background: #000;          /* цвет линии */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-45deg); /* поворот */
@@ -2887,7 +2887,7 @@ h1, h2.display, .display-title{
   left:50%; top:50%;
   width: 2px;                 /* короче — перекрывает чёрную внутри круга */
   height: 3px;
-  background:#000;             /* белая внутри */
+  background:#fff;             /* белая внутри */
   transform: translate(-50%,-50%) rotate(-45deg);
   pointer-events:none;
 }
