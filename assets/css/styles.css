@@ -2867,29 +2867,32 @@ h1, h2.display, .display-title{
   /* line-height: 1;
 } */ 
 
+
 /* ДЛИННАЯ ЧЁРНАЯ ЛИНИЯ (выходит за круг) */
 .hello-badge::before {
   content: "";
   position: absolute;
-  width: 2px;                /* толщина линии — сделай 1px если нужно тоньше */
-  height: 220px;             /* длина линии, больше чем сам круг */
-  background: #000;          /* цвет линии */
+  width: 2px;                
+  height: 220px;             /* длина линии больше, чем диаметр круга */
+  background: #000;          
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) rotate(-45deg); /* поворот */
+  transform: translate(-50%, -50%) rotate(-45deg);
   z-index: 3;
 }
 
-/* КОРОТКАЯ БЕЛАЯ ЛИНИЯ (поверх внутри круга) */
-.hello-badge::after{
-  content:"";
-  position:absolute;
-  left:50%; top:50%;
-  width: 2px;                 /* короче — перекрывает чёрную внутри круга */
-  height: 3px;
-  background:#fff;             /* белая внутри */
-  transform: translate(-50%,-50%) rotate(-45deg);
-  pointer-events:none;
+/* БЕЛАЯ ЛИНИЯ ВНУТРИ КРУГА */
+.hello-badge::after {
+  content: "";
+  position: absolute;
+  width: 2px;                
+  height: 160px;             /* примерно равна диаметру круга */
+  background: #fff;          /* белая перекрывающая */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  z-index: 4;                /* поверх чёрной */
+  pointer-events: none;
 }
 
 
