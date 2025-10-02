@@ -857,7 +857,46 @@
       })
     });
   </script>
+<script>
+(function(){
+  const root   = document.getElementById('references');
+  if(!root) return;
+
+  const track  = root.querySelector('#refsTrack');
+  const slides = Array.from(track.children);
+  const prev   = root.querySelector('.refs-nav.prev');
+  const next   = root.querySelector('.refs-nav.next');
+  const dotsEl = root.querySelector('#refsDots');
+
+  let index = 0;
+
+  // точки
+  if(dotsEl){
+    dotsEl.innerHTML = slides.map((_,i)=>`<button class="dot" aria-label="Go to slide ${i+1}"></button>`).join('');
+  }
+  const dots = dotsEl ? Array.from(dotsEl.children) : [];
+
+  function go(i){
+    index = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index*100}%)`;
+    slides.forEach((s,idx)=> s.setAttribute('aria-hidden', idx!==index));
+    dots.forEach((d,idx)=> d.classList.toggle('is-active', idx===index));
+  }
+
+  // навигация
+  next && next.addEventListener('click', ()=>go(index+1));
+  prev && prev.addEventListener('click', ()=>go(index-1));
+  dots.forEach((d,idx)=> d.addEventListener('click', ()=>go(idx)));
+
+  // инициализация
+  go(0);
+
+  // на всякий случай держим в 100% при ресайзе
+  window.addEventListener('resize', ()=>go(index));
+})();
+</script>
 </body>
+
 </html>
 <script>
 document.querySelectorAll(".case-media.hover-swap img").forEach(img => {
