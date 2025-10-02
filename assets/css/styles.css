@@ -2678,21 +2678,7 @@ h1, h2.display, .display-title{
 /* На всякий: ничего не прятать в референсах */
 #references img{ display:block !important; }
 
-/* Новая форма звезды (как в примере) */
-#references .shape--asterisk8 img{
-  clip-path: url(#clip-asterisk8) !important;
-  -webkit-clip-path: url(#clip-asterisk8) !important;
-  border-radius: 0 !important;
-  width: clamp(260px, 34vw, 420px) !important;
-  height: auto !important;
-  aspect-ratio: 1 / 1 !important;
-  object-fit: cover !important;
-  transform: rotate(0) scale(1);
-  transition: transform .9s linear;
-}
-#references .shape--asterisk8:hover img{
-  transform: rotate(360deg) scale(1.06);
-}
+
 
 /* 30% меньше, без жирного, серым */
 #references .ref-quote{
@@ -2838,4 +2824,5 @@ h1, h2.display, .display-title{
 #references .ref-name{ font-weight: 700 !important; color:#111; }
 #references .ref-role{ color:#7a7a83; }
 
-
+#references .ref-card{ outline:2px dashed #f36; }
+#references .ref-photo{ background:#eee; }
