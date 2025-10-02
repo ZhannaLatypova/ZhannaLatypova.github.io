@@ -169,38 +169,46 @@
 
 <!-- STAR RIBBON (маркировочная лента) -->
 <section class="star-ribbon" aria-label="skills ticker">
-  <div class="star-ribbon__track">
-    <p class="star-ribbon__chunk">
-      <span>WEB DESIGN</span><i>✧</i>
-      <span>APP DESIGN</span><i>✧</i>
-      <span>WEB FLOW</span><i>✧</i>
-      <span>BRANDING</span><i>✧</i>
-      <span>MARKETING & ADS</span><i>✧</i>
-      <span>SQL & PYTHON</span><i>✧</i>
-      <span>A/B TESTING</span><i>✧</i>
-      <span>ML & AI</span><i>✧</i>
-      <span>BI SYSTEMS</span><i>✧</i>
-      <span>DATA QUALITY → INSIGHTS</span><i>✧</i>
-      <span>MLOps</span><i>✧</i>
-      <span>LLM</span><i>✧</i>
-    </p>
+<!-- нижняя чёрная лента (бесконечная) -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-row">
+    <!-- последовательность #1 -->
+    <div class="ticker-seq">
+      <span class="ticker-item">WEB DESIGN</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">APP DESIGN</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">DEVELOPMENT</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">WEB FLOW</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">BRANDING</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">MARKETING & Ads</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">SQL & PYTHON</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">A/B TESTING</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">ML & AI</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">BI SYSTEMS</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">DATA QUALITY → INSIGHTS</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">BIG DATA</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">MLOps</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">LLM</span><span class="ticker-dot">✶</span>
+    </div>
 
-    <!-- клонированный кусок — для бесшовного цикла -->
-    <p class="star-ribbon__chunk" aria-hidden="true">
-      <span>WEB DESIGN</span><i>✧</i>
-      <span>APP DESIGN</span><i>✧</i>
-      <span>WEB FLOW</span><i>✧</i>
-      <span>BRANDING</span><i>✧</i>
-      <span>MARKETING & ADS</span><i>✧</i>
-      <span>SQL & PYTHON</span><i>✧</i>
-      <span>A/B TESTING</span><i>✧</i>
-      <span>ML & AI</span><i>✧</i>
-      <span>BI SYSTEMS</span><i>✧</i>
-      <span>DATA QUALITY → INSIGHTS</span><i>✧</i>
-      <span>MLOps</span><i>✧</i>
-      <span>LLM</span><i>✧</i>
-    </p>
+    <!-- последовательность #2 (идентичная) — для бесшовного цикла -->
+    <div class="ticker-seq" aria-hidden="true">
+      <span class="ticker-item">WEB DESIGN</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">APP DESIGN</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">DEVELOPMENT</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">WEB FLOW</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">BRANDING</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">MARKETING & Ads</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">SQL & PYTHON</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">A/B TESTING</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">ML & AI</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">BI SYSTEMS</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">DATA QUALITY → INSIGHTS</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">BIG DATA</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">MLOps</span><span class="ticker-dot">✶</span>
+      <span class="ticker-item">LLM</span><span class="ticker-dot">✶</span>
+    </div>
   </div>
+</div>
 </section>
 <!-- SERVICES -->
 <section class="section services-v2" id="services">
