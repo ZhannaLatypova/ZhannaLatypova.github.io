@@ -2424,10 +2424,12 @@ h1, h2.display, .display-title{
   clip-path: url(#clip-clover);
   -webkit-clip-path: url(#clip-clover);
 }
-/* .shape--asterisk img{
+
+.shape--asterisk img{
   clip-path: url(#clip-asterisk);
   -webkit-clip-path: url(#clip-asterisk);
-} */
+  border-radius: 0;
+}
 
 /* Фолбэк для очень старых браузеров */
 @supports not (clip-path: url(#clip-clover)){
