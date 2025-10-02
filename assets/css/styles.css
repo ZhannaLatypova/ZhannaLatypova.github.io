@@ -2771,7 +2771,7 @@ h1, h2.display, .display-title{
 .ticker-track i{
   display:inline-block;
   margin:0 18px;
-  font-size:15px;            /* уменьшаем шрифт */
+  font-size:10px;            /* уменьшаем шрифт */
   font-weight:400;           /* убираем жирность */
   color:#eee;
   vertical-align:middle;
