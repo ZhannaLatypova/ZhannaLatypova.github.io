@@ -2753,7 +2753,7 @@ h1, h2.display, .display-title{
 /* ===== HERO ticker (узкая, не жирная, центр по вертикали, бесконечно) ===== */
 .hero .ticker{
   position: relative;
-  height: 44px;                                  /* ниже/аккуратнее */
+  height: 35px;                                  /* ниже/аккуратнее */
   background: #0b0b0c;
   /* звёздный фон как на примере (можно убрать эту строку) */
   background-image: radial-gradient(#1f1f1f 1px, transparent 1px);
