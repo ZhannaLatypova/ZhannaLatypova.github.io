@@ -2758,3 +2758,23 @@ h1, h2.display, .display-title{
   #references .ref-card{ grid-template-columns:1fr; min-height:360px; }
   #references .ref-photo{ justify-self:center; }
 }
+
+/* ===== REFERENCES — показываем по одному слайду ===== */
+#references .refs-view{
+  position: relative;
+  width: 100%;
+  overflow: hidden;                  /* прячем соседние слайды */
+}
+
+#references .refs-track{
+  display: flex !important;
+  gap: 0 !important;                 /* на всякий, если где-то стоял gap */
+  transition: transform .5s ease;    /* анимация сдвига */
+  will-change: transform;
+}
+
+#references .refs-track > .ref-card{
+  flex: 0 0 100% !important;         /* РОВНО один экран на карточку */
+  max-width: 100% !important;
+  margin: 0 !important;              /* чтобы ничего не толкало */
+}
