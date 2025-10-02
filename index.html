@@ -643,8 +643,11 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <clipPath id="clip-asterisk8-fat" clipPathUnits="objectBoundingBox">
+      <!-- вертикальный луч -->
       <rect x="0.41" y="0.15" width="0.18" height="0.70" />
+      <!-- горизонтальный луч -->
       <rect x="0.15" y="0.41" width="0.70" height="0.18" />
+      <!-- диагонали (45° и 135°) -->
       <rect x="0.41" y="0.15" width="0.18" height="0.70" transform="rotate(45 0.5 0.5)" />
       <rect x="0.41" y="0.15" width="0.18" height="0.70" transform="rotate(135 0.5 0.5)" />
     </clipPath>
@@ -660,130 +663,94 @@
       <button class="refs-nav prev" aria-label="Previous">‹</button>
 
       <!-- окно просмотра -->
-      <div class="refs-view" role="region" aria-roledescription="carousel" aria-label="References">
-        <!-- лента -->
-        <div class="refs-track" id="refsTrack">
-          <!-- Slide 1 -->
-      <article class="ref-card">
-        <div class="ref-copy">
-          <div class="ref-kicker">CLIENT FEEDBACK</div>
-          <h4 class="ref-quote">“Текст отзыва (любой)… ”</h4>
-          <div class="ref-author">
-            <div class="ref-name">Имя Фамилия</div>
-            <div class="ref-role">Должность, Компания</div>
-            <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none" aria-hidden="true">
-              <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
-                    stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
-            </svg>
-          </div>
-        </div>
-
-        <!-- ВАЖНО: класс shape--asterisk8 и onerror-фолбэк -->
-        <figure class="ref-photo shape--asterisk8-fat">
-          <img
-            src="assets/img/foto_14.jpg"
-            onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/foto_14.jpg';"
-            alt="Client portrait 1">
-        </figure>
-      </article>
-
-          <!-- Slide 2 -->
-      <article class="ref-card">
-        <div class="ref-copy">
-          <div class="ref-kicker">CLIENT FEEDBACK</div>
-          <h4 class="ref-quote">“Текст отзыва (любой)… ”</h4>
-          <div class="ref-author">
-            <div class="ref-name">Имя Фамилия</div>
-            <div class="ref-role">Должность, Компания</div>
-            <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none" aria-hidden="true">
-              <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
-                    stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
-            </svg>
-          </div>
-        </div>
-      
-        <!-- ВАЖНО: класс shape--asterisk8 и onerror-фолбэк -->
-        <figure class="ref-photo shape--asterisk8-fat">
-          <img
-            src="assets/img/foto_14.jpg"
-            onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/foto_14.jpg';"
-            alt="Client portrait 1">
-        </figure>
-      </article>
-
-          <!-- Slide 3 -->
-      <article class="ref-card">
-        <div class="ref-copy">
-          <div class="ref-kicker">CLIENT FEEDBACK</div>
-          <h4 class="ref-quote">“Текст отзыва (любой)… ”</h4>
-          <div class="ref-author">
-            <div class="ref-name">Имя Фамилия</div>
-            <div class="ref-role">Должность, Компания</div>
-            <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none" aria-hidden="true">
-              <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
-                    stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
-            </svg>
-          </div>
-        </div>
-      
-        <!-- ВАЖНО: класс shape--asterisk8 и onerror-фолбэк -->
-        <figure class="ref-photo shape--asterisk8-fat">
-          <img
-            src="assets/img/foto_14.jpg"
-            onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/foto_14.jpg';"
-            alt="Client portrait 1">
-        </figure>
-      </article>
-
-          <!-- Slide 4 -->
-      <article class="ref-card">
-        <div class="ref-copy">
-          <div class="ref-kicker">CLIENT FEEDBACK</div>
-          <h4 class="ref-quote">“Текст отзыва (любой)… ”</h4>
-          <div class="ref-author">
-            <div class="ref-name">Имя Фамилия</div>
-            <div class="ref-role">Должность, Компания</div>
-            <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none" aria-hidden="true">
-              <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
-                    stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
-            </svg>
-          </div>
-        </div>
-      
-        <!-- ВАЖНО: класс shape--asterisk8 и onerror-фолбэк -->
-        <figure class="ref-photo shape--asterisk8-fat">
-          <img
-            src="assets/img/foto_14.jpg"
-            onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/foto_14.jpg';"
-            alt="Client portrait 1">
-        </figure>
-      </article>
-
-          <!-- Slide 5 -->
-      <article class="ref-card">
-        <div class="ref-copy">
-          <div class="ref-kicker">CLIENT FEEDBACK</div>
-          <h4 class="ref-quote">“Текст отзыва (любой)… ”</h4>
-          <div class="ref-author">
-            <div class="ref-name">Имя Фамилия</div>
-            <div class="ref-role">Должность, Компания</div>
-            <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none" aria-hidden="true">
-              <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
-                    stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
-            </svg>
-          </div>
-        </div>
-      
-        <!-- ВАЖНО: класс shape--asterisk8 и onerror-фолбэк -->
-        <figure class="ref-photo shape--asterisk8-fat">
-          <img
-            src="assets/img/foto_14.jpg"
-            onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/foto_14.jpg';"
-            alt="Client portrait 1">
-        </figure>
-      </article>
+<div class="refs-view" role="region" aria-roledescription="carousel" aria-label="References">
+  <div class="refs-track" id="refsTrack">
+    <!-- Slide 1 -->
+    <article class="ref-card">
+      <div class="ref-copy">
+        <div class="ref-kicker">CLIENT FEEDBACK</div>
+        <h4 class="ref-quote">“Zhanna is fast, pragmatic and focuses on outcomes. Highly recommend.”</h4>
+        <div class="ref-author">
+          <div class="ref-name">Amelia Woods</div>
+          <div class="ref-role">Head of Analytics, NorthPeak</div>
         </div>
       </div>
+      <figure class="ref-photo shape--asterisk8-fat">
+        <img src="assets/img/ref-1.jpg"
+             onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/ref-1.jpg';"
+             alt="Client portrait 1">
+      </figure>
+    </article>
+
+    <!-- Slide 2 -->
+    <article class="ref-card">
+      <div class="ref-copy">
+        <div class="ref-kicker">CLIENT FEEDBACK</div>
+        <h4 class="ref-quote">“She turned messy data into clear insights and shipped dashboards in days.”</h4>
+        <div class="ref-author">
+          <div class="ref-name">Viktor Petrov</div>
+          <div class="ref-role">COO, Orion Labs</div>
+        </div>
+      </div>
+      <figure class="ref-photo shape--asterisk8-fat">
+        <img src="assets/img/ref-2.jpg"
+             onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/ref-2.jpg';"
+             alt="Client portrait 2">
+      </figure>
+    </article>
+
+    <!-- Slide 3 -->
+    <article class="ref-card">
+      <div class="ref-copy">
+        <div class="ref-kicker">CLIENT FEEDBACK</div>
+        <h4 class="ref-quote">“Loved the experiments framework — we finally have A/Bs we can trust.”</h4>
+        <div class="ref-author">
+          <div class="ref-name">Marco Díaz</div>
+          <div class="ref-role">Growth Lead, Vega</div>
+        </div>
+      </div>
+      <figure class="ref-photo shape--asterisk8-fat">
+        <img src="assets/img/ref-3.jpg"
+             onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/ref-3.jpg';"
+             alt="Client portrait 3">
+      </figure>
+    </article>
+
+    <!-- Slide 4 -->
+    <article class="ref-card">
+      <div class="ref-copy">
+        <div class="ref-kicker">CLIENT FEEDBACK</div>
+        <h4 class="ref-quote">“From prototype to production ML in weeks — super collaborative.”</h4>
+        <div class="ref-author">
+          <div class="ref-name">Sara Khan</div>
+          <div class="ref-role">Product Manager, Alto</div>
+        </div>
+      </div>
+      <figure class="ref-photo shape--asterisk8-fat">
+        <img src="assets/img/ref-4.jpg"
+             onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/ref-4.jpg';"
+             alt="Client portrait 4">
+      </figure>
+    </article>
+
+    <!-- Slide 5 -->
+    <article class="ref-card">
+      <div class="ref-copy">
+        <div class="ref-kicker">CLIENT FEEDBACK</div>
+        <h4 class="ref-quote">“Great communication and sharp business context — we shipped value fast.”</h4>
+        <div class="ref-author">
+          <div class="ref-name">Rohan Sing</div>
+          <div class="ref-role">Project Manager, Airflow Tech Inc</div>
+        </div>
+      </div>
+      <figure class="ref-photo shape--asterisk8-fat">
+        <img src="assets/img/ref-5.jpg"
+             onerror="this.onerror=null;this.src='https://ZhannaLatypova.github.io/assets/img/ref-5.jpg';"
+             alt="Client portrait 5">
+      </figure>
+    </article>
+  </div>
+</div>
 
       <button class="refs-nav next" aria-label="Next">›</button>
     </div>
