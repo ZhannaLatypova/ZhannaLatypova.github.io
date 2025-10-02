@@ -2862,23 +2862,34 @@ h1, h2.display, .display-title{
 } */ 
 
 /* Заголовок как у BUSINESS CASES (Space Grotesk / var(--display)) */
-#references .refs-head{ text-align:center; margin-bottom: clamp(22px,3vw,32px); position:relative; }
+/* Заголовок REFERENCES — как у BUSINESS CASES */
+#references .refs-head{
+  text-align:center;
+  margin-bottom: clamp(22px, 3vw, 32px);
+  position:relative;
+  
 #references .refs-title{
-  font-family: var(--display, 'Space Grotesk', Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif);
-  font-weight: 900;
-  letter-spacing: .02em;
-  line-height: 1;
-  font-size: clamp(28px, 3.6vw, 44px);
-  margin: .2rem 0 .35rem;
+  /* тот же «display» шрифт, что и в BUSINESS CASES */
+  font-family: 'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight:900;
+  letter-spacing:.02em;
+  font-size: clamp(28px, 3.2vw, 42px);
+  margin:.4rem 0 .2rem;
+  line-height:1;
 }
-#references .refs-lede{ color:#7a7a83; max-width:70ch; margin:0 auto; }
+#references .refs-lede{
+  color:#7b7b83;
+  max-width:70ch;
+  margin:.4rem auto 0;
+}
+/* та же «искрa» над заголовком */
 #references .refs-spark{
-  position:absolute; left:50%; top:-16px; transform:translateX(-50%);
-  width:26px; height:26px;
+  position:absolute; left:50%; top:-14px; transform:translateX(-50%);
+  width:28px; height:28px;
   background:
     radial-gradient(circle at 50% 50%, #000 0 2px, transparent 3px),
     radial-gradient(circle, rgba(0,0,0,.65) 1px, transparent 2px);
-  background-size:26px 26px, 6px 6px; background-position:center, center;
+  background-size:28px 28px, 6px 6px; background-position:center, center;
   -webkit-mask: radial-gradient(circle, #000 45%, transparent 46%);
   mask: radial-gradient(circle, #000 45%, transparent 46%);
   border-radius:50%; filter:contrast(140%);
@@ -2967,3 +2978,6 @@ h1, h2.display, .display-title{
   width:8px; height:8px; border-radius:999px; border:0; background:#cdd0d6; cursor:pointer;
 }
 #references .refs-dots button.is-active{ width:18px; background:#111; }
+
+:root{ --display: 'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+#references .refs-title{ font-family: var(--display); }
