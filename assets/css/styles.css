@@ -2495,19 +2495,32 @@ h1, h2.display, .display-title{
   z-index: 1;
 }
 
-/* Подчёркнутая ссылка как в рефе */
-.download-link {
-  display: inline-block;
-  font-weight: 500;          /* не жирный */
-  border-bottom: 1.5px solid #111;
-  line-height: 1.2;          /* 🔹 уменьшили высоту строки */
-  padding-bottom: 2px;       /* 🔹 ближе к тексту */
-  text-decoration: none;     /* чтобы не было двойного подчёркивания */
+/* 1) Список с галочками: меньше, компактнее, серее */
+.hero-list,
+.hero-list li{
+  font-size: clamp(14px, 1.5vw, 18px) !important;  /* ↓ размер и адаптив */
+  line-height: 1.35 !important;                    /* плотнее */
+  color: #5f6168 !important;
+  margin: 0.35rem 0 !important;
+}
+.hero-list{ padding-left: 22px !important; }
+.hero-list li::marker{
+  font-size: .9em !important;   /* сама “галочка” поменьше */
+  color: #5f6168 !important;
 }
 
-.download-link .arrow {
-  margin-left: 4px;
-  font-size: 0.9em;
+/* 2) Download CV — аккуратное подчёркивание ближе к тексту */
+.download-link{
+  display: inline-block;
+  font-weight: 500;
+  text-decoration: underline;             /* делаем подчёркивание “правильным” */
+  text-decoration-thickness: 2px;         /* толщина линии */
+  text-underline-offset: 3px;             /* 🔹 ближе к тексту (2–4px по вкусу) */
+  text-decoration-color: #111;
+  line-height: 1.05;                      /* компактная строка, линия подойдёт ближе */
+  padding-bottom: 0 !important;           /* на всякий случай */
+  border: 0 !important;                   /* если где-то была border-bottom */
 }
+.download-link .arrow{ margin-left: 4px; font-size: .9em; }
 
 
