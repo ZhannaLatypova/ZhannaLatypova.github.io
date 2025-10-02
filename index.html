@@ -462,25 +462,25 @@
   <script>
     /* Инициализируем картинку для перелистывания:
        читаем data-hover и кладём его в CSS-переменную --hover-img */
-    document.querySelectorAll('.case-media.hover-swap').forEach(box => {
-      const h = box.getAttribute('data-hover');
-      if (h) box.style.setProperty('--hover-img', `url("${h}")`);
-    });
-  </script>
-</section>
+//     document.querySelectorAll('.case-media.hover-swap').forEach(box => {
+//       const h = box.getAttribute('data-hover');
+//       if (h) box.style.setProperty('--hover-img', `url("${h}")`);
+//     });
+//   </script>
+// </section>
 
-<!-- REFERENCES -->
-<section id="references" class="refs section">
-  <div class="wrap">
-    <!-- заголовок секции -->
-    <header class="refs-head">
-      <span class="refs-spark" aria-hidden="true"></span>
-      <h3 class="refs-title">REFERENCES</h3>
-      <p class="refs-lede">A few nice words from people I’ve worked with.</p>
-    </header>
+// <!-- REFERENCES -->
+// <!-- <section id="references" class="refs section">
+//   <div class="wrap">
+//     <!-- заголовок секции -->
+<!-- //     <header class="refs-head">
+//       <span class="refs-spark" aria-hidden="true"></span>
+//       <h3 class="refs-title">REFERENCES</h3>
+//       <p class="refs-lede">A few nice words from people I’ve worked with.</p>
+//     </header> -->
 
     <!-- карточка отзыва -->
-    <article class="ref-card">
+    <!-- <article class="ref-card">
       <div class="ref-copy">
         <div class="ref-kicker">CLIENT FEEDBACK</div>
 
@@ -490,9 +490,9 @@
 
         <div class="ref-author">
           <div class="ref-name">Rohan Sing</div>
-          <div class="ref-role">Project Manager, Airflow Tech Inc</div>
+          <div class="ref-role">Project Manager, Airflow Tech Inc</div> -->
           <!-- волнистая полоска -->
-          <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none"
+          <!-- <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none"
                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
                   stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
@@ -500,7 +500,7 @@
         </div>
       </div>
 
-      <figure class="ref-photo">
+      <figure class="ref-photo"> -->
         <!-- можно заменить на свой путь -->
         <!-- <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop"
              alt="Client portrait"> -->
@@ -512,11 +512,127 @@
       </figure> -->
 
       <!-- «звезда-астериск» -->
-      <figure class="ref-photo shape--asterisk">
+      <!-- <figure class="ref-photo shape--asterisk">
         <img src="assets/img/foto_14.jpg" alt="Client">
       </figure>
       
     </article>
+  </div>
+</section> --> 
+
+<!-- REFERENCES (carousel) -->
+<section id="references" class="refs section">
+  <div class="wrap">
+    <header class="refs-head">
+      <span class="refs-spark" aria-hidden="true"></span>
+      <h3 class="refs-title">REFERENCES</h3>
+      <p class="refs-lede">A few nice words from people I’ve worked with.</p>
+    </header>
+
+    <div class="refs-carousel">
+      <button class="refs-nav prev" aria-label="Previous">‹</button>
+
+      <div class="refs-track" id="refsTrack">
+        <!-- Slide 1 -->
+        <article class="ref-card">
+          <div class="ref-copy">
+            <div class="ref-kicker">CLIENT FEEDBACK</div>
+            <h4 class="ref-quote">“I just wanted to share a quick note and let you know that you guys do a really good job.”</h4>
+            <div class="ref-author">
+              <div class="ref-name">Rohan Sing</div>
+              <div class="ref-role">Project Manager, Airflow Tech Inc</div>
+              <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none" aria-hidden="true">
+                <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
+                      stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+              </svg>
+            </div>
+          </div>
+          <figure class="ref-photo shape--asterisk">
+            <img src="assets/img/ref-1.jpg" alt="Client portrait 1">
+          </figure>
+        </article>
+
+        <!-- Slide 2 -->
+        <article class="ref-card">
+          <div class="ref-copy">
+            <div class="ref-kicker">CLIENT FEEDBACK</div>
+            <h4 class="ref-quote">“Zhanna is fast, pragmatic and focuses on outcomes. Highly recommend.”</h4>
+            <div class="ref-author">
+              <div class="ref-name">Amelia Woods</div>
+              <div class="ref-role">Head of Analytics, NorthPeak</div>
+              <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none" aria-hidden="true">
+                <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
+                      stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+              </svg>
+            </div>
+          </div>
+          <figure class="ref-photo shape--asterisk">
+            <img src="assets/img/ref-2.jpg" alt="Client portrait 2">
+          </figure>
+        </article>
+
+        <!-- Slide 3 -->
+        <article class="ref-card">
+          <div class="ref-copy">
+            <div class="ref-kicker">CLIENT FEEDBACK</div>
+            <h4 class="ref-quote">“She turned messy data into clear insights and shipped dashboards in days.”</h4>
+            <div class="ref-author">
+              <div class="ref-name">Viktor Petrov</div>
+              <div class="ref-role">COO, Orion Labs</div>
+              <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none" aria-hidden="true">
+                <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
+                      stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+              </svg>
+            </div>
+          </div>
+          <figure class="ref-photo shape--asterisk">
+            <img src="assets/img/ref-3.jpg" alt="Client portrait 3">
+          </figure>
+        </article>
+
+        <!-- Slide 4 -->
+        <article class="ref-card">
+          <div class="ref-copy">
+            <div class="ref-kicker">CLIENT FEEDBACK</div>
+            <h4 class="ref-quote">“Loved the experiments framework — we finally have A/Bs we can trust.”</h4>
+            <div class="ref-author">
+              <div class="ref-name">Marco Díaz</div>
+              <div class="ref-role">Growth Lead, Vega</div>
+              <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none" aria-hidden="true">
+                <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
+                      stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+              </svg>
+            </div>
+          </div>
+          <figure class="ref-photo shape--asterisk">
+            <img src="assets/img/ref-4.jpg" alt="Client portrait 4">
+          </figure>
+        </article>
+
+        <!-- Slide 5 -->
+        <article class="ref-card">
+          <div class="ref-copy">
+            <div class="ref-kicker">CLIENT FEEDBACK</div>
+            <h4 class="ref-quote">“From prototype to production ML in weeks — super collaborative.”</h4>
+            <div class="ref-author">
+              <div class="ref-name">Sara Khan</div>
+              <div class="ref-role">Product Manager, Alto</div>
+              <svg class="ref-wave" width="220" height="18" viewBox="0 0 220 18" fill="none" aria-hidden="true">
+                <path d="M2 9c12-10 24 10 36 0s24 10 36 0 24 10 36 0 24 10 36 0 24 10 36 0"
+                      stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".85"/>
+              </svg>
+            </div>
+          </div>
+          <figure class="ref-photo shape--asterisk">
+            <img src="assets/img/ref-5.jpg" alt="Client portrait 5">
+          </figure>
+        </article>
+      </div>
+
+      <button class="refs-nav next" aria-label="Next">›</button>
+    </div>
+
+    <div class="refs-dots" id="refsDots" aria-label="slides navigation"></div>
   </div>
 </section>
     
