@@ -164,7 +164,7 @@ img{display:block; max-width:100%}
   background:#0b0b0c;        /* чёрный фон */
   overflow:hidden;
   white-space:nowrap;
-  height:44px;               /* делаем ниже и аккуратнее */
+  height:35px;               /* делаем ниже и аккуратнее */
   display:flex;
   align-items:center;        /* выравнивание текста по центру по вертикали */
 }
@@ -179,8 +179,8 @@ img{display:block; max-width:100%}
 .ticker-track i{
   display:inline-block;
   margin:0 18px;
-  font-size:5px;            /* уменьшаем шрифт */
-  font-weight:200;           /* убираем жирность */
+  font-size:8px;            /* уменьшаем шрифт */
+  font-weight:250;           /* убираем жирность */
   color:#eee;
   vertical-align:middle;
   letter-spacing:.02em;
