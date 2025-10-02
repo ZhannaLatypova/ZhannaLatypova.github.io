@@ -2726,38 +2726,29 @@ h1, h2.display, .display-title{
 
 .hero .ticker {
   position: relative;
-  height: 60px; /* чуть выше */
+  height: 60px;                 /* выше, чтобы не резало текст */
   background: #0b0b0c;
   overflow: hidden;
   display: flex;
   align-items: center;
   z-index: 1;
 
-  /* Несколько слоёв звёзд */
+  /* статичное «звёздное небо» */
   background-image:
-    radial-gradient(2px 2px at 20% 30%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 70% 60%, #ddd, transparent),
+    radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+    radial-gradient(1.2px 1.2px at 70% 60%, #ddd, transparent),
     radial-gradient(1px 1px at 40% 80%, #bbb, transparent),
-    radial-gradient(2px 2px at 90% 20%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 10% 50%, #eee, transparent);
-
+    radial-gradient(1.5px 1.5px at 90% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 10% 50%, #eee, transparent);
   background-repeat: repeat;
   background-size: 200px 200px;
-
-  animation: starsBlink 6s infinite alternate ease-in-out;
 }
 
-/* Анимация мигания */
-@keyframes starsBlink {
-  0%   { background-position: 0 0, 50px 50px, 100px 100px, 150px 150px, 200px 200px; opacity: 0.8; }
-  50%  { background-position: 20px 10px, 70px 60px, 120px 90px, 140px 160px, 220px 180px; opacity: 1; }
-  100% { background-position: 40px 20px, 90px 70px, 140px 80px, 160px 170px, 240px 160px; opacity: 0.7; }
-}
 
 .hero .ticker-item {
   font-family: 'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 600;        /* жирнее */
-  font-size: 18px;         /* крупнее */
+  font-weight: 600;
+  font-size: 18px;
   letter-spacing: .05em;
   color: #ececec;
   white-space: nowrap;
@@ -2765,20 +2756,18 @@ h1, h2.display, .display-title{
   line-height: 1;
 }
 
-.hero .ticker-row{
+/* Текст в ленте */
+.hero .ticker-row {
   display: flex;
-  width: max-content;                 /* ширина по контенту */
+  width: max-content;
   animation: hero-ticker 32s linear infinite;
-  will-change: transform;
 }
 .hero .ticker-row:hover{ animation-play-state: paused; }
 
-.hero .ticker-seq{
-  display: inline-flex;
+.hero .ticker-seq {
+  display: flex;
   align-items: center;
-  padding-right: 56px;                /* расстояние между повторами */
 }
-
 
 .hero .ticker-dot{
   font-style: normal;
@@ -2829,35 +2818,4 @@ h1, h2.display, .display-title{
     padding: 16px 20px;
   }
 }
-/* ===== HERO: лента со звёздным небом ===== */
-section.hero .ticker{
-  position: relative;
-  height: 60px;
-  background-color:#0b0b0c;
-  overflow:hidden;
-  display:flex;
-  align-items:center;
-  z-index:1;
 
-  /* многослойные «звёзды» — принудительно перекрываем старые фоны */
-  background-image:
-    radial-gradient(circle at 12% 28%, rgba(255,255,255,.95) 1.2px, transparent 1.3px),
-    radial-gradient(circle at 72% 62%, rgba(230,230,230,.9) 1px,   transparent 1.1px),
-    radial-gradient(circle at 38% 84%, rgba(210,210,210,.8) 0.9px, transparent 1px),
-    radial-gradient(circle at 90% 22%, rgba(255,255,255,.95) 1.3px, transparent 1.4px),
-    radial-gradient(circle at 8%  54%, rgba(240,240,240,.9) 1px,   transparent 1.1px) !important;
-
-  /* плотность «неба» */
-  background-size: 140px 140px;
-  background-repeat: repeat;
-
-  /* мерцание */
-  animation: starsBlink 10s ease-in-out infinite alternate;
-}
-
-/* мягкое мерцание + небольшой «дрейф» звёзд */
-@keyframes starsBlink {
-  0%   { opacity:.8; background-position:   0px   0px,  40px  40px,  80px  80px, 120px 120px, 160px 160px; }
-  50%  { opacity:1;  background-position:  10px   6px,  56px  44px,  96px  72px, 132px 128px, 170px 152px; }
-  100% { opacity:.7; background-position:  20px  12px,  72px  48px, 112px  64px, 144px 136px, 188px 144px; }
-}
