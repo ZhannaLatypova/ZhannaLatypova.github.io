@@ -2726,29 +2726,29 @@ h1, h2.display, .display-title{
 
 .hero .ticker {
   position: relative;
-  height: 60px;                 /* выше, чтобы не резало текст */
-  background: #0b0b0c;
+  height: 60px;                 /* выше */
+  background-color: #000;       /* Чистый чёрный */
   overflow: hidden;
   display: flex;
   align-items: center;
   z-index: 1;
 
-  /* статичное «звёздное небо» */
+  /* статичное звёздное небо — только белые точки */
   background-image:
     radial-gradient(1px 1px at 20% 30%, #fff, transparent),
-    radial-gradient(1.2px 1.2px at 70% 60%, #ddd, transparent),
-    radial-gradient(1px 1px at 40% 80%, #bbb, transparent),
-    radial-gradient(1.5px 1.5px at 90% 20%, #fff, transparent),
-    radial-gradient(1px 1px at 10% 50%, #eee, transparent);
+    radial-gradient(1px 1px at 70% 60%, #fff, transparent),
+    radial-gradient(1px 1px at 40% 80%, #fff, transparent),
+    radial-gradient(1px 1px at 90% 20%, #fff, transparent),
+    radial-gradient(1px 1px at 10% 50%, #fff, transparent);
   background-repeat: repeat;
-  background-size: 200px 200px;
+  background-size: 200px 200px; /* плотность звёзд */
 }
 
 
 .hero .ticker-item {
   font-family: 'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 800;   /* жирнее */
+  font-size: 18px;    /* крупнее */
   letter-spacing: .05em;
   color: #ececec;
   white-space: nowrap;
@@ -2762,6 +2762,7 @@ h1, h2.display, .display-title{
   width: max-content;
   animation: hero-ticker 32s linear infinite;
 }
+
 .hero .ticker-row:hover{ animation-play-state: paused; }
 
 .hero .ticker-seq {
@@ -2769,14 +2770,14 @@ h1, h2.display, .display-title{
   align-items: center;
 }
 
-.hero .ticker-dot{
+.hero .ticker-dot {
   font-style: normal;
-  color: #d9d9d9;
+  color: #fff;   /* звёздочка тоже белая */
   margin: 0 16px;
   transform: translateY(-1px);
 }
 
-/* бесшовная прокрутка — уезжаем на 50% (вторая половина — клон) */
+/* бесшовная прокрутка */
 @keyframes hero-ticker {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
