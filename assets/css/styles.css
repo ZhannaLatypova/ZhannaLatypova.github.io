@@ -121,13 +121,13 @@ img{display:block; max-width:100%}
   will-change: transform;
 }
 
-/* .ticker-line {
+.ticker-line {
   display:flex;
   gap:40px;
   padding:16px 0;
   flex:0 0 auto; /* не сжимать */
-  /* white-space:nowrap;
-} */
+  white-space:nowrap; 
+}
 
 .ticker span{font-weight:900; letter-spacing:.08em}
 .ticker .dot{opacity:.8}
