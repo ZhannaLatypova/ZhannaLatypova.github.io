@@ -39,11 +39,16 @@ img{display:block; max-width:100%}
 .hero-list li{margin:6px 0; list-style:'✓ '; padding-left:.2rem} */
 /* .hero-list{ margin:14px 0 16px; padding-left:0; list-style:none; } */
 .hero-list {
-  font-size: 0.95rem;   /* 🔹 меньше (примерно 15px) */
-  line-height: 1.4;     /* компактнее межстрочный */
-  color: #5f6168;       /* серее, как в макете */
-  margin: 0.8rem 0 1.2rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.02em; /* буквы ближе друг к другу */
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
 .hero-list li{
   display:flex; gap:10px; align-items:flex-start;
   margin:6px 0;
@@ -2812,8 +2817,8 @@ h1, h2.display, .display-title{
   --show: 0.8;         /* сколько видно круга (80%) */
 
   position: absolute;
-  right: -100px;   /* уводим часть под фото */
-  top: clamp(450px, 55vh, 450px);             /* регулируй ниже/выше */
+  right: -30px;   /* уводим часть под фото */
+  top: clamp(400px, 55vh, 400px);             /* регулируй ниже/выше */
   z-index: 1;                                 /* ниже фото */
 }
 
