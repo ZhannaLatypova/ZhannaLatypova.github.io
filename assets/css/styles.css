@@ -2540,12 +2540,12 @@ h1, h2.display, .display-title{
 
   /* Правый столбец (визуал) возвращаем в поток,
      чтобы ничего не «выезжало» поверх */
-  .hero-visual{
-    position: relative !important;
-    min-height: auto !important;
-    z-index: 3;
-    
-  }
+/* Правый столбец (визуал) — фото всегда ниже ленты */
+.hero-visual {
+  position: relative !important;
+  min-height: auto !important;
+  z-index: 1; /* ниже ленты */
+}
 
   /* Фото — по центру, без переводов/масштабов */
   .portrait-wrap{
@@ -2555,11 +2555,13 @@ h1, h2.display, .display-title{
     max-width: min(92vw, 520px) !important;
     z-index: 1 !important;
   }
-  .portrait{
-    max-width: 100% !important;
-    height: auto !important;
-    transform: none !important;
-  }
+.portrait {
+  max-width: 100% !important;
+  height: auto !important;
+  transform: none !important;
+  position: relative;
+  z-index: 1; /* тоже ниже ленты */
+}
 
   /* Бейдж Bonjour — аккуратнее */
   .hello-badge{
@@ -2714,7 +2716,8 @@ h1, h2.display, .display-title{
   overflow: hidden;
   display: flex;
   align-items: center;
-  z-index: 1;
+  z-index: 5;
+  margin-top: -40px;
 
   /* Плотный «звёздный» фон (tile SVG), БЕЗ анимации и без смены оттенка */
   background-image: url("data:image/svg+xml;utf8,\
