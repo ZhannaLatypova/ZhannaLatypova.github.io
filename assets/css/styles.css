@@ -2717,7 +2717,7 @@ h1, h2.display, .display-title{
   display: flex;
   align-items: center;
   z-index: 5;
-  margin-top: -10px;
+  margin-top: 10px;
 
   /* Плотный «звёздный» фон (tile SVG), БЕЗ анимации и без смены оттенка */
   background-image: url("data:image/svg+xml;utf8,\
