@@ -2902,12 +2902,15 @@ h1, h2.display, .display-title{
 
 .hero-list,
 .hero-list li {
-  font-family: 'Roboto Condensed', sans-serif !important; /* шрифт */
+  font-family: 'Roboto Condensed', sans-serif !important;
   font-size: clamp(14px, 1.5vw, 18px) !important;
   line-height: 1.35 !important;
   color: #5f6168 !important;
   margin: 0.35rem 0 !important;
-  letter-spacing: -0.02em;  /* буквы чуть ближе друг к другу */
+  letter-spacing: -0.02em !important;
+  list-style-type: "✔ " !important; /* галочка */
+  transition: transform 0.25s ease, color 0.25s ease, text-shadow 0.25s ease !important;
+  cursor: pointer !important;
 }
 
 .hero-list {
@@ -2919,3 +2922,8 @@ h1, h2.display, .display-title{
   color: #5f6168 !important;
 }
 
+.hero-list li:hover {
+  transform: translateX(6px) scale(1.05) !important; /* выдвигается вперед */
+  color: #000 !important; /* темнее */
+  text-shadow: 0 4px 8px rgba(0,0,0,0.25) !important; /* эффект объёма */
+}
