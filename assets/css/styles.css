@@ -2812,8 +2812,8 @@ h1, h2.display, .display-title{
   --show: 0.8;         /* сколько видно круга (80%) */
 
   position: absolute;
-  left: calc(var(--r) * (var(--show) - 1));   /* уводим часть под фото */
-  top: clamp(200px, 55vh, 250px);             /* регулируй ниже/выше */
+  left: -60px;   /* уводим часть под фото */
+  top: clamp(100px, 55vh, 100px);             /* регулируй ниже/выше */
   z-index: 1;                                 /* ниже фото */
 }
 
