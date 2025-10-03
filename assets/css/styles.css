@@ -2543,6 +2543,8 @@ h1, h2.display, .display-title{
   .hero-visual{
     position: relative !important;
     min-height: auto !important;
+    z-index: 3;
+    
   }
 
   /* Фото — по центру, без переводов/масштабов */
@@ -2593,7 +2595,7 @@ h1, h2.display, .display-title{
 
   /* Тикер всегда под секцией, не «уплывает» вверх */
   .ticker{
-    margin-top: 12px !important;
+    margin-top: -60px !important;
     position: relative !important;
     z-index: 1 !important;
   }
