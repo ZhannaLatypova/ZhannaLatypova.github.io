@@ -2812,8 +2812,8 @@ h1, h2.display, .display-title{
   --show: 0.8;         /* сколько видно круга (80%) */
 
   position: absolute;
-  left: -60px;   /* уводим часть под фото */
-  top: clamp(100px, 55vh, 100px);             /* регулируй ниже/выше */
+  left: -100px;   /* уводим часть под фото */
+  top: clamp(350px, 55vh, 350px);             /* регулируй ниже/выше */
   z-index: 1;                                 /* ниже фото */
 }
 
@@ -2862,7 +2862,7 @@ h1, h2.display, .display-title{
 /* Текст Bonjour */
 .hello-text {
   font-family: 'Allura', cursive;
-  font-weight: 400;
+  font-weight: 200;
   font-size: clamp(24px, 3vw, 38px);
   line-height: 1;
   letter-spacing: .02em;
