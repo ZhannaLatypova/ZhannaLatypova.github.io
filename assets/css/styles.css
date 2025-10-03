@@ -2847,17 +2847,17 @@ h1, h2.display, .display-title{
 }
 
 /* Белая линия внутри круга */
-.hello-badge::after {
+/* .hello-badge::after {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
   width: 1.5px;
   height: calc(var(--r) * 1.41421356);        /* диагональ круга */
-  background: #fff;
+  /* background: #fff;
   transform: translate(-50%, -50%) rotate(var(--angle));
   z-index: 2;
-}
+} */ 
 
 /* Текст Bonjour */
 .hello-text {
