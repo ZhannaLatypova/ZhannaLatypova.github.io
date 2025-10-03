@@ -2520,32 +2520,10 @@ h1, h2.display, .display-title{
   line-height: 1.35 !important;
   color: #5f6168 !important;
   margin: .35rem 0 !important;
+  letter-spacing: -0.02em !important; 
 }
 .hero-list{ padding-left: 22px !important; }
 .hero-list li::marker{ font-size:.9em !important; color:#5f6168 !important; }
-
-/* Download CV — подчёркивание ближе к тексту */
-/* Download CV — подчёркивание ближе и сдвиг текста вниз */
-/* .download-link{
-  display: inline-block;
-  position: relative;
-  margin-left: 16px;
-
-  font-weight: 600;
-  font-size: 1rem;
-  color: #111;
-
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px; */
-
-  /* опустить текст на пару пикселей */
-  /* transform: translateY(4px);           /* ↑ подбери 2–6px по вкусу */
-/* }  */
-
-/* если раньше рисовали линию через ::after — полностью отключаем */
-/* .download-link::after{ content: none !important; } */
-
 
 
 /* ====== КЛЮЧЕВОЕ: раскладка на мобильных ====== */
@@ -2817,8 +2795,8 @@ h1, h2.display, .display-title{
   --show: 0.8;         /* сколько видно круга (80%) */
 
   position: absolute;
-  right: -30px;   /* уводим часть под фото */
-  top: clamp(400px, 55vh, 400px);             /* регулируй ниже/выше */
+  right: 30px;   /* уводим часть под фото */
+  top: clamp(400px, 45vh, 400px);             /* регулируй ниже/выше */
   z-index: 1;                                 /* ниже фото */
 }
 
