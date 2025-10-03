@@ -2813,22 +2813,22 @@ h1, h2.display, .display-title{
 
   position: absolute;
   left: calc(var(--r) * (var(--show) - 1));   /* уводим часть под фото */
-  top: clamp(280px, 38vh, 360px);             /* регулируй ниже/выше */
+  top: clamp(200px, 38vh, 360px);             /* регулируй ниже/выше */
   z-index: 1;                                 /* ниже фото */
 }
 
 /* Длинная ЧЁРНАЯ линия (идёт сквозь всё, под кругом) */
-.hello-anchor::before {
+/* .hello-anchor::before {
   content: "";
   position: absolute;
   left: 50%;
   top: 50%;
   width: 2px;
   height: 200px;                               /* с запасом, длиннее экрана */
-  background: #000;
-  transform: translate(-50%, -50%) rotate(-45deg);
-  z-index: 0;                                  /* под кругом */
-}
+  /* background: #000; */
+  /* transform: translate(-50%, -50%) rotate(-45deg); */
+  /* z-index: 0;                                  /* под кругом */ 
+/* } */ 
 
 /* Сам круг */
 .hello-badge {
