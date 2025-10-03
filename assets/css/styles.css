@@ -2824,9 +2824,9 @@ h1, h2.display, .display-title{
   left: 50%;
   top: 50%;
   width: 2px;
-  height: 900px;                               /* с запасом, длиннее экрана */
+  height: 400px;                               /* с запасом, длиннее экрана */
   background: #000;
-  transform: translate(-50%, -50%) rotate(var(--angle));
+  transform: translate(-50%, -50%) rotate(-45deg);
   z-index: 0;                                  /* под кругом */
 }
 
