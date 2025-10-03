@@ -2813,7 +2813,7 @@ h1, h2.display, .display-title{
 
   position: absolute;
   left: calc(var(--r) * (var(--show) - 1));   /* уводим часть под фото */
-  top: clamp(200px, 38vh, 360px);             /* регулируй ниже/выше */
+  top: clamp(200px, 55vh, 250px);             /* регулируй ниже/выше */
   z-index: 1;                                 /* ниже фото */
 }
 
