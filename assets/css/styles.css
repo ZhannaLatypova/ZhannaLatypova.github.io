@@ -2900,3 +2900,22 @@ h1, h2.display, .display-title{
   }
 }
 
+.hero-list,
+.hero-list li {
+  font-family: 'Roboto Condensed', sans-serif !important; /* шрифт */
+  font-size: clamp(14px, 1.5vw, 18px) !important;
+  line-height: 1.35 !important;
+  color: #5f6168 !important;
+  margin: 0.35rem 0 !important;
+  letter-spacing: -0.02em;  /* буквы чуть ближе друг к другу */
+}
+
+.hero-list {
+  padding-left: 22px !important;
+}
+
+.hero-list li::marker {
+  font-size: .9em !important;
+  color: #5f6168 !important;
+}
+
