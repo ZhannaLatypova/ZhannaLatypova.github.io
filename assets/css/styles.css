@@ -2824,7 +2824,7 @@ h1, h2.display, .display-title{
   left: 50%;
   top: 50%;
   width: 2px;
-  height: 400px;                               /* с запасом, длиннее экрана */
+  height: 200px;                               /* с запасом, длиннее экрана */
   background: #000;
   transform: translate(-50%, -50%) rotate(-45deg);
   z-index: 0;                                  /* под кругом */
@@ -2842,7 +2842,7 @@ h1, h2.display, .display-title{
   justify-content: center;
   position: relative;
   z-index: 1;
-  overflow: hidden;                            /* белая линия обрезается */
+  /* overflow: hidden;                            /* белая линия обрезается */ 
   box-shadow: 0 28px 80px rgba(0, 0, 0, .18);
 }
 
