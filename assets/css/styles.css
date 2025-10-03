@@ -2849,7 +2849,7 @@ h1, h2.display, .display-title{
 
 /* Текст Bonjour */
 .hello-text {
-  font-family: 'Allura', cursive;
+  font-family: 'Parisienne', cursive;
   font-weight: 200;
   font-size: clamp(24px, 3vw, 38px);
   line-height: 1;
