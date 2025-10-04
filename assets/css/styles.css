@@ -2418,20 +2418,26 @@ h1, h2.display, .display-title{
 #references .shape--asterisk8-fat:hover img{ transform:rotate(360deg) scale(1.06); }
 
 /* Типографика отзывов — −~10%, не жирный, серый */
-#references .ref-quote{
+#references .ref-quote {
   font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  font-size: clamp(16px, 2.8vw, 35px);
-  font-weight: 500;
-  color:#5f6168;
-  line-height:1.2; letter-spacing:.005em;
-  margin:.35rem 0 1rem;
+  font-size: clamp(16px, 2vw, 24px); /* уменьшено: макс. 24px вместо 35px */
+  font-weight: 600;                  /* semi-bold, ближе к примеру */
+  color: #111;                       /* почти чёрный, как на скрине */
+  line-height: 1.5;                  /* больше воздуха */
+  letter-spacing: 0.01em;            /* чуть шире */
+  margin: .35rem 0 1rem;
 }
 #references .ref-kicker{
   color:#666; border:2px solid #666; font-weight:600;
   display:inline-block; padding:6px 10px; border-radius:999px;
   letter-spacing:.14em; font-size:12px; margin-bottom:10px;
 }
-#references .ref-author{ color:#7a7a83; }
+/* #references .ref-author{ color:#7a7a83; } */
+#references .ref-author {
+  font-size: 1rem;    /* 16px */
+  color: #666;        /* светло-серый, как в примере */
+  font-weight: 400;   /* обычный вес */
+}
 #references .ref-name{ color:#444; font-weight:700; }
 #references .ref-role{ color:#7a7a83; font-weight:500; }
 #references .ref-quote em{ font-style:normal; font-weight:500; }
