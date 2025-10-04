@@ -2649,7 +2649,8 @@ h1, h2.display, .display-title{
 
 /* «звёздная пыль» фоном */
 .star-ribbon::before{
-  content:"";
+  /* content:""; */
+  content:none !important;
   position:absolute; inset:0;
   background:
     radial-gradient(rgba(255,255,255,.22) 1px, transparent 1.2px) 0 0/24px 24px,
@@ -2659,7 +2660,8 @@ h1, h2.display, .display-title{
 
 /* диагональная линия */
 .star-ribbon::after{
-  content:"";
+  /* content:""; */
+  content:none !important;
   position:absolute; left:-12%; right:-12%; top:50%;
   height:2px; background: linear-gradient(90deg, transparent, #cfcfcf 35%, #cfcfcf 65%, transparent);
   transform: rotate(-24deg); opacity:.6; pointer-events:none;
