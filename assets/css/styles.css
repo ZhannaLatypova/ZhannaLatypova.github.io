@@ -2419,12 +2419,12 @@ h1, h2.display, .display-title{
 
 /* Типографика отзывов — −~10%, не жирный, серый */
 #references .ref-quote {
-  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  font-size: clamp(16px, 2vw, 24px); /* уменьшено: макс. 24px вместо 35px */
-  font-weight: 600;                  /* semi-bold, ближе к примеру */
-  color: #111;                       /* почти чёрный, как на скрине */
-  line-height: 1.5;                  /* больше воздуха */
-  letter-spacing: 0.01em;            /* чуть шире */
+  font-family: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(16px, 2vw, 22px); /* чуть мягче, чем 24px */
+  font-weight: 400;                  /* обычный вес (не жирный) */
+  color: #111;                       /* глубокий тёмно-серый */
+  line-height: 1.5;                  /* читаемый межстрочный интервал */
+  letter-spacing: 0.01em;
   margin: .35rem 0 1rem;
 }
 #references .ref-kicker{
