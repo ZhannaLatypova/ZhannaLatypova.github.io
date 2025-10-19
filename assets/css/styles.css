@@ -2935,25 +2935,60 @@ h1, h2.display, .display-title{
   gap:56px;                        /* расстояние между карточками */
 }
 
+/* Шапка */
+.site-header{
+  position: sticky; top: 0; z-index: 20;
+  background:#fff; border-bottom:1px solid #f0f1f3;
+}
+.site-header .bar{
+  display:flex; align-items:flex-start; /* важен старт, чтобы верхние линии совпали */
+  gap: 24px; padding:14px 0;
+}
+
+/* Логотип слева */
+.brand .logo{
+  font-family:"Space Grotesk", Inter, sans-serif;
+  font-weight:900; letter-spacing:.01em;
+  display:inline-block;
+}
+.brand .logo::after{
+  content:""; display:block; width:76px; height:2px;
+  background:#111; margin-top:6px;
+}
+
+/* Контейнер карточек справа */
+.top-nav-inline{
+  /* КЛЮЧ: прижать вправо */
+  margin-left:auto;
+
+  display:grid;
+  grid-auto-flow: column;                 /* в линию */
+  grid-auto-columns: minmax(260px, 1fr);  /* ширина карточки */
+  gap: 48px;
+  max-width: 72vw;                        /* чтобы не залезало на лого */
+}
+
+/* Стили карточек (как у вас в секции) */
 .top-card{
-  width:clamp(220px, 26vw, 360px); /* адекватная ширина */
   text-decoration:none;
   border-top:3px solid #111;
-  padding-top:10px;
-  transition:transform .25s ease,opacity .25s ease;
+  padding-top:8px;
+  transition: transform .25s ease, opacity .25s ease;
 }
-.top-card:hover{ transform:translateY(-2px); opacity:.95; }
+.top-card:hover{ transform: translateY(-3px); opacity:.9; }
 
 .top-card h4{
   display:flex; align-items:center; justify-content:space-between;
-  font-weight:800; font-size:1.12rem; margin:.45rem 0 .2rem; color:#111;
+  font-weight:800; font-size:1.06rem; margin:.35rem 0 .2rem; color:#111;
 }
 .top-card .ext{ font-size:1.25rem; line-height:1; transform:translateY(-1px); }
-.top-card p{ color:#6c6f77; font-size:.96rem; margin:0; }
+.top-card p{ color:#6c6f77; font-size:.95rem; margin:0; }
 
-/* Мобилка: складываем в колонку и на всю ширину */
-@media (max-width:980px){
-  .top-nav-cards{ padding:26px 0 22px; }
-  .top-grid{ flex-direction:column; gap:24px; }
-  .top-card{ width:100%; }
+/* Адаптив — на узких экранах складываем в строку со скроллом */
+@media (max-width: 1100px){
+  .top-nav-inline{
+    display:flex; gap:28px; overflow:auto; padding-bottom:6px;
+    scrollbar-width:none;
+  }
+  .top-nav-inline::-webkit-scrollbar{ display:none; }
 }
