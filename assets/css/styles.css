@@ -3812,3 +3812,60 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
   .portrait-wrap .portrait{ max-width:min(92vw, 520px); transform:none; }
   .hero .ticker{ margin-top:12px; } /* небольшой зазор для мобильной ленты */
 }
+
+/* === HERO: правое верхнее меню === */
+.hero{ position: relative; }
+:root{ --wrap:max(1160px, 92vw); } /* если уже есть — оставь свой */
+
+.hero-nav{
+  position: absolute;
+  /* выравниваем по правому краю видимой «сеточной» области */
+  right: max(24px, calc((100vw - min(1160px, 92vw)) / 2));
+  top: 10px;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 48px;
+  z-index: 6; /* выше контента героя */
+  background: transparent;
+}
+
+.hero-nav__item{
+  text-decoration: none;
+  color: #0b0b0c;
+  display: block;
+  border-top: 3px solid #111;
+  padding-top: 8px;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.hero-nav__item:hover{ transform: translateY(-2px); opacity:.95; }
+
+.hero-nav__title{ font-weight: 800; }
+.hero-nav__ext{ font-weight: 900; margin-left:.15em; }
+.hero-nav__sub{ display:block; color:#6c6f77; }
+
+/* мобайл: меню скрываем/переносим, чтобы не наезжало */
+@media (max-width: 980px){
+  .hero-nav{ display:none; }
+}
+
+/* === СЖАТИЕ НИЗА HERO и ПОДЪЁМ НИЖНЕГО БЛОКА === */
+
+/* убираем «хвост» у секции героя */
+.hero{ padding-bottom: 0 !important; margin-bottom: 0 !important; }
+
+/* фото чуть «заезжает» на ленту — можно варьировать значение */
+.hero .portrait-wrap{ margin-bottom: -36px !important; }
+
+/* чёрная лента ближе к фото */
+.hero .ticker{ margin-top: 0 !important; }
+
+/* следующий блок (секция услуг) «поднимаем» к ленте */
+#services,
+.services,
+.services-v2{
+  margin-top: 6px !important;     /* уменьшай до 0–8px по вкусу */
+  padding-top: 40px !important;   /* если заголовок слишком далеко — уменьши до 24–32px */
+}
+
+/* страховка: внутри шапки секции не добавлять лишнего воздуха */
+#services .svc-head{ margin-top: 0 !important; }
