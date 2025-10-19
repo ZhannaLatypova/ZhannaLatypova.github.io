@@ -473,17 +473,17 @@ html, body{ overflow-x: hidden; }
 .site-header{ display:none !important; }
 
 /* компактные мини-линки в правой колонке hero */
-.mini-cards{
+/* .mini-cards{
   right: 24px;      /* ближе к правому краю, а не в центр */
-  top: 6px;         /* держим близко к верху */
-  gap: 28px;        /* вместо большого разрыва */
-}
+  /* top: 6px;         /* держим близко к верху */
+  /* gap: 28px;        /* вместо большого разрыва */ 
+/* } */
 
 /* сами «карточки»-ссылки уже и опрятнее */
-.mini-card{
+/* .mini-card{
   width: 200px;     /* было 240–260, делаем компактнее */
-  max-width: 24vw;  /* на очень узких экранах — адаптивно */
-}
+  /* max-width: 24vw;  /* на очень узких экранах — адаптивно */ 
+/* } */ 
 
 /* верхняя линия и вертикальный отступ тоже компактнее */
 .mini-title{
@@ -2557,13 +2557,13 @@ h1, h2.display, .display-title{
   }
 
   /* Верхние мини-линки — в поток, без абсолютов */
-  .mini-cards{
+  /* .mini-cards{
     position: static !important;
     order: 3;
     display: flex !important;
     gap: 12px !important;
     margin-top: 4px !important;
-  }
+  } */
 
   /* Радужное облако — убрать на мобилке,
      чтобы не сдвигало верстку */
