@@ -2918,108 +2918,53 @@ h1, h2.display, .display-title{
   text-shadow: 0 4px 8px rgba(0,0,0,0.25) !important; /* эффект объёма */
 }
 /* === Карточки в шапке справа === */
-/* ===== верхний блок карточек (вправо) ===== */
-.top-nav-cards{
-  border-top:1px solid #e7e7ea;
-  border-bottom:1px solid #e7e7ea;
-  background:#fff;
-  padding:32px 0;                 /* компактнее как на референсе */
+:root{
+  --wrap: min(1160px, 92vw);
+  --header-h: 56px; /* перепишем в JS точной высотой шапки */
 }
 
-.top-grid{
-  width:var(--wrap);
-  margin-inline:auto;
-  display:flex;                    /* в ряд */
-  justify-content:flex-end;        /* прижали ВПРАВО */
-  align-items:flex-start;
-  gap:56px;                        /* расстояние между карточками */
-}
-
-/* Шапка */
+/* Шапка — как на About */
 .site-header{
   position: sticky; top: 0; z-index: 20;
   background:#fff; border-bottom:1px solid #f0f1f3;
 }
-
 .site-header .bar{
-  display:flex; align-items:flex-start; /* <<< ключевая правка */
-  justify-content:space-between;
-  gap:24px;
-  padding:14px 0;
+  width: var(--wrap); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0;
 }
-
-/* Логотип слева */
 .brand .logo{
-  font-family:"Space Grotesk", Inter, sans-serif;
-  font-weight:900; letter-spacing:.01em;
-  display:inline-block;
+  font-family:"Space Grotesk", Inter, system-ui, sans-serif;
+  font-weight:900; letter-spacing:.01em; display:inline-block;
 }
 .brand .logo::after{
-  content:""; display:block; width:76px; height:2px;
-  background:#111; margin-top:6px;
+  content:""; display:block; width:76px; height:2px; background:#111; margin-top:6px;
 }
 
-/* Контейнер карточек справа */
-.top-nav-inline{
-  display:flex; gap:48px; margin-left:auto;
-  align-items:flex-start;
-  max-width:72vw;            /* <<< добавь ограничение */
-  flex-wrap:nowrap;          /* держим в одну строку, пока хватает места */
-}
+/* Сентинель, чтобы ловить момент «прилипания» */
+.mini-cards-sentinel{ height: 1px; }
 
-/* Стили карточек (как у вас в секции) */
-.top-card{
-  text-decoration:none;
-  border-top:3px solid #111;
-  padding-top:8px;
-  transition: transform .25s ease, opacity .25s ease;
+/* МИНИ-МЕНЮ (как на About), НО прижато ВПРАВО и ЛИПКОЕ */
+.mini-cards{
+  width: var(--wrap); margin: 0 auto;
+  display: grid; grid-auto-flow: column; gap: 48px;
+  align-items: start; padding: 16px 0 12px;
+  border-bottom: 1px solid #f0f1f3; background: #fff;
 }
-.top-card:hover{ transform: translateY(-3px); opacity:.9; }
+.mini-cards--right{ justify-content: end; }
 
-.top-card h4{
-  display:flex; align-items:center; justify-content:space-between;
-  font-weight:800; font-size:1.06rem; margin:.35rem 0 .2rem; color:#111;
-}
-.top-card .ext{ font-size:1.25rem; line-height:1; transform:translateY(-1px); }
-.top-card p{ color:#6c6f77; font-size:.95rem; margin:0; }
-
-/* Адаптив — на узких экранах складываем в строку со скроллом */
-@media (max-width: 1100px){
-  .top-nav-inline{
-    gap:28px;
-    overflow:auto;           /* горизонтальный скролл */
-    padding-bottom:6px;
-    scrollbar-width:none;
-  }
-  .top-nav-inline::-webkit-scrollbar{ display:none; }
-}
-/* мини-меню на кейс-странице: всегда справа */
-.mini-cards--case{
-  width: var(--wrap);
-  margin: 0 auto;
-  display: grid;
-  grid-auto-flow: column;
-  gap: 48px;
-  justify-content: end;         /* << прижали вправо */
-  align-items: start;
-  padding: 14px 0 10px;
-  border-bottom: 1px solid #f0f1f3;
-
-  /* ЛИПКОСТЬ */
-  position: sticky;
-  top: var(--header-h, 56px);   /* смещение под высоту шапки */
+/* липкость под шапкой */
+.mini-cards--right{
+  position: sticky; top: var(--header-h);
   z-index: 15;
-  background: #fff;
   transition: box-shadow .2s ease, border-color .2s ease;
 }
-
-/* эффект, когда меню “прилипло” */
-.mini-cards--case.is-stuck{
+.mini-cards--right.is-stuck{
   box-shadow: 0 8px 18px rgba(0,0,0,.06);
   border-color: transparent;
 }
 
-/* карточки (если не было) */
+/* карточки меню — как на About */
 .mini-card{
   text-decoration:none;
   border-top:3px solid #111;
@@ -3027,11 +2972,17 @@ h1, h2.display, .display-title{
   transition:transform .25s ease, opacity .25s ease;
 }
 .mini-card:hover{ transform:translateY(-2px); opacity:.95; }
-.mini-title{ display:flex; justify-content:space-between; align-items:center; font-weight:800; color:#111; }
+
+.mini-title{
+  display:flex; justify-content:space-between; align-items:center;
+  font-weight:800; color:#111;
+}
 .mini-title .ext{ font-size:1.1em; line-height:1; transform:translateY(-1px); }
 .mini-text{ color:#6c6f77; }
 
+/* узкие экраны — горизонтальный скролл, как на About */
 @media (max-width: 980px){
-  .mini-cards--case{ gap:28px; overflow:auto; scrollbar-width:none; }
-  .mini-cards--case::-webkit-scrollbar{ display:none; }
+  .mini-cards{ gap:28px; overflow:auto; scrollbar-width:none; }
+  .mini-cards::-webkit-scrollbar{ display:none; }
 }
+
