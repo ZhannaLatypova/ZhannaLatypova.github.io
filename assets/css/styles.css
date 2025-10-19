@@ -3108,37 +3108,203 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 
 
 /* ===== SERVICES: вернуть hover-картинки на карточках ===== */
+/* /* --- SERVICES: вернуть первую картинку (A) поверх второй (B) --- */
+/* #services .svc-card::before{ */
+  /* content:"" !important;
+  position:absolute; inset:0;
+  background: var(--svc-img-a) center / cover no-repeat !important;
+  border-radius: inherit;
+  z-index: 2 !important;                 /* страница A сверху */
+  /* transform-origin: left center;
+  transform: rotateY(0deg);
+  transition: transform .7s cubic-bezier(.2,.7,.2,1), opacity .3s ease; */ 
+/* }
+#services .svc-card::after{
+  content:"" !important;
+  position:absolute; inset:0;
+  background: var(--svc-img-b) center / cover no-repeat !important;
+  border-radius: inherit;
+  z-index: 1 !important;                 /* страница B снизу */
+  /* transition: transform .5s ease, opacity .35s ease;
+} */ 
+
+/* ховер: «перелистывание» + лёгкий зум нижнего слоя */
+#services .svc-card:hover::before{ transform: rotateY(-110deg); }
+#services .svc-card:hover::after{ transform: scale(1.02); }
+
+/* контент над фонами, гасим на ховере */
+#services .svc-card > *{ position:relative; z-index:3; transition:opacity .25s ease; }
+#services .svc-card:hover > *{ opacity:0; }
+
+/* ===== SERVICES (чистый базовый вид + ховер с картинкой) ===== */
+#services { position: relative; }
+#services .wrap { position: relative; }
+
+/* Шапка */
+#services .svc-head{
+  display:grid; grid-template-columns: 1fr 1.05fr;
+  gap: 48px; align-items:start;
+  margin-bottom: 40px;
+}
+#services .svc-title{ line-height:.96; margin:0; font-weight:900; }
+#services .svc-right{ display:grid; grid-template-columns:1fr auto; gap:18px; }
+
+/* SCROLL DOWN слева, под первой строкой WHAT I’M */
+#services .svc-rail{
+  position:absolute; left:-62px; top:6px;
+  display:flex; flex-direction:column; align-items:center; gap:14px;
+  z-index:3; user-select:none;
+}
+#services .rail-text{
+  writing-mode:vertical-rl; transform:rotate(180deg);
+  font: 900 12px/1 Inter, system-ui, sans-serif; letter-spacing:.22em;
+}
+#services .rail-line{ width:2px; height:180px; background:#111; display:block; }
+#services .rail-dot{ width:60px; height:60px; border-radius:999px; background:#111; color:#fff;
+  display:grid; place-items:center; box-shadow:0 18px 28px rgba(0,0,0,.18); font-weight:900; }
+
+/* Сетка карточек — всегда квадраты */
+#services .svc-cards{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 26px; align-items:stretch;
+}
+#services .svc-card{
+  position:relative; overflow:hidden;
+  aspect-ratio: 1 / 1;                 /* ← квадрат на любой ширине */
+  min-height: 320px;                    /* страховка для старых браузеров */
+  border-radius: 22px; padding: 26px;
+  display:flex; flex-direction:column; justify-content:space-between;
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+#services .svc-card h4{
+  margin:0; font-weight:900; letter-spacing:.01em;
+  font-size: clamp(18px, 1.9vw, 26px); line-height:1.12;
+}
+
+/* Базовые темы: тёмная / светлая (первая «страница» БЕЗ КАРТИНКИ) */
+#services .svc-card.dark{    background:#111; color:#fff; border:0; }
+#services .svc-card.outline{ background:#fff; color:#111; border:1.25px solid #111; }
+
+/* Выдвижение при ховере */
+#services .svc-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 22px 56px rgba(0,0,0,.18);
+  border-color:#000;
+}
+
+/* Контент над слоями */
+#services .svc-card > *{ position:relative; z-index:3; transition:opacity .25s ease; }
+
+/* ВТОРАЯ «страница»: картинка через ::after (по умолчанию скрыта) */
+#services .svc-card::after{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+  background: var(--svc-img) center / cover no-repeat;
+  z-index:2;
+  opacity:0; transform: translateX(14%) scale(1.04);
+  transition: opacity .35s ease, transform .55s ease;
+}
+/* На ховере показываем картинку и гасим текст */
+#services .svc-card:hover::after{ opacity:1; transform: translateX(0) scale(1.02); }
+#services .svc-card:hover > *{ opacity:.0; }
+
+/* Подключаем картинки-вторые страницы (пути свои) */
+#services .svc-card.is-crm{ --svc-img: url("/assets/img/crm_2.png"), url("https://ZhannaLatypova.github.io/assets/img/crm_2.png"); }
+#services .svc-card.is-ai { --svc-img: url("/assets/img/ai_2.png"),  url("https://ZhannaLatypova.github.io/assets/img/ai_2.png"); }
+#services .svc-card.is-bi { --svc-img: url("/assets/img/bi_2.png"),  url("https://ZhannaLatypova.github.io/assets/img/bi_2.png"); }
+
+/* Адаптив: rail прячем, но КВАДРАТЫ сохраняем */
+@media (max-width: 1100px){
+  #services .svc-rail{ display:none; }
+  #services .svc-cards{ grid-template-columns: repeat(2, minmax(240px, 1fr)); }
+}
+@media (max-width: 640px){
+  #services .svc-cards{ grid-template-columns: 1fr; }
+}
+
+/* Фолбэк для старых браузеров без aspect-ratio */
+@supports not (aspect-ratio: 1 / 1){
+  #services .svc-card{ position:relative; }
+  #services .svc-card::before{ content:""; display:block; padding-top:100%; }
+  #services .svc-card > *{ position:absolute; inset:0; padding:26px; }
+}
+
+/* ===== SERVICES — ПОЛНЫЙ RESET ВНУТРИ #services ===== */
+
+/* 0) карточка всегда квадрат, всё, что внутри, не влияет на layout */
 #services .svc-card{
   position: relative !important;
   overflow: hidden !important;
+  aspect-ratio: 1 / 1 !important;     /* квадрат */
+  min-height: 320px !important;
+  border-radius: 22px !important;
+  padding: 24px !important;
+  transform: translateZ(0);
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease !important;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
-/* Вторая «страница» — картинка поверх фона */
+/* 1) убиваем ВСЕ прошлые before/after и любые трансформации на них */
+#services .svc-card::before,
 #services .svc-card::after{
   content: "" !important;
   position: absolute !important;
-  inset: 0 !important;
+  left:0 !important; top:0 !important; right:0 !important; bottom:0 !important;
+  width:100% !important; height:100% !important;
+  margin:0 !important; padding:0 !important;
   border-radius: inherit !important;
-  background: var(--svc-img) center/cover no-repeat !important;
-  z-index: 1 !important;
+  background: none !important;
+  box-shadow: none !important;
+  filter: none !important;
   opacity: 0 !important;
-  transform: scale(1.06) !important;
-  transition: opacity .35s ease, transform .55s ease !important;
+  transform: none !important;          /* <— тут мы реально сносим старые translateX(100%) и т.п. */
+  z-index: 2 !important;
+  pointer-events: none !important;
 }
 
-/* При наведении картинка проявляется, текст гасим */
+/* 2) запретим любым <img> внутри карты перекрывать контент (в т.ч. «огромным» размером) */
+#services .svc-card img{ display:none !important; }   /* картинок внутри карт быть не должно */
+
+/* 3) «вторая» картинка — задаётся ТОЛЬКО как фон у ::after */
+#services .svc-card.is-crm::after{  background: center / cover no-repeat url("/assets/img/crm_2.png"), url("https://ZhannaLatypova.github.io/assets/img/crm_2.png") !important; }
+#services .svc-card.is-ai::after {  background: center / cover no-repeat url("/assets/img/ai_2.png"),  url("https://ZhannaLatypova.github.io/assets/img/ai_2.png")  !important; }
+#services .svc-card.is-bi::after {  background: center / cover no-repeat url("/assets/img/bi_2.png"),  url("https://ZhannaLatypova.github.io/assets/img/bi_2.png")  !important; }
+
+/* 4) нормальное состояние: видна «первая страница» (тёмная/светлая тема), ::after скрыт */
+#services .svc-card.dark{    background:#111 !important; color:#fff !important; border:0 !important; }
+#services .svc-card.outline{ background:#fff !important; color:#111 !important; border:1.25px solid #111 !important; }
+
+/* 5) hover: карточка выдвигается вперёд, «вторая» картинка проявляется и зумится,
+      текст мягко исчезает — НО ::after ЖЁСТКО ограничен размерами квадрата */
+#services .svc-card:hover{
+  transform: translateY(-12px) scale(1.04) !important;
+  box-shadow: 0 26px 60px rgba(0,0,0,.22) !important;
+  z-index: 5 !important;
+}
 #services .svc-card:hover::after{
   opacity: 1 !important;
-  transform: scale(1.02) !important;
+  transform: scale(1.08) !important;   /* лёгкий зум «внутри» квадрата */
 }
-#services .svc-card > *{
-  position: relative !important;
-  z-index: 2 !important;
-  transition: opacity .25s ease !important;
-}
+#services .svc-card > *{ position:relative; z-index:3; transition:opacity .25s ease; }
 #services .svc-card:hover > *{ opacity: 0 !important; }
 
-/* Пути к картинкам второй «страницы» */
-#services .svc-card.is-crm{ --svc-img: url("/assets/img/crm_2.png"),  url("https://ZhannaLatypova.github.io/assets/img/crm_2.png") !important; }
-#services .svc-card.is-ai { --svc-img: url("/assets/img/ai_2.png"),   url("https://ZhannaLatypova.github.io/assets/img/ai_2.png")  !important; }
-#services .svc-card.is-bi { --svc-img: url("/assets/img/bi_2.png"),   url("https://ZhannaLatypova.github.io/assets/img/bi_2.png")  !important; }
+/* 6) сетка и квадраты сохраняются на всех ширинах (не превращаются в прямоугольники) */
+#services .svc-cards{
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(260px, 1fr)) !important;
+  gap: 26px !important;
+  align-items: stretch !important;
+}
+@media (max-width:1100px){
+  #services .svc-cards{ grid-template-columns: repeat(2, minmax(240px, 1fr)) !important; }
+}
+@media (max-width:640px){
+  #services .svc-cards{ grid-template-columns: 1fr !important; }
+}
+/* fallback для старых браузеров без aspect-ratio */
+@supports not (aspect-ratio: 1 / 1){
+  #services .svc-card::before{ content:"" !important; display:block !important; padding-top:100% !important; background:none !important; opacity:0 !important; }
+  #services .svc-card > *{ position:absolute !important; inset:24px !important; }
+  #services .svc-card::after{ inset:0 !important; }
+}
