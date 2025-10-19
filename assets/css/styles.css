@@ -3107,39 +3107,3 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 }
 
 
-/* ===== HOTFIX: restore HOME header + hero layout ===== */
-
-/* 1) Вернуть шапку, если где-то скрыта */
-.site-header{ display:block !important; }
-
-/* 2) Мини-карты в герое снова в правом верхнем углу */
-.hero .mini-cards{
-  position:absolute !important;
-  top:0 !important;
-  right:40px !important;
-  display:flex !important;
-  gap:56px !important;
-  z-index:3 !important;
-}
-.hero .mini-card{ width:240px !important; max-width:26vw !important; }
-
-/* 3) Фото не «заезжает» под ленту, лента сразу под героем */
-.hero .hero-visual{ position:relative !important; min-height:auto !important; }
-.hero .hero-visual .portrait-wrap{
-  position:relative !important;
-  bottom:auto !important;
-  margin:0 !important;
-  z-index:1 !important;
-}
-.hero .ticker{
-  margin-top:0 !important;   /* лента вплотную к герою */
-  z-index:2 !important;
-}
-
-/* 4) На десктопе — никаких отрицательных отступов у фото */
-.portrait-wrap{ margin-bottom:0 !important; }
-
-/* 5) Чтобы кейс-страница не страдала: всё её меню остаётся изолировано */
-.case-header, .case-mini{ all: revert-layer; } /* ничего не меняем здесь */
-
-/* (опционально) если где-то было display:none для шапки — переопределяем выше */
