@@ -2937,3 +2937,44 @@ h1, h2.display, .display-title{
   color: #000 !important; /* темнее */
   text-shadow: 0 4px 8px rgba(0,0,0,0.25) !important; /* эффект объёма */
 }
+/* ======== SIDE NAV BLOCK ======== */
+.side-nav{
+  border-top:1px solid #e7e7ea;
+  margin-top:80px;
+  padding:64px 0 80px;
+  background:#fff;
+}
+.side-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap:48px;
+}
+.side-card{
+  position:relative;
+  text-decoration:none;
+  padding-top:8px;
+  border-top:3px solid #111;
+  transition:.25s ease;
+}
+.side-card h4{
+  font-size:1.15rem;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin:.35rem 0 .25rem;
+}
+.side-card .ext{
+  font-size:1.25rem;
+  line-height:1;
+  transform:translateY(-1px);
+}
+.side-card p{
+  color:#6c6f77;
+  font-size:.95rem;
+  margin:0;
+}
+.side-card:hover{
+  transform:translateY(-3px);
+  opacity:.85;
+}
