@@ -35,10 +35,10 @@
     .brand .logo::after{ content:""; display:block; width:76px; height:2px; background:#111; margin-top:4px }
 
     /* ===== Карточки-меню справа ===== */
-    .top-nav-inline{
+    /* .top-nav-inline{
       margin-left:auto; display:flex; gap:48px; align-items:flex-start;
       max-width:72vw; flex-wrap:nowrap;
-    }
+    } */
     .top-card{
       width:clamp(220px,26vw,360px);
       border-top:3px solid #111; padding-top:10px;
@@ -122,26 +122,25 @@
 </head>
 
 <body>
-    <!-- Шапка (только логотип) -->
-    <header class="site-header">
-      <div class="bar">
+    <!-- HEADER -->
+    <header class="site-header" id="siteHeader">
+      <div class="wrap bar">
         <a class="brand" href="/"><span class="logo">it’s me</span></a>
       </div>
     </header>
     
-    <!-- Сентинель для «прилипания» меню -->
-    <div class="mini-cards-sentinel" aria-hidden="true"></div>
-    
-    <!-- Меню как на About, ПРИЖАТО ВПРАВО -->
-    <nav class="mini-cards mini-cards--right" id="miniCards" aria-label="Page links">
+    <!-- RIGHT ALIGNED, STICKY MINI CARDS (как на About) -->
+    <nav class="mini-cards mini-cards--right" id="caseTopNav" aria-label="Quick links">
       <a class="mini-card" href="/about.html">
         <div class="mini-title">About me <span class="ext">↗</span></div>
         <div class="mini-text">Learn where I’ve worked and what I shipped.</div>
       </a>
+    
       <a class="mini-card" href="/#case">
         <div class="mini-title">My Cases <span class="ext">↗</span></div>
         <div class="mini-text">See all of the projects I’ve done.</div>
       </a>
+    
       <a class="mini-card" href="/#contact">
         <div class="mini-title">Contact me <span class="ext">↗</span></div>
         <div class="mini-text">zhn.latypova@gmail.com</div>
@@ -285,26 +284,22 @@
       go(0);
     })();
   <script>
-    // Задаём точную высоту шапки в CSS-переменную
-    function setHeaderHeightVar(){
-      const hdr = document.querySelector('.site-header');
-      const h = hdr ? hdr.getBoundingClientRect().height : 56;
-      document.documentElement.style.setProperty('--header-h', h + 'px');
-    }
-    setHeaderHeightVar();
-    window.addEventListener('resize', setHeaderHeightVar);
-  
-    // Добавляем/убираем класс .is-stuck когда меню реально «прилипло»
     (function(){
-      const menu = document.getElementById('miniCards');
-      const sentinel = document.querySelector('.mini-cards-sentinel');
-      if(!menu || !sentinel) return;
+      const header = document.getElementById('siteHeader');
+      const nav = document.getElementById('caseTopNav');
   
+      function setHeaderHeight(){
+        const h = header.offsetHeight || 56;
+        document.documentElement.style.setProperty('--header-h', h + 'px');
+      }
+      setHeaderHeight();
+      window.addEventListener('resize', setHeaderHeight);
+  
+      // лёгкий эффект, когда меню прилипло
       const obs = new IntersectionObserver(([e])=>{
-        menu.classList.toggle('is-stuck', !e.isIntersecting);
-      }, { threshold: 1 });
-  
-      obs.observe(sentinel);
+        nav.classList.toggle('is-stuck', !e.isIntersecting);
+      }, {rootMargin: '-1px 0px 0px 0px', threshold: 1});
+      obs.observe(nav);
     })();
   </script>
 </body>
