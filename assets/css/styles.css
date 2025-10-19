@@ -3646,3 +3646,91 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
   text-shadow: 0 4px 8px rgba(0,0,0,0.25) !important; /* эффект объёма */
 }
 
+.mini-cards{ display:none; }
+
+/* === 1) Верхнее мини-меню слева в hero === */
+.home-mini{
+  display:grid;
+  grid-auto-flow:column;
+  gap:32px;
+  justify-content:start;            /* слева */
+  align-items:start;
+  margin: 6px 0 10px;               /* компактный отступ над/под */
+}
+.home-mini__card{
+  text-decoration:none; color:inherit;
+  border-top:3px solid #111;
+  padding-top:8px;
+  transition:transform .25s ease, opacity .25s ease;
+}
+.home-mini__card:hover{ transform:translateY(-2px); opacity:.95; }
+.home-mini__title{
+  display:flex; align-items:center; justify-content:space-between;
+  font-weight:800; color:#111; margin:.2rem 0 .2rem;
+}
+.home-mini__title i{ font-style:normal; transform:translateY(-1px); }
+.home-mini__text{ margin:0; color:#6c6f77; font-size:.94rem; }
+
+@media (max-width:980px){
+  .home-mini{ gap:18px; overflow:auto; scrollbar-width:none; }
+  .home-mini::-webkit-scrollbar{ display:none; }
+}
+
+/* === 2) Фото «врезается» под чёрную полосу === */
+/* Полоса прямо под hero и выше фото */
+.hero .ticker{
+  margin-top: 0 !important;        /* без «воздуха» сверху */
+  margin-bottom: 0 !important;
+  height: 54px !important;         /* компактная высота полосы */
+  padding-block: 6px !important;   /* внутренняя плотность */
+  position: relative;
+  z-index: 2;                      /* полоса над фото */
+}
+
+/* Фото опускаем вниз, под полосу */
+.hero .hero-visual{ position:relative; min-height:640px; }
+.hero .hero-visual > .portrait-wrap{
+  position:absolute; right:0; left:auto;
+  bottom:-88px;                    /* глубина «заезда» */
+  margin:0; padding:0;
+  z-index: 1;                      /* фото под полосой */
+  transition: transform .45s ease;
+}
+.hero .hero-visual > .portrait-wrap .portrait{
+  max-width:560px; height:auto; transform:none;
+}
+.hero .hero-visual > .portrait-wrap .hello-badge{
+  left:-72px; bottom:46%; z-index:3;          /* круг поверх фото */
+}
+
+/* Hover: чуть приподнять фото — не обязательно, но красиво */
+.hero .hero-visual > .portrait-wrap:hover{ z-index:3; }
+.hero .hero-visual > .portrait-wrap:hover .portrait{
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* === 3) Сократить отступ перед WHAT I’M OFFERING === */
+#services, .services, .services-v2, .section.services {
+  margin-top: 12px !important;     /* меньше зазор сразу после полосы */
+  padding-top: 56px;               /* «воздух» внутри секции, можно 40–64 */
+}
+
+/* (страховка) если где-то прячется глобальная шапка — включим обратно */
+.site-header{ display:block !important; visibility:visible !important; }
+
+/* Убедимся, что никем не спрятано текущее мини-меню/полоса */
+.mini-cards, .home-mini, .hero .ticker{
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* Мобилка — фото возвращаем в поток и оставляем полоску ниже */
+@media (max-width:980px){
+  .hero .hero-visual{ min-height:auto; }
+  .hero .hero-visual > .portrait-wrap{
+    position:relative; bottom:0; right:auto; z-index:1;
+    margin: 6px auto 0;
+    max-width:min(92vw, 520px);
+  }
+  .hero .ticker{ height:48px !important; padding-block:6px !important; }
+}
