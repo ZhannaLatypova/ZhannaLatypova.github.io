@@ -141,30 +141,39 @@ a:focus-visible,button:focus-visible{outline:3px solid #ffb86b;outline-offset:3p
 .nav a{font-weight:600;color:#333}
 .nav a:hover{opacity:.8}
 
-/* <!-- ====== SIDE NAVIGATION BLOCK ====== --> */
-<section class="side-nav">
-  <div class="wrap side-grid">
+/* === верхний блок карточек === */
+.top-nav-cards{
+  border-top:1px solid #e7e7ea;
+  border-bottom:1px solid #e7e7ea;
+  background:#fff;
+  padding:56px 0 42px;
+}
+.top-grid{
+  width:var(--wrap);
+  margin-inline:auto;
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap:48px;
+}
+.top-card{
+  text-decoration:none;
+  border-top:3px solid #111;
+  padding-top:8px;
+  transition:transform .25s ease,opacity .25s ease;
+}
+.top-card:hover{transform:translateY(-3px);opacity:.9}
+.top-card h4{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-weight:800;
+  font-size:1.1rem;
+  margin:.4rem 0 .2rem;
+  color:#111;
+}
+.top-card .ext{font-size:1.25rem;line-height:1;transform:translateY(-1px);}
+.top-card p{color:#6c6f77;font-size:.95rem;margin:0;}
 
-    /* <!-- 1 --> */
-    <a class="side-card" href="/about.html">
-      <h4>About me <span class="ext">↗</span></h4>
-      <p>Learn where I’ve worked and what I shipped.</p>
-    </a>
-
-    /* <!-- 2 --> */
-    <a class="side-card" href="/#case">
-      <h4>My Cases <span class="ext">↗</span></h4>
-      <p>See all of the projects I’ve done.</p>
-    </a>
-
-    /* <!-- 3 --> */
-    <a class="side-card" href="mailto:zhn.latypova@gmail.com">
-      <h4>Contact me <span class="ext">↗</span></h4>
-      <p>zhn.latypova@gmail.com</p>
-    </a>
-
-  </div>
-</section>  
 /* === заголовок === */
 .case-wrap{padding:40px 0 28px}
 .case-title{font-family:"Space Grotesk",Inter,sans-serif;font-weight:900;letter-spacing:.01em;
@@ -216,20 +225,41 @@ a:focus-visible,button:focus-visible{outline:3px solid #ffb86b;outline-offset:3p
   .sheet-heading{order:2}
   .sheet-text{grid-column:1/-1}
   .cta-row{flex-direction:column;align-items:center}
+  .top-grid{gap:28px;}
+  .top-nav-cards{padding:42px 0 34px;}
 }
 </style>
 </head>
+
 <body>
 <header class="site-header">
   <div class="wrap bar">
     <a class="brand" href="/"><span class="logo">it’s me</span></a>
-    <!-- <nav class="nav">
+    <nav class="nav">
       <a href="/about.html">About me</a>
       <a href="/#case">Cases</a>
       <a href="/#contact">Contact</a>
     </nav>
   </div>
-</header> -->
+</header>
+
+<!-- ====== TOP NAV CARDS ====== -->
+<section class="top-nav-cards">
+  <div class="top-grid">
+    <a class="top-card" href="/about.html">
+      <h4>About me <span class="ext">↗</span></h4>
+      <p>Learn where I’ve worked and what I shipped.</p>
+    </a>
+    <a class="top-card" href="/#case">
+      <h4>My Cases <span class="ext">↗</span></h4>
+      <p>See all of the projects I’ve done.</p>
+    </a>
+    <a class="top-card" href="mailto:zhn.latypova@gmail.com">
+      <h4>Contact me <span class="ext">↗</span></h4>
+      <p>zhn.latypova@gmail.com</p>
+    </a>
+  </div>
+</section>
 
 <main id="main">
   <header class="case-wrap wrap">
