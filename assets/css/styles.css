@@ -2940,9 +2940,12 @@ h1, h2.display, .display-title{
   position: sticky; top: 0; z-index: 20;
   background:#fff; border-bottom:1px solid #f0f1f3;
 }
+
 .site-header .bar{
-  display:flex; align-items:flex-start; /* важен старт, чтобы верхние линии совпали */
-  gap: 24px; padding:14px 0;
+  display:flex; align-items:flex-start; /* <<< ключевая правка */
+  justify-content:space-between;
+  gap:24px;
+  padding:14px 0;
 }
 
 /* Логотип слева */
@@ -2958,14 +2961,10 @@ h1, h2.display, .display-title{
 
 /* Контейнер карточек справа */
 .top-nav-inline{
-  /* КЛЮЧ: прижать вправо */
-  margin-left:auto;
-
-  display:grid;
-  grid-auto-flow: column;                 /* в линию */
-  grid-auto-columns: minmax(260px, 1fr);  /* ширина карточки */
-  gap: 48px;
-  max-width: 72vw;                        /* чтобы не залезало на лого */
+  display:flex; gap:48px; margin-left:auto;
+  align-items:flex-start;
+  max-width:72vw;            /* <<< добавь ограничение */
+  flex-wrap:nowrap;          /* держим в одну строку, пока хватает места */
 }
 
 /* Стили карточек (как у вас в секции) */
@@ -2987,7 +2986,9 @@ h1, h2.display, .display-title{
 /* Адаптив — на узких экранах складываем в строку со скроллом */
 @media (max-width: 1100px){
   .top-nav-inline{
-    display:flex; gap:28px; overflow:auto; padding-bottom:6px;
+    gap:28px;
+    overflow:auto;           /* горизонтальный скролл */
+    padding-bottom:6px;
     scrollbar-width:none;
   }
   .top-nav-inline::-webkit-scrollbar{ display:none; }
