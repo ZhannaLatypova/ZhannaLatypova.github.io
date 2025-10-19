@@ -1511,7 +1511,6 @@ h1, h2.display, .display-title{
 
 
 /* ================= HERO — финальная раскладка ================= */
-/* ========== HERO spacing & photo overlap ========== */
 
 /* верх — воздух, снизу зазор убираем (полосу подтягиваем) */
 .hero{
@@ -1633,10 +1632,6 @@ h1, h2.display, .display-title{
   transform:scale(1.08) translateY(-12px);
 }
 
-/* ===== Значки ===== */
-
-
-
 /* Круговая — оставляем (можно подвинуть при желании) */
 .icon-pie{
   right:-14px;
@@ -1674,7 +1669,6 @@ h1, h2.display, .display-title{
   transform:rotate(-8deg); /* убрали translateX, чтобы не съезжала */
 }
 /* ===== Outside the algorithm ===== */
-/* ===== Outside the algorithm (чёрный фон) ===== */
 .outside-algo{
   background:#0b0b0c;
   color:#fff;
@@ -2795,19 +2789,6 @@ h1, h2.display, .display-title{
   z-index: 1;                                 /* ниже фото */
 }
 
-/* Длинная ЧЁРНАЯ линия (идёт сквозь всё, под кругом) */
-/* .hello-anchor::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 2px;
-  height: 200px;                               /* с запасом, длиннее экрана */
-  /* background: #000; */
-  /* transform: translate(-50%, -50%) rotate(-45deg); */
-  /* z-index: 0;                                  /* под кругом */ 
-/* } */ 
-
 /* Сам круг */
 .hello-badge {
   width: var(--r);
@@ -2823,19 +2804,6 @@ h1, h2.display, .display-title{
   /* overflow: hidden;                            /* белая линия обрезается */ 
   box-shadow: 0 28px 80px rgba(0, 0, 0, .18);
 }
-
-/* Белая линия внутри круга */
-/* .hello-badge::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 1.5px;
-  height: calc(var(--r) * 1.41421356);        /* диагональ круга */
-  /* background: #fff;
-  transform: translate(-50%, -50%) rotate(var(--angle));
-  z-index: 2;
-} */ 
 
 /* Текст Bonjour */
 .hello-text {
