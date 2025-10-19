@@ -2397,7 +2397,7 @@ h1, h2.display, .display-title{
   z-index: 1;
 }
 
-/* 1) Список с галочками: меньше, компактнее, серее */
+/* !!!!!!!!!!!!!!!!!!!!1) Список с галочками: меньше, компактнее, серее */
 .hero-list,
 .hero-list li{
   font-size: clamp(14px, 1.5vw, 18px) !important;  /* ↓ размер и адаптив */
@@ -2805,6 +2805,10 @@ h1, h2.display, .display-title{
   color: #000 !important; /* темнее */
   text-shadow: 0 4px 8px rgba(0,0,0,0.25) !important; /* эффект объёма */
 }
+
+/* !!!!!!!!!!!!!!!!!!!!!!!!!----- */
+
+
 /* === Карточки в шапке справа === */
 :root{
   --wrap: min(1160px, 92vw);
@@ -3305,4 +3309,414 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 @media (max-width: 980px){
   .home-ticker{ height: 56px; }
   .home-ticker__chunk{ font-size: 16px; line-height: 56px; gap: 2rem; }
+}
+
+/* ===== HERO FIX: сдвиг фото и круга Bonjour вправо ===== */
+/* !!!!!!!!!!!!!!!!!!!!1) Список с галочками: меньше, компактнее, серее */
+.hero-list,
+.hero-list li{
+  font-size: clamp(14px, 1.5vw, 18px) !important;  /* ↓ размер и адаптив */
+  line-height: 1.35 !important;                    /* плотнее */
+  color: #5f6168 !important;
+  margin: 0.35rem 0 !important;
+}
+.hero-list{ padding-left: 22px !important; }
+.hero-list li::marker{
+  font-size: .9em !important;   /* сама “галочка” поменьше */
+  color: #5f6168 !important;
+}
+
+/* ===== Mobile / Tablet fixes for HERO ===== */
+
+/* Базовые улучшения текста + линка */
+.hero-list,
+.hero-list li{
+  font-size: clamp(14px, 1.5vw, 18px) !important;
+  line-height: 1.35 !important;
+  color: #5f6168 !important;
+  margin: .35rem 0 !important;
+  letter-spacing: -0.02em !important; 
+}
+.hero-list{ padding-left: 22px !important; }
+.hero-list li::marker{ font-size:.9em !important; color:#5f6168 !important; }
+
+
+/* ====== КЛЮЧЕВОЕ: раскладка на мобильных ====== */
+@media (max-width: 980px){
+
+  /* Сетка: одна колонка, контент сверху */
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    align-items: start !important;
+    min-height: auto !important;
+  }
+
+  /* Правый столбец (визуал) возвращаем в поток,
+     чтобы ничего не «выезжало» поверх */
+/* Правый столбец (визуал) — фото всегда ниже ленты */
+.hero-visual {
+  position: relative !important;
+  min-height: auto !important;
+  z-index: 1; /* ниже ленты */
+}
+
+  /* Фото — по центру, без переводов/масштабов */
+  .portrait-wrap{
+    position: relative !important;
+    inset: auto !important;
+    margin: 6px auto 0 !important;
+    max-width: min(92vw, 520px) !important;
+    z-index: 1 !important;
+  }
+.portrait {
+  max-width: 100% !important;
+  height: auto !important;
+  transform: none !important;
+  position: relative;
+  z-index: 1; /* тоже ниже ленты */
+}
+
+  /* Бейдж Bonjour — аккуратнее */
+  .hello-badge{
+    left: 10px !important;
+    bottom: 20px !important;
+    z-index: 2 !important;
+  }
+
+  /* Верхние мини-линки — в поток, без абсолютов */
+  .mini-cards{
+    position: static !important;
+    order: 3;
+    display: flex !important;
+    gap: 12px !important;
+    margin-top: 4px !important;
+  } 
+
+  /* Радужное облако — убрать на мобилке,
+     чтобы не сдвигало верстку */
+  .color-cloud{ display: none !important; }
+
+  /* Кнопки: в столбик, слева, компактнее */
+  .cta-row{
+    display:flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    margin-top: 12px !important;
+  }
+
+  /* Линия у роли — покороче, чтобы не налезала */
+  .role-line .rule{ width: 54px !important; }
+
+  /* Тикер всегда под секцией, не «уплывает» вверх */
+  .ticker{
+    margin-top: -60px !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+}
+
+/* Очень узкие экраны — ещё чуть компактнее */
+@media (max-width: 560px){
+  .hero-list,
+  .hero-list li{ font-size: 14px !important; line-height: 1.32 !important; }
+  .pro-badges{ gap: 6px !important; }
+  .pro-badge{ font-size: .9rem !important; padding: .4rem .7rem !important; }
+}
+
+/* Download CV — подчёркивание ближе и сдвиг текста вниз */
+.download-link{
+  display: inline-block;
+  position: relative;
+  margin-left: 16px;
+
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111;
+
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+
+  /* опустить текст на пару пикселей */
+  transform: translateY(3px);           /* ↑ подбери 2–6px по вкусу */
+}
+
+/* если раньше рисовали линию через ::after — полностью отключаем */
+.download-link::after{ content: none !important; }
+
+.cta-row{ display:flex; align-items:flex-end; gap: 10px; }  /* общий низ */
+
+
+/* ===== STAR RIBBON ===== */
+.star-ribbon{
+  --h: 86px;           /* высота ленты */
+  --speed: 38s;        /* скорость (меньше = быстрее) */
+
+  position: relative;
+  height: var(--h);
+  overflow: hidden;
+  background: #0b0b0c;
+  color: #fff;
+}
+
+/* «звёздная пыль» фоном */
+.star-ribbon::before{
+  /* content:""; */
+  content:none !important;
+  position:absolute; inset:0;
+  background:
+    radial-gradient(rgba(255,255,255,.22) 1px, transparent 1.2px) 0 0/24px 24px,
+    radial-gradient(rgba(255,255,255,.22) 1px, transparent 1.2px) 12px 12px/24px 24px;
+  pointer-events:none; opacity:.45;
+}
+
+/* диагональная линия */
+.star-ribbon::after{
+  /* content:""; */
+  content:none !important;
+  position:absolute; left:-12%; right:-12%; top:50%;
+  height:2px; background: linear-gradient(90deg, transparent, #cfcfcf 35%, #cfcfcf 65%, transparent);
+  transform: rotate(-24deg); opacity:.6; pointer-events:none;
+}
+
+/* ЕДИНСТВЕННЫЙ трек (внутри — два одинаковых блока) */
+.star-ribbon__track{
+  position:absolute; left:0; top:0; height:100%;
+  display:flex; align-items:center;
+  gap: 3.2rem; padding-left: 3.2rem;
+  white-space: nowrap;
+  will-change: transform;
+  animation: starRibbonMove var(--speed) linear infinite;
+}
+
+/* кусок текста (повторяется дважды) */
+.star-ribbon__chunk{
+  display:flex; align-items:center;
+  gap: 3.2rem; margin:0;
+  font-family: 'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 800;           /* массивно, как в референсе */
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: clamp(20px, 3.6vw, 34px);
+  line-height: var(--h);
+}
+
+/* разделители-«звёзды» */
+.star-ribbon__chunk i{ font-style:normal; opacity:.9; transform:translateY(-.03em); }
+
+/* бесконечное движение (на полширины) */
+@keyframes starRibbonMove{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* если пользователь отключил анимации */
+@media (prefers-reduced-motion: reduce){
+  .star-ribbon__track{ animation:none; }
+}
+
+/* немного компактнее на узких */
+@media (max-width:640px){
+  .star-ribbon{ --h: 72px; }
+  .star-ribbon__track{ gap: 2.2rem; padding-left: 2.2rem; }
+  .star-ribbon__chunk{ gap: 2.2rem; }
+}
+
+/* ===== HERO ticker: звёздное небо без анимации ===== */
+.hero .ticker{
+  position: relative;
+  height: 64px;                 /* можно менять 56–72px */
+  background-color: #0b0b0c;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  margin-top: 10px;
+
+  /* Плотный «звёздный» фон (tile SVG), БЕЗ анимации и без смены оттенка */
+  background-image: url("data:image/svg+xml;utf8,\
+<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'>\
+  <rect width='220' height='220' fill='%230b0b0c'/>\
+  <g fill='%23ffffff' opacity='0.95'>\
+    <circle cx='18' cy='22' r='1.1'/> <circle cx='42' cy='86' r='1.4'/> <circle cx='96' cy='18' r='1.2'/>\
+    <circle cx='172' cy='34' r='1.2'/> <circle cx='206' cy='72' r='1.1'/> <circle cx='134' cy='58' r='1.2'/>\
+    <circle cx='68' cy='128' r='1.2'/> <circle cx='24' cy='152' r='1.2'/> <circle cx='192' cy='148' r='1.2'/>\
+    <circle cx='150' cy='190' r='1.1'/> <circle cx='88' cy='196' r='1.1'/> <circle cx='16' cy='200' r='1.1'/>\
+  </g>\
+  <g fill='%23e9e9e9' opacity='0.7'>\
+    <circle cx='10' cy='96' r='0.9'/> <circle cx='60' cy='32' r='0.9'/> <circle cx='120' cy='92' r='0.9'/>\
+    <circle cx='200' cy='110' r='0.9'/> <circle cx='176' cy='92' r='0.9'/> <circle cx='112' cy='150' r='0.9'/>\
+    <circle cx='46' cy='184' r='0.9'/> <circle cx='212' cy='192' r='0.9'/>\
+  </g>\
+  <g fill='%23cfcfcf' opacity='0.5'>\
+    <circle cx='28' cy='42' r='0.8'/> <circle cx='84' cy='62' r='0.8'/> <circle cx='140' cy='22' r='0.8'/>\
+    <circle cx='180' cy='80' r='0.8'/> <circle cx='126' cy='122' r='0.8'/> <circle cx='74' cy='102' r='0.8'/>\
+    <circle cx='30' cy='120' r='0.8'/> <circle cx='156' cy='162' r='0.8'/> <circle cx='98' cy='166' r='0.8'/>\
+  </g>\
+</svg>");
+  background-repeat: repeat;
+  background-size: 320px 320px;  /* крупнее/мельче «звёзды» */
+}
+
+/* Лёгкий диагональный «блик» поверх — как на референсе */
+.hero .ticker::before{
+  content: none !important;
+  position:absolute;
+  /* left:-20vw; right:-20vw; top:50%; */
+  left:0; right:0;
+  height:2px;
+  background: linear-gradient(90deg, transparent 0 10%, rgba(255,255,255,.65) 45% 55%, transparent 90% 100%);
+  /* transform: rotate(-23deg); */
+  transform: none;
+  opacity:.35;
+  pointer-events:none;
+}
+
+/* Контент ленты (текст/разделители) */
+.hero .ticker-row{
+  display:flex;
+  width:max-content;
+  animation: hero-ticker 32s linear infinite; /* бесшовная прокрутка */
+}
+.hero .ticker-seq{ display:inline-flex; align-items:center; padding-right:56px; }
+
+.hero .ticker-item{
+  font-family:'Space Grotesk', Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight:600;            /* немного жирнее */
+  font-size:18px;             /* задавай под свою высоту */
+  letter-spacing:.04em;
+  color:#ececec;
+  white-space:nowrap;
+  margin:0 24px;
+  line-height:1;
+}
+.hero .ticker-dot{
+  font-style:normal;
+  color:#d9d9d9;
+  margin:0 16px;
+  transform:translateY(-1px);
+}
+
+/* бесшовная прокрутка (вторая половина — клон) */
+@keyframes hero-ticker{
+  from{ transform: translateX(0); }
+  to  { transform: translateX(-50%); }
+}
+
+/* высота на мобайле — по желанию */
+@media (max-width:980px){
+  .hero .ticker{ height:56px; background-size:280px 280px; }
+  .hero .ticker-item{ font-size:16px; }
+}
+
+/* === БЛОК Bonjour === */
+.hello-anchor {
+  --angle: -45deg;     /* угол линии */
+  --r: 150px;          /* размер круга (уменьшен в 2 раза) */
+  --show: 0.8;         /* сколько видно круга (80%) */
+
+  position: absolute;
+  left: 20px;   /* уводим часть под фото */
+  top: clamp(400px, 45vh, 400px);             /* регулируй ниже/выше */
+  z-index: 1;                                 /* ниже фото */
+}
+
+/* Сам круг */
+.hello-badge {
+  width: var(--r);
+  height: var(--r);
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  /* overflow: hidden;                            /* белая линия обрезается */ 
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .18);
+}
+
+/* Текст Bonjour */
+.hello-text {
+  font-family: 'Parisienne', cursive;
+  font-weight: 200;
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: 1;
+  letter-spacing: .02em;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Адаптив под мобилку */
+@media (max-width: 980px) {
+  .hello-anchor {
+    --r: 100px;
+    top: clamp(320px, 42vh, 420px);
+  }
+}
+/* ===== Download CV — подчёркивание аккуратно и ближе к тексту ===== */
+.cta-row {
+  display: flex;
+  align-items: center;   /* центрирует всё по вертикали */
+  gap: 16px;             /* расстояние между кнопками */
+}
+
+.download-link {
+  display: inline-flex;
+  align-items: center;   /* центрирует текст и стрелку */
+  font-weight: 600;
+  font-size: 1rem;
+  margin-left: 0;        /* убираем лишний сдвиг */
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  color: #111;
+}
+
+.download-link .arrow {
+  display: inline-block;
+  margin-left: 4px;
+  transform: translateY(-1px);  /* ← поднимаем стрелку чуть выше */
+}
+
+@media (max-width: 980px){
+  .hero { --ticker-h: 48px; }                /* поуже лента на мобилке */
+  .hero .ticker-item{ font-size: 18px; }     /* поменьше шрифт на мобилке */
+  .hello-badge{
+    left: -8px;
+    bottom: calc((var(--ticker-h) / 2) - 18px);
+    padding: 16px 20px;
+  }
+}
+
+.hero-list,
+.hero-list li {
+  font-family: 'Roboto Condensed', sans-serif !important;
+  font-size: clamp(14px, 1.5vw, 18px) !important;
+  line-height: 1.35 !important;
+  color: #5f6168 !important;
+  margin: 0.35rem 0 !important;
+  letter-spacing: -0.02em !important;
+  list-style-type: "✔ " !important; /* галочка */
+  transition: transform 0.25s ease, color 0.25s ease, text-shadow 0.25s ease !important;
+  cursor: pointer !important;
+}
+
+.hero-list {
+  padding-left: 22px !important;
+}
+
+.hero-list li::marker {
+  font-size: .9em !important;
+  color: #5f6168 !important;
+}
+
+.hero-list li:hover {
+  transform: translateX(6px) scale(1.05) !important; /* выдвигается вперед */
+  color: #000 !important; /* темнее */
+  text-shadow: 0 4px 8px rgba(0,0,0,0.25) !important; /* эффект объёма */
 }
