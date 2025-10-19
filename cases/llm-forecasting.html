@@ -122,28 +122,31 @@
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="wrap bar">
-      <a class="brand" href="/"><span class="logo">it’s me</span></a>
-
-        <!-- СЕНТИНЕЛЬ для отслеживания прилипания -->
-        <div class="mini-cards-sentinel" aria-hidden="true"></div>
-        
-        <!-- mini menu справа, как на About -->
-        <div class="mini-cards mini-cards--case" id="miniCards">
-          <a class="mini-card" href="/about.html">
-            <div class="mini-title">About me <span class="ext">↗</span></div>
-            <div class="mini-text">Learn where I’ve worked and what I shipped.</div>
-          </a>
-          <a class="mini-card" href="/#case">
-            <div class="mini-title">My Cases <span class="ext">↗</span></div>
-            <div class="mini-text">See all of the projects I’ve done.</div>
-          </a>
-          <a class="mini-card" href="/#contact">
-            <div class="mini-title">Contact me <span class="ext">↗</span></div>
-            <div class="mini-text">zhn.latypova@gmail.com</div>
-          </a>
-        </div>
+    <!-- ШАПКА: только логотип (как на About) -->
+    <header class="site-header">
+      <div class="wrap bar">
+        <a class="brand" href="/"><span class="logo">it’s me</span></a>
+      </div>
+    </header>
+    
+    <!-- Сентинель для прилипания -->
+    <div class="mini-cards-sentinel" aria-hidden="true"></div>
+    
+    <!-- МИНИ-МЕНЮ: тот же паттерн, что на About, но прижато вправо -->
+    <nav class="mini-cards mini-cards--right" id="miniCards" aria-label="Page links">
+      <a class="mini-card" href="/about.html">
+        <div class="mini-title">About me <span class="ext">↗</span></div>
+        <div class="mini-text">Learn where I’ve worked and what I shipped.</div>
+      </a>
+      <a class="mini-card" href="/#case">
+        <div class="mini-title">My Cases <span class="ext">↗</span></div>
+        <div class="mini-text">See all of the projects I’ve done.</div>
+      </a>
+      <a class="mini-card" href="/#contact">
+        <div class="mini-title">Contact me <span class="ext">↗</span></div>
+        <div class="mini-text">zhn.latypova@gmail.com</div>
+      </a>
+    </nav>
   </header>
 
   <main id="main">
