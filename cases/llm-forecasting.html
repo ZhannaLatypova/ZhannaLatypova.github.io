@@ -97,28 +97,31 @@
 </head>
 
 <body>
-  <!-- Обычный хедер (слева только логотип) -->
+  <!-- HEADER -->
   <header class="site-header" id="siteHeader">
     <div class="wrap bar">
-      <a class="brand" href="/"><span class="logo">it’s me</span></a>
+      <!-- Логотип теперь в виде кнопки -->
+      <a class="brand" href="/">
+        <button class="brand-btn">it’s me</button>
+      </a>
+  
+      <!-- Правое меню -->
+      <nav class="case-mini" id="caseMini" aria-label="Case short navigation">
+        <a class="case-mini__card" href="/about.html">
+          <h4 class="case-mini__title">About me <span class="ext">↗</span></h4>
+          <p class="case-mini__text">Learn where I’ve worked and what I shipped.</p>
+        </a>
+        <a class="case-mini__card" href="/#case">
+          <h4 class="case-mini__title">My Cases <span class="ext">↗</span></h4>
+          <p class="case-mini__text">See all of the projects I’ve done.</p>
+        </a>
+        <a class="case-mini__card" href="mailto:zhn.latypova@gmail.com">
+          <h4 class="case-mini__title">Contact me <span class="ext">↗</span></h4>
+          <p class="case-mini__text">zhn.latypova@gmail.com</p>
+        </a>
+      </nav>
     </div>
   </header>
-
-  <!-- Правое мини-меню, как на About, но «заскоплено» -->
-  <nav class="case-mini" id="caseMini" aria-label="Case short navigation">
-    <a class="case-mini__card" href="/about.html">
-      <h4 class="case-mini__title">About me <span class="ext">↗</span></h4>
-      <p class="case-mini__text">Learn where I’ve worked and what I shipped.</p>
-    </a>
-    <a class="case-mini__card" href="/#case">
-      <h4 class="case-mini__title">My Cases <span class="ext">↗</span></h4>
-      <p class="case-mini__text">See all of the projects I’ve done.</p>
-    </a>
-    <a class="case-mini__card" href="mailto:zhn.latypova@gmail.com">
-      <h4 class="case-mini__title">Contact me <span class="ext">↗</span></h4>
-      <p class="case-mini__text">zhn.latypova@gmail.com</p>
-    </a>
-  </nav>
 
   <!-- Заголовок кейса -->
   <header class="case-head wrap">
