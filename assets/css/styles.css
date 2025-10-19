@@ -3720,3 +3720,8 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
   color: #000 !important; /* темнее */
   text-shadow: 0 4px 8px rgba(0,0,0,0.25) !important; /* эффект объёма */
 }
+
+/* если случайно рендерятся две подряд — скрыть вторую */
+.ticker + .ticker{ display:none !important; }
+/* либо полностью скрыть альтернативную чёрную ленту, если она из другого компонента */
+.star-ribbon{ display:none !important; }
