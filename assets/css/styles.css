@@ -2928,3 +2928,60 @@ h1, h2.display, .display-title{
 html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 .wrap{width:var(--wrap);margin-inline:auto}
 
+/* ===== CASE PAGE ONLY ===== */
+.case-header{
+  position: sticky; top: 0; z-index: 30;
+  background:#fff; border-bottom:1px solid #f0f1f3;
+}
+.case-header__bar{
+  /* делаем свой локальный контейнер, чтобы не трогать .wrap */
+  width: min(1160px, 92vw);
+  margin-inline: auto;
+  display:flex;
+  align-items:flex-start;    /* логотип чуть ниже уровня меню */
+  justify-content:space-between;
+  gap:32px;
+  padding:14px 0 10px;
+}
+
+/* локальная «кнопка» лого, не влияет на глобальный .brand */
+.case-header__logo{
+  display:inline-block;
+  background:#000; color:#fff;
+  font-family:"Space Grotesk", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight:900; font-size:18px;
+  border-radius:999px; padding:8px 20px;
+}
+.case-header__brand:hover .case-header__logo{
+  background:#1a1a1a;
+}
+
+/* правое меню кейса */
+.case-mini{
+  display:grid;
+  grid-auto-flow:column;
+  gap:40px;                 /* можно подвинуть правее, уменьшив gap */
+  justify-content:end;      /* прижали вправо */
+  align-items:start;
+}
+.case-mini__card{
+  text-decoration:none; color:inherit;
+  border-top:3px solid #111; padding-top:8px;
+  transition:transform .25s ease, opacity .25s ease;
+}
+.case-mini__card:hover{ transform:translateY(-2px); opacity:.95; }
+
+.case-mini__title{
+  display:flex; align-items:center; justify-content:space-between;
+  font-weight:800; color:#111; margin:.2rem 0 .2rem;
+}
+.case-mini__title .ext{ font-size:1.12em; line-height:1; transform:translateY(-1px); }
+.case-mini__text{ margin:0; color:#6c6f77; font-size:.94rem; }
+
+/* адаптив — скролл только в этом локальном меню */
+@media (max-width: 980px){
+  .case-header__bar{ gap:18px; }
+  .case-mini{ gap:28px; overflow:auto; scrollbar-width:none; }
+  .case-mini::-webkit-scrollbar{ display:none; }
+  .case-header__logo{ font-size:16px; padding:6px 16px; }
+}
