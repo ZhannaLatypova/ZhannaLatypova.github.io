@@ -3119,17 +3119,17 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
   position: absolute !important;
   inset: 0 !important;
   border-radius: inherit !important;
-  background: var(--svc-img) center center / cover no-repeat !important;
+  background: var(--svc-img) center/cover no-repeat !important;
   z-index: 1 !important;
   opacity: 0 !important;
-  transform: scale(1) !important;       /* было 1.06 */
-  transition: opacity .35s ease, transform .45s ease !important;
+  transform: scale(1.06) !important;
+  transition: opacity .35s ease, transform .55s ease !important;
 }
 
-/* При наведении теперь не увеличиваем — просто проявляем */
+/* При наведении картинка проявляется, текст гасим */
 #services .svc-card:hover::after{
   opacity: 1 !important;
-  transform: scale(1) !important;       /* тоже scale(1), без увеличения */
+  transform: scale(1.02) !important;
 }
 #services .svc-card > *{
   position: relative !important;
@@ -3142,5 +3142,3 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 #services .svc-card.is-crm{ --svc-img: url("/assets/img/crm_2.png"),  url("https://ZhannaLatypova.github.io/assets/img/crm_2.png") !important; }
 #services .svc-card.is-ai { --svc-img: url("/assets/img/ai_2.png"),   url("https://ZhannaLatypova.github.io/assets/img/ai_2.png")  !important; }
 #services .svc-card.is-bi { --svc-img: url("/assets/img/bi_2.png"),   url("https://ZhannaLatypova.github.io/assets/img/bi_2.png")  !important; }
-
-
