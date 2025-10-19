@@ -97,16 +97,14 @@
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header class="site-header" id="siteHeader">
-    <div class="wrap bar">
-      <!-- Логотип теперь в виде кнопки -->
-      <a class="brand" href="/">
-        <button class="brand-btn">it’s me</button>
+  <!-- Case-only header (ISOLATED) -->
+  <div class="case-header" aria-label="Case header">
+    <div class="case-header__bar">
+      <a class="case-header__brand" href="/">
+        <span class="case-header__logo">it’s me</span>
       </a>
   
-      <!-- Правое меню -->
-      <nav class="case-mini" id="caseMini" aria-label="Case short navigation">
+      <nav class="case-mini" aria-label="Short menu">
         <a class="case-mini__card" href="/about.html">
           <h4 class="case-mini__title">About me <span class="ext">↗</span></h4>
           <p class="case-mini__text">Learn where I’ve worked and what I shipped.</p>
@@ -121,7 +119,7 @@
         </a>
       </nav>
     </div>
-  </header>
+  </div>
 
   <!-- Заголовок кейса -->
   <header class="case-head wrap">
