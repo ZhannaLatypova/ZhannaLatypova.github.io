@@ -3645,3 +3645,13 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
   color: #000 !important; /* темнее */
   text-shadow: 0 4px 8px rgba(0,0,0,0.25) !important; /* эффект объёма */
 }
+
+
+/* ==== Уменьшаем отступы у чёрной полосы ==== */
+.hero .ticker {
+  margin-top: 0 !important;       /* убираем отступ сверху */
+  margin-bottom: 0 !important;    /* убираем отступ снизу */
+  padding-top: 6px !important;    /* если нужно чуть воздуха внутри */
+  padding-bottom: 6px !important; /* регулируй 0–8px по вкусу */
+  height: 54px !important;        /* уменьшай высоту всей полосы */
+}
