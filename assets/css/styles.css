@@ -2920,59 +2920,67 @@ h1, h2.display, .display-title{
 /* === Карточки в шапке справа === */
 :root{
   --wrap: min(1160px, 92vw);
-  --header-h: 56px; /* перепишем в JS точной высотой шапки */
+  --header-h: 56px;              /* запас по умолчанию, JS обновит точно */
 }
 
-/* Шапка — как на About */
+/* базовое */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
+.wrap{width:var(--wrap);margin-inline:auto}
+
+/* HEADER */
 .site-header{
-  position: sticky; top: 0; z-index: 20;
+  position:sticky; top:0; z-index:20;
   background:#fff; border-bottom:1px solid #f0f1f3;
 }
 .site-header .bar{
-  width: var(--wrap); margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 0;
+  display:flex; align-items:flex-start; justify-content:space-between;
+  padding:14px 0;
 }
 .brand .logo{
-  font-family:"Space Grotesk", Inter, system-ui, sans-serif;
+  font-family:"Space Grotesk", system-ui, -apple-system, "Segoe UI", Inter, Roboto, Arial, sans-serif;
   font-weight:900; letter-spacing:.01em; display:inline-block;
 }
 .brand .logo::after{
   content:""; display:block; width:76px; height:2px; background:#111; margin-top:6px;
 }
 
-/* Сентинель, чтобы ловить момент «прилипания» */
-.mini-cards-sentinel{ height: 1px; }
-
-/* МИНИ-МЕНЮ (как на About), НО прижато ВПРАВО и ЛИПКОЕ */
+/* ===== MINI CARDS (как на About), ВЫРАВНИВАЕМ ВПРАВО + ЛИПКОСТЬ ===== */
 .mini-cards{
-  width: var(--wrap); margin: 0 auto;
-  display: grid; grid-auto-flow: column; gap: 48px;
-  align-items: start; padding: 16px 0 12px;
-  border-bottom: 1px solid #f0f1f3; background: #fff;
+  width:var(--wrap);
+  margin:0 auto;
+  display:grid;
+  grid-auto-flow:column;          /* карточки в ряд */
+  gap:48px;
+  align-items:start;
+  padding:16px 0 12px;
+  border-bottom:1px solid #f0f1f3;
+  background:#fff;
 }
-.mini-cards--right{ justify-content: end; }
+.mini-cards--right{ justify-content:end; }
 
-/* липкость под шапкой */
+/* sticky под шапкой */
 .mini-cards--right{
-  position: sticky; top: var(--header-h);
-  z-index: 15;
-  transition: box-shadow .2s ease, border-color .2s ease;
+  position:sticky;
+  top: var(--header-h);
+  z-index:15;
+  transition: box-shadow .18s ease, border-color .18s ease;
 }
 .mini-cards--right.is-stuck{
-  box-shadow: 0 8px 18px rgba(0,0,0,.06);
-  border-color: transparent;
+  box-shadow:0 8px 18px rgba(0,0,0,.06);
+  border-color:transparent;
 }
 
-/* карточки меню — как на About */
+/* карточка */
 .mini-card{
   text-decoration:none;
   border-top:3px solid #111;
   padding-top:8px;
-  transition:transform .25s ease, opacity .25s ease;
+  transition: transform .25s ease, opacity .25s ease;
 }
 .mini-card:hover{ transform:translateY(-2px); opacity:.95; }
 
+/* заголовок и подпись */
 .mini-title{
   display:flex; justify-content:space-between; align-items:center;
   font-weight:800; color:#111;
@@ -2980,9 +2988,8 @@ h1, h2.display, .display-title{
 .mini-title .ext{ font-size:1.1em; line-height:1; transform:translateY(-1px); }
 .mini-text{ color:#6c6f77; }
 
-/* узкие экраны — горизонтальный скролл, как на About */
+/* адаптив — при нехватке ширины даём горизонтальный скролл, чтобы всё оставалось справа */
 @media (max-width: 980px){
   .mini-cards{ gap:28px; overflow:auto; scrollbar-width:none; }
   .mini-cards::-webkit-scrollbar{ display:none; }
 }
-
