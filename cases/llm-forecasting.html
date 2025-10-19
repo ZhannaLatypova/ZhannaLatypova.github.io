@@ -122,17 +122,17 @@
 </head>
 
 <body>
-    <!-- ШАПКА: только логотип (как на About) -->
+    <!-- Шапка (только логотип) -->
     <header class="site-header">
-      <div class="wrap bar">
+      <div class="bar">
         <a class="brand" href="/"><span class="logo">it’s me</span></a>
       </div>
     </header>
     
-    <!-- Сентинель для прилипания -->
+    <!-- Сентинель для «прилипания» меню -->
     <div class="mini-cards-sentinel" aria-hidden="true"></div>
     
-    <!-- МИНИ-МЕНЮ: тот же паттерн, что на About, но прижато вправо -->
+    <!-- Меню как на About, ПРИЖАТО ВПРАВО -->
     <nav class="mini-cards mini-cards--right" id="miniCards" aria-label="Page links">
       <a class="mini-card" href="/about.html">
         <div class="mini-title">About me <span class="ext">↗</span></div>
@@ -284,29 +284,28 @@
 
       go(0);
     })();
-  </script>
   <script>
-  // 1) выставляем CSS-переменную --header-h по фактической высоте шапки
-  function setHeaderHeightVar(){
-    const hdr = document.querySelector('.site-header');
-    const h = hdr ? hdr.getBoundingClientRect().height : 56;
-    document.documentElement.style.setProperty('--header-h', h + 'px');
-  }
-  setHeaderHeightVar();
-  window.addEventListener('resize', setHeaderHeightVar);
-
-  // 2) добавляем/убираем класс .is-stuck, когда меню прилипло
-  (function(){
-    const menu = document.getElementById('miniCards');
-    const sentinel = document.querySelector('.mini-cards-sentinel');
-    if(!menu || !sentinel) return;
-
-    const obs = new IntersectionObserver(
-      ([e]) => { menu.classList.toggle('is-stuck', !e.isIntersecting); },
-      { rootMargin: `-${getComputedStyle(document.documentElement).getPropertyValue('--header-h').trim()} 0px 0px 0px`, threshold: 0 }
-    );
-    obs.observe(sentinel);
-  })();
-</script>
+    // Задаём точную высоту шапки в CSS-переменную
+    function setHeaderHeightVar(){
+      const hdr = document.querySelector('.site-header');
+      const h = hdr ? hdr.getBoundingClientRect().height : 56;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    setHeaderHeightVar();
+    window.addEventListener('resize', setHeaderHeightVar);
+  
+    // Добавляем/убираем класс .is-stuck когда меню реально «прилипло»
+    (function(){
+      const menu = document.getElementById('miniCards');
+      const sentinel = document.querySelector('.mini-cards-sentinel');
+      if(!menu || !sentinel) return;
+  
+      const obs = new IntersectionObserver(([e])=>{
+        menu.classList.toggle('is-stuck', !e.isIntersecting);
+      }, { threshold: 1 });
+  
+      obs.observe(sentinel);
+    })();
+  </script>
 </body>
 </html>
