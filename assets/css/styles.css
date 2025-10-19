@@ -473,17 +473,17 @@ html, body{ overflow-x: hidden; }
 .site-header{ display:none !important; }
 
 /* компактные мини-линки в правой колонке hero */
-/* .mini-cards{
+.mini-cards{
   right: 24px;      /* ближе к правому краю, а не в центр */
-  /* top: 6px;         /* держим близко к верху */
-  /* gap: 28px;        /* вместо большого разрыва */ 
-/* } */
+  top: 6px;         /* держим близко к верху */
+  gap: 28px;        /* вместо большого разрыва */ 
+/
 
 /* сами «карточки»-ссылки уже и опрятнее */
-/* .mini-card{
+.mini-card{
   width: 200px;     /* было 240–260, делаем компактнее */
-  /* max-width: 24vw;  /* на очень узких экранах — адаптивно */ 
-/* } */ 
+  max-width: 24vw;  /* на очень узких экранах — адаптивно */ 
+/
 
 /* верхняя линия и вертикальный отступ тоже компактнее */
 .mini-title{
@@ -2557,13 +2557,13 @@ h1, h2.display, .display-title{
   }
 
   /* Верхние мини-линки — в поток, без абсолютов */
-  /* .mini-cards{
+  .mini-cards{
     position: static !important;
     order: 3;
     display: flex !important;
     gap: 12px !important;
     margin-top: 4px !important;
-  } */
+  } 
 
   /* Радужное облако — убрать на мобилке,
      чтобы не сдвигало верстку */
@@ -2929,67 +2929,91 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 .wrap{width:var(--wrap);margin-inline:auto}
 
 /* HEADER */
+:root{ --wrap: min(1160px, 92vw); }
+
+/* Хедер */
 .site-header{
-  position:sticky; top:0; z-index:20;
-  background:#fff; border-bottom:1px solid #f0f1f3;
+  position: sticky; top: 0; z-index: 30;
+  background: #fff;
+  border-bottom: 1px solid #f0f1f3;
 }
 .site-header .bar{
-  display:flex; align-items:flex-start; justify-content:space-between;
-  padding:14px 0;
+  display: flex;
+  align-items: flex-end;      /* ↓ логотип опускается чуть ниже меню */
+  justify-content: space-between;
+  gap: 32px;
+  padding: 16px 0 10px;
 }
-.brand .logo{
-  font-family:"Space Grotesk", system-ui, -apple-system, "Segoe UI", Inter, Roboto, Arial, sans-serif;
-  font-weight:900; letter-spacing:.01em; display:inline-block;
+.wrap{ width: var(--wrap); margin-inline: auto; }
+
+/* кнопка it’s me */
+.brand-btn{
+  background: #000;
+  color: #fff;
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-weight: 900;
+  font-size: 18px;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 22px;
+  cursor: pointer;
+  transition: all .25s ease;
 }
-.brand .logo::after{
-  content:""; display:block; width:76px; height:2px; background:#111; margin-top:6px;
+.brand-btn:hover{
+  background: #222;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
 
-/* ===== MINI CARDS (как на About), ВЫРАВНИВАЕМ ВПРАВО + ЛИПКОСТЬ ===== */
-.mini-cards{
-  width:var(--wrap);
-  margin:0 auto;
-  display:grid;
-  grid-auto-flow:column;          /* карточки в ряд */
-  gap:48px;
-  align-items:start;
-  padding:16px 0 12px;
-  border-bottom:1px solid #f0f1f3;
-  background:#fff;
+/* меню справа */
+.case-mini{
+  display: grid;
+  grid-auto-flow: column;
+  gap: 40px;                         /* уменьшили, чтобы сузить */
+  justify-content: end;              /* прижали вправо */
+  align-items: start;
+  background: #fff;
+  border-top: none;
+  transition: box-shadow .18s ease;
 }
-.mini-cards--right{ justify-content:end; }
-
-/* sticky под шапкой */
-.mini-cards--right{
-  position:sticky;
-  top: var(--header-h);
-  z-index:15;
-  transition: box-shadow .18s ease, border-color .18s ease;
-}
-.mini-cards--right.is-stuck{
-  box-shadow:0 8px 18px rgba(0,0,0,.06);
-  border-color:transparent;
+.case-mini.is-stuck{
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
 }
 
-/* карточка */
-.mini-card{
-  text-decoration:none;
-  border-top:3px solid #111;
-  padding-top:8px;
+/* карточки меню */
+.case-mini__card{
+  text-decoration: none;
+  color: inherit;
+  border-top: 3px solid #111;
+  padding-top: 8px;
   transition: transform .25s ease, opacity .25s ease;
 }
-.mini-card:hover{ transform:translateY(-2px); opacity:.95; }
-
-/* заголовок и подпись */
-.mini-title{
-  display:flex; justify-content:space-between; align-items:center;
-  font-weight:800; color:#111;
+.case-mini__card:hover{
+  transform: translateY(-2px);
+  opacity: .95;
 }
-.mini-title .ext{ font-size:1.1em; line-height:1; transform:translateY(-1px); }
-.mini-text{ color:#6c6f77; }
+.case-mini__title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 800;
+  color: #111;
+  margin: .2rem 0 .2rem;
+}
+.case-mini__title .ext{
+  font-size: 1.12em;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+.case-mini__text{
+  margin: 0;
+  color: #6c6f77;
+  font-size: .94rem;
+}
 
-/* адаптив — при нехватке ширины даём горизонтальный скролл, чтобы всё оставалось справа */
+/* адаптив */
 @media (max-width: 980px){
-  .mini-cards{ gap:28px; overflow:auto; scrollbar-width:none; }
-  .mini-cards::-webkit-scrollbar{ display:none; }
+  .case-mini{ gap: 28px; overflow-x: auto; scrollbar-width: none; }
+  .case-mini::-webkit-scrollbar{ display: none; }
+  .brand-btn{ font-size: 16px; padding: 6px 18px; }
 }
