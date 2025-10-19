@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
@@ -7,17 +7,17 @@
   <meta name="description" content="Integration of LLM and time series analysis for demand forecasting in e-commerce."/>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <!-- путь к CSS ОТ case-страницы на один уровень вверх -->
-  <link rel="stylesheet" href="../assets/css/styles.css?v=1">
+  <!-- <link rel="stylesheet" href="../assets/css/styles.css?v=1"> -->
   <!-- (необязательно) соц-превью -->
-  <meta property="og:title" content="LLM + Time Series Forecasting — Case Study"/>
+  <!-- <meta property="og:title" content="LLM + Time Series Forecasting — Case Study"/>
   <meta property="og:description" content="Business impact, approach, data, models, results."/>
   <meta property="og:image" content="https://raw.githubusercontent.com/ZhannaLatypova/ZhannaLatypova.github.io/main/assets/img/LLL+RAG.png"/>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main">Skip to content</a> -->
 
   <!-- Мини-навигация -->
-  <header class="site-header" style="display:block">
+  <!-- <header class="site-header" style="display:block">
     <div class="wrap" style="padding:14px 0; display:flex; justify-content:space-between; align-items:center;">
       <a class="brand" href="/"><span class="logo">it’s me</span></a>
       <nav class="nav">
@@ -34,11 +34,12 @@
       <div class="wrap">
         <span class="pill dark">BUSINESS CASES</span>
         <h1 style="margin:.6rem 0 0">Integration of LLM and time series analysis for demand forecasting in e-commerce.</h1>
+  
         <p class="lede" style="margin-top:10px; max-width:68ch">
           Goal: improve demand forecasting combining classic time-series models with LLM-based enrichment (events, promos, seasonality notes).
-        </p>
+        </p> -->
 
-        <div class="cards" style="margin-top:22px">
+        <!-- <div class="cards" style="margin-top:22px">
           <div class="card">
             <div class="card-media">
               <img src="../assets/img/LLL+RAG.png" alt="Diagram / mock">
@@ -53,8 +54,8 @@
           </div>
 
           <div class="card">
-            <div class="card-media">
-              <img src="../assets/img/Assort.png" alt="Data view">
+            <div class="card-media"> -->
+              <!-- <img src="../assets/img/Assort.png" alt="Data view">
             </div>
             <div class="card-body">
               <span class="badge">Approach</span>
@@ -78,8 +79,8 @@
               </p>
             </div>
           </div>
-          <div class="card">
-            <div class="card-body">
+          <div class="card"> -->
+            <!-- <div class="card-body">
               <span class="badge">Role</span>
               <h4>My contribution</h4>
               <p>Problem framing, data pipeline, modeling, evaluation, dashboards, rollout plan.</p>
@@ -103,7 +104,237 @@
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    document.getElementById('year').textContent = new Date().getFullYear(); -->
+  <!-- </script>
+</body>
+</html> --> 
+
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Кейс — Система аналитики для линнии морских перевозок</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Space+Grotesk:wght@700;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --wrap: min(1160px, 92vw);
+  --ink:#0b0b0c;
+  --muted:#6c6f77;
+  --rule:#e7e7ea;
+  --chip:#111;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#fff;color:var(--ink)}
+body{font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+
+/* ===== Шапка кейса ===== */
+.case-wrap{width:var(--wrap);margin:0 auto;padding:40px 0 28px}
+.case-title{
+  font-family:"Space Grotesk",Inter,system-ui,sans-serif;
+  font-weight:900; letter-spacing:.01em;
+  font-size: clamp(26px,4.6vw,48px);
+  margin:8px 0 10px;
+  line-height:1.05;
+}
+.case-sub{color:var(--muted); margin:0}
+
+/* ===== Карусель ===== */
+.carousel{position:relative; width:var(--wrap); margin:24px auto 40px}
+.carousel-view{overflow:hidden; border-radius:18px; box-shadow:0 26px 60px rgba(0,0,0,.12)}
+.carousel-track{display:flex; transition:transform .5s ease}
+.carousel-slide{flex:0 0 100%; max-width:100%}
+.carousel-slide img{display:block; width:100%; height:auto}
+
+.c-nav{
+  position:absolute; inset:0; pointer-events:none;
+  display:flex; align-items:center; justify-content:space-between; padding:0 10px;
+}
+.c-btn{
+  pointer-events:auto; width:48px; height:48px; border:0; border-radius:999px;
+  background:#0b0b0c; color:#fff; font-size:28px; line-height:0;
+  display:grid; place-items:center; box-shadow:0 16px 36px rgba(0,0,0,.25);
+  transition:transform .15s ease, opacity .15s ease;
+}
+.c-btn:hover{transform:scale(1.04)}
+.c-btn:disabled{opacity:.4; cursor:not-allowed}
+
+.c-dots{display:flex; gap:10px; justify-content:center; margin-top:12px}
+.c-dots button{
+  width:8px; height:8px; border-radius:999px; border:0; background:#cdd0d6; cursor:pointer
+}
+.c-dots button.is-active{width:18px; background:#111}
+
+/* ===== «Таблица» описания ===== */
+.case-sheet{width:var(--wrap); margin:30px auto 80px}
+.sheet-row{display:grid; grid-template-columns: 148px 300px 1fr; gap:32px; padding:22px 0; border-top:1px solid var(--rule)}
+.sheet-row:first-child{border-top:0}
+.sheet-label{
+  font-weight:800; letter-spacing:.03em; text-transform:uppercase; font-size:12px;
+}
+.sheet-heading{
+  font-weight:900; letter-spacing:.02em; text-transform:uppercase;
+  font-size: clamp(12px,1.6vw,14px);
+}
+.sheet-text{color:#222}
+.sheet-text p{margin:.35rem 0}
+.sheet-text ul{margin:.35rem 0; padding-left:18px}
+.sheet-text li{margin:.2rem 0; color:#2c2f35}
+.sheet-text li::marker{content:"■ "; font-size:.6rem; color:#222}
+
+/* бейдж для примечания */
+.note{
+  border-left:4px solid #d1d4db; background:linear-gradient(180deg,#fafbfc,transparent);
+  padding:12px 16px; border-radius:8px; color:#444; margin-top:8px
+}
+.note a{color:#111; font-weight:600; text-underline-offset:3px}
+
+/* адаптив */
+@media (max-width:980px){
+  .sheet-row{grid-template-columns: 120px 1fr; gap:18px}
+  .sheet-heading{order:2}
+  .sheet-text{grid-column:1 / -1}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Титул ===== -->
+<header class="case-wrap">
+  <h1 class="case-title">Система бизнес-аналитики для супервайзеров линии морских перевозок</h1>
+  <p class="case-sub">Цифровизация процессов надзора, документооборота и контроля выполнения работ на флоте 100+ танкеров.</p>
+</header>
+
+<!-- ===== Карусель изображений ===== -->
+<section class="carousel" aria-label="Галерея кейса">
+  <div class="carousel-view">
+    <div class="carousel-track" id="cTrack">
+      <!-- Слайд 1 -->
+      <figure class="carousel-slide">
+        <img src="assets/img/case_demo_1.jpg" alt="Дашборд KPI супервайзеров">
+      </figure>
+      <!-- Слайд 2 -->
+      <figure class="carousel-slide">
+        <img src="assets/img/case_demo_2.jpg" alt="Мобильная форма наряда на работы">
+      </figure>
+      <!-- Слайд 3 -->
+      <figure class="carousel-slide">
+        <img src="assets/img/case_demo_3.jpg" alt="Схема согласования документов">
+      </figure>
+    </div>
+  </div>
+
+  <div class="c-nav">
+    <button class="c-btn" id="cPrev" aria-label="Назад">‹</button>
+    <button class="c-btn" id="cNext" aria-label="Вперёд">›</button>
+  </div>
+  <div class="c-dots" id="cDots"></div>
+</section>
+
+<!-- ===== Описание кейса (табличный вид) ===== -->
+<section class="case-sheet">
+  <!-- Клиент -->
+  <div class="sheet-row">
+    <div class="sheet-label">Клиент</div>
+    <div class="sheet-heading">Морской грузоперевозчик энергоносителей</div>
+    <div class="sheet-text">
+      <p>Компания владеет флотом из 100+ танкеров для транспортировки СПГ и запустила программу цифровизации в нескольких направлениях:</p>
+      <ul>
+        <li>Контроль за работами на судах</li>
+        <li>Здоровье и благополучие экипажей</li>
+        <li>Автоматизация документооборота</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Задача -->
+  <div class="sheet-row">
+    <div class="sheet-label">Задача</div>
+    <div class="sheet-heading">Создать систему бизнес-аналитики для супервайзеров</div>
+    <div class="sheet-text">
+      <p><strong>Супервайзеры</strong> — офисные сотрудники в штаб-квартире, контролируют ход работ на судах (5–7 судов на одного супервайзера). Без их одобрения нельзя начинать сложные или опасные операции.</p>
+      <p>До цифровизации использовались бумажные наряды и e-mail — это приводило к задержкам, ошибкам и потере документов. Требовался инструмент с контролем производительности и безопасности в реальном времени.</p>
+    </div>
+  </div>
+
+  <!-- Решение -->
+  <div class="sheet-row">
+    <div class="sheet-label">Решение</div>
+    <div class="sheet-heading">Единая аналитическая платформа</div>
+    <div class="sheet-text">
+      <ul>
+        <li>Мобильные формы нарядов с валидациями и фотофиксацией</li>
+        <li>Сквозное согласование с журналом действий</li>
+        <li>Дашборды по SLA, рискам и загрузке команд</li>
+        <li>Интеграция с почтой и корпоративным хранилищем</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Результаты -->
+  <div class="sheet-row">
+    <div class="sheet-label">Результаты</div>
+    <div class="sheet-heading">+35% скорость, −60% ошибок</div>
+    <div class="sheet-text">
+      <ul>
+        <li>Время согласования сократилось на 35–45%</li>
+        <li>Ошибки в документах снизились на ~60%</li>
+        <li>Прозрачность и контроль загрузки супервайзеров — «в один клик»</li>
+      </ul>
+      <div class="note">В этом кейсе показана лишь часть работ — остальные задачи описаны <a href="#">в другом кейсе</a>.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+(() => {
+  const track = document.getElementById('cTrack');
+  const prev  = document.getElementById('cPrev');
+  const next  = document.getElementById('cNext');
+  const dotsWrap = document.getElementById('cDots');
+  const slides = Array.from(track.children);
+  let index = 0;
+
+  // точки
+  dotsWrap.innerHTML = slides.map((_,i)=>`<button aria-label="Слайд ${i+1}"></button>`).join('');
+  const dots = Array.from(dotsWrap.children);
+
+  function go(i){
+    index = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(-${index*100}%)`;
+    dots.forEach((d,k)=>d.classList.toggle('is-active', k===index));
+    // доступность
+    slides.forEach((s,k)=>s.setAttribute('aria-hidden', k!==index));
+  }
+
+  prev.addEventListener('click', () => go(index-1));
+  next.addEventListener('click', () => go(index+1));
+  dots.forEach((b,i)=> b.addEventListener('click', ()=>go(i)));
+
+  // свайп (простая версия)
+  let startX=null;
+  track.addEventListener('pointerdown', e=>{ startX=e.clientX; track.setPointerCapture(e.pointerId); });
+  track.addEventListener('pointerup', e=>{
+    if(startX==null) return;
+    const d = e.clientX - startX;
+    if(d>40) go(index-1);
+    if(d<-40) go(index+1);
+    startX=null;
+  });
+
+  // стрелки клавиатуры
+  document.addEventListener('keydown', e=>{
+    if(e.key==='ArrowLeft') go(index-1);
+    if(e.key==='ArrowRight') go(index+1);
+  });
+
+  go(0);
+})();
+</script>
 </body>
 </html>
