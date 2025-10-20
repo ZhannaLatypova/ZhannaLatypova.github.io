@@ -3227,3 +3227,71 @@ h1, h2.display, .display-title{
   font-weight: 700 !important;
 }
 
+/* === CASE PAGE: выравнивание хедера под ширину карусели === */
+.case-page { --wrap: min(1160px, 92vw); }
+.case-page .wrap,
+.case-page .case-head,
+.case-page .carousel,
+.case-page section.case-note {
+  width: var(--wrap) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important; /* убираем возможные внутренние паддинги */
+}
+
+/* Заголовок и подзаголовок в ту же колонку */
+.case-page .case-title,
+.case-page .case-sub { max-width: none !important; }
+
+/* === CASE PAGE: карусель без «сдвига» === */
+.case-page .carousel-view{ overflow: hidden !important; padding: 0 !important; }
+.case-page .carousel-track{ 
+  display: flex !important;
+  gap: 0 !important;
+  transition: transform .5s ease !important;
+}
+.case-page figure.carousel-slide,
+.case-page .carousel-slide{
+  margin: 0 !important;           /* критично: обнуляем маргин у figure */
+  padding: 0 !important;
+  flex: 0 0 100% !important;      /* каждый слайд — ровно 100% окна просмотра */
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+.case-page .carousel-slide img{
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* На всякий: убираем margin у всех figure внутри карусели */
+.case-page .carousel figure{ margin:0 !important; }
+
+/* === CASE NOTE: как на макете с серой полосой === */
+.case-page section.case-note{
+  border-left: 6px solid #d0d0d2 !important;
+  padding-left: 26px !important;
+  margin-top: 24px !important;
+  margin-bottom: 56px !important;
+}
+.case-page .case-note__title{
+  text-transform: uppercase !important;
+  font: 900 17px/1.2 "Space Grotesk", Inter, sans-serif !important;
+  letter-spacing: .05em !important;
+  margin: 0 0 12px !important;
+  color:#0b0b0c !important;
+}
+.case-page .case-note__text{
+  margin:0 !important;
+  font-size:17px !important;
+  line-height:1.55 !important;
+  color:#1a1a1c !important;
+}
+.case-page .case-note__link{
+  color:#0b0b0c !important;
+  text-decoration:underline !important;
+  text-underline-offset:3px !important;
+  text-decoration-thickness:1.5px !important;
+  font-weight:700 !important;
+}
