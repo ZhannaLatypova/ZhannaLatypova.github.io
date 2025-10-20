@@ -3949,3 +3949,150 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
   .hero{ --overlap: clamp(-56px, -14vw, -24px); }
   .hello-badge{ bottom: 34% !important; }
 }
+
+
+/* ===== HERO × TICKER: «склейка» фото с чёрной полосой ===== */
+
+/* одна переменная управляет глубиной врезания (отрицательное число) */
+.hero{
+  --overlap: clamp(-110px, -8vw, -48px);
+  overflow: visible !important;                 /* позволяем вылезти */
+}
+
+/* фото «опускаем» вниз и кладём поверх полосы */
+.hero .hero-visual{ position: relative !important; }
+.hero .portrait-wrap{
+  position: relative !important;
+  margin-bottom: var(--overlap) !important;     /* ВАЖНО: отриц. отступ = склейка */
+  z-index: 3 !important;                        /* фото выше полосы */
+}
+
+/* чёрная полоса сразу под героем, ниже фото */
+.hero .ticker{
+  margin-top: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Если вместо .ticker у тебя класс .star-ribbon (вторая версия ленты) */
+.star-ribbon{
+  margin-top: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* уменьшить зазор перед секцией WHAT I’M OFFERING */
+#services, .services, .services-v2{
+  margin-top: 0 !important;
+  padding-top: 28px !important; /* можешь сделать 24px */
+}
+
+/* ===== Bonjour: поднять круг выше ===== */
+/* он у тебя внутри .hello-anchor → .hello-badge. Поднимем и на случай,
+   если круг у тебя напрямую лежит в .portrait-wrap */
+.hello-anchor{ position: absolute !important; }
+.hello-anchor .hello-badge,
+.portrait-wrap .hello-badge{
+  position: absolute !important;
+  bottom: 58% !important;      /* ↑ подстрой 52–62% по вкусу */
+  left: -8px !important;        /* можно 0…-20px */
+  z-index: 4 !important;        /* поверх всего в герое */
+}
+
+/* ===== Адаптив: держим «склейку» и круг на узких экранах ===== */
+@media (max-width: 980px){
+  .hero{ --overlap: clamp(-72px, -11vw, -30px); }
+  .hello-anchor .hello-badge,
+  .portrait-wrap .hello-badge{ bottom: 40% !important; left: 8px !important; }
+}
+@media (max-width: 560px){
+  .hero{ --overlap: clamp(-56px, -14vw, -24px); }
+  .hello-anchor .hello-badge,
+  .portrait-wrap .hello-badge{ bottom: 36% !important; }
+/* } */
+
+/* ===== TOP MENU — выравнивание и сдвиг ===== */
+.top-nav,
+.hero-nav,
+.header-nav {
+  display: flex;
+  justify-content: flex-end;  /* выравнивание вправо */
+  gap: 60px;                  /* расстояние между пунктами меню */
+  margin-top: -14px;          /* подгоняем по вертикали */
+  margin-right: 80px;         /* сдвигаем вправо */
+  align-items: center;
+}
+
+.top-nav a,
+.hero-nav a,
+.header-nav a {
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  font-size: 14px;
+  border-top: 1px solid #111;
+  padding-top: 4px;
+}
+
+.top-nav small,
+.hero-nav small {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  color: #666;
+  margin-top: 2px;
+}
+
+/* ===== HERO COPY — вертикальные интервалы ===== */
+.hero .hero-copy > * + * {
+  margin-top: 18px;  /* общий шаг между блоками */
+}
+
+.hero .hero-title {
+  margin-bottom: 6px;
+}
+
+.hero .pro-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.hero .lede {
+  max-width: 460px;
+  line-height: 1.5;
+  color: #555;
+}
+
+.hero .hero-list {
+  margin-top: 12px;
+  margin-bottom: 16px;
+  list-style: none;
+  padding: 0;
+}
+
+.hero .hero-list li {
+  margin-bottom: 4px;
+}
+
+.hero .cta-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 10px;
+}
+
+@media (max-width: 960px) {
+  .top-nav {
+    gap: 32px;
+    margin-right: 40px;
+  }
+}
+@media (max-width: 640px) {
+  .top-nav {
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 12px;
+    gap: 8px;
+  }
+}
