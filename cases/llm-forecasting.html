@@ -1,122 +1,81 @@
 <!doctype html>
 <html lang="ru" class="case-page">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Business Case — LLM + Time Series in Demand Forecasting</title>
 
-  <!-- Локальные шрифты (как на главной, но можно оставить эти) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
 
   <style>
-    /* ======================
-       CASE PAGE (изолировано)
-       Работает ТОЛЬКО при <html class="case-page">
-       ====================== */
+    /* ===== Изолируем всё под .case-page ===== */
     .case-page{ --wrap: min(1160px, 92vw); }
-    .case-page body{
-      margin:0; color:#0b0b0c;
-      font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      background:#fff;
-    }
+    .case-page body{ margin:0; color:#0b0b0c; font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:#fff; }
     .case-page .wrap{ width:var(--wrap); margin-inline:auto; }
 
-    /* ---------- Header (только кейс) ---------- */
+    /* Header */
     .case-page .case-header{ position:sticky; top:0; z-index:30; background:#fff; border-bottom:1px solid #f0f1f3; }
-    .case-page .case-header__bar{
-      width:var(--wrap); margin:0 auto; padding:12px 0;
-      display:flex; gap:24px; align-items:flex-start; justify-content:space-between;
-    }
-    /* “it’s me” — чёрная пилюля слева */
+    .case-page .case-header__bar{ width:var(--wrap); margin:0 auto; padding:12px 0; display:flex; gap:24px; align-items:flex-start; justify-content:space-between; }
     .case-page .case-header__brand{ text-decoration:none; }
-    .case-page .case-header__logo{
-      display:inline-flex; align-items:center;
-      padding:10px 16px; border-radius:9999px;
-      background:#111; color:#fff; text-decoration:none;
-      font:900 14px/1 "Space Grotesk", Inter, sans-serif; letter-spacing:.02em;
-    }
-    /* мини-меню справа */
-    .case-page .case-mini{
-      display:grid; grid-auto-flow:column; gap:48px;
-      align-items:start; justify-content:end;
-    }
-    .case-page .case-mini__card{
-      text-decoration:none; color:inherit; min-width:240px;
-      border-top:3px solid #111; padding-top:8px;
-      transition:transform .22s ease, opacity .22s ease;
-    }
+    .case-page .case-header__logo{ display:inline-flex; align-items:center; padding:10px 16px; border-radius:9999px; background:#111; color:#fff; font:900 14px/1 "Space Grotesk", Inter, sans-serif; letter-spacing:.02em; }
+
+    .case-page .case-mini{ display:grid; grid-auto-flow:column; gap:48px; align-items:start; justify-content:end; }
+    .case-page .case-mini__card{ text-decoration:none; color:inherit; min-width:240px; border-top:3px solid #111; padding-top:8px; transition:transform .22s ease, opacity .22s ease; }
     .case-page .case-mini__card:hover{ transform:translateY(-2px); opacity:.95; }
-    .case-page .case-mini__title{
-      display:flex; align-items:center; justify-content:space-between;
-      margin:.1rem 0 .2rem; font-weight:800; color:#111;
-    }
+    .case-page .case-mini__title{ display:flex; align-items:center; justify-content:space-between; margin:.1rem 0 .2rem; font-weight:800; color:#111; }
     .case-page .case-mini__title .ext{ font-size:1.12em; line-height:1; transform:translateY(-1px); }
     .case-page .case-mini__text{ margin:0; color:#6c6f77; font-size:.95rem; }
 
-    /* лёгкая тень меню при скролле */
-    .case-page .case-mini.is-stuck{ box-shadow:0 8px 18px rgba(0,0,0,.06); border-color:transparent; }
+    /* Hero */
+    .case-page .case-head{ padding:34px 0 22px; width:var(--wrap); margin-inline:auto; }
+    .case-page .case-title{ margin:8px 0 10px; font:900 clamp(28px,4.8vw,50px)/1.05 "Space Grotesk", Inter, sans-serif; letter-spacing:.005em; }
+    .case-page .case-sub{ margin:0; color:#6c6f77; max-width:none; } /* ширина = как у карусели */
 
-    /* ---------- Hero ---------- */
-    .case-page .case-head{ padding:34px 0 22px; }
-    .case-page .case-pre{ font-weight:800; color:#6c6f77; margin:0 0 6px; letter-spacing:.06em; text-transform:uppercase; }
-    .case-page .case-title{
-      margin:8px 0 10px;
-      font:900 clamp(28px,4.8vw,50px)/1.05 "Space Grotesk", Inter, sans-serif;
-      letter-spacing:.005em;
-    }
-    .case-page .case-sub{ margin:0; color:#6c6f77; max-width:84ch; }
-
-    /* ---------- Карусель ---------- */
+    /* Carousel */
     .case-page .carousel{ position:relative; width:var(--wrap); margin:22px auto 36px; }
     .case-page .carousel-view{ overflow:hidden; border-radius:18px; box-shadow:0 26px 60px rgba(0,0,0,.12); }
-    .case-page .carousel-track{ display:flex; transition:transform .5s ease; }
-    .case-page .carousel-slide{ flex:0 0 100%; max-width:100%; }
+    .case-page .carousel-track{ display:flex; gap:0; transition:transform .45s ease; }
+    /* КРИТИЧНО: сбрасываем дефолтные отступы у figure */
+    .case-page .carousel figure{ margin:0; }
+    .case-page .carousel-slide{ flex:0 0 100%; max-width:100%; box-sizing:border-box; }
     .case-page .carousel-slide img{ display:block; width:100%; height:auto; }
-    .case-page .c-nav{
-      position:absolute; inset:0; pointer-events:none;
-      display:flex; align-items:center; justify-content:space-between; padding:0 10px;
-    }
-    .case-page .c-btn{
-      pointer-events:auto; width:48px; height:48px; border:0; border-radius:999px;
-      background:#0b0b0c; color:#fff; font-size:28px; display:grid; place-items:center;
-      box-shadow:0 16px 36px rgba(0,0,0,.25); transition:transform .15s ease;
-    }
+    .case-page .c-nav{ position:absolute; inset:0; pointer-events:none; display:flex; align-items:center; justify-content:space-between; padding:0 10px; }
+    .case-page .c-btn{ pointer-events:auto; width:48px; height:48px; border:0; border-radius:999px; background:#0b0b0c; color:#fff; font-size:28px; display:grid; place-items:center; box-shadow:0 16px 36px rgba(0,0,0,.25); transition:transform .15s ease; }
     .case-page .c-btn:hover{ transform:scale(1.05); }
 
-    /* ---------- Спецификация/таблица ---------- */
+    /* Таблица */
     .case-page .case-sheet{ width:var(--wrap); margin:28px auto 56px; }
-    .case-page .sheet-row{
-      display:grid; grid-template-columns:148px 300px 1fr;
-      gap:32px; padding:22px 0; border-top:1px solid #e7e7ea;
-    }
+    .case-page .sheet-row{ display:grid; grid-template-columns:148px 300px 1fr; gap:32px; padding:22px 0; border-top:1px solid #e7e7ea; }
     .case-page .sheet-row:first-child{ border-top:0; }
-    .case-page .sheet-label{
-      font:800 12px/1 Inter; letter-spacing:.06em; text-transform:uppercase; color:#6c6f77;
-    }
-    .case-page .sheet-heading{
-      font:900 clamp(12px,1.6vw,14px)/1 Inter; letter-spacing:.04em; text-transform:uppercase;
-    }
+    .case-page .sheet-label{ font:800 12px/1 Inter; letter-spacing:.06em; text-transform:uppercase; color:#6c6f77; }
+    .case-page .sheet-heading{ font:900 clamp(12px,1.6vw,14px)/1 Inter; letter-spacing:.04em; text-transform:uppercase; }
     .case-page .sheet-text{ color:#222; }
     .case-page .sheet-text p{ margin:.35rem 0; }
     .case-page .sheet-text ul{ margin:.35rem 0; padding-left:18px; }
     .case-page .sheet-text li{ margin:.22rem 0; color:#2c2f35; }
     .case-page .sheet-text li::marker{ content:"■ "; font-size:.6rem; color:#222; }
 
-    /* ---------- Нижние кнопки ---------- */
-    .case-page .case-cta.wrap{
-      display:flex; gap:16px; margin:0 auto 56px; align-items:center;
-    }
-    .case-page .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding:14px 22px; border-radius:999px; line-height:1; text-decoration:none;
-      font-weight:800; border:2px solid #111;
-    }
+    /* CASE NOTE */
+    .case-page .case-note{ width:var(--wrap); margin:24px auto 56px; padding-left:26px; border-left:6px solid #d0d0d2; }
+    .case-page .case-note__title{ margin:0 0 12px; font:900 17px/1.2 "Space Grotesk", Inter, sans-serif; letter-spacing:.05em; text-transform:uppercase; color:#0b0b0c; }
+    .case-page .case-note__text{ margin:0; color:#1a1a1c; font-size:17px; line-height:1.55; }
+    .case-page .case-note__link{ color:#0b0b0c; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1.5px; font-weight:700; }
+
+    /* Нижние кнопки */
+    .case-page .case-cta.wrap{ display:flex; gap:16px; margin:0 auto 56px; align-items:center; }
+    .case-page .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 22px; border-radius:999px; line-height:1; text-decoration:none; font-weight:800; border:2px solid #111; }
     .case-page .btn.primary{ background:#111; color:#fff; }
     .case-page .btn.outline{ background:#fff; color:#111; }
 
-    /* ---------- Адаптив ---------- */
+    /* Footer (серый + стрелка вверх) */
+    .case-page .case-footer{ background:#f7f7f8; border-top:1px solid #e0e0e0; padding:20px 0; margin-top:40px; position:relative; }
+    .case-page .case-footer__wrap{ width:var(--wrap); margin:0 auto; display:flex; align-items:center; justify-content:space-between; color:#0b0b0c; font:500 15px/1.5 Inter, system-ui, sans-serif; }
+    .case-page .case-footer__copy{ margin:0; }
+    .case-page .case-footer__up{ position:fixed; bottom:24px; right:28px; width:42px; height:42px; border:none; border-radius:999px; background:#0b0b0c; color:#fff; font-size:20px; line-height:1; cursor:pointer; box-shadow:0 6px 14px rgba(0,0,0,.2); transition:transform .2s ease, opacity .2s ease; }
+    .case-page .case-footer__up:hover{ transform:translateY(-3px); opacity:.9; }
+
     @media (max-width:1100px){
       .case-page .case-mini{ gap:28px; overflow:auto; scrollbar-width:none; }
       .case-page .case-mini::-webkit-scrollbar{ display:none; }
@@ -124,44 +83,33 @@
       .case-page .sheet-heading{ order:2; }
       .case-page .sheet-text{ grid-column:1 / -1; }
     }
-    @media (max-width:560px){
+    @media (max-width:600px){
+      .case-page .case-footer__up{ width:38px; height:38px; font-size:18px; right:20px; bottom:20px; }
       .case-page .case-cta.wrap{ flex-direction:column; align-items:flex-start; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Case-only header -->
+  <!-- Header -->
   <div class="case-header" id="siteHeader" aria-label="Case header">
     <div class="case-header__bar">
-      <a class="case-header__brand" href="/">
-        <span class="case-header__logo">it’s me</span>
-      </a>
-
+      <a class="case-header__brand" href="/"><span class="case-header__logo">it’s me</span></a>
       <nav class="case-mini" id="caseMini" aria-label="Short menu">
-        <a class="case-mini__card" href="/#case">
-          <h4 class="case-mini__title">My Cases <span class="ext">↗</span></h4>
-          <p class="case-mini__text">See all of the business cases I’ve done.</p>
-        </a>
-        <a class="case-mini__card" href="/about.html">
-          <h4 class="case-mini__title">About me <span class="ext">↗</span></h4>
-          <p class="case-mini__text">Learn where I’ve worked and what I shipped.</p>
-        </a>
-        <a class="case-mini__card" href="mailto:zhn.latypova@gmail.com">
-          <h4 class="case-mini__title">Contact me <span class="ext">↗</span></h4>
-          <p class="case-mini__text">zhn.latypova@gmail.com</p>
-        </a>
+        <a class="case-mini__card" href="/#case"><h4 class="case-mini__title">My Cases <span class="ext">↗</span></h4><p class="case-mini__text">See all of the business cases I’ve done.</p></a>
+        <a class="case-mini__card" href="/about.html"><h4 class="case-mini__title">About me <span class="ext">↗</span></h4><p class="case-mini__text">Learn where I’ve worked and what I shipped.</p></a>
+        <a class="case-mini__card" href="mailto:zhn.latypova@gmail.com"><h4 class="case-mini__title">Contact me <span class="ext">↗</span></h4><p class="case-mini__text">zhn.latypova@gmail.com</p></a>
       </nav>
     </div>
   </div>
 
-  <!-- Заголовок кейса -->
-  <header class="case-head wrap">
+  <!-- Hero -->
+  <header class="case-head">
     <h1 class="case-title">Integration of LLM and Time Series Analysis in Demand Forecasting for E-Commerce</h1>
     <p class="case-sub">By integrating textual insights from customer reviews and trend data with historical sales patterns, the project demonstrates a data-driven approach to improving inventory management, pricing strategies, and marketing efficiency.</p>
   </header>
 
-  <!-- Карусель -->
+  <!-- Carousel -->
   <section class="carousel" aria-label="Галерея кейса">
     <div class="carousel-view">
       <div class="carousel-track" id="cTrack">
@@ -174,67 +122,47 @@
       </div>
     </div>
     <div class="c-nav">
-      <button class="c-btn" id="cPrev" aria-label="Назад">‹</button>
-      <button class="c-btn" id="cNext" aria-label="Вперёд">›</button>
+      <button class="c-btn" id="cPrev" aria-label="Prev">‹</button>
+      <button class="c-btn" id="cNext" aria-label="Next">›</button>
     </div>
   </section>
 
-  <!-- Таблица/описание -->
+  <!-- Sheet (содержимое твоё) -->
   <section class="case-sheet">
+    <!-- ... твои sheet-row ... (оставляю как есть из твоего кода) -->
+    <!-- Client -->
     <div class="sheet-row">
       <div class="sheet-label">Client</div>
-      <div class="sheet-heading">Online seller Marketplace Wildberries </div>
-      <div class="sheet-text">
-        <p>The company ranks among the top five sellers of UGG footwear, holding a leading market position thanks to high online sales volume and an effective distribution strategy.</p>
-      </div>
+      <div class="sheet-heading">Online seller Marketplace Wildberries</div>
+      <div class="sheet-text"><p>The company ranks among the top five sellers of UGG footwear, holding a leading market position thanks to high online sales volume and an effective distribution strategy.</p></div>
     </div>
-    
+    <!-- Business Problem -->
     <div class="sheet-row">
       <div class="sheet-label">Business Problem</div>
       <div class="sheet-heading">Optimize inventory planning for a seasonal product</div>
-      <div class="sheet-text">
-        <p>The online seller of a seasonal product faces fluctuations in demand throughout the year.</p> 
-        <p>Without accurate forecasting, it is difficult to plan inventory, logistics, and marketing campaigns in advance.</p>
-        <p>This often leads to either excess stock or product shortages during peak seasons.</p> 
-        <p>Therefore, the seller wants to develop a demand forecasting model to predict future sales and optimize purchasing, pricing, and marketing efforts.</p>
-      </div>
+      <div class="sheet-text"><p>The online seller of a seasonal product faces fluctuations in demand throughout the year.</p><p>Without accurate forecasting, it is difficult to plan inventory, logistics, and marketing campaigns in advance.</p><p>This often leads to either excess stock or product shortages during peak seasons.</p><p>Therefore, the seller wants to develop a demand forecasting model to predict future sales and optimize purchasing, pricing, and marketing efforts.</p></div>
     </div>
-    
+    <!-- Goal -->
     <div class="sheet-row">
       <div class="sheet-label">Goal</div>
       <div class="sheet-heading">An advanced, hybrid forecasting model</div>
-      <div class="sheet-text">
-        <p>To build an advanced, hybrid forecasting model that accurately predicts future sales of a seasonal product by combining time series models, external data (e.g. reviews, weather, competitors), and language modeling (LLM-based topic modeling from customer reviews).</p>
-      </div>
+      <div class="sheet-text"><p>To build an advanced, hybrid forecasting model that accurately predicts future sales of a seasonal product by combining time series models, external data (e.g. reviews, weather, competitors), and language modeling (LLM-based topic modeling from customer reviews).</p></div>
     </div>
-
-    <!-- <div class="sheet-row">
-      <div class="sheet-label">Решение</div>
-      <div class="sheet-heading">Единая аналитическая платформа</div>
-      <div class="sheet-text">
-        <ul>
-          <li>Мобильные формы с фотофиксацией</li>
-          <li>Сквозное согласование, журнал действий</li>
-          <li>Дашборды по SLA, рискам, загрузке</li>
-          <li>Интеграция с DWH</li>
-        </ul>
-      </div>
-    </div> -->
-    
+    <!-- Data -->
     <div class="sheet-row">
       <div class="sheet-label">Data</div>
-      <div class="sheet-heading">Proprietary Wildberries (Russian E-commerce platform) UGG sales dataset</div>
+      <div class="sheet-heading">Proprietary Wildberries UGG sales dataset</div>
       <div class="sheet-text">
         <ul>
-          <li> sales.csv: Daily product sales, price, discount (36 datasets)</li>
-          <li> competitors.csv: Competitor sales, prices, and ratings</li>
-          <li> reviews.csv: Customer comments and ratings</li>
-          <li> weather.csv: Temperature, precipitation, weather conditions</li>
-          <li>All data is filtered for the city and spans multiple months or seasons. Input datasets: 36 monthly datasets (2022 to 2024)+ one dataset with comments of one ProductID.</li>
+          <li>sales.csv: Daily product sales, price, discount (36 datasets)</li>
+          <li>competitors.csv: Competitor sales, prices, ratings</li>
+          <li>reviews.csv: Customer comments and ratings</li>
+          <li>weather.csv: Temperature, precipitation, weather conditions</li>
+          <li>All data filtered for the city; 36 monthly datasets (2022–2024) + comments for one ProductID.</li>
         </ul>
       </div>
     </div>
-        
+    <!-- Models Used -->
     <div class="sheet-row">
       <div class="sheet-label">Models Used</div>
       <div class="sheet-heading">Time Series + LLM</div>
@@ -248,102 +176,113 @@
         </ul>
       </div>
     </div>
-
-        <div class="sheet-row">
+    <!-- Results -->
+    <div class="sheet-row">
       <div class="sheet-label">Results</div>
-      <div class="sheet-heading">We used two evaluation metrics</div>
+      <div class="sheet-heading">Two evaluation metrics</div>
       <div class="sheet-text">
         <ul>
-          <li>RMSE(Root Mean Squared Error) - 4.15</li>
-          <li>MAE (Mean Absolute Error) - 2.38</li>
+          <li>RMSE — 4.15</li>
+          <li>MAE — 2.38</li>
           <li>Stockout rate ↓ 20%</li>
         </ul>
       </div>
     </div>
-
+    <!-- Tools -->
     <div class="sheet-row">
       <div class="sheet-label">Tools</div>
-      <div class="sheet-heading">Python libraries for data analysis, visualization, and model development.</div>
+      <div class="sheet-heading">Python libraries for analysis & modeling</div>
       <div class="sheet-text">
         <ul>
-          <li>Languages & Core Libraries: Python (pandas, numpy, datetime, os, glob, requests)</li>
-          <li>Data Analysis & Visualization: Matplotlib, Seaborn,Plotly</li>
-          <li>Feature Engineering & Preprocessing: Scikit-learn (LabelEncoder, train_test_split, GridSearchCV, MLPRegressor, MinMaxScaler, metrics
-), TensorFlow / Keras(LSTM, GRU, CNN, Sequential, Adam, EarlyStopping), SciKeras (KerasRegressor), Holidays, Datetime </li>
-          <li>Machine Learning & Forecasting:Prophet, XGBoost (XGBRegressor)</li>
+          <li>Python (pandas, numpy, datetime, os, glob, requests)</li>
+          <li>Matplotlib, Seaborn, Plotly</li>
+          <li>scikit-learn, TensorFlow/Keras, SciKeras, Holidays</li>
+          <li>Prophet, XGBoost</li>
         </ul>
       </div>
     </div>
-    
+    <!-- Business Impact -->
     <div class="sheet-row">
       <div class="sheet-label">Business Impact</div>
-      <div class="sheet-heading">Key outcomes demonstrating how the model improved decision-making.</div>
+      <div class="sheet-heading">Better decision-making</div>
       <div class="sheet-text">
         <ul>
           <li>Improved demand visibility for inventory and supply chain managers</li>
           <li>Reduced wastage from overstocking</li>
           <li>Anticipated seasonal peaks (e.g., holidays, snow)</li>
-          <li>Reacted faster to customer sentiment via topic trends</li>
-          <li>Better pricing and promotional strategies using competitor-aware forecasts</li>
+          <li>Faster reaction to customer sentiment via topic trends</li>
+          <li>Competitor-aware pricing and promos</li>
         </ul>
       </div>
     </div>
   </section>
-<!-- CASE NOTE --> 
-<section class="case-note wrap" aria-label="Note">
-  <h3 class="case-note__title">THIS CASE PRESENTS ONLY PART OF THE WORK</h3>
-  <p class="case-note__text">
-    Other project tasks — for example, pipeline development and coding — are described in the
-    <a class="case-note__link" href="https://github.com/ZhannaLatypova/ml-ai-projects/tree/main/LLM%26%20Time%20Series%20in%20Demand%20Forecasting" target="_blank" rel="noopener">
-      GitHub repository
-    </a>.
-  </p>
-</section>
 
-  <!-- Нижние кнопки -->
+  <!-- CASE NOTE -->
+  <section class="case-note" aria-label="Note">
+    <h3 class="case-note__title">THIS CASE PRESENTS ONLY PART OF THE WORK</h3>
+    <p class="case-note__text">
+      Other project tasks — for example, pipeline development and coding — are described in the
+      <a class="case-note__link" href="https://github.com/ZhannaLatypova/ml-ai-projects/tree/main/LLM%26%20Time%20Series%20in%20Demand%20Forecasting" target="_blank" rel="noopener">GitHub repository</a>.
+    </p>
+  </section>
+
+  <!-- CTA -->
   <div class="case-cta wrap">
     <a class="btn outline" href="/">← Back to Home</a>
     <a class="btn primary" href="/cases/next-case.html">Next case →</a>
   </div>
 
-
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>© <span id="year"></span> ZHANNA LATYPOVA</p>
-      <a href="#main" class="top-link">↑</a>
+  <!-- Footer -->
+  <footer class="case-footer">
+    <div class="case-footer__wrap">
+      <p class="case-footer__copy">© <span id="year"></span> Zhanna Latypova</p>
+      <button class="case-footer__up" aria-label="Back to top">↑</button>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
+    // год в футере
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Карусель: ширина по пикселям, без «сдвига»
+    (function(){
+      const view  = document.querySelector('.carousel-view');
+      const track = document.getElementById('cTrack');
+      const prev  = document.getElementById('cPrev');
+      const next  = document.getElementById('cNext');
+      if(!view || !track) return;
+
+      const slides = Array.from(track.children);
+      function sizeSlides(){
+        const w = view.clientWidth;
+        slides.forEach(s => { s.style.width = w + 'px'; s.style.flex = '0 0 '+w+'px'; });
+        track.style.width = (w * slides.length) + 'px';
+      }
+      sizeSlides();
+      addEventListener('resize', sizeSlides);
+
+      let i = 0;
+      function go(n){
+        const w = view.clientWidth;
+        i = (n + slides.length) % slides.length;
+        track.style.transform = 'translateX(' + (-i*w) + 'px)';
+      }
+      prev && prev.addEventListener('click', () => go(i-1));
+      next && next.addEventListener('click', () => go(i+1));
+      go(0);
+
+      // fallback, если картинка не грузится
+      slides.forEach(s=>{
+        const img = s.querySelector('img');
+        img && img.addEventListener('error', ()=>{ img.src='https://ZhannaLatypova.github.io/assets/img/case_wb.png'; });
+      });
+    })();
+
+    // Кнопка «вверх»
+    document.querySelector('.case-footer__up')?.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
   </script>
 </body>
-</html>
-
-
-  
-<script>
-(function(){
-  const view = document.querySelector('.case-page .carousel-view');
-  const track = document.getElementById('cTrack');
-  if (!view || !track) return;
-
-  const slides = Array.from(track.children);
-
-  function sizeSlides(){
-    const w = view.clientWidth;
-    slides.forEach(s => { s.style.width = w + 'px'; });
-  }
-  sizeSlides();
-  window.addEventListener('resize', sizeSlides);
-
-  let i = 0;
-  const prev = document.getElementById('cPrev');
-  const next = document.getElementById('cNext');
-  function go(n){ i = (n + slides.length) % slides.length; track.style.transform = 'translateX(' + (-i * view.clientWidth) + 'px)'; }
-  prev && prev.addEventListener('click', () => go(i-1));
-  next && next.addEventListener('click', () => go(i+1));
-  go(0);
-})();
-</script>
 </html>
