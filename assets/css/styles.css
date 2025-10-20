@@ -3822,7 +3822,7 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 .hero-nav {
   position: absolute;
   right: max(24px, calc((100vw - min(1160px, 92vw)) / 2)); /* отступ от правого края */
-  top: 20px;       /* ← поднимает или опускает меню, регулируй это значение */
+  top: 80px;       /* ← поднимает или опускает меню, регулируй это значение */
   display: flex;
   gap: 64px;
   z-index: 6;
