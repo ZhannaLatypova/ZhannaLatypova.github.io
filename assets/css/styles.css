@@ -4254,3 +4254,9 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
   .hero .ticker{ height:48px !important; }
   .portrait-wrap .hello-badge{ left:8px !important; bottom:40% !important; }
 }
+
+
+.about-page .mini-cards{
+  position: sticky !important;
+  top: 0 !important;        /* или 56px, если есть фиксированный хедер */
+}
