@@ -306,6 +306,20 @@
     <a class="btn primary" href="/cases/next-case.html">Next case →</a>
   </div>
 
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>© <span id="year"></span> ZHANNA LATYPOVA</p>
+      <a href="#main" class="top-link">↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+  
 <script>
 (function(){
   const view = document.querySelector('.case-page .carousel-view');
