@@ -98,13 +98,13 @@
 
 <body>
   <!-- Case-only header (ISOLATED) -->
-  <div class="case-header" aria-label="Case header">
+  <div class="case-header" id="siteHeader" aria-label="Case header">
     <div class="case-header__bar">
       <a class="case-header__brand" href="/">
         <span class="case-header__logo">it’s me</span>
       </a>
   
-      <nav class="case-mini" aria-label="Short menu">
+      <nav class="case-mini" id="caseMini" aria-label="Short menu">
         <a class="case-mini__card" href="/#case">
           <h4 class="case-mini__title">My Cases <span class="ext">↗</span></h4>
           <p class="case-mini__text">See all of the business cases I’ve done.</p>
@@ -191,41 +191,50 @@
       </div>
     </div>
   </section>
-
+<!-- навигация по кейсам -->
+<div class="case-cta wrap">
+  <a class="btn outline" href="/">← Back to Home</a>
+  <a class="btn primary" href="/cases/next-case.html">Next case →</a>
+</div>
   <script>
     // выставляем отступ для sticky-меню = высота хедера
-    (function(){
-      const header = document.getElementById('siteHeader');
-      const mini   = document.getElementById('caseMini');
-
-      function setTop(){
-        const h = header.offsetHeight || 56;
-        document.documentElement.style.setProperty('--stickTop', h + 'px');
-      }
-      setTop();
-      window.addEventListener('resize', setTop);
-
-      // лёгкая тень при прокрутке
+  (function(){
+    const header = document.getElementById('siteHeader');
+    const mini   = document.getElementById('caseMini');
+  
+    function setTop(){
+      const h = header ? header.offsetHeight : 56;
+      document.documentElement.style.setProperty('--stickTop', h + 'px');
+    }
+    setTop();
+    window.addEventListener('resize', setTop);
+  
+    if (mini){
       let ticking=false;
       window.addEventListener('scroll', ()=>{
         if (!ticking){
-          window.requestAnimationFrame(()=>{
+          requestAnimationFrame(()=>{
             mini.classList.toggle('is-stuck', window.scrollY > 4);
             ticking=false;
           });
           ticking=true;
         }
       });
-
-      // простая карусель
-      const track = document.getElementById('cTrack');
+    }
+  
+    // карусель
+    const track = document.getElementById('cTrack');
+    if (track){
       const slides=[...track.children];
-      const prev=document.getElementById('cPrev'), next=document.getElementById('cNext');
+      const prev=document.getElementById('cPrev');
+      const next=document.getElementById('cNext');
       let i=0;
       function go(n){ i=(n+slides.length)%slides.length; track.style.transform=`translateX(-${i*100}%)`; }
-      prev.onclick=()=>go(i-1); next.onclick=()=>go(i+1);
+      prev && (prev.onclick=()=>go(i-1));
+      next && (next.onclick=()=>go(i+1));
       go(0);
-    })();
+    }
+  })();
   </script>
 </body>
 </html>
