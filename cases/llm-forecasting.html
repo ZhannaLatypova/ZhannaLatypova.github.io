@@ -157,7 +157,7 @@
 
   <!-- Заголовок кейса -->
   <header class="case-head wrap">
-    <h1 class="case-title">Integration of LLM and Time Series Analysis in Demand Forecasting for E-Commerce.</h1>
+    <h1 class="case-title">Integration of LLM and Time Series Analysis in Demand Forecasting for E-Commerce</h1>
     <p class="case-sub">By integrating textual insights from customer reviews and trend data with historical sales patterns, the project demonstrates a data-driven approach to improving inventory management, pricing strategies, and marketing efficiency.</p>
   </header>
 
@@ -308,37 +308,20 @@
 
 <script>
 (function(){
-  // тень у правого мини-меню при скролле
-  const mini = document.getElementById('caseMini');
-  if (mini){
-    let ticking = false;
-    window.addEventListener('scroll', function(){
-      if (!ticking){
-        requestAnimationFrame(function(){
-          mini.classList.toggle('is-stuck', window.scrollY > 4);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
-  }
-
-  // простая карусель
   const track = document.getElementById('cTrack');
   const prev  = document.getElementById('cPrev');
   const next  = document.getElementById('cNext');
+  if (!track || !prev || !next) return;
 
-  if (track && prev && next){
-    const slides = Array.from(track.children);
-    let i = 0;
-    function go(n){
-      i = (n + slides.length) % slides.length;
-      track.style.transform = 'translateX(-' + (i * 100) + '%)';
-    }
-    prev.addEventListener('click', function(){ go(i - 1); });
-    next.addEventListener('click', function(){ go(i + 1); });
-    go(0);
+  const slides = Array.from(track.children);
+  let i = 0;
+  function go(n){
+    i = (n + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (i*100) + '%)';
   }
+  prev.addEventListener('click', ()=>go(i-1));
+  next.addEventListener('click', ()=>go(i+1));
+  go(0);
 })();
 </script>
 </body>
