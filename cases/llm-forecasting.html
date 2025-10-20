@@ -236,5 +236,26 @@
     }
   })();
   </script>
+  <script>
+(function(){
+  // тень у верхнего мини-меню, когда проскроллили
+  const mini = document.querySelector('.case-page .case-mini');
+  if (mini){
+    let t=false;
+    addEventListener('scroll', ()=>{
+      if (!t){ requestAnimationFrame(()=>{ mini.classList.toggle('is-stuck', scrollY > 4); t=false; }); t=true; }
+    });
+  }
+  // простейшая карусель
+  const track = document.getElementById('cTrack');
+  const prev = document.getElementById('cPrev');
+  const next = document.getElementById('cNext');
+  if (track && prev && next){
+    const slides = [...track.children];
+    let i=0; const go=n=>{ i=(n+slides.length)%slides.length; track.style.transform=`translateX(-${i*100}%)`; };
+    prev.onclick=()=>go(i-1); next.onclick=()=>go(i+1); go(0);
+  }
+})();
+</script>
 </body>
 </html>
