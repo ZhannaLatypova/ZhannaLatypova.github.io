@@ -3822,7 +3822,7 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 .hero-nav {
   position: absolute;
   right: max(24px, calc((100vw - min(1160px, 92vw)) / 2)); /* отступ от правого края */
-  top: 45px;       /* ← поднимает или опускает меню, регулируй это значение */
+  top: 40px;       /* ← поднимает или опускает меню, регулируй это значение */
   display: flex;
   gap: 64px;
   z-index: 6;
@@ -3876,7 +3876,7 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 
 /* фото чуть «заезжает» на ленту — можно варьировать значение */
 .hero .portrait-wrap {
-  margin-bottom: -60px !important; /* ← регулируй: -20 = чуть ближе, -60 = врезается сильнее */
+  margin-bottom: -80px !important; /* ← регулируй: -20 = чуть ближе, -60 = врезается сильнее */
   z-index: 3;
   position: relative;
 }
