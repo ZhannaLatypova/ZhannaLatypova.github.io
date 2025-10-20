@@ -3964,14 +3964,14 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 .hero .portrait-wrap{
   position: relative !important;
   margin-bottom: var(--overlap) !important;     /* ВАЖНО: отриц. отступ = склейка */
-  z-index: 3 !important;                        /* фото выше полосы */
+  z-index: 2 !important;                        /* фото выше полосы */
 }
 
 /* чёрная полоса сразу под героем, ниже фото */
 .hero .ticker{
   margin-top: 0 !important;
   position: relative !important;
-  z-index: 2 !important;
+  z-index: 3 !important;
 }
 
 /* Если вместо .ticker у тебя класс .star-ribbon (вторая версия ленты) */
