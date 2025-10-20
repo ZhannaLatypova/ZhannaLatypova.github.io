@@ -301,12 +301,13 @@
     </div>
   </footer>
 
-  <script>
-    // год
-    document.getElementById('year').textContent = new Date().getFullYear();
+<script>
+  // год в футере
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-    // простая лайтбокс-галерея
-    const box = document.getElementById('lightbox');
+  // Безопасный lightbox: работаем только если элемент есть в DOM
+  const box = document.getElementById('lightbox');
+  if (box) {
     const boxImg = box.querySelector('.lightbox-img');
     const closeBtn = box.querySelector('.lightbox-close');
 
@@ -323,10 +324,11 @@
       box.classList.remove('open');
       document.body.style.overflow = '';
     }
-    closeBtn.addEventListener('click', closeBox);
+    closeBtn?.addEventListener('click', closeBox);
     box.addEventListener('click', e => { if(e.target === box) closeBox(); });
     document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeBox(); });
-  </script>
+  }
+</script>
 
     <style id="about-hotfix">
       /* ——— НЕ ЛОМАЕМ ABOUT И ВОЗВРАЩАЕМ ВИД ——— */
@@ -432,34 +434,22 @@
       }
     </style>
   <script>
-  document.querySelectorAll('.about-photo').forEach(ph=>{
-    ph.addEventListener('click', e=>{
-      if (matchMedia('(hover: none)').matches) {
-        e.preventDefault();
-        const d = ph.querySelector('.photo-default');
-        const h = ph.querySelector('.photo-hover');
-        const showHover = getComputedStyle(h).opacity === '0';
-        d.style.opacity = showHover ? '0' : '1';
-        h.style.opacity = showHover ? '1' : '0';
-      }
+    // Тап по фото меняет кадр только на тач-устройствах
+    document.querySelectorAll('.photo-swap').forEach(ph=>{
+      ph.addEventListener('click', e=>{
+        if (matchMedia('(hover: none)').matches) {
+          e.preventDefault();
+          const d = ph.querySelector('.photo-default');
+          const h = ph.querySelector('.photo-hover');
+          if (!d || !h) return;
+          const showHover = getComputedStyle(h).opacity === '0';
+          d.style.opacity = showHover ? '0' : '1';
+          h.style.opacity = showHover ? '1' : '0';
+        }
+      });
     });
-  });
-</script>
+  </script>
   
 </body>
 </html>
 
-<!-- <script>
-  document.querySelectorAll('.about-photo').forEach(ph=>{
-    ph.addEventListener('click', e=>{
-      if (matchMedia('(hover: none)').matches) {
-        e.preventDefault();
-        const d = ph.querySelector('.photo-default');
-        const h = ph.querySelector('.photo-hover');
-        const showHover = getComputedStyle(h).opacity === '0';
-        d.style.opacity = showHover ? '0' : '1';
-        h.style.opacity = showHover ? '1' : '0';
-      }
-    });
-  });
-</script> -->
