@@ -3822,7 +3822,7 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 .hero-nav {
   position: absolute;
   right: max(24px, calc((100vw - min(1160px, 92vw)) / 2)); /* отступ от правого края */
-  top: 40px;       /* ← поднимает или опускает меню, регулируй это значение */
+  top: 20px;       /* ← поднимает или опускает меню, регулируй это значение */
   display: flex;
   gap: 64px;
   z-index: 6;
@@ -3898,3 +3898,54 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
 
 /* страховка: внутри шапки секции не добавлять лишнего воздуха */
 #services .svc-head{ margin-top: 0 !important; }
+/* === HERO × TICKER: всегда “врезано” === */
+
+/* 0) непрячем выход за пределы секции */
+.hero{ overflow: visible; }
+
+/* 1) одна переменная управляет глубиной врезания (отрицательное значение) */
+.hero{
+  /* на десктопе врезаем на 40–120px (в процентах от ширины экрана) */
+  --overlap: clamp(-120px, -9vw, -40px);
+}
+
+/* 2) опускаем фото вниз на величину overlap и кладём поверх полосы */
+.hero .hero-visual{ position: relative; }
+.hero .portrait-wrap{
+  position: relative;
+  margin-bottom: var(--overlap);   /* отрицательный отступ = “заезд” на полосу */
+  z-index: 3;                      /* фото выше полосы */
+}
+
+/* 3) сама чёрная полоса остаётся сразу под героем, ниже фото */
+.hero .ticker{
+  margin-top: 0 !important;
+  position: relative;
+  z-index: 2;                      /* ниже фото, выше фона */
+}
+
+/* 4) чтобы следующий блок (WHAT I’M OFFERING) не отъезжал далеко */
+#services, .services, .services-v2{
+  margin-top: 0 !important;
+  padding-top: 32px !important;    /* при желании 24px */
+}
+
+/* === Bonjour: поднять круг === */
+.hello-badge{
+  position: absolute;
+  /* подними/опусти по вкусу: 40–65% — выше круг */
+  bottom: 56% !important;
+  left: -12px;                      /* можно 0..-24px */
+  z-index: 4;                       /* поверх всего в герое */
+}
+
+/* ===== Адаптив: держим “склейку” и круг на мобиле ===== */
+@media (max-width: 980px){
+  .hero{ --overlap: clamp(-72px, -12vw, -28px); }  /* поменьше врезание */
+  .hello-badge{ bottom: 38% !important; left: 8px; }
+}
+
+@media (max-width: 560px){
+  .hero{ --overlap: clamp(-56px, -14vw, -24px); }
+  .hello-badge{ bottom: 34% !important; }
+}
