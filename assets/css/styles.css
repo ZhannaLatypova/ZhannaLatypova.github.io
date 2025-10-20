@@ -2985,32 +2985,20 @@ h1, h2.display, .display-title{
 .case-page .case-mini.is-stuck{ box-shadow:0 8px 18px rgba(0,0,0,.06); border-color:transparent; }
 
 /* ---------- Hero ---------- */
-.case-page .case-head{
-  padding: 36px 0 24px;
-}
+.case-page .case-head{ padding:36px 0 24px; }
 .case-page .case-pre{ font-weight:800; color:#6c6f77; margin:0 0 6px; letter-spacing:.06em; text-transform:uppercase; }
-.case-page .case-title{
-  margin:8px 0 10px;
-  font:900 clamp(28px,4.8vw,50px)/1.05 "Space Grotesk", Inter, sans-serif;
-  margin-bottom: 10px;
-  letter-spacing:.005em;
+.case-page .case-title,
+.case-page .case-sub{
+  max-width:980px;
+  margin:0;
 }
-.case-page .case-sub{ margin:0; color:#6c6f77; max-width:980px; }
+.case-page .case-title{ margin-bottom:10px; }
 
 /* ---------- Карусель ---------- */
 .case-page .carousel{ position:relative; width:var(--wrap); margin:22px auto 36px; }
 .case-page .carousel-view{ overflow:hidden; border-radius:18px; box-shadow:0 26px 60px rgba(0,0,0,.12); }
-.case-page .carousel-track{
-  display: flex;
-  gap: 0;                  
-  transition: transform .5s ease;
-}
-.case-page .carousel-slide{
-  flex: 0 0 100%;
-  max-width: 100%;
-  margin: 0;                 
-  box-sizing: border-box;
-}
+.case-page .carousel-track{ display:flex; gap:0; transition:transform .5s ease; }
+.case-page .carousel-slide{ flex:0 0 100%; max-width:100%; margin:0; box-sizing:border-box; }
 .case-page .carousel-slide figure{ 
   margin: 0;                 
 }
@@ -3047,34 +3035,34 @@ h1, h2.display, .display-title{
 
 /* --- Case note (styled like the Russian version) --- */
 .case-page .case-note{
-  margin: 8px auto 56px;
-  padding-left: 26px;                 /* отступ от полосы */
-  border-left: 6px solid #d0d0d2;     /* серая полоса */
-  max-width: 980px;                   /* та же колонка, что у заголовка */
+  margin:8px auto 56px;
+  padding-left:26px;
+  border-left:6px solid #d0d0d2;
+  max-width:980px;
 }
 
 .case-page .case-note__title{
-  margin: 0 0 12px;
-  font: 900 17px/1.2 "Space Grotesk", Inter, sans-serif;
-  letter-spacing: .05em;
-  text-transform: uppercase;          /* КАПС */
-  color: #0b0b0c;
+  margin:0 0 12px;
+  font:900 17px/1.2 "Space Grotesk", Inter, sans-serif;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#0b0b0c;
 }
 
 .case-page .case-note__text{
-  margin: 0;
-  color: #1a1a1c;
-  font-size: 17px;
-  line-height: 1.55;
-  padding-left: 4px;                  /* лёгкий сдвиг вправо */
+  margin:0;
+  color:#1a1a1c;
+  font-size:17px;
+  line-height:1.55;
+  padding-left:4px;
 }
 
 .case-page .case-note__link{
-  color: #0b0b0c;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1.5px;
-  font-weight: 700;
+  color:#0b0b0c;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  text-decoration-thickness:1.5px;
+  font-weight:700;
 }
 
 .case-page .case-note__link:hover{ opacity:.85; }
