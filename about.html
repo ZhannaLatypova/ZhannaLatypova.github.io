@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="assets/css/styles.css?v=3" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 </head>
-<body>
+<body class="about-page">
   <a class="skip" href="#main">Перейти к содержимому</a>
 
   <main id="main">
@@ -327,10 +327,111 @@
     box.addEventListener('click', e => { if(e.target === box) closeBox(); });
     document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeBox(); });
   </script>
-</body>
-</html>
 
-<script>
+    <style id="about-hotfix">
+      /* ——— НЕ ЛОМАЕМ ABOUT И ВОЗВРАЩАЕМ ВИД ——— */
+    
+      /* меню-«карточки» на About: показываем, прижимаем вправо, делаем липким */
+      .about-page .mini-cards{
+        width: min(1160px,92vw) !important;
+        margin: 0 auto !important;
+        display: grid !important;
+        grid-auto-flow: column !important;
+        gap: 48px !important;
+        align-items: start !important;
+        justify-content: end !important;
+        padding: 16px 0 12px !important;
+        border-bottom: 1px solid #f0f1f3 !important;
+        background: #fff !important;
+    
+        position: sticky !important;
+        top: 56px !important;               /* при необходимости подстрой под высоту хедера */
+        z-index: 15 !important;
+      }
+      .about-page .mini-card{
+        text-decoration: none !important;
+        border-top: 3px solid #111 !important;
+        padding-top: 8px !important;
+        transition: transform .25s ease, opacity .25s ease !important;
+      }
+      .about-page .mini-card:hover{ transform:translateY(-2px); opacity:.95; }
+      .about-page .mini-title{ display:flex; justify-content:space-between; align-items:center; font-weight:800; color:#111; }
+      .about-page .mini-text{ color:#6c6f77; }
+    
+      /* если глобально где-то стоит .mini-cards{display:none;} — перебиваем: */
+      .about-page .mini-cards{ display: grid !important; visibility: visible !important; }
+    
+      /* Герой About: фото сверху, текст карточкой снизу */
+      .about-page .about-me{
+        position: relative;
+        z-index: 1;
+        padding: clamp(32px, 5vw, 64px) 0 clamp(32px, 6vw, 80px) !important;
+      }
+      .about-page .about-hero{
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: clamp(20px, 3vw, 36px) !important;
+      }
+    
+      /* Фото со свопом */
+      .about-page .photo-swap{
+        position: relative !important;
+        width: min(980px, 92vw) !important;
+        aspect-ratio: 16 / 9 !important;
+        border-radius: 16px !important;
+        overflow: hidden !important;
+        box-shadow: 0 30px 60px rgba(0,0,0,.10) !important;
+      }
+      .about-page .photo-swap img{
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        transition: opacity .35s ease, transform .35s ease !important;
+        display: block !important;
+      }
+      .about-page .photo-swap .photo-default{ opacity: 1 !important; }
+      .about-page .photo-swap .photo-hover  { opacity: 0 !important; }
+      .about-page .photo-swap:hover .photo-default{ opacity: 0 !important; transform: scale(1.02) !important; }
+      .about-page .photo-swap:hover .photo-hover  { opacity: 1 !important; transform: scale(1.02) !important; }
+    
+      /* Текстовая карточка под фото */
+      .about-page .about-card, .about-page .about-text{
+        width: min(820px, 92vw) !important;
+        background: #fff !important;
+        border-radius: 16px !important;
+        box-shadow: 0 18px 40px rgba(0,0,0,.08) !important;
+        padding: clamp(20px, 3vw, 32px) !important;
+        margin: 0 auto !important;
+        text-align: left !important;
+      }
+      .about-page .section-title{
+        font-family: 'Space Grotesk', Inter, system-ui, sans-serif !important;
+        font-weight: 900 !important;
+        font-size: clamp(28px, 6.8vw, 56px) !important;
+        line-height: 1.02 !important;
+        margin: 0 0 18px !important;
+      }
+      .about-page .about-accent{ font-weight:700 !important; color:#111 !important; margin:4px 0 14px !important; }
+      .about-page .about-text p{ color:#5e5e66 !important; }
+    
+      /* Сетки */
+      .about-page .stack-grid{ display:grid !important; grid-template-columns:repeat(4,1fr) !important; gap:18px !important; }
+      @media (max-width:980px){ .about-page .stack-grid{ grid-template-columns:1fr 1fr !important; } }
+    
+      .about-page .masonry{ column-count:3 !important; column-gap:14px !important; }
+      @media (max-width:1000px){ .about-page .masonry{ column-count:2 !important; } }
+      @media (max-width:560px){ .about-page .masonry{ column-count:1 !important; } }
+      .about-page .masonry img{ border-radius:12px !important; width:100% !important; display:block !important; }
+    
+      /* Страховки от «ломающих» глобальных правил */
+      .about-page .about-me, .about-page .about-hero, .about-page .photo-swap, .about-page .about-text{
+        visibility: visible !important; opacity: 1 !important; transform:none !important; margin-bottom:0 !important;
+      }
+    </style>
+  <script>
   document.querySelectorAll('.about-photo').forEach(ph=>{
     ph.addEventListener('click', e=>{
       if (matchMedia('(hover: none)').matches) {
@@ -344,3 +445,21 @@
     });
   });
 </script>
+  
+</body>
+</html>
+
+<!-- <script>
+  document.querySelectorAll('.about-photo').forEach(ph=>{
+    ph.addEventListener('click', e=>{
+      if (matchMedia('(hover: none)').matches) {
+        e.preventDefault();
+        const d = ph.querySelector('.photo-default');
+        const h = ph.querySelector('.photo-hover');
+        const showHover = getComputedStyle(h).opacity === '0';
+        d.style.opacity = showHover ? '0' : '1';
+        h.style.opacity = showHover ? '1' : '0';
+      }
+    });
+  });
+</script> -->
