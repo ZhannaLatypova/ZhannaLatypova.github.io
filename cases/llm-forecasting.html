@@ -308,26 +308,26 @@
 
 <script>
 (function(){
+  const view = document.querySelector('.case-page .carousel-view');
   const track = document.getElementById('cTrack');
-  const prev  = document.getElementById('cPrev');
-  const next  = document.getElementById('cNext');
-  if (!track || !prev || !next) return;
+  if (!view || !track) return;
 
   const slides = Array.from(track.children);
-  let i = 0;
-  function go(n){
-    i = (n + slides.length) % slides.length;
-    track.style.transform = 'translateX(-' + (i*100) + '%)';
-  }
-  prev.addEventListener('click', ()=>go(i-1));
-  next.addEventListener('click', ()=>go(i+1));
-  go(0);
 
-  /* Диагностика путей: если картинка 404 — подставим первую, чтобы убедиться, что слайдер работает */
-  slides.forEach(s=>{
-    const img = s.querySelector('img');
-    img && img.addEventListener('error', ()=>{ img.src = 'https://ZhannaLatypova.github.io/assets/img/case_wb.png'; });
-  });
+  function sizeSlides(){
+    const w = view.clientWidth;
+    slides.forEach(s => { s.style.width = w + 'px'; });
+  }
+  sizeSlides();
+  window.addEventListener('resize', sizeSlides);
+
+  let i = 0;
+  const prev = document.getElementById('cPrev');
+  const next = document.getElementById('cNext');
+  function go(n){ i = (n + slides.length) % slides.length; track.style.transform = 'translateX(' + (-i * view.clientWidth) + 'px)'; }
+  prev && prev.addEventListener('click', () => go(i-1));
+  next && next.addEventListener('click', () => go(i+1));
+  go(0);
 })();
 </script>
 </body>
