@@ -306,35 +306,39 @@
     <a class="btn primary" href="/cases/next-case.html">Next case →</a>
   </div>
 
-  <script>
-    (function(){
-      // тень у правого мини-меню при скролле
-      const mini = document.getElementById('caseMini');
-      if (mini){
-        let ticking=false;
-        addEventListener('scroll', ()=>{
-          if (!ticking){
-            requestAnimationFrame(()=>{ mini.classList.toggle('is-stuck', scrollY > 4); ticking=false; });
-            ticking=true;
-          }
-        });
-      }
 <script>
 (function(){
+  // тень у правого мини-меню при скролле
+  const mini = document.getElementById('caseMini');
+  if (mini){
+    let ticking = false;
+    window.addEventListener('scroll', function(){
+      if (!ticking){
+        requestAnimationFrame(function(){
+          mini.classList.toggle('is-stuck', window.scrollY > 4);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  }
+
+  // простая карусель
   const track = document.getElementById('cTrack');
   const prev  = document.getElementById('cPrev');
   const next  = document.getElementById('cNext');
-  if (!track || !prev || !next) return;
 
-  const slides = [...track.children];
-  let i = 0;
-  function go(n){
-    i = (n + slides.length) % slides.length;
-    track.style.transform = `translateX(-${i*100}%)`;
+  if (track && prev && next){
+    const slides = Array.from(track.children);
+    let i = 0;
+    function go(n){
+      i = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (i * 100) + '%)';
+    }
+    prev.addEventListener('click', function(){ go(i - 1); });
+    next.addEventListener('click', function(){ go(i + 1); });
+    go(0);
   }
-  prev.onclick = ()=>go(i-1);
-  next.onclick = ()=>go(i+1);
-  go(0);
 })();
 </script>
 </body>
