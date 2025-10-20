@@ -2938,48 +2938,118 @@ h1, h2.display, .display-title{
   text-shadow: 0 4px 8px rgba(0,0,0,0.25) !important; /* эффект объёма */
 }
 
-.case-page .case-header{
-  position: sticky; top: 0; z-index: 30;
-  background: #fff; border-bottom: 0;
+/* ======================
+   CASE PAGE (изолированные стили)
+   Работают ТОЛЬКО при <html class="case-page">.
+   ====================== */
+
+.case-page{ --wrap: min(1160px, 92vw); }
+.case-page body{
+  margin:0; color:#0b0b0c;
+  font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:#fff;
 }
+.case-page .wrap{ width:var(--wrap); margin-inline:auto; }
+
+/* ---------- Header (только кейс) ---------- */
+.case-page .case-header{ position:sticky; top:0; z-index:30; background:#fff; border-bottom:1px solid #f0f1f3; }
 .case-page .case-header__bar{
-  display:flex; align-items:flex-start; justify-content:space-between;
-  gap:24px; padding:14px 0;
+  width:var(--wrap); margin:0 auto; padding:12px 0;
+  display:flex; gap:24px; align-items:flex-start; justify-content:space-between;
 }
-
-/* Чёрная пилюля слева — только на страницах кейсов */
+/* “it’s me” — чёрная пилюля слева */
+.case-page .case-header__brand{ text-decoration:none; }
 .case-page .case-header__logo{
-  display:inline-flex;
-  align-items:center;
-  padding:10px 16px;
-  border-radius:9999px;
-  background:#111;
-  color:#fff;
-  font:900 14px/1 "Space Grotesk", Inter, sans-serif;
-  letter-spacing:.02em;
-  text-decoration:none;
+  display:inline-flex; align-items:center;
+  padding:10px 16px; border-radius:9999px;
+  background:#111; color:#fff; text-decoration:none;
+  font:900 14px/1 "Space Grotesk", Inter, sans-serif; letter-spacing:.02em;
 }
-.case-page .case-header__brand { text-decoration:none; } /* снимаем подчёркивание у <a> */
+/* мини-меню справа */
+.case-page .case-mini{
+  display:grid; grid-auto-flow:column; gap:48px;
+  align-items:start; justify-content:end;
+}
+.case-page .case-mini__card{
+  text-decoration:none; color:inherit; min-width:240px;
+  border-top:3px solid #111; padding-top:8px;
+  transition:transform .22s ease, opacity .22s ease;
+}
+.case-page .case-mini__card:hover{ transform:translateY(-2px); opacity:.95; }
+.case-page .case-mini__title{
+  display:flex; align-items:center; justify-content:space-between;
+  margin:.1rem 0 .2rem; font-weight:800; color:#111;
+}
+.case-page .case-mini__title .ext{ font-size:1.12em; line-height:1; transform:translateY(-1px); }
+.case-page .case-mini__text{ margin:0; color:#6c6f77; font-size:.95rem; }
+.case-page .case-mini.is-stuck{ box-shadow:0 8px 18px rgba(0,0,0,.06); border-color:transparent; }
 
-/* Нижние кнопки на кейсах */
-.case-page .case-cta{
-  margin: 0 auto 48px;
-  display:flex;
-  gap:16px;
-  justify-content:flex-start;
-  align-items:center;
+/* ---------- Hero ---------- */
+.case-page .case-head{ padding:34px 0 22px; }
+.case-page .case-pre{ font-weight:800; color:#6c6f77; margin:0 0 6px; letter-spacing:.06em; text-transform:uppercase; }
+.case-page .case-title{
+  margin:8px 0 10px;
+  font:900 clamp(28px,4.8vw,50px)/1.05 "Space Grotesk", Inter, sans-serif;
+  letter-spacing:.005em;
+}
+.case-page .case-sub{ margin:0; color:#6c6f77; max-width:84ch; }
+
+/* ---------- Карусель ---------- */
+.case-page .carousel{ position:relative; width:var(--wrap); margin:22px auto 36px; }
+.case-page .carousel-view{ overflow:hidden; border-radius:18px; box-shadow:0 26px 60px rgba(0,0,0,.12); }
+.case-page .carousel-track{ display:flex; transition:transform .5s ease; }
+.case-page .carousel-slide{ flex:0 0 100%; max-width:100%; }
+.case-page .carousel-slide img{ display:block; width:100%; height:auto; }
+.case-page .c-nav{
+  position:absolute; inset:0; pointer-events:none;
+  display:flex; align-items:center; justify-content:space-between; padding:0 10px;
+}
+.case-page .c-btn{
+  pointer-events:auto; width:48px; height:48px; border:0; border-radius:999px;
+  background:#0b0b0c; color:#fff; font-size:28px; display:grid; place-items:center;
+  box-shadow:0 16px 36px rgba(0,0,0,.25); transition:transform .15s ease;
+}
+.case-page .c-btn:hover{ transform:scale(1.05); }
+
+/* ---------- Спецификация/таблица ---------- */
+.case-page .case-sheet{ width:var(--wrap); margin:28px auto 56px; }
+.case-page .sheet-row{
+  display:grid; grid-template-columns:148px 300px 1fr;
+  gap:32px; padding:22px 0; border-top:1px solid #e7e7ea;
+}
+.case-page .sheet-row:first-child{ border-top:0; }
+.case-page .sheet-label{
+  font:800 12px/1 Inter; letter-spacing:.06em; text-transform:uppercase; color:#6c6f77;
+}
+.case-page .sheet-heading{
+  font:900 clamp(12px,1.6vw,14px)/1 Inter; letter-spacing:.04em; text-transform:uppercase;
+}
+.case-page .sheet-text{ color:#222; }
+.case-page .sheet-text p{ margin:.35rem 0; }
+.case-page .sheet-text ul{ margin:.35rem 0; padding-left:18px; }
+.case-page .sheet-text li{ margin:.22rem 0; color:#2c2f35; }
+.case-page .sheet-text li::marker{ content:"■ "; font-size:.6rem; color:#222; }
+
+/* ---------- Нижние кнопки ---------- */
+.case-page .case-cta.wrap{
+  display:flex; gap:16px; margin:0 auto 56px; align-items:center;
 }
 .case-page .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  padding:14px 22px;
-  border-radius:999px;
-  font-weight:800;
-  text-decoration:none;
-  line-height:1;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:14px 22px; border-radius:999px; line-height:1; text-decoration:none;
+  font-weight:800; border:2px solid #111;
 }
-.case-page .btn.primary{ background:#111; color:#fff; border:2px solid #111; }
-.case-page .btn.outline{ background:#fff; color:#111; border:2px solid #111; }
+.case-page .btn.primary{ background:#111; color:#fff; }
+.case-page .btn.outline{ background:#fff; color:#111; }
 
+/* ---------- Адаптив ---------- */
+@media (max-width:1100px){
+  .case-page .case-mini{ gap:28px; overflow:auto; scrollbar-width:none; }
+  .case-page .case-mini::-webkit-scrollbar{ display:none; }
+  .case-page .sheet-row{ grid-template-columns:120px 1fr; gap:18px; }
+  .case-page .sheet-heading{ order:2; }
+  .case-page .sheet-text{ grid-column:1 / -1; }
+}
+@media (max-width:560px){
+  .case-page .case-cta.wrap{ flex-direction:column; align-items:flex-start; }
+}
