@@ -289,7 +289,7 @@
       </div>
     </div>
   </section>
-<!-- CASE NOTE -->
+<!-- CASE NOTE --> 
 <section class="case-note wrap" aria-label="Note">
   <h3 class="case-note__title">THIS CASE PRESENTS ONLY PART OF THE WORK</h3>
   <p class="case-note__text">
@@ -322,6 +322,12 @@
   prev.addEventListener('click', ()=>go(i-1));
   next.addEventListener('click', ()=>go(i+1));
   go(0);
+
+  /* Диагностика путей: если картинка 404 — подставим первую, чтобы убедиться, что слайдер работает */
+  slides.forEach(s=>{
+    const img = s.querySelector('img');
+    img && img.addEventListener('error', ()=>{ img.src = 'https://ZhannaLatypova.github.io/assets/img/case_wb.png'; });
+  });
 })();
 </script>
 </body>
