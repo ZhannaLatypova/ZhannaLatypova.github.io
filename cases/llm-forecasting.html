@@ -179,28 +179,33 @@
   <!-- Таблица/описание -->
   <section class="case-sheet">
     <div class="sheet-row">
-      <div class="sheet-label">Клиент</div>
-      <div class="sheet-heading">Морской грузоперевозчик энергоносителей</div>
+      <div class="sheet-label">Client</div>
+      <div class="sheet-heading">Online seller Marketplace Wildberries </div>
       <div class="sheet-text">
-        <p>Компания владеет флотом из 100+ танкеров…</p>
-        <ul>
-          <li>Контроль за работами на судах</li>
-          <li>Здоровье и благополучие экипажей</li>
-          <li>Автоматизация документооборота</li>
-        </ul>
+        <p>The company ranks among the top five sellers of UGG footwear, holding a leading market position thanks to high online sales volume and an effective distribution strategy.</p>
+      </div>
+    </div>
+    
+    <div class="sheet-row">
+      <div class="sheet-label">Business Problem</div>
+      <div class="sheet-heading">Optimize inventory planning for a seasonal product</div>
+      <div class="sheet-text">
+        <p>The online seller of a seasonal product faces fluctuations in demand throughout the year.</p> 
+        <p>Without accurate forecasting, it is difficult to plan inventory, logistics, and marketing campaigns in advance.</p>
+        <p>This often leads to either excess stock or product shortages during peak seasons.</p> 
+        <p>Therefore, the seller wants to develop a demand forecasting model to predict future sales and optimize purchasing, pricing, and marketing efforts.</p>
+      </div>
+    </div>
+    
+    <div class="sheet-row">
+      <div class="sheet-label">Goal</div>
+      <div class="sheet-heading">An advanced, hybrid forecasting model</div>
+      <div class="sheet-text">
+        <p>To build an advanced, hybrid forecasting model that accurately predicts future sales of a seasonal product by combining time series models, external data (e.g. reviews, weather, competitors), and language modeling (LLM-based topic modeling from customer reviews).</p>
       </div>
     </div>
 
-    <div class="sheet-row">
-      <div class="sheet-label">Задача</div>
-      <div class="sheet-heading">Система бизнес-аналитики для супервайзеров</div>
-      <div class="sheet-text">
-        <p><strong>Супервайзеры</strong> контролируют работы на 5–7 судах…</p>
-        <p>До цифровизации — бумажные наряды и e-mail → задержки и ошибки.</p>
-      </div>
-    </div>
-
-    <div class="sheet-row">
+    <!-- <div class="sheet-row">
       <div class="sheet-label">Решение</div>
       <div class="sheet-heading">Единая аналитическая платформа</div>
       <div class="sheet-text">
@@ -211,20 +216,86 @@
           <li>Интеграция с DWH</li>
         </ul>
       </div>
+    </div> -->
+    
+    <div class="sheet-row">
+      <div class="sheet-label">Data</div>
+      <div class="sheet-heading">Proprietary Wildberries (Russian E-commerce platform) UGG sales dataset</div>
+      <div class="sheet-text">
+        <ul>
+          <li> sales.csv: Daily product sales, price, discount (36 datasets)</li>
+          <li> competitors.csv: Competitor sales, prices, and ratings</li>
+          <li> reviews.csv: Customer comments and ratings</li>
+          <li> weather.csv: Temperature, precipitation, weather conditions</li>
+          <li>All data is filtered for the city and spans multiple months or seasons. Input datasets: 36 monthly datasets (2022 to 2024)+ one dataset with comments of one ProductID.</li>
+        </ul>
+      </div>
+    </div>
+        
+    <div class="sheet-row">
+      <div class="sheet-label">Models Used</div>
+      <div class="sheet-heading">Time Series + LLM</div>
+      <div class="sheet-text">
+        <ul>
+          <li>Prophet for trend extraction</li>
+          <li>XGBoost for final supervised learning</li>
+          <li>SentenceTransformers for BERT-based embeddings</li>
+          <li>BERTopic for extracting dominant customer concerns</li>
+          <li>Lag, rolling average, calendar-based variables</li>
+        </ul>
+      </div>
+    </div>
+
+        <div class="sheet-row">
+      <div class="sheet-label">Results</div>
+      <div class="sheet-heading">We used two evaluation metrics</div>
+      <div class="sheet-text">
+        <ul>
+          <li>RMSE(Root Mean Squared Error) - 4.15</li>
+          <li>MAE (Mean Absolute Error) - 2.38</li>
+          <li>Stockout rate ↓ 20%</li>
+        </ul>
+      </div>
     </div>
 
     <div class="sheet-row">
-      <div class="sheet-label">Результаты</div>
-      <div class="sheet-heading">+35% скорость, −60% ошибок</div>
+      <div class="sheet-label">Tools</div>
+      <div class="sheet-heading">Python libraries for data analysis, visualization, and model development.</div>
       <div class="sheet-text">
         <ul>
-          <li>Согласование быстрее на 35–45%</li>
-          <li>Ошибки ↓ ~60%</li>
-          <li>Контроль загрузки «в один клик»</li>
+          <li>Languages & Core Libraries: Python (pandas, numpy, datetime, os, glob, requests)</li>
+          <li>Data Analysis & Visualization: Matplotlib, Seaborn,Plotly</li>
+          <li>Feature Engineering & Preprocessing: Scikit-learn (LabelEncoder, train_test_split, GridSearchCV, MLPRegressor, MinMaxScaler, metrics
+), TensorFlow / Keras(LSTM, GRU, CNN, Sequential, Adam, EarlyStopping), SciKeras (KerasRegressor), Holidays, Datetime </li>
+          <li>Machine Learning & Forecasting:Prophet, XGBoost (XGBRegressor)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="sheet-row">
+      <div class="sheet-label">Business Impact</div>
+      <div class="sheet-heading">Key outcomes demonstrating how the model improved decision-making.</div>
+      <div class="sheet-text">
+        <ul>
+          <li>Improved demand visibility for inventory and supply chain managers</li>
+          <li>Reduced wastage from overstocking</li>
+          <li>Anticipated seasonal peaks (e.g., holidays, snow)</li>
+          <li>Reacted faster to customer sentiment via topic trends</li>
+          <li>Better pricing and promotional strategies using competitor-aware forecasts</li>
         </ul>
       </div>
     </div>
   </section>
+<!-- СНОСКА / ПРИМЕЧАНИЕ -->
+<section class="case-note wrap" aria-label="Note">
+  <h3 class="case-note__title">This case presents only part of the work</h3>
+  <p class="case-note__text">
+    Other project tasks — for example, pipeline development and coding — are described in the
+    <a class="case-note__link" href="https://github.com/ZhannaLatypova/ml-ai-projects/tree/main/LLM%26%20Time%20Series%20in%20Demand%20Forecasting" target="_blank" rel="noopener">
+      GitHub repository
+    </a>.
+  </p>
+</section>
 
   <!-- Нижние кнопки -->
   <div class="case-cta wrap">
