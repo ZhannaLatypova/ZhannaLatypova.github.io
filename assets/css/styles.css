@@ -4096,3 +4096,88 @@ html,body{margin:0;padding:0;background:#fff;color:#0b0b0c}
     gap: 8px;
   }
 }
+
+
+/* ===== 0) БАЗА ДЛЯ ПЕРЕКРЫТИЯ ===== */
+.hero { position: relative !important; }
+.hero .wrap { position: relative !important; }
+
+/* ===== 1) МЕНЮ СПРАВА НА УРОВНЕ 'it’s me' ===== */
+/* Делаем мини-карточки верхним правым блоком и выравниваем по линии с it’s me */
+.mini-cards{
+  position: absolute !important;
+  top: 0 !important;               /* вровень с верхом wrap */
+  right: 0 !important;             /* прижали вправо */
+  z-index: 15 !important;
+  display: grid !important;
+  grid-auto-flow: column !important;
+  gap: 48px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+.mini-card{
+  border-top: 2px solid #111 !important;
+  padding-top: 6px !important;
+  text-decoration: none !important;
+}
+.mini-title{ font-weight: 800 !important; }
+.mini-text{ color:#6b6b72 !important; font-size: 13px !important; }
+
+/* Чтобы «it’s me» и меню были на одной строке — чуть опускаем левый блок */
+.hero-copy{ padding-top: 22px !important; }
+
+/* ===== 2) СКЛЕЙКА ФОТО И ЧЁРНОЙ ПОЛОСЫ ===== */
+/* убираем зазор снизу у hero */
+.hero{ padding-bottom: 0 !important; margin-bottom: 0 !important; }
+
+/* опускаем фото на полосу «внахлёст» */
+.hero-visual{ position: relative !important; min-height: 540px !important; }
+.portrait-wrap{
+  position: absolute !important;
+  right: min(2vw, 24px) !important;
+  bottom: -84px !important;            /* глубина «заезда» на полоску */
+  margin: 0 !important;
+  z-index: 2 !important;               /* ниже меню, но выше фона */
+}
+.portrait{
+  display: block !important;
+  max-width: min(46vw, 600px) !important;
+  height: auto !important;
+}
+
+/* чёрная лента сразу после hero, без отступов */
+.ticker{
+  margin-top: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;               /* фото по умолчанию НИЖЕ полосы */
+}
+/* при ховере/адаптации фото можно поднимать над полосой */
+.portrait-wrap:hover{ z-index: 3 !important; }
+
+/* ===== 3) ВЕРТИКАЛЬНЫЕ ОТСТУПЫ В ЛЕВОМ ТЕКСТЕ HERO ===== */
+.hero-copy > * + *{ margin-top: 18px !important; }  /* общий шаг */
+.hero-title{ margin-bottom: 6px !important; }
+.pro-badges{ gap: 10px !important; margin-top: 10px !important; }
+.lede{ max-width: 520px !important; line-height: 1.5 !important; color:#555 !important; }
+.hero-list{ margin-top: 10px !important; margin-bottom: 14px !important; }
+.hero-list li{ margin-bottom: 4px !important; }
+.cta-row{ gap: 22px !important; margin-top: 8px !important; }
+
+/* ===== МОБИЛКА: возвращаем фото в поток и убираем «нахлёст» ===== */
+@media (max-width: 980px){
+  .mini-cards{ position: static !important; gap: 20px !important; margin-top: 8px !important; }
+  .hero-copy{ padding-top: 8px !important; }
+
+  .hero-visual{ position: relative !important; min-height: auto !important; }
+  .portrait-wrap{
+    position: relative !important;
+    right: auto !important; bottom: 0 !important;
+    margin: 8px auto 0 !important;
+    z-index: 2 !important;
+  }
+  .portrait{ max-width: min(92vw, 520px) !important; }
+  .hello-badge{ left: 10px !important; bottom: 26% !important; z-index: 4 !important; }
+
+  .ticker{ margin-top: 0 !important; z-index: 3 !important; }
+}
