@@ -5,105 +5,139 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Business Case — LLM + Time Series in Demand Forecasting</title>
 
-  <!-- ваши базовые шрифты/общий css можно оставить -->
+  <!-- Локальные шрифты (как на главной, но можно оставить эти) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 
   <style>
-    :root{ --wrap: min(1160px, 92vw); }
-
-    /* ====== ТОЛЬКО ДЛЯ СТРАНИЦЫ КЕЙСА ====== */
-    .case-page body{ margin:0; color:#0b0b0c; font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+    /* ======================
+       CASE PAGE (изолировано)
+       Работает ТОЛЬКО при <html class="case-page">
+       ====================== */
+    .case-page{ --wrap: min(1160px, 92vw); }
+    .case-page body{
+      margin:0; color:#0b0b0c;
+      font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:#fff;
+    }
     .case-page .wrap{ width:var(--wrap); margin-inline:auto; }
 
-    /* Хедер на кейсе — без нижней линии (чтобы не было "двух полос") */
-    .case-page .site-header{
-      position:sticky; top:0; z-index:30;
-      background:#fff; border-bottom:0;
+    /* ---------- Header (только кейс) ---------- */
+    .case-page .case-header{ position:sticky; top:0; z-index:30; background:#fff; border-bottom:1px solid #f0f1f3; }
+    .case-page .case-header__bar{
+      width:var(--wrap); margin:0 auto; padding:12px 0;
+      display:flex; gap:24px; align-items:flex-start; justify-content:space-between;
     }
-    .case-page .site-header .bar{
-      display:flex; align-items:flex-start; justify-content:space-between;
-      gap:24px; padding:14px 0;
+    /* “it’s me” — чёрная пилюля слева */
+    .case-page .case-header__brand{ text-decoration:none; }
+    .case-page .case-header__logo{
+      display:inline-flex; align-items:center;
+      padding:10px 16px; border-radius:9999px;
+      background:#111; color:#fff; text-decoration:none;
+      font:900 14px/1 "Space Grotesk", Inter, sans-serif; letter-spacing:.02em;
     }
-    .case-page .brand .logo{
-      font:900 22px/1 "Space Grotesk",Inter,sans-serif; letter-spacing:.01em; display:inline-block;
-    }
-    .case-page .brand .logo::after{ content:""; display:block; width:76px; height:2px; background:#111; margin-top:4px; }
-
-    /* Правый "мини-навигационный" блок — только на кейсе */
+    /* мини-меню справа */
     .case-page .case-mini{
-      width:var(--wrap); margin-inline:auto;
-      display:grid; grid-auto-flow:column; justify-content:end; align-items:start; gap:48px;
-      background:#fff; border-top:1px solid #f0f1f3;   /* одна аккуратная линия */
-      position:sticky; top:var(--stickTop, 56px); z-index:25;  /* прилипает под хедером */
-      padding:14px 0 12px;
-      transition: box-shadow .18s ease, border-color .18s ease;
+      display:grid; grid-auto-flow:column; gap:48px;
+      align-items:start; justify-content:end;
     }
-    .case-page .case-mini.is-stuck{ box-shadow:0 8px 18px rgba(0,0,0,.06); border-color:transparent; }
-
     .case-page .case-mini__card{
-      text-decoration:none; color:inherit;
+      text-decoration:none; color:inherit; min-width:240px;
       border-top:3px solid #111; padding-top:8px;
-      transition: transform .22s ease, opacity .22s ease;
-      min-width:240px;  /* чтобы не схлопывалось */
+      transition:transform .22s ease, opacity .22s ease;
     }
     .case-page .case-mini__card:hover{ transform:translateY(-2px); opacity:.95; }
     .case-page .case-mini__title{
       display:flex; align-items:center; justify-content:space-between;
-      font-weight:800; color:#111; margin:0 0 .2rem;
+      margin:.1rem 0 .2rem; font-weight:800; color:#111;
     }
     .case-page .case-mini__title .ext{ font-size:1.12em; line-height:1; transform:translateY(-1px); }
-    .case-page .case-mini__text{ margin:0; color:#6c6f77; }
+    .case-page .case-mini__text{ margin:0; color:#6c6f77; font-size:.95rem; }
 
-    /* Заголовок */
-    .case-page .case-head{ padding:40px 0 28px; }
+    /* лёгкая тень меню при скролле */
+    .case-page .case-mini.is-stuck{ box-shadow:0 8px 18px rgba(0,0,0,.06); border-color:transparent; }
+
+    /* ---------- Hero ---------- */
+    .case-page .case-head{ padding:34px 0 22px; }
+    .case-page .case-pre{ font-weight:800; color:#6c6f77; margin:0 0 6px; letter-spacing:.06em; text-transform:uppercase; }
     .case-page .case-title{
-      font:900 clamp(26px,4.6vw,48px)/1.05 "Space Grotesk",Inter,sans-serif; margin:8px 0 10px; letter-spacing:.01em;
+      margin:8px 0 10px;
+      font:900 clamp(28px,4.8vw,50px)/1.05 "Space Grotesk", Inter, sans-serif;
+      letter-spacing:.005em;
     }
-    .case-page .case-sub{ margin:0; color:#6c6f77; }
+    .case-page .case-sub{ margin:0; color:#6c6f77; max-width:84ch; }
 
-    /* Карусель (минимальный стиль) */
-    .case-page .carousel{ position:relative; width:var(--wrap); margin:24px auto 40px; }
+    /* ---------- Карусель ---------- */
+    .case-page .carousel{ position:relative; width:var(--wrap); margin:22px auto 36px; }
     .case-page .carousel-view{ overflow:hidden; border-radius:18px; box-shadow:0 26px 60px rgba(0,0,0,.12); }
     .case-page .carousel-track{ display:flex; transition:transform .5s ease; }
     .case-page .carousel-slide{ flex:0 0 100%; max-width:100%; }
     .case-page .carousel-slide img{ display:block; width:100%; height:auto; }
-    .case-page .c-nav{ position:absolute; inset:0; pointer-events:none; display:flex; align-items:center; justify-content:space-between; padding:0 10px; }
-    .case-page .c-btn{ pointer-events:auto; width:48px; height:48px; border:0; border-radius:999px; background:#0b0b0c; color:#fff; font-size:28px; display:grid; place-items:center; box-shadow:0 16px 36px rgba(0,0,0,.25); }
-    .case-page .c-btn:hover{ transform:scale(1.04); }
+    .case-page .c-nav{
+      position:absolute; inset:0; pointer-events:none;
+      display:flex; align-items:center; justify-content:space-between; padding:0 10px;
+    }
+    .case-page .c-btn{
+      pointer-events:auto; width:48px; height:48px; border:0; border-radius:999px;
+      background:#0b0b0c; color:#fff; font-size:28px; display:grid; place-items:center;
+      box-shadow:0 16px 36px rgba(0,0,0,.25); transition:transform .15s ease;
+    }
+    .case-page .c-btn:hover{ transform:scale(1.05); }
 
-    /* Таблица описания (ваш прежний стиль, слегка сокращён) */
-    .case-page .case-sheet{ width:var(--wrap); margin:30px auto 80px; }
-    .case-page .sheet-row{ display:grid; grid-template-columns:148px 300px 1fr; gap:32px; padding:22px 0; border-top:1px solid #e7e7ea; }
+    /* ---------- Спецификация/таблица ---------- */
+    .case-page .case-sheet{ width:var(--wrap); margin:28px auto 56px; }
+    .case-page .sheet-row{
+      display:grid; grid-template-columns:148px 300px 1fr;
+      gap:32px; padding:22px 0; border-top:1px solid #e7e7ea;
+    }
     .case-page .sheet-row:first-child{ border-top:0; }
-    .case-page .sheet-label{ font:800 12px/1 Inter; letter-spacing:.03em; text-transform:uppercase; }
-    .case-page .sheet-heading{ font:900 clamp(12px,1.6vw,14px)/1 Inter; letter-spacing:.02em; text-transform:uppercase; }
+    .case-page .sheet-label{
+      font:800 12px/1 Inter; letter-spacing:.06em; text-transform:uppercase; color:#6c6f77;
+    }
+    .case-page .sheet-heading{
+      font:900 clamp(12px,1.6vw,14px)/1 Inter; letter-spacing:.04em; text-transform:uppercase;
+    }
     .case-page .sheet-text{ color:#222; }
     .case-page .sheet-text p{ margin:.35rem 0; }
     .case-page .sheet-text ul{ margin:.35rem 0; padding-left:18px; }
-    .case-page .sheet-text li{ margin:.2rem 0; color:#2c2f35; }
+    .case-page .sheet-text li{ margin:.22rem 0; color:#2c2f35; }
     .case-page .sheet-text li::marker{ content:"■ "; font-size:.6rem; color:#222; }
 
-    /* Адаптив */
+    /* ---------- Нижние кнопки ---------- */
+    .case-page .case-cta.wrap{
+      display:flex; gap:16px; margin:0 auto 56px; align-items:center;
+    }
+    .case-page .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:14px 22px; border-radius:999px; line-height:1; text-decoration:none;
+      font-weight:800; border:2px solid #111;
+    }
+    .case-page .btn.primary{ background:#111; color:#fff; }
+    .case-page .btn.outline{ background:#fff; color:#111; }
+
+    /* ---------- Адаптив ---------- */
     @media (max-width:1100px){
-      .case-page .case-mini{ gap:32px; overflow:auto; scrollbar-width:none; }
+      .case-page .case-mini{ gap:28px; overflow:auto; scrollbar-width:none; }
       .case-page .case-mini::-webkit-scrollbar{ display:none; }
       .case-page .sheet-row{ grid-template-columns:120px 1fr; gap:18px; }
       .case-page .sheet-heading{ order:2; }
       .case-page .sheet-text{ grid-column:1 / -1; }
     }
+    @media (max-width:560px){
+      .case-page .case-cta.wrap{ flex-direction:column; align-items:flex-start; }
+    }
   </style>
 </head>
 
 <body>
-  <!-- Case-only header (ISOLATED) -->
+  <!-- Case-only header -->
   <div class="case-header" id="siteHeader" aria-label="Case header">
     <div class="case-header__bar">
       <a class="case-header__brand" href="/">
         <span class="case-header__logo">it’s me</span>
       </a>
-  
+
       <nav class="case-mini" id="caseMini" aria-label="Short menu">
         <a class="case-mini__card" href="/#case">
           <h4 class="case-mini__title">My Cases <span class="ext">↗</span></h4>
@@ -127,13 +161,13 @@
     <p class="case-sub">Цифровизация процессов надзора, документооборота и контроля выполнения работ на флоте 100+ танкеров.</p>
   </header>
 
-  <!-- Карусель (как было) -->
+  <!-- Карусель -->
   <section class="carousel" aria-label="Галерея кейса">
     <div class="carousel-view">
       <div class="carousel-track" id="cTrack">
         <figure class="carousel-slide"><img src="https://ZhannaLatypova.github.io/assets/img/case_wb.png" alt="Дашборд KPI супервайзеров"></figure>
-        <figure class="carousel-slide"><img src="assets/img/case_demo_2.jpg" alt="Мобильная форма наряда"></figure>
-        <figure class="carousel-slide"><img src="assets/img/case_demo_3.jpg" alt="Схема согласования"></figure>
+        <figure class="carousel-slide"><img src="/assets/img/case_demo_2.jpg" alt="Мобильная форма наряда"></figure>
+        <figure class="carousel-slide"><img src="/assets/img/case_demo_3.jpg" alt="Схема согласования"></figure>
       </div>
     </div>
     <div class="c-nav">
@@ -142,7 +176,7 @@
     </div>
   </section>
 
-  <!-- Таблица -->
+  <!-- Таблица/описание -->
   <section class="case-sheet">
     <div class="sheet-row">
       <div class="sheet-label">Клиент</div>
@@ -191,71 +225,36 @@
       </div>
     </div>
   </section>
-<!-- навигация по кейсам -->
-<div class="case-cta wrap">
-  <a class="btn outline" href="/">← Back to Home</a>
-  <a class="btn primary" href="/cases/next-case.html">Next case →</a>
-</div>
+
+  <!-- Нижние кнопки -->
+  <div class="case-cta wrap">
+    <a class="btn outline" href="/">← Back to Home</a>
+    <a class="btn primary" href="/cases/next-case.html">Next case →</a>
+  </div>
+
   <script>
-    // выставляем отступ для sticky-меню = высота хедера
-  (function(){
-    const header = document.getElementById('siteHeader');
-    const mini   = document.getElementById('caseMini');
-  
-    function setTop(){
-      const h = header ? header.offsetHeight : 56;
-      document.documentElement.style.setProperty('--stickTop', h + 'px');
-    }
-    setTop();
-    window.addEventListener('resize', setTop);
-  
-    if (mini){
-      let ticking=false;
-      window.addEventListener('scroll', ()=>{
-        if (!ticking){
-          requestAnimationFrame(()=>{
-            mini.classList.toggle('is-stuck', window.scrollY > 4);
-            ticking=false;
-          });
-          ticking=true;
-        }
-      });
-    }
-  
-    // карусель
-    const track = document.getElementById('cTrack');
-    if (track){
-      const slides=[...track.children];
-      const prev=document.getElementById('cPrev');
-      const next=document.getElementById('cNext');
-      let i=0;
-      function go(n){ i=(n+slides.length)%slides.length; track.style.transform=`translateX(-${i*100}%)`; }
-      prev && (prev.onclick=()=>go(i-1));
-      next && (next.onclick=()=>go(i+1));
-      go(0);
-    }
-  })();
+    (function(){
+      // тень у правого мини-меню при скролле
+      const mini = document.getElementById('caseMini');
+      if (mini){
+        let ticking=false;
+        addEventListener('scroll', ()=>{
+          if (!ticking){
+            requestAnimationFrame(()=>{ mini.classList.toggle('is-stuck', scrollY > 4); ticking=false; });
+            ticking=true;
+          }
+        });
+      }
+      // простая карусель
+      const track = document.getElementById('cTrack');
+      const prev = document.getElementById('cPrev');
+      const next = document.getElementById('cNext');
+      if (track && prev && next){
+        const slides = [...track.children];
+        let i=0; const go=n=>{ i=(n+slides.length)%slides.length; track.style.transform=`translateX(-${i*100}%)`; };
+        prev.onclick=()=>go(i-1); next.onclick=()=>go(i+1); go(0);
+      }
+    })();
   </script>
-  <script>
-(function(){
-  // тень у верхнего мини-меню, когда проскроллили
-  const mini = document.querySelector('.case-page .case-mini');
-  if (mini){
-    let t=false;
-    addEventListener('scroll', ()=>{
-      if (!t){ requestAnimationFrame(()=>{ mini.classList.toggle('is-stuck', scrollY > 4); t=false; }); t=true; }
-    });
-  }
-  // простейшая карусель
-  const track = document.getElementById('cTrack');
-  const prev = document.getElementById('cPrev');
-  const next = document.getElementById('cNext');
-  if (track && prev && next){
-    const slides = [...track.children];
-    let i=0; const go=n=>{ i=(n+slides.length)%slides.length; track.style.transform=`translateX(-${i*100}%)`; };
-    prev.onclick=()=>go(i-1); next.onclick=()=>go(i+1); go(0);
-  }
-})();
-</script>
 </body>
 </html>
