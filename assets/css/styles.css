@@ -3159,72 +3159,71 @@ h1, h2.display, .display-title{
   font-weight: 700 !important;
 }
 
-/* === 0) Одно и то же "полотно" для заголовка и карусели === */
+
+
+/* ===== FIX PACK (добавь в самый низ <style>) ===== */
+
+/* 1) Одинаковая ширина и центрирование: шапка кейса, карусель, заметка */
 .case-page .wrap,
 .case-page .case-head,
 .case-page .carousel,
-.case-page .case-note {
+.case-page .case-note{
   width: min(1160px, 92vw) !important;
   margin-left: auto !important;
   margin-right: auto !important;
 }
 
-/* У шапки кейса ничего не зажимать по ширине */
-.case-page .case-head{ padding:36px 0 24px !important; }
-.case-page .case-title,
+/* Подзаголовок не режем — выравниваем по ширине карусели */
 .case-page .case-sub{
-  max-width: none !important;  /* ← заголовок и подзаголовок растягиваются до ширины галереи */
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+  max-width: none !important;
 }
 
-/* === 1) Карусель без "сдвигов" (figure убираем отступы) === */
-.case-page .carousel{ margin:22px auto 36px !important; }
-.case-page .carousel-view{ overflow:hidden !important; border-radius:18px !important; }
+/* 2) Карусель без «сдвига» */
 .case-page .carousel-track{
-  display:flex !important;
-  gap:0 !important;
-  transition:transform .5s ease !important;
+  display: flex !important;
+  gap: 0 !important;
+  transition: transform .5s ease !important;
 }
-.case-page .carousel-slide{      /* ВАЖНО: это сам <figure class="carousel-slide"> */
-  flex:0 0 100% !important;
-  max-width:100% !important;
-  margin:0 !important;           /* критично: убираем дефолтный margin у figure */
-  padding:0 !important;
-  box-sizing:border-box !important;
+.case-page .carousel-slide{
+  /* figure по умолчанию с margin — обнуляем его */
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
 }
 .case-page .carousel-slide img{
-  display:block !important;
-  width:100% !important;
-  height:auto !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
 }
 
-/* === 2) CASE NOTE — серая полоса + капс, принудительно показать === */
+/* 3) CASE NOTE (серая полоса + капс) */
 .case-page .case-note{
-  display:block !important;
-  margin:24px auto 56px !important;
-  padding-left:26px !important;
-  border-left:6px solid #d0d0d2 !important;
+  margin: 24px auto 56px !important;
+  padding-left: 26px !important;           /* отступ от полосы */
+  border-left: 6px solid #d0d0d2 !important;
 }
 .case-page .case-note__title{
-  margin:0 0 12px !important;
-  font:900 17px/1.24 "Space Grotesk", Inter, sans-serif !important;
-  letter-spacing:.05em !important;
-  text-transform:uppercase !important;
-  color:#0b0b0c !important;
+  margin: 0 0 12px !important;
+  font: 900 17px/1.24 "Space Grotesk", Inter, sans-serif !important;
+  letter-spacing: .05em !important;
+  text-transform: uppercase !important;
+  color: #0b0b0c !important;
 }
 .case-page .case-note__text{
-  margin:0 !important;
-  color:#1a1a1c !important;
-  font-size:17px !important;
-  line-height:1.55 !important;
-  padding-left:4px !important;
+  margin: 0 !important;
+  color: #1a1a1c !important;
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+  padding-left: 4px !important;            /* лёгкий сдвиг вправо */
 }
 .case-page .case-note__link{
-  color:#0b0b0c !important;
-  text-decoration:underline !important;
-  text-underline-offset:3px !important;
-  text-decoration-thickness:1.5px !important;
-  font-weight:700 !important;
+  color: #0b0b0c !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  text-decoration-thickness: 1.5px !important;
+  font-weight: 700 !important;
 }
 
