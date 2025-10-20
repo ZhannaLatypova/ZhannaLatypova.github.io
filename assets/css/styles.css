@@ -3090,3 +3090,71 @@ h1, h2.display, .display-title{
 @media (max-width:560px){
   .case-page .case-cta.wrap{ flex-direction:column; align-items:flex-start; }
 }
+
+/* Одинаковая ширина и центрирование для шапки кейса и карусели */
+.case-page .wrap,
+.case-page .case-head,
+.case-page .carousel {
+  width: min(1160px, 92vw) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Подзаголовок не ограничиваем уже меньшей шириной */
+.case-page .case-sub{
+  max-width: none !important;
+}
+
+/* Делает каждый слайд ровно во всю ширину и убирает дефолтные отступы figure */
+.case-page .carousel-track{
+  display: flex !important;
+  gap: 0 !important;
+  transition: transform .5s ease !important;
+}
+
+.case-page .carousel-slide{
+  display: block !important;
+  flex: 0 0 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;      /* Критично: нулевой margin у figure */
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.case-page .carousel-slide img{
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Блок заметки в стиле второго макета: серая полоса и капс */
+.case-page .case-note{
+  width: min(1160px, 92vw) !important;
+  margin: 24px auto 56px !important;
+  padding-left: 26px !important;
+  border-left: 6px solid #d0d0d2 !important;
+}
+
+.case-page .case-note__title{
+  margin: 0 0 12px !important;
+  font: 900 17px/1.24 "Space Grotesk", Inter, sans-serif !important;
+  letter-spacing: .05em !important;
+  text-transform: uppercase !important;
+  color: #0b0b0c !important;
+}
+
+.case-page .case-note__text{
+  margin: 0 !important;
+  color: #1a1a1c !important;
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+  padding-left: 4px !important;   /* лёгкий сдвиг вправо */
+}
+
+.case-page .case-note__link{
+  color: #0b0b0c !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  text-decoration-thickness: 1.5px !important;
+  font-weight: 700 !important;
+}
