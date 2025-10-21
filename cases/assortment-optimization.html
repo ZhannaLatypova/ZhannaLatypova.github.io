@@ -1,111 +1,297 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru" class="case-page">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Analysis of product assortment for optimization — Business Case  | Zhanna</title>
-  <meta name="description" content="Integration of LLM and time series analysis for demand forecasting in e-commerce."/>
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <!-- путь к CSS ОТ case-страницы на один уровень вверх -->
-  <link rel="stylesheet" href="../assets/css/styles.css?v=1">
-  <!-- (необязательно) соц-превью -->
-  <meta property="og:title" content="Analysis of product assortment for optimization. — Business Case"/>
-  <meta property="og:description" content="Business impact, approach, data, models, results."/>
-  <meta property="og:image" content="https://raw.githubusercontent.com/ZhannaLatypova/ZhannaLatypova.github.io/main/assets/img/Assort.png"/>
-</head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Business Case — Analysis of business metrics of advertising campaigns</title>
 
-  <!-- Мини-навигация -->
-  <header class="site-header" style="display:block">
-    <div class="wrap" style="padding:14px 0; display:flex; justify-content:space-between; align-items:center;">
-      <a class="brand" href="/"><span class="logo">it’s me</span></a>
-      <nav class="nav">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/#case">Cases</a>
-        <a href="/#contact">Contact</a>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;900&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== Изолируем всё под .case-page ===== */
+    .case-page{ --wrap: min(1160px, 92vw); }
+    .case-page body{ margin:0; color:#0b0b0c; font:16px/1.55 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:#fff; }
+    .case-page .wrap{ width:var(--wrap); margin-inline:auto; }
+
+    /* Header */
+    .case-page .case-header{ position:sticky; top:0; z-index:30; background:#fff; border-bottom:1px solid #f0f1f3; }
+    .case-page .case-header__bar{ width:var(--wrap); margin:0 auto; padding:12px 0; display:flex; gap:24px; align-items:flex-start; justify-content:space-between; }
+    .case-page .case-header__brand{ text-decoration:none; }
+    .case-page .case-header__logo{ display:inline-flex; align-items:center; padding:10px 16px; border-radius:9999px; background:#111; color:#fff; font:900 14px/1 "Space Grotesk", Inter, sans-serif; letter-spacing:.02em; }
+
+    .case-page .case-mini{ display:grid; grid-auto-flow:column; gap:48px; align-items:start; justify-content:end; }
+    .case-page .case-mini__card{ text-decoration:none; color:inherit; min-width:240px; border-top:3px solid #111; padding-top:8px; transition:transform .22s ease, opacity .22s ease; }
+    .case-page .case-mini__card:hover{ transform:translateY(-2px); opacity:.95; }
+    .case-page .case-mini__title{ display:flex; align-items:center; justify-content:space-between; margin:.1rem 0 .2rem; font-weight:800; color:#111; }
+    .case-page .case-mini__title .ext{ font-size:1.12em; line-height:1; transform:translateY(-1px); }
+    .case-page .case-mini__text{ margin:0; color:#6c6f77; font-size:.95rem; }
+
+    /* Hero */
+    .case-page .case-head{ padding:34px 0 22px; width:var(--wrap); margin-inline:auto; }
+    .case-page .case-title{ margin:8px 0 10px; font:900 clamp(28px,4.8vw,50px)/1.05 "Space Grotesk", Inter, sans-serif; letter-spacing:.005em; }
+    .case-page .case-sub{ margin:0; color:#6c6f77; max-width:none; } /* ширина = как у карусели */
+
+    /* Carousel */
+    .case-page .carousel{ position:relative; width:var(--wrap); margin:22px auto 36px; }
+    .case-page .carousel-view{ overflow:hidden; border-radius:18px; box-shadow:0 26px 60px rgba(0,0,0,.12); }
+    .case-page .carousel-track{ display:flex; gap:0; transition:transform .45s ease; }
+    /* КРИТИЧНО: сбрасываем дефолтные отступы у figure */
+    .case-page .carousel figure{ margin:0; }
+    .case-page .carousel-slide{ flex:0 0 100%; max-width:100%; box-sizing:border-box; }
+    .case-page .carousel-slide img{ display:block; width:100%; height:auto; }
+    .case-page .c-nav{ position:absolute; inset:0; pointer-events:none; display:flex; align-items:center; justify-content:space-between; padding:0 10px; }
+    .case-page .c-btn{ pointer-events:auto; width:48px; height:48px; border:0; border-radius:999px; background:#0b0b0c; color:#fff; font-size:28px; display:grid; place-items:center; box-shadow:0 16px 36px rgba(0,0,0,.25); transition:transform .15s ease; }
+    .case-page .c-btn:hover{ transform:scale(1.05); }
+
+    /* Таблица */
+    .case-page .case-sheet{ width:var(--wrap); margin:28px auto 56px; }
+    .case-page .sheet-row{ display:grid; grid-template-columns:148px 300px 1fr; gap:32px; padding:22px 0; border-top:1px solid #e7e7ea; }
+    .case-page .sheet-row:first-child{ border-top:0; }
+    .case-page .sheet-label{ font:800 12px/1 Inter; letter-spacing:.06em; text-transform:uppercase; color:#6c6f77; }
+    .case-page .sheet-heading{ font:900 clamp(12px,1.6vw,14px)/1 Inter; letter-spacing:.04em; text-transform:uppercase; }
+    .case-page .sheet-text{ color:#222; }
+    .case-page .sheet-text p{ margin:.35rem 0; }
+    .case-page .sheet-text ul{ margin:.35rem 0; padding-left:18px; }
+    .case-page .sheet-text li{ margin:.22rem 0; color:#2c2f35; }
+    .case-page .sheet-text li::marker{ content:"■ "; font-size:.6rem; color:#222; }
+
+    /* CASE NOTE */
+    .case-page .case-note{ width:var(--wrap); margin:24px auto 56px; padding-left:26px; border-left:6px solid #d0d0d2; }
+    .case-page .case-note__title{ margin:0 0 12px; font:900 17px/1.2 "Space Grotesk", Inter, sans-serif; letter-spacing:.05em; text-transform:uppercase; color:#0b0b0c; }
+    .case-page .case-note__text{ margin:0; color:#1a1a1c; font-size:17px; line-height:1.55; }
+    .case-page .case-note__link{ color:#0b0b0c; text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1.5px; font-weight:700; }
+
+    /* Нижние кнопки */
+    .case-page .case-cta.wrap{ display:flex; gap:16px; margin:0 auto 56px; align-items:center; }
+    .case-page .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:14px 22px; border-radius:999px; line-height:1; text-decoration:none; font-weight:800; border:2px solid #111; }
+    .case-page .btn.primary{ background:#111; color:#fff; }
+    .case-page .btn.outline{ background:#fff; color:#111; }
+
+    /* Footer (серый + стрелка вверх) */
+    .case-page .case-footer{ background:#f7f7f8; border-top:1px solid #e0e0e0; padding:20px 0; margin-top:40px; position:relative; }
+    .case-page .case-footer__wrap{ width:var(--wrap); margin:0 auto; display:flex; align-items:center; justify-content:space-between; color:#0b0b0c; font:500 15px/1.5 Inter, system-ui, sans-serif; }
+    .case-page .case-footer__copy{ margin:0; }
+    .case-page .case-footer__up{ position:fixed; bottom:24px; right:28px; width:42px; height:42px; border:none; border-radius:999px; background:#0b0b0c; color:#fff; font-size:20px; line-height:1; cursor:pointer; box-shadow:0 6px 14px rgba(0,0,0,.2); transition:transform .2s ease, opacity .2s ease; }
+    .case-page .case-footer__up:hover{ transform:translateY(-3px); opacity:.9; }
+
+    @media (max-width:1100px){
+      .case-page .case-mini{ gap:28px; overflow:auto; scrollbar-width:none; }
+      .case-page .case-mini::-webkit-scrollbar{ display:none; }
+      .case-page .sheet-row{ grid-template-columns:120px 1fr; gap:18px; }
+      .case-page .sheet-heading{ order:2; }
+      .case-page .sheet-text{ grid-column:1 / -1; }
+    }
+    @media (max-width:600px){
+      .case-page .case-footer__up{ width:38px; height:38px; font-size:18px; right:20px; bottom:20px; }
+      .case-page .case-cta.wrap{ flex-direction:column; align-items:flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <div class="case-header" id="siteHeader" aria-label="Case header">
+    <div class="case-header__bar">
+      <a class="case-header__brand" href="/"><span class="case-header__logo">it’s me</span></a>
+      <nav class="case-mini" id="caseMini" aria-label="Short menu">
+        <a class="case-mini__card" href="/#case"><h4 class="case-mini__title">My Cases <span class="ext">↗</span></h4><p class="case-mini__text">See all of the business cases I’ve done.</p></a>
+        <a class="case-mini__card" href="/about.html"><h4 class="case-mini__title">About me <span class="ext">↗</span></h4><p class="case-mini__text">Learn where I’ve worked and what I shipped.</p></a>
+        <a class="case-mini__card" href="mailto:zhn.latypova@gmail.com"><h4 class="case-mini__title">Contact me <span class="ext">↗</span></h4><p class="case-mini__text">zhn.latypova@gmail.com</p></a>
       </nav>
     </div>
+  </div>
+
+
+    <!-- Hero -->
+  <header class="case-head">
+    <h1 class="case-title">Analysis of business metrics of advertising campaigns</h1>
+    <p class="case-sub">This business cases focuses on analyzing key business metrics of advertising campaigns to evaluate their performance and optimize marketing spend.</p>
   </header>
 
-  <main id="main">
-    <section class="section">
-      <div class="wrap">
-        <span class="pill dark">BUSINESS CASES</span>
-        <h1 style="margin:.6rem 0 0">Analysis of product assortment for optimization.</h1>
-        <p class="lede" style="margin-top:10px; max-width:68ch">
-          Goal: improve demand forecasting combining classic time-series models with LLM-based enrichment (events, promos, seasonality notes).
-        </p>
-
-        <div class="cards" style="margin-top:22px">
-          <div class="card">
-            <div class="card-media">
-              <img src="../assets/img/Assort.png" alt="Diagram / mock">
-            </div>
-            <div class="card-body">
-              <span class="badge">Context</span>
-              <h4>Business Problem</h4>
-              <p>
-                Stockouts and overstock increased costs & lost revenue. Needed a more robust weekly forecast at SKU × region.
-              </p>
-            </div>
-          </div>
-
-          <div class="card">
-            <div class="card-media">
-              <img src="../assets/img/Assort.png" alt="Data view">
-            </div>
-            <div class="card-body">
-              <span class="badge">Approach</span>
-              <h4>Data & Method</h4>
-              <ul>
-                <li>Historical sales, price, promo flags, holidays</li>
-                <li>LLM to turn unstructured notes → structured regressors</li>
-                <li>Baseline: Prophet / XGBoost; Hybrid: features + LLM</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="cards" style="margin-top:22px">
-          <div class="card">
-            <div class="card-body">
-              <span class="badge">Results</span>
-              <h4>Impact</h4>
-              <p>
-                MAPE ↓ 12–18% vs baseline; safety stock optimized; stockouts ↓ ~9%, holding costs ↓ ~7% in pilot categories.
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-body">
-              <span class="badge">Role</span>
-              <h4>My contribution</h4>
-              <p>Problem framing, data pipeline, modeling, evaluation, dashboards, rollout plan.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="cta-row" style="margin-top:24px">
-          <a class="btn outline" href="/">← Back to Home</a>
-          <a class="btn primary" href="vw-marketing-audit.html">Next case →</a>
-        </div>
+  <!-- Carousel -->
+  <section class="carousel" aria-label="Галерея кейса">
+    <div class="carousel-view">
+      <div class="carousel-track" id="cTrack">
+        <figure class="carousel-slide"><img src="https://ZhannaLatypova.github.io/assets/img/Assort.png" alt="Assortiment"></figure>
+        <figure class="carousel-slide"><img src="https://ZhannaLatypova.github.io/assets/img/assort_1.png" alt="Assort1"></figure>
+        <figure class="carousel-slide"><img src="https://ZhannaLatypova.github.io/assets/img/assort_2.png" alt="Assort2"></figure>
+        <figure class="carousel-slide"><img src="https://ZhannaLatypova.github.io/assets/img/assort_3.png" alt="Assort3"></figure>
       </div>
-    </section>
-  </main>
+    </div>
+    <div class="c-nav">
+      <button class="c-btn" id="cPrev" aria-label="Prev">‹</button>
+      <button class="c-btn" id="cNext" aria-label="Next">›</button>
+    </div>
+  </section>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>© <span id="year"></span> Zhanna Latypova</p>
-      <a href="#main" class="top-link">↑</a>
+
+
+  <!-- Sheet (содержимое твоё) -->
+  <section class="case-sheet">
+    <!-- ... твои sheet-row ... (оставляю как есть из твоего кода) -->
+    <!-- Client -->
+    <div class="sheet-row">
+      <div class="sheet-label">Client</div>
+      <div class="sheet-heading">Entertainment app ProPro+ (the company name has been changed for confidentiality purposes).</div>
+      <div class="sheet-text"><p>The company operates in the digital entertainment industry, offering the ProPro+ mobile app.</p>
+                              <p>A content and gaming platform that engages users through interactive entertainment experiences.</p></div>
+    </div>
+    <!-- Business Problem -->
+    <div class="sheet-row">
+      <div class="sheet-label">Business Problem</div>
+      <div class="sheet-heading">Advertising campaigns generated significant traffic but inconsistent conversions and ROI.</div>
+      <div class="sheet-text"><p>Despite heavy investment in online advertising (Google, Meta, influencer collaborations), the company lacked a unified understanding of which campaigns or channels delivered sustainable growth.</p>
+                              <p>Marketing teams struggled to measure campaign effectiveness, identify overspending, and determine which audiences generated the highest engagement and revenue.</p>
+                              <p>The absence of clear attribution led to inefficient budget allocation and missed optimization opportunities.</p>
+                              </div>
+    </div>
+    <!-- Goal -->
+    <div class="sheet-row">
+      <div class="sheet-label">Goal</div>
+      <div class="sheet-heading">To evaluate and optimize advertising campaign performance using key business metrics.</div>
+      <div class="sheet-text"><p>The main goal was to analyze historical ad campaign data to determine which platforms, creatives, and audience segments produced the highest ROI and engagement.</p>
+                              <p> The project aimed to establish a data-driven framework for decision-making, identifying underperforming campaigns, reallocating marketing budgets, and improving overall advertising efficiency.</p></div>
+    </div>
+    <!-- Data -->
+    <div class="sheet-row">
+      <div class="sheet-label">Data</div>
+      <div class="sheet-heading">The dataset included aggregated campaign performance metrics.</div>
+      <div class="sheet-text">
+        <ul>
+          <li>Campaign name, date, platform (Google, Meta, TikTok)</li>
+          <li>Impressions, Clicks, CTR, CPC, CPA, CPM</li>
+          <li>Conversions and revenue metrics</li>
+          <li>Audience demographic data</li>
+          <li>Budget and spend data</li>
+          <p>Source: Company’s marketing analytics system (ProPro+ internal dashboard).</p>
+          <p>Data was collected via APIs and exported to CSV for analysis.</p>
+        </ul>
+      </div>
+    </div>
+    <!-- Models Used -->
+    <div class="sheet-row">
+      <div class="sheet-label">Models Used / Approach</div>
+      <div class="sheet-heading">Rather than predictive modeling, this project used an analytical and statistical approach</div>
+      <div class="sheet-text">
+        <ul>
+          <li>Exploratory Data Analysis (EDA)</li>
+          <li>Correlation analysis between cost and conversion metrics</li>
+          <li>ROI, ROAS, and engagement metric calculations</li>
+          <li>Cohort and segmentation analysis</li>
+          <li>Visualization of performance trends (CTR, CPC, CPA, ROI)</li>
+          <li>Identification of top-performing campaigns</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Results -->
+    <div class="sheet-row">
+      <div class="sheet-label">Results</div>
+      <div class="sheet-heading">Two evaluation metrics</div>
+      <div class="sheet-text">
+        <ul>
+          <li>Identified top 3 campaigns with ROI > 180% and CTR above 12%.</li>
+          <li>Found that Platform A (Meta Ads) delivered 2.5x higher conversions per dollar than TikTok.</li>
+          <li>Discovered high CPC inefficiencies in one ad group (−25% ROAS).</li>
+          <li>Recommended reallocation of 15% of total ad spend to high-performing segments, projected to increase total ROI by 22%.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Tools -->
+    <div class="sheet-row">
+      <div class="sheet-label">Tools</div>
+      <div class="sheet-heading">Python libraries for analysis</div>
+      <div class="sheet-text">
+        <ul>
+          <li>Python (pandas, numpy, matplotlib, seaborn, plotly</li>
+          <li>Scikit-learn (metrics)</li>
+          <li>Jupyter Notebook</li>
+          <li>Excel / Power BI for final dashboards</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Business Impact -->
+    <div class="sheet-row">
+      <div class="sheet-label">Business Impact</div>
+      <div class="sheet-heading">Better decision-making</div>
+      <div class="sheet-text">
+        <ul>
+          <li>Enhanced visibility into ad performance across channels.</li>
+          <li>Enabled data-driven budget reallocation, improving ROI and reducing wasted ad spend.</li>
+          <li>Supported marketing team decisions with quantifiable metrics and visual dashboards.</li>
+          <li>Projected 22% increase in advertising efficiency and improved audience targeting accuracy.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE NOTE -->
+  <section class="case-note" aria-label="Note">
+    <h3 class="case-note__title">THIS CASE PRESENTS ONLY PART OF THE WORK</h3>
+    <p class="case-note__text">
+      Other project tasks — for example, pipeline development and coding — are described in the
+      <a class="case-note__link" href="https://github.com/ZhannaLatypova/data-analytics-projects/tree/main/product-analysis" target="_blank" rel="noopener">GitHub repository</a>.
+    </p>
+  </section>
+
+  <!-- CTA -->
+  <div class="case-cta wrap">
+    <a class="btn outline" href="/">← Back to Home</a>
+    <a class="btn primary" href="/cases/next-case.html">Next case →</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="case-footer">
+    <div class="case-footer__wrap">
+      <p class="case-footer__copy">© <span id="year"></span> Zhanna Latypova</p>
+      <button class="case-footer__up" aria-label="Back to top">↑</button>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
+    // год в футере
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Карусель: ширина по пикселям, без «сдвига»
+    (function(){
+      const view  = document.querySelector('.carousel-view');
+      const track = document.getElementById('cTrack');
+      const prev  = document.getElementById('cPrev');
+      const next  = document.getElementById('cNext');
+      if(!view || !track) return;
+
+      const slides = Array.from(track.children);
+      function sizeSlides(){
+        const w = view.clientWidth;
+        slides.forEach(s => { s.style.width = w + 'px'; s.style.flex = '0 0 '+w+'px'; });
+        track.style.width = (w * slides.length) + 'px';
+      }
+      sizeSlides();
+      addEventListener('resize', sizeSlides);
+
+      let i = 0;
+      function go(n){
+        const w = view.clientWidth;
+        i = (n + slides.length) % slides.length;
+        track.style.transform = 'translateX(' + (-i*w) + 'px)';
+      }
+      prev && prev.addEventListener('click', () => go(i-1));
+      next && next.addEventListener('click', () => go(i+1));
+      go(0);
+
+      // fallback, если картинка не грузится
+      slides.forEach(s=>{
+        const img = s.querySelector('img');
+        img && img.addEventListener('error', ()=>{ img.src='https://ZhannaLatypova.github.io/assets/img/case_wb.png'; });
+      });
+    })();
+
+    // Кнопка «вверх»
+    document.querySelector('.case-footer__up')?.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    );
   </script>
 </body>
 </html>
-
-
