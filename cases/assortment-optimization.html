@@ -163,31 +163,26 @@
     <!-- Data -->
     <div class="sheet-row">
       <div class="sheet-label">Data</div>
-      <div class="sheet-heading">The dataset included aggregated campaign performance metrics.</div>
+      <div class="sheet-heading">The dataset contained product-level transactional.</div>
       <div class="sheet-text">
         <ul>
-          <li>Campaign name, date, platform (Google, Meta, TikTok)</li>
-          <li>Impressions, Clicks, CTR, CPC, CPA, CPM</li>
-          <li>Conversions and revenue metrics</li>
-          <li>Audience demographic data</li>
-          <li>Budget and spend data</li>
-          <p>Source: Company’s marketing analytics system (ProPro+ internal dashboard).</p>
-          <p>Data was collected via APIs and exported to CSV for analysis.</p>
+          <li>Product ID, Category, Brand, and Price</li>
+          <li>Units Sold, Revenue, Profit Margin</li>
+          <li>Date of sale (for trend analysis)</li>
+          <p> Data Source: Internal sales and marketing database exported from the company’s CRM/e-commerce system.</p>
+          <p>Data Range: ~12 months of historical sales records.</p>
         </ul>
       </div>
     </div>
     <!-- Models Used -->
     <div class="sheet-row">
-      <div class="sheet-label">Models Used / Approach</div>
-      <div class="sheet-heading">Rather than predictive modeling, this project used an analytical and statistical approach</div>
+      <div class="sheet-label">Approach</div>
+      <div class="sheet-heading">This project used an exploratory and descriptive analytics approach, not predictive modeling.</div>
       <div class="sheet-text">
         <ul>
-          <li>Exploratory Data Analysis (EDA)</li>
-          <li>Correlation analysis between cost and conversion metrics</li>
-          <li>ROI, ROAS, and engagement metric calculations</li>
-          <li>Cohort and segmentation analysis</li>
-          <li>Visualization of performance trends (CTR, CPC, CPA, ROI)</li>
-          <li>Identification of top-performing campaigns</li>
+          <li>Data Cleaning & Preparation: Handling missing values, normalizing prices, filtering anomalies.</li>
+          <li>Exploratory Data Analysis (EDA): Analyzing revenue distribution, profit margins, and customer preferences by category.</li>
+          <li>Segmentation / Classification: Using KPIs such as sales volume, profit margin, and return rate to group products.</li>
         </ul>
       </div>
     </div>
@@ -197,10 +192,8 @@
       <div class="sheet-heading">Two evaluation metrics</div>
       <div class="sheet-text">
         <ul>
-          <li>Identified top 3 campaigns with ROI > 180% and CTR above 12%.</li>
-          <li>Found that Platform A (Meta Ads) delivered 2.5x higher conversions per dollar than TikTok.</li>
-          <li>Discovered high CPC inefficiencies in one ad group (−25% ROAS).</li>
-          <li>Recommended reallocation of 15% of total ad spend to high-performing segments, projected to increase total ROI by 22%.</li>
+          <li>Found three underperforming categories with high return rates and low profitability.</li>
+          <li>Highlighted pricing inconsistencies causing margin erosion in two major categories.</li>
         </ul>
       </div>
     </div>
@@ -210,7 +203,7 @@
       <div class="sheet-heading">Python libraries for analysis</div>
       <div class="sheet-text">
         <ul>
-          <li>Python (pandas, numpy, matplotlib, seaborn, plotly</li>
+          <li>Python (pandas, numpy, matplotlib, seaborn, plotly)</li>
           <li>Scikit-learn (metrics)</li>
           <li>Jupyter Notebook</li>
           <li>Excel / Power BI for final dashboards</li>
@@ -223,10 +216,9 @@
       <div class="sheet-heading">Better decision-making</div>
       <div class="sheet-text">
         <ul>
-          <li>Enhanced visibility into ad performance across channels.</li>
-          <li>Enabled data-driven budget reallocation, improving ROI and reducing wasted ad spend.</li>
-          <li>Supported marketing team decisions with quantifiable metrics and visual dashboards.</li>
-          <li>Projected 22% increase in advertising efficiency and improved audience targeting accuracy.</li>
+          <li>Improved understanding of product profitability and lifecycle performance.</li>
+          <li>Data-driven reorganization of product catalog, removal of low-value SKUs and promotion of top-performing items.</li>
+          <li>Enabled smarter inventory planning and marketing strategy through product-level insights.</li>
         </ul>
       </div>
     </div>
